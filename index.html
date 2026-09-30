@@ -1,146 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Cloud</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #172033;
-        }
+  <meta
+    name="description"
+    content="Nova Cloud - an accessible digital platform for business, research, data and cloud-based tools."
+  >
 
-        header {
-            background: #111827;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
+  <title>Nova Cloud</title>
 
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        header p {
-            font-size: 17px;
-            margin-top: 10px;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            text-align: center;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f8fafc;
+      color: #172033;
+    }
 
-        .hero {
-            background: white;
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
+    a {
+      color: inherit;
+    }
 
-        .hero h2 {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
+    button,
+    a {
+      min-height: 44px;
+    }
 
-        .hero p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    header {
+      background: #101827;
+      color: white;
+      padding: 18px 20px;
+    }
 
-        button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        button:hover {
-            background: #1d4ed8;
-        }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-        .feature {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-        }
+    .nav-links a {
+      text-decoration: none;
+      padding: 8px;
+    }
 
-        .feature h3 {
-            margin-bottom: 10px;
-        }
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+      text-align: center;
+    }
 
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-    </style>
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 64px);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+      color: #526070;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 24px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 35px;
+      font-size: 32px;
+    }
+
+    .systems {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .system-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .system-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .system-card p {
+      color: #5b6678;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 30px 20px;
+      background: #101827;
+      color: white;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>☁️ Nova Cloud</h1>
-        <p>Simple. Secure. Built for the Future.</p>
-    </header>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="logo">Nova Cloud</div>
 
-    <main>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#systems">Systems</a>
+        <a href="#research">Research</a>
+      </div>
+    </nav>
+  </header>
 
-        <section class="hero">
-            <h2>Welcome to Nova Cloud</h2>
+  <main>
 
-            <p>
-                Nova Cloud is a technology platform designed to provide
-                modern digital services, cloud tools and secure online solutions.
-            </p>
+    <section class="hero" id="home">
+      <h1>Nova Cloud</h1>
 
-            <button>Get Started</button>
-        </section>
+      <p>
+        A digital platform designed to bring business,
+        research, data and cloud-based tools together
+        in one accessible workspace.
+      </p>
 
-        <section class="features">
+      <a class="cta" href="#systems">Explore Nova Cloud</a>
+    </section>
 
-            <div class="feature">
-                <h3>☁️ Cloud Storage</h3>
-                <p>Store and manage your digital files online.</p>
-            </div>
+    <section class="section" id="systems">
+      <h2>Nova Cloud Systems</h2>
 
-            <div class="feature">
-                <h3>🔐 Security</h3>
-                <p>Built with security and privacy in mind.</p>
-            </div>
+      <div class="systems">
 
-            <div class="feature">
-                <h3>⚡ Fast</h3>
-                <p>Simple and efficient access to your digital tools.</p>
-            </div>
+        <article class="system-card">
+          <h3>Business</h3>
+          <p>
+            Digital tools that can help businesses manage,
+            grow and connect with their customers.
+          </p>
+        </article>
 
-        </section>
+        <article class="system-card">
+          <h3>Research</h3>
+          <p>
+            A future workspace for collecting, organizing,
+            analyzing and presenting research.
+          </p>
+        </article>
 
-    </main>
+        <article class="system-card">
+          <h3>Data & Analytics</h3>
+          <p>
+            Tools for understanding information, creating
+            useful insights and supporting decisions.
+          </p>
+        </article>
 
-    <footer>
-        <p>© 2026 Nova Cloud — Nova Agencies</p>
-    </footer>
+        <article class="system-card">
+          <h3>Cloud Workspace</h3>
+          <p>
+            A centralized environment for projects,
+            files, tools and future digital services.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <h2>Research & Innovation</h2>
+
+      <p style="text-align:center; max-width:700px; margin:auto;">
+        Nova Cloud is being designed with research and
+        innovation in mind, creating a foundation that can
+        grow into powerful research and data systems.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Nova Cloud</p>
+  </footer>
 
 </body>
-</html>
+    </html>
