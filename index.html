@@ -1,78 +1,535 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Cloud Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 30px;
-      background: #f4f7fb;
-    }
+<title>Nova Cloud</title>
 
-    button {
-      display: block;
-      width: 90%;
-      max-width: 400px;
-      margin: 15px auto;
-      padding: 18px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      background: #111827;
-      color: white;
-    }
+<style>
 
-    #result {
-      margin-top: 25px;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      font-size: 18px;
-    }
-  </style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+  color: #172033;
+}
+
+header {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+header h1 {
+  font-size: 34px;
+}
+
+header p {
+  margin-top: 8px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px 15px;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.section-btn {
+  padding: 18px 10px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.section-btn:hover {
+  background: #e8eef7;
+}
+
+.panel {
+  display: none;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.panel.active {
+  display: block;
+}
+
+.panel p {
+  margin-top: 8px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.tool-btn {
+  padding: 16px;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tool-btn:hover {
+  background: #e8eef7;
+}
+
+.tool {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #dbe2ea;
+}
+
+.tool.active {
+  display: block;
+}
+
+textarea,
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 130px;
+}
+
+.run-btn {
+  margin-top: 12px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 18px;
+  padding: 16px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #dbe2ea;
+  line-height: 1.7;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  color: #64748b;
+}
+
+</style>
 </head>
 
 <body>
 
-  <h1>Nova Cloud</h1>
+<header>
 
-  <p>Button Test</p>
+<h1>Nova Cloud</h1>
 
-  <button onclick="testButton('Systems')">
-    ⚙️ Systems
-  </button>
+<p>
+Systems • Business Intelligence • Research • Data & Analysis • Cloud Workspace
+</p>
 
-  <button onclick="testButton('Business')">
-    🧠 Business
-  </button>
+</header>
 
-  <button onclick="testButton('Research')">
-    🔎 Research
-  </button>
 
-  <button onclick="testButton('Data & Analysis')">
-    📊 Data & Analysis
-  </button>
+<div class="container">
 
-  <button onclick="testButton('Cloud Workspace')">
-    ☁️ Cloud Workspace
-  </button>
 
-  <div id="result">
-    Tap a button.
-  </div>
+<!-- MAIN NAVIGATION -->
 
-  <script>
-    function testButton(name) {
-      document.getElementById("result").innerHTML =
-        "<strong>You opened:</strong><br><br>" + name;
-    }
-  </script>
+<div class="sections">
+
+<button class="section-btn"
+onclick="openSection('systems')">
+⚙️ Systems
+</button>
+
+<button class="section-btn"
+onclick="openSection('business')">
+🧠 Business
+</button>
+
+<button class="section-btn"
+onclick="openSection('research')">
+🔎 Research
+</button>
+
+<button class="section-btn"
+onclick="openSection('data')">
+📊 Data & Analysis
+</button>
+
+<button class="section-btn"
+onclick="openSection('workspace')">
+☁️ Cloud Workspace
+</button>
+
+</div>
+
+
+<!-- SYSTEMS -->
+
+<div id="systems" class="panel">
+
+<h2>Systems Builder</h2>
+
+<p>
+Build and organize digital systems, AI projects and technology concepts.
+</p>
+
+
+<div class="tools">
+
+<button class="tool-btn"
+onclick="openTool('systemBuilder')">
+⚙️ System Builder
+</button>
+
+<button class="tool-btn"
+onclick="openTool('aiProjects')">
+🤖 AI Projects
+</button>
+
+<button class="tool-btn"
+onclick="openTool('technology')">
+💻 Technology
+</button>
+
+</div>
+
+
+<!-- SYSTEM BUILDER -->
+
+<div id="systemBuilder" class="tool">
+
+<h3>⚙️ System Builder</h3>
+
+<p>
+Describe the system you want to build.
+</p>
+
+<textarea
+id="systemInput"
+placeholder="Example: A system that helps businesses manage customers">
+</textarea>
+
+<button class="run-btn"
+onclick="buildSystem()">
+Build System
+</button>
+
+<div id="systemResult"></div>
+
+</div>
+
+
+<!-- AI PROJECTS -->
+
+<div id="aiProjects" class="tool">
+
+<h3>🤖 AI Projects</h3>
+
+<p>
+Describe your AI project or idea.
+</p>
+
+<textarea
+id="aiInput"
+placeholder="Example: AI system that detects objects using cameras">
+</textarea>
+
+<button class="run-btn"
+onclick="startAI()">
+Start AI Project
+</button>
+
+<div id="aiResult"></div>
+
+</div>
+
+
+<!-- TECHNOLOGY -->
+
+<div id="technology" class="tool">
+
+<h3>💻 Technology</h3>
+
+<p>
+Explore the technology requirements of a project.
+</p>
+
+<input
+id="technologyInput"
+placeholder="Example: Autonomous electric vehicle">
+
+<button class="run-btn"
+onclick="analyzeTechnology()">
+Analyze Technology
+</button>
+
+<div id="technologyResult"></div>
+
+</div>
+
+</div>
+
+
+<!-- BUSINESS PLACEHOLDER -->
+
+<div id="business" class="panel">
+
+<h2>🧠 Business Intelligence</h2>
+
+<p>
+Business Intelligence tools will be added next.
+</p>
+
+</div>
+
+
+<!-- RESEARCH PLACEHOLDER -->
+
+<div id="research" class="panel">
+
+<h2>🔎 Research</h2>
+
+<p>
+Research tools will be added next.
+</p>
+
+</div>
+
+
+<!-- DATA PLACEHOLDER -->
+
+<div id="data" class="panel">
+
+<h2>📊 Data & Analysis</h2>
+
+<p>
+Data analysis tools will be added next.
+</p>
+
+</div>
+
+
+<!-- WORKSPACE PLACEHOLDER -->
+
+<div id="workspace" class="panel">
+
+<h2>☁️ Cloud Workspace</h2>
+
+<p>
+Cloud Workspace tools will be added next.
+</p>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<p><strong>Nova Cloud</strong></p>
+
+<p>Research • Innovation • Technology</p>
+
+</footer>
+
+
+<script>
+
+/* MAIN SECTIONS */
+
+function openSection(id) {
+
+  var panels = document.querySelectorAll(".panel");
+
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].classList.remove("active");
+  }
+
+  document.getElementById(id).classList.add("active");
+}
+
+
+/* TOOLS */
+
+function openTool(id) {
+
+  var tools = document.querySelectorAll(".tool");
+
+  for (var i = 0; i < tools.length; i++) {
+    tools[i].classList.remove("active");
+  }
+
+  document.getElementById(id).classList.add("active");
+}
+
+
+/* SYSTEM BUILDER */
+
+function buildSystem() {
+
+  var input =
+    document.getElementById("systemInput").value.trim();
+
+  if (input === "") {
+
+    document.getElementById("systemResult").innerHTML =
+      "<div class='result'>Please describe the system.</div>";
+
+    return;
+  }
+
+  document.getElementById("systemResult").innerHTML =
+
+    "<div class='result'>" +
+
+    "<strong>Nova System Blueprint</strong><br><br>" +
+
+    "<strong>System:</strong><br>" +
+    input + "<br><br>" +
+
+    "<strong>Recommended structure:</strong><br>" +
+
+    "1. Define the problem<br>" +
+    "2. Identify the users<br>" +
+    "3. Define system features<br>" +
+    "4. Design the workflow<br>" +
+    "5. Select technology<br>" +
+    "6. Build a prototype<br>" +
+    "7. Test the system<br>" +
+    "8. Improve and deploy" +
+
+    "</div>";
+}
+
+
+/* AI PROJECT */
+
+function startAI() {
+
+  var input =
+    document.getElementById("aiInput").value.trim();
+
+  if (input === "") {
+
+    document.getElementById("aiResult").innerHTML =
+      "<div class='result'>Please describe your AI project.</div>";
+
+    return;
+  }
+
+  document.getElementById("aiResult").innerHTML =
+
+    "<div class='result'>" +
+
+    "<strong>AI Project Framework</strong><br><br>" +
+
+    "<strong>Project:</strong><br>" +
+    input + "<br><br>" +
+
+    "1. Define the problem<br>" +
+    "2. Identify users<br>" +
+    "3. Identify required data<br>" +
+    "4. Select AI approach<br>" +
+    "5. Build prototype<br>" +
+    "6. Test<br>" +
+    "7. Improve<br>" +
+    "8. Deploy" +
+
+    "</div>";
+}
+
+
+/* TECHNOLOGY */
+
+function analyzeTechnology() {
+
+  var input =
+    document.getElementById("technologyInput").value.trim();
+
+  if (input === "") {
+
+    document.getElementById("technologyResult").innerHTML =
+      "<div class='result'>Please enter a technology or project.</div>";
+
+    return;
+  }
+
+  document.getElementById("technologyResult").innerHTML =
+
+    "<div class='result'>" +
+
+    "<strong>Technology Investigation</strong><br><br>" +
+
+    "<strong>Project:</strong><br>" +
+    input + "<br><br>" +
+
+    "Technology areas to investigate:<br><br>" +
+
+    "• Hardware<br>" +
+    "• Software<br>" +
+    "• Sensors<br>" +
+    "• Data<br>" +
+    "• Connectivity<br>" +
+    "• Security<br>" +
+    "• Automation<br>" +
+    "• Artificial Intelligence<br>" +
+    "• Testing<br>" +
+    "• Deployment" +
+
+    "</div>";
+}
+
+
+/* OPEN SYSTEMS AUTOMATICALLY */
+
+openSection("systems");
+
+</script>
 
 </body>
-</html>
+  </html>
