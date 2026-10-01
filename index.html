@@ -1,432 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Cloud</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Cloud</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #f4f7fb;
-      color: #172033;
-    }
+body {
+  background: #f4f7fb;
+  color: #172033;
+}
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 25px 20px;
-      text-align: center;
-    }
+header {
+  background: #111827;
+  color: white;
+  padding: 25px 20px;
+  text-align: center;
+}
 
-    header h1 {
-      font-size: 32px;
-    }
+header h1 {
+  font-size: 32px;
+}
 
-    header p {
-      margin-top: 8px;
-      color: #cbd5e1;
-    }
+header p {
+  margin-top: 8px;
+  color: #cbd5e1;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 25px 15px;
-    }
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 25px 15px;
+}
 
-    .sections {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-bottom: 25px;
-    }
+.sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
 
-    .section-btn {
-      border: none;
-      padding: 18px;
-      border-radius: 12px;
-      background: white;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-    }
+.section-btn {
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
 
-    .section-btn:hover {
-      transform: translateY(-2px);
-    }
+.panel {
+  display: none;
+  background: white;
+  padding: 22px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
 
-    .panel {
-      display: none;
-      background: white;
-      padding: 22px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
+.panel.active {
+  display: block;
+}
 
-    .panel.active {
-      display: block;
-    }
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
 
-    .panel h2 {
-      margin-bottom: 10px;
-    }
+.tool-btn {
+  padding: 15px;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .tools {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
+.tool-content {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f8fafc;
+  display: none;
+}
 
-    .tool-btn {
-      padding: 15px;
-      border: 1px solid #dbe2ea;
-      border-radius: 10px;
-      background: #f8fafc;
-      cursor: pointer;
-      font-weight: bold;
-    }
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+}
 
-    .tool-btn:hover {
-      background: #eaf0f7;
-    }
+textarea {
+  min-height: 130px;
+}
 
-    .tool-content {
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 12px;
-      background: #f8fafc;
-      display: none;
-    }
+.run-btn {
+  margin-top: 12px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+.results {
+  margin-top: 15px;
+  line-height: 1.8;
+  font-size: 17px;
+}
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .run-btn {
-      margin-top: 12px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #111827;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .results {
-      margin-top: 15px;
-      line-height: 1.8;
-      font-size: 17px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 15px;
-      color: #64748b;
-    }
-  </style>
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  color: #64748b;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Nova Cloud</h1>
-  <p>Systems • Business • Research • Data & Analysis • Cloud Workspace</p>
+<h1>Nova Cloud</h1>
+<p>Systems • Business • Research • Data & Analysis • Cloud Workspace</p>
 </header>
 
 <div class="container">
 
-  <div class="sections">
-    <button class="section-btn" onclick="showSection('systems')">
-      Systems
-    </button>
-
-    <button class="section-btn" onclick="showSection('business')">
-      Business
-    </button>
-
-    <button class="section-btn" onclick="showSection('research')">
-      Research
-    </button>
-
-    <button class="section-btn" onclick="showSection('data')">
-      Data & Analysis
-    </button>
-
-    <button class="section-btn" onclick="showSection('workspace')">
-      Cloud Workspace
-    </button>
-  </div>
+<div class="sections">
+<button class="section-btn" onclick="showSection('systems')">Systems</button>
+<button class="section-btn" onclick="showSection('business')">Business</button>
+<button class="section-btn" onclick="showSection('research')">Research</button>
+<button class="section-btn" onclick="showSection('data')">Data & Analysis</button>
+<button class="section-btn" onclick="showSection('workspace')">Cloud Workspace</button>
+</div>
 
 
-  <!-- SYSTEMS -->
-  <div id="systems" class="panel">
-    <h2>Systems Builder</h2>
-    <p>Build and organize digital systems with Nova Cloud.</p>
+<!-- SYSTEMS -->
 
-    <div class="tools">
-      <button class="tool-btn" onclick="showTool('systemTool')">
-        System Builder
-      </button>
+<div id="systems" class="panel">
+<h2>Systems Builder</h2>
+<p>Build and organize digital systems.</p>
 
-      <button class="tool-btn" onclick="showTool('aiTool')">
-        AI Projects
-      </button>
+<div class="tools">
+<button class="tool-btn" onclick="showTool('systemTool')">System Builder</button>
+<button class="tool-btn" onclick="showTool('aiTool')">AI Projects</button>
+<button class="tool-btn" onclick="showTool('technologyTool')">Technology</button>
+</div>
 
-      <button class="tool-btn" onclick="showTool('technologyTool')">
-        Technology
-      </button>
-    </div>
+<div id="systemTool" class="tool-content">
+<h3>System Builder</h3>
+<textarea id="systemInput" placeholder="Describe the system you want to build"></textarea>
+<button class="run-btn" onclick="buildSystem()">Build System</button>
+<div id="systemResult" class="results"></div>
+</div>
 
-    <div id="systemTool" class="tool-content">
-      <h3>System Builder</h3>
-      <p>Describe the system you want to build.</p>
-      <textarea id="systemInput"
-        placeholder="Example: Build a customer management system"></textarea>
-      <button class="run-btn" onclick="buildSystem()">Build System</button>
-      <div id="systemResult" class="results"></div>
-    </div>
+<div id="aiTool" class="tool-content">
+<h3>AI Projects</h3>
+<textarea id="aiInput" placeholder="Describe your AI project"></textarea>
+<button class="run-btn" onclick="startAI()">Start Project</button>
+<div id="aiResult" class="results"></div>
+</div>
 
-    <div id="aiTool" class="tool-content">
-      <h3>AI Projects</h3>
-      <p>Start planning an AI project.</p>
-      <textarea id="aiInput"
-        placeholder="Describe your AI project"></textarea>
-      <button class="run-btn" onclick="startAI()">Start Project</button>
-      <div id="aiResult" class="results"></div>
-    </div>
-
-    <div id="technologyTool" class="tool-content">
-      <h3>Technology</h3>
-      <p>Explore technology projects and ideas.</p>
-      <button class="run-btn" onclick="technology()">Open Technology</button>
-      <div id="technologyResult" class="results"></div>
-    </div>
-  </div>
+<div id="technologyTool" class="tool-content">
+<h3>Technology</h3>
+<button class="run-btn" onclick="technology()">Open Technology</button>
+<div id="technologyResult" class="results"></div>
+</div>
+</div>
 
 
-  <!-- BUSINESS -->
-  <div id="business" class="panel">
-    <h2>Business</h2>
-    <p>Tools for business planning and digital growth.</p>
+<!-- BUSINESS -->
 
-    <div class="tools">
-      <button class="tool-btn" onclick="showTool('businessPlan')">
-        Business Planner
-      </button>
+<div id="business" class="panel">
+<h2>Business</h2>
+<p>Tools for business planning and digital growth.</p>
 
-      <button class="tool-btn" onclick="showTool('ideaTool')">
-        Idea Generator
-      </button>
-    </div>
+<div class="tools">
+<button class="tool-btn" onclick="showTool('businessPlan')">Business Planner</button>
+<button class="tool-btn" onclick="showTool('ideaTool')">Idea Generator</button>
+</div>
 
-    <div id="businessPlan" class="tool-content">
-      <h3>Business Planner</h3>
-      <textarea id="businessInput"
-        placeholder="Describe your business idea"></textarea>
-      <button class="run-btn" onclick="businessPlan()">Create Plan</button>
-      <div id="businessResult" class="results"></div>
-    </div>
+<div id="businessPlan" class="tool-content">
+<h3>Business Planner</h3>
+<textarea id="businessInput" placeholder="Describe your business idea"></textarea>
+<button class="run-btn" onclick="businessPlan()">Create Plan</button>
+<div id="businessResult" class="results"></div>
+</div>
 
-    <div id="ideaTool" class="tool-content">
-      <h3>Business Idea Generator</h3>
-      <button class="run-btn" onclick="generateIdea()">Generate Idea</button>
-      <div id="ideaResult" class="results"></div>
-    </div>
-  </div>
+<div id="ideaTool" class="tool-content">
+<h3>Business Idea Generator</h3>
+<button class="run-btn" onclick="generateIdea()">Generate Idea</button>
+<div id="ideaResult" class="results"></div>
+</div>
+</div>
 
 
-  <!-- RESEARCH -->
-  <div id="research" class="panel">
-    <h2>Research</h2>
-    <p>Organize research questions, notes and findings.</p>
+<!-- RESEARCH -->
 
-    <div class="tools">
-      <button class="tool-btn" onclick="showTool('researchTool')">
-        Research Builder
-      </button>
+<div id="research" class="panel">
+<h2>Research</h2>
+<p>Organize research questions, notes and findings.</p>
 
-      <button class="tool-btn" onclick="showTool('notesTool')">
-        Research Notes
-      </button>
-    </div>
+<div class="tools">
+<button class="tool-btn" onclick="showTool('researchTool')">Research Builder</button>
+<button class="tool-btn" onclick="showTool('notesTool')">Research Notes</button>
+</div>
 
-    <div id="researchTool" class="tool-content">
-      <h3>Research Builder</h3>
-      <input id="researchQuestion"
-        placeholder="Enter your research topic">
+<div id="researchTool" class="tool-content">
+<h3>Research Builder</h3>
+<input id="researchQuestion" placeholder="Enter your research topic">
+<button class="run-btn" onclick="research()">Create Research Plan</button>
+<div id="researchResult" class="results"></div>
+</div>
 
-      <button class="run-btn" onclick="research()">Create Research Plan</button>
-
-      <div id="researchResult" class="results"></div>
-    </div>
-
-    <div id="notesTool" class="tool-content">
-      <h3>Research Notes</h3>
-      <textarea id="researchNotes"
-        placeholder="Write your research notes here"></textarea>
-
-      <button class="run-btn" onclick="saveNotes()">Save Notes</button>
-
-      <div id="notesResult" class="results"></div>
-    </div>
-  </div>
+<div id="notesTool" class="tool-content">
+<h3>Research Notes</h3>
+<textarea id="researchNotes" placeholder="Write your research notes here"></textarea>
+<button class="run-btn" onclick="saveNotes()">Save Notes</button>
+<div id="notesResult" class="results"></div>
+</div>
+</div>
 
 
-  <!-- DATA & ANALYSIS -->
-  <div id="data" class="panel">
-    <h2>Data & Analysis</h2>
+<!-- DATA & ANALYSIS -->
 
-    <p>
-      Enter numbers separated by commas to calculate
-      the number of values, total, average, highest and lowest.
-    </p>
+<div id="data" class="panel">
+<h2>Data & Analysis</h2>
 
-    <div class="tools">
-      <button class="tool-btn" onclick="showTool('dataTool')">
-        Data Analyzer
-      </button>
-    </div>
+<p>Analyze numerical data or written text.</p>
 
-    <div id="dataTool" class="tool-content">
-      <h3>Data Analyzer</h3>
+<div class="tools">
 
-      <input
-        id="numbersInput"
-        type="text"
-        placeholder="Example: 10, 20, 30, 40, 50"
-      >
+<button class="tool-btn" onclick="showTool('numberTool')">
+🔢 Numerical Analysis
+</button>
 
-      <button class="run-btn" onclick="analyzeData()">
-        Analyze Data
-      </button>
+<button class="tool-btn" onclick="showTool('textTool')">
+📝 Text Analysis
+</button>
 
-      <div id="dataResult" class="results"></div>
-    </div>
-  </div>
+</div>
 
 
-  <!-- CLOUD WORKSPACE -->
-  <div id="workspace" class="panel">
-    <h2>Cloud Workspace</h2>
-    <p>Your digital workspace for Nova Cloud projects.</p>
+<!-- NUMBER ANALYSIS -->
 
-    <div class="tools">
-      <button class="tool-btn" onclick="showTool('workspaceTool')">
-        Workspace
-      </button>
+<div id="numberTool" class="tool-content">
 
-      <button class="tool-btn" onclick="showTool('projectTool')">
-        Projects
-      </button>
-    </div>
+<h3>Numerical Analysis</h3>
 
-    <div id="workspaceTool" class="tool-content">
-      <h3>Cloud Workspace</h3>
-      <textarea id="workspaceNotes"
-        placeholder="Write workspace information or project notes"></textarea>
+<input
+id="numbersInput"
+type="text"
+placeholder="Example: 10,20,30,40,50">
 
-      <button class="run-btn" onclick="saveWorkspace()">
-        Save Workspace
-      </button>
+<button class="run-btn" onclick="analyzeData()">
+Analyze Numbers
+</button>
 
-      <div id="workspaceResult" class="results"></div>
-    </div>
+<div id="dataResult" class="results"></div>
 
-    <div id="projectTool" class="tool-content">
-      <h3>Projects</h3>
-      <input id="projectName" placeholder="Enter project name">
+</div>
 
-      <button class="run-btn" onclick="createProject()">
-        Create Project
-      </button>
 
-      <div id="projectResult" class="results"></div>
-    </div>
-  </div>
+<!-- TEXT ANALYSIS -->
+
+<div id="textTool" class="tool-content">
+
+<h3>Text Analysis</h3>
+
+<textarea
+id="textInput"
+placeholder="Enter a sentence, paragraph or longer text here..."></textarea>
+
+<button class="run-btn" onclick="analyzeText()">
+Analyze Text
+</button>
+
+<div id="textResult" class="results"></div>
+
+</div>
+
+</div>
+
+
+<!-- CLOUD WORKSPACE -->
+
+<div id="workspace" class="panel">
+<h2>Cloud Workspace</h2>
+<p>Your digital workspace for Nova Cloud projects.</p>
+
+<div class="tools">
+<button class="tool-btn" onclick="showTool('workspaceTool')">Workspace</button>
+<button class="tool-btn" onclick="showTool('projectTool')">Projects</button>
+</div>
+
+<div id="workspaceTool" class="tool-content">
+<h3>Cloud Workspace</h3>
+
+<textarea id="workspaceNotes" placeholder="Write workspace information"></textarea>
+
+<button class="run-btn" onclick="saveWorkspace()">
+Save Workspace
+</button>
+
+<div id="workspaceResult" class="results"></div>
+</div>
+
+<div id="projectTool" class="tool-content">
+<h3>Projects</h3>
+
+<input id="projectName" placeholder="Enter project name">
+
+<button class="run-btn" onclick="createProject()">
+Create Project
+</button>
+
+<div id="projectResult" class="results"></div>
+</div>
+
+</div>
 
 </div>
 
 
 <footer>
-  <p>Nova Cloud</p>
-  <p>Research • Innovation • Technology</p>
+<p>Nova Cloud</p>
+<p>Research • Innovation • Technology</p>
 </footer>
 
 
 <script>
 
 function showSection(sectionId) {
-  document.querySelectorAll('.panel').forEach(panel => {
-    panel.classList.remove('active');
-  });
 
-  document.getElementById(sectionId).classList.add('active');
+document.querySelectorAll('.panel').forEach(panel => {
+panel.classList.remove('active');
+});
+
+document.getElementById(sectionId).classList.add('active');
 }
 
 
 function showTool(toolId) {
-  document.querySelectorAll('.tool-content').forEach(tool => {
-    tool.style.display = 'none';
-  });
 
-  document.getElementById(toolId).style.display = 'block';
+document.querySelectorAll('.tool-content').forEach(tool => {
+tool.style.display = 'none';
+});
+
+document.getElementById(toolId).style.display = 'block';
 }
 
 
-/* DATA ANALYZER */
+/* NUMERICAL ANALYSIS */
 
 function analyzeData() {
 
-  const input = document.getElementById('numbersInput').value;
+const input = document.getElementById('numbersInput').value;
 
-  const values = input
-    .split(',')
-    .map(value => Number(value.trim()))
-    .filter(value => !isNaN(value));
+const values = input
+.split(',')
+.map(value => Number(value.trim()))
+.filter(value => !isNaN(value));
 
-  if (values.length === 0) {
-    document.getElementById('dataResult').innerHTML =
-      "Please enter numbers separated by commas.";
-    return;
-  }
+if (values.length === 0) {
 
-  const total = values.reduce((sum, value) => sum + value, 0);
+document.getElementById('dataResult').innerHTML =
+"Please enter numbers separated by commas.";
 
-  const average = total / values.length;
+return;
+}
 
-  const highest = Math.max(...values);
+const total =
+values.reduce((sum, value) => sum + value, 0);
 
-  const lowest = Math.min(...values);
+const average =
+total / values.length;
 
-  document.getElementById('dataResult').innerHTML = `
-    <strong>Analysis Results</strong><br><br>
-    Number of values: ${values.length}<br>
-    Total: ${total}<br>
-    Average: ${average.toFixed(2)}<br>
-    Highest: ${highest}<br>
-    Lowest: ${lowest}
-  `;
+const highest =
+Math.max(...values);
+
+const lowest =
+Math.min(...values);
+
+document.getElementById('dataResult').innerHTML = `
+<strong>Numerical Analysis Results</strong><br><br>
+Number of values: ${values.length}<br>
+Total: ${total}<br>
+Average: ${average.toFixed(2)}<br>
+Highest: ${highest}<br>
+Lowest: ${lowest}
+`;
+}
+
+
+/* TEXT ANALYSIS */
+
+function analyzeText() {
+
+const text =
+document.getElementById('textInput').value.trim();
+
+if (!text) {
+
+document.getElementById('textResult').innerHTML =
+"Please enter some text.";
+
+return;
+}
+
+const characters =
+text.length;
+
+const charactersNoSpaces =
+text.replace(/\s/g, '').length;
+
+const words =
+text.split(/\s+/).filter(word => word.length > 0);
+
+const sentences =
+text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
+
+const wordCount =
+words.length;
+
+const sentenceCount =
+sentences.length;
+
+const paragraphs =
+text.split(/\n+/).filter(p => p.trim().length > 0);
+
+const paragraphCount =
+paragraphs.length;
+
+document.getElementById('textResult').innerHTML = `
+<strong>Text Analysis Results</strong><br><br>
+
+Characters: ${characters}<br>
+
+Characters without spaces: ${charactersNoSpaces}<br>
+
+Words: ${wordCount}<br>
+
+Sentences: ${sentenceCount}<br>
+
+Paragraphs: ${paragraphCount}
+`;
 }
 
 
@@ -434,33 +468,39 @@ function analyzeData() {
 
 function buildSystem() {
 
-  const input = document.getElementById('systemInput').value;
+const input =
+document.getElementById('systemInput').value;
 
-  if (!input.trim()) {
-    document.getElementById('systemResult').innerHTML =
-      "Please describe the system.";
-    return;
-  }
+if (!input.trim()) {
 
-  document.getElementById('systemResult').innerHTML =
-    "System project created: <strong>" + input + "</strong>";
+document.getElementById('systemResult').innerHTML =
+"Please describe the system.";
+
+return;
+}
+
+document.getElementById('systemResult').innerHTML =
+"System project created: <strong>" + input + "</strong>";
 }
 
 
-/* AI PROJECT */
+/* AI */
 
 function startAI() {
 
-  const input = document.getElementById('aiInput').value;
+const input =
+document.getElementById('aiInput').value;
 
-  if (!input.trim()) {
-    document.getElementById('aiResult').innerHTML =
-      "Please describe your AI project.";
-    return;
-  }
+if (!input.trim()) {
 
-  document.getElementById('aiResult').innerHTML =
-    "AI project initialized: <strong>" + input + "</strong>";
+document.getElementById('aiResult').innerHTML =
+"Please describe your AI project.";
+
+return;
+}
+
+document.getElementById('aiResult').innerHTML =
+"AI project initialized: <strong>" + input + "</strong>";
 }
 
 
@@ -468,8 +508,8 @@ function startAI() {
 
 function technology() {
 
-  document.getElementById('technologyResult').innerHTML =
-    "Technology workspace opened. You can add technology projects here.";
+document.getElementById('technologyResult').innerHTML =
+"Technology workspace opened.";
 }
 
 
@@ -477,33 +517,37 @@ function technology() {
 
 function businessPlan() {
 
-  const input = document.getElementById('businessInput').value;
+const input =
+document.getElementById('businessInput').value;
 
-  if (!input.trim()) {
-    document.getElementById('businessResult').innerHTML =
-      "Please describe your business idea.";
-    return;
-  }
+if (!input.trim()) {
 
-  document.getElementById('businessResult').innerHTML =
-    "Business plan workspace created for: <strong>" + input + "</strong>";
+document.getElementById('businessResult').innerHTML =
+"Please describe your business idea.";
+
+return;
+}
+
+document.getElementById('businessResult').innerHTML =
+"Business plan workspace created for: <strong>" + input + "</strong>";
 }
 
 
 function generateIdea() {
 
-  const ideas = [
-    "AI-powered customer support platform",
-    "Local business discovery platform",
-    "Digital marketing automation system",
-    "Small business data analysis tool",
-    "Cloud-based project management platform"
-  ];
+const ideas = [
+"AI-powered customer support platform",
+"Local business discovery platform",
+"Digital marketing automation system",
+"Small business data analysis tool",
+"Cloud-based project management platform"
+];
 
-  const idea = ideas[Math.floor(Math.random() * ideas.length)];
+const idea =
+ideas[Math.floor(Math.random() * ideas.length)];
 
-  document.getElementById('ideaResult').innerHTML =
-    "Suggested idea: <strong>" + idea + "</strong>";
+document.getElementById('ideaResult').innerHTML =
+"Suggested idea: <strong>" + idea + "</strong>";
 }
 
 
@@ -511,39 +555,40 @@ function generateIdea() {
 
 function research() {
 
-  const topic = document.getElementById('researchQuestion').value;
+const topic =
+document.getElementById('researchQuestion').value;
 
-  if (!topic.trim()) {
-    document.getElementById('researchResult').innerHTML =
-      "Please enter a research topic.";
-    return;
-  }
+if (!topic.trim()) {
 
-  document.getElementById('researchResult').innerHTML = `
-    <strong>Research Plan</strong><br><br>
-    Topic: ${topic}<br>
-    1. Define the research question<br>
-    2. Collect information<br>
-    3. Analyze findings<br>
-    4. Record conclusions
-  `;
+document.getElementById('researchResult').innerHTML =
+"Please enter a research topic.";
+
+return;
+}
+
+document.getElementById('researchResult').innerHTML = `
+<strong>Research Plan</strong><br><br>
+Topic: ${topic}<br>
+1. Define the research question<br>
+2. Collect information<br>
+3. Analyze findings<br>
+4. Record conclusions
+`;
 }
 
 
 function saveNotes() {
 
-  const notes = document.getElementById('researchNotes').value;
+const notes =
+document.getElementById('researchNotes').value;
 
-  if (!notes.trim()) {
-    document.getElementById('notesResult').innerHTML =
-      "No notes entered.";
-    return;
-  }
+localStorage.setItem(
+'novaResearchNotes',
+notes
+);
 
-  localStorage.setItem('novaResearchNotes', notes);
-
-  document.getElementById('notesResult').innerHTML =
-    "Research notes saved on this device.";
+document.getElementById('notesResult').innerHTML =
+"Research notes saved on this device.";
 }
 
 
@@ -551,27 +596,34 @@ function saveNotes() {
 
 function saveWorkspace() {
 
-  const notes = document.getElementById('workspaceNotes').value;
+const notes =
+document.getElementById('workspaceNotes').value;
 
-  localStorage.setItem('novaWorkspace', notes);
+localStorage.setItem(
+'novaWorkspace',
+notes
+);
 
-  document.getElementById('workspaceResult').innerHTML =
-    "Workspace information saved on this device.";
+document.getElementById('workspaceResult').innerHTML =
+"Workspace information saved on this device.";
 }
 
 
 function createProject() {
 
-  const name = document.getElementById('projectName').value;
+const name =
+document.getElementById('projectName').value;
 
-  if (!name.trim()) {
-    document.getElementById('projectResult').innerHTML =
-      "Please enter a project name.";
-    return;
-  }
+if (!name.trim()) {
 
-  document.getElementById('projectResult').innerHTML =
-    "Project created: <strong>" + name + "</strong>";
+document.getElementById('projectResult').innerHTML =
+"Please enter a project name.";
+
+return;
+}
+
+document.getElementById('projectResult').innerHTML =
+"Project created: <strong>" + name + "</strong>";
 }
 
 </script>
