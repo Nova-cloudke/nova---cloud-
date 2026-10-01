@@ -974,25 +974,51 @@ function createResearch() {
 }
 
 
+<script>
+
+/* =========================
+   NOVA CLOUD
+   RESEARCH + DATA TOOLS
+========================= */
+
+
 /* =========================
    RESEARCH NOTES
 ========================= */
 
 function saveNotes() {
 
-  var notes =
-    document.getElementById("notesInput").value;
+  const input = document.getElementById("notesInput");
+  const result = document.getElementById("notesResult");
 
-  if (notes.trim() === "") {
-    document.getElementById("notesResult").innerHTML =
-      "Please write some notes first.";
+  if (!input || !result) return;
+
+  const notes = input.value.trim();
+
+  if (notes === "") {
+    result.innerHTML = "Please write some notes first.";
     return;
   }
 
   localStorage.setItem("novaResearchNotes", notes);
 
-  document.getElementById("notesResult").innerHTML =
-    "Research notes saved on this device.";
+  result.innerHTML =
+    "✅ Research notes saved on this device.";
+}
+
+
+function loadNotes() {
+
+  const input = document.getElementById("notesInput");
+
+  if (!input) return;
+
+  const saved =
+    localStorage.getItem("novaResearchNotes");
+
+  if (saved) {
+    input.value = saved;
+  }
 }
 
 
@@ -1002,7 +1028,303 @@ function saveNotes() {
 
 function analyzeNumbers() {
 
-  var input =
-    document.getElementById("numbersInput").value.trim();
+  const input =
+    document.getElementById("numbersInput");
 
-  if (i
+  const result =
+    document.getElementById("numbersResult");
+
+  if (!input || !result) return;
+
+  const text = input.value.trim();
+
+  if (text === "") {
+    result.innerHTML =
+      "Please enter numbers first.";
+    return;
+  }
+
+  const numbers = text
+    .split(/[\s,]+/)
+    .map(Number)
+    .filter(n => !isNaN(n));
+
+  if (numbers.length === 0) {
+    result.innerHTML =
+      "No valid numbers were found.";
+    return;
+  }
+
+  const total =
+    numbers.reduce((a, b) => a + b, 0);
+
+  const average =
+    total / numbers.length;
+
+  const highest =
+    Math.max(...numbers);
+
+  const lowest =
+    Math.min(...numbers);
+
+  result.innerHTML = `
+    <strong>Numerical Analysis</strong><br><br>
+
+    Numbers analyzed: ${numbers.length}<br>
+    Total: ${total}<br>
+    Average: ${average.toFixed(2)}<br>
+    Highest: ${highest}<br>
+    Lowest: ${lowest}
+  `;
+}
+
+
+/* =========================
+   BUSINESS ANALYSIS
+========================= */
+
+function analyzeBusiness() {
+
+  const input =
+    document.getElementById("businessInput");
+
+  const result =
+    document.getElementById("businessResult");
+
+  if (!input || !result) return;
+
+  const business =
+    input.value.trim();
+
+  if (business === "") {
+    result.innerHTML =
+      "Please describe the business first.";
+    return;
+  }
+
+  result.innerHTML = `
+    <strong>Nova Business Intelligence</strong><br><br>
+
+    Business / idea:<br>
+    ${business}<br><br>
+
+    <strong>Recommended investigation:</strong><br>
+
+    1. 👥 Understand the target customer<br>
+    2. 🔎 Research the market<br>
+    3. 🏆 Identify competitors<br>
+    4. 💡 Identify opportunities<br>
+    5. ⚙️ Review operations<br>
+    6. 📈 Study growth possibilities<br>
+    7. 🚀 Develop an action plan
+  `;
+}
+
+
+/* =========================
+   IDEA ANALYSIS
+========================= */
+
+function analyzeIdea() {
+
+  const input =
+    document.getElementById("ideaInput");
+
+  const result =
+    document.getElementById("ideaResult");
+
+  if (!input || !result) return;
+
+  const idea =
+    input.value.trim();
+
+  if (idea === "") {
+    result.innerHTML =
+      "Please describe your idea first.";
+    return;
+  }
+
+  result.innerHTML = `
+    <strong>Nova Innovation Analysis</strong><br><br>
+
+    Idea:<br>
+    ${idea}<br><br>
+
+    <strong>Investigation framework:</strong><br>
+
+    💡 Problem being solved<br>
+    👥 Target users<br>
+    📊 Market demand<br>
+    🏆 Competition<br>
+    ⚙️ Technology required<br>
+    💰 Possible business model<br>
+    🚀 Growth potential<br>
+    🔬 Research required
+  `;
+}
+
+
+/* =========================
+   DIGITAL NAVIGATION
+========================= */
+
+function navigateBusiness() {
+
+  const input =
+    document.getElementById("navigationInput");
+
+  const result =
+    document.getElementById("navigationResult");
+
+  if (!input || !result) return;
+
+  const description =
+    input.value.trim();
+
+  if (description === "") {
+    result.innerHTML =
+      "Please describe the business, idea or problem.";
+    return;
+  }
+
+  result.innerHTML = `
+    <strong>Nova Digital Navigation</strong><br><br>
+
+    Starting point:<br>
+    ${description}<br><br>
+
+    <strong>Recommended investigation path:</strong><br><br>
+
+    1. 🔎 Understand the problem<br>
+    2. 👥 Understand the customer<br>
+    3. 📊 Research the market<br>
+    4. 🏆 Analyze competition<br>
+    5. ⚙️ Examine the current system<br>
+    6. 💡 Identify opportunities<br>
+    7. 🚀 Build a practical strategy
+  `;
+}
+
+
+/* =========================
+   CLOUD WORKSPACE
+========================= */
+
+function saveWorkspace() {
+
+  const input =
+    document.getElementById("workspaceInput");
+
+  const result =
+    document.getElementById("workspaceResult");
+
+  if (!input || !result) return;
+
+  const content =
+    input.value.trim();
+
+  if (content === "") {
+    result.innerHTML =
+      "Please enter something to save.";
+    return;
+  }
+
+  localStorage.setItem(
+    "novaWorkspace",
+    content
+  );
+
+  result.innerHTML =
+    "☁️ Workspace saved on this device.";
+}
+
+
+function loadWorkspace() {
+
+  const input =
+    document.getElementById("workspaceInput");
+
+  if (!input) return;
+
+  const saved =
+    localStorage.getItem("novaWorkspace");
+
+  if (saved) {
+    input.value = saved;
+  }
+}
+
+
+/* =========================
+   CLEAR RESEARCH NOTES
+========================= */
+
+function clearNotes() {
+
+  const input =
+    document.getElementById("notesInput");
+
+  const result =
+    document.getElementById("notesResult");
+
+  localStorage.removeItem(
+    "novaResearchNotes"
+  );
+
+  if (input) {
+    input.value = "";
+  }
+
+  if (result) {
+    result.innerHTML =
+      "Research notes cleared.";
+  }
+}
+
+
+/* =========================
+   CLEAR WORKSPACE
+========================= */
+
+function clearWorkspace() {
+
+  const input =
+    document.getElementById("workspaceInput");
+
+  const result =
+    document.getElementById("workspaceResult");
+
+  localStorage.removeItem(
+    "novaWorkspace"
+  );
+
+  if (input) {
+    input.value = "";
+  }
+
+  if (result) {
+    result.innerHTML =
+      "Workspace cleared.";
+  }
+}
+
+
+/* =========================
+   START NOVA CLOUD
+========================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+    loadNotes();
+    loadWorkspace();
+
+    console.log(
+      "Nova Cloud initialized successfully."
+    );
+
+  }
+);
+
+</script>
