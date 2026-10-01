@@ -7,7 +7,6 @@
 <title>Nova Cloud</title>
 
 <style>
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,96 +20,90 @@ body {
 }
 
 header {
-  background: #111827;
+  background: #172033;
   color: white;
+  padding: 28px 18px;
   text-align: center;
-  padding: 30px 20px;
 }
 
 header h1 {
-  font-size: 34px;
+  font-size: 32px;
+  margin-bottom: 8px;
 }
 
 header p {
-  margin-top: 8px;
-  color: #cbd5e1;
-  line-height: 1.5;
+  font-size: 15px;
+  opacity: 0.9;
 }
 
 .container {
+  width: 94%;
   max-width: 1100px;
-  margin: auto;
-  padding: 25px 15px;
+  margin: 25px auto;
 }
 
 .sections {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 25px;
 }
 
-.section-btn {
-  padding: 18px 10px;
+.sections button,
+.tool-buttons button,
+.action-button {
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
+  padding: 15px;
   background: white;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-  font-size: 16px;
+  color: #172033;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-.section-btn:hover {
-  background: #e8eef7;
+.sections button:hover,
+.tool-buttons button:hover,
+.action-button:hover {
+  transform: translateY(-2px);
 }
 
 .panel {
   display: none;
   background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
 }
 
 .panel.active {
   display: block;
 }
 
+.panel h2 {
+  margin-bottom: 10px;
+}
+
 .panel p {
-  margin-top: 8px;
-  color: #64748b;
+  margin-bottom: 18px;
   line-height: 1.6;
 }
 
-.tools {
+.tool-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 12px;
-  margin-top: 20px;
-}
-
-.tool-btn {
-  padding: 16px;
-  border: 1px solid #dbe2ea;
-  border-radius: 10px;
-  background: #f8fafc;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: left;
-}
-
-.tool-btn:hover {
-  background: #e8eef7;
+  margin-bottom: 20px;
 }
 
 .tool {
   display: none;
   margin-top: 20px;
-  padding: 20px;
+  padding: 18px;
+  background: #f4f7fb;
   border-radius: 12px;
-  background: #f8fafc;
-  border: 1px solid #dbe2ea;
 }
 
 .tool.active {
@@ -120,416 +113,921 @@ header p {
 textarea,
 input {
   width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 14px;
+  border: 1px solid #ccd3df;
+  border-radius: 9px;
+  margin: 10px 0;
+  font-size: 15px;
 }
 
 textarea {
-  min-height: 130px;
+  min-height: 120px;
+  resize: vertical;
 }
 
-.run-btn {
-  margin-top: 12px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #111827;
+.action-button {
+  background: #172033;
   color: white;
-  font-weight: bold;
-  cursor: pointer;
+  margin-top: 8px;
 }
 
 .result {
   margin-top: 18px;
-  padding: 16px;
   background: white;
+  padding: 18px;
   border-radius: 10px;
-  border: 1px solid #dbe2ea;
   line-height: 1.7;
+}
+
+.result h3 {
+  margin-bottom: 8px;
+}
+
+.result ul {
+  margin: 8px 0 15px 22px;
+}
+
+.result li {
+  margin-bottom: 5px;
+}
+
+.info-box {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
 footer {
   text-align: center;
   padding: 30px 15px;
-  color: #64748b;
+  color: #667085;
 }
 
+.small {
+  font-size: 13px;
+  color: #667085;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<h1>Nova Cloud</h1>
-
-<p>
-Systems • Business Intelligence • Research • Data & Analysis • Cloud Workspace
-</p>
-
+  <h1>Nova Cloud</h1>
+  <p>
+    Systems • Business Intelligence • Research • Data & Analysis • Cloud Workspace
+  </p>
 </header>
-
 
 <div class="container">
 
+  <!-- MAIN NAVIGATION -->
 
-<!-- MAIN NAVIGATION -->
+  <div class="sections">
 
-<div class="sections">
+    <button onclick="openSection('systems')">
+      ⚙️ Systems
+    </button>
 
-<button class="section-btn"
-onclick="openSection('systems')">
-⚙️ Systems
-</button>
+    <button onclick="openSection('business')">
+      🧠 Business
+    </button>
 
-<button class="section-btn"
-onclick="openSection('business')">
-🧠 Business
-</button>
+    <button onclick="openSection('research')">
+      🔎 Research
+    </button>
 
-<button class="section-btn"
-onclick="openSection('research')">
-🔎 Research
-</button>
+    <button onclick="openSection('data')">
+      📊 Data & Analysis
+    </button>
 
-<button class="section-btn"
-onclick="openSection('data')">
-📊 Data & Analysis
-</button>
+    <button onclick="openSection('workspace')">
+      ☁️ Cloud Workspace
+    </button>
 
-<button class="section-btn"
-onclick="openSection('workspace')">
-☁️ Cloud Workspace
-</button>
+  </div>
 
-</div>
 
+  <!-- SYSTEMS -->
 
-<!-- SYSTEMS -->
+  <div id="systems" class="panel active">
 
-<div id="systems" class="panel">
+    <h2>⚙️ Systems</h2>
 
-<h2>Systems Builder</h2>
+    <p>
+      Build, organize and explore digital systems, AI projects
+      and technology concepts.
+    </p>
 
-<p>
-Build and organize digital systems, AI projects and technology concepts.
-</p>
+    <div class="tool-buttons">
 
+      <button onclick="openTool('systemBuilder')">
+        ⚙️ System Builder
+      </button>
 
-<div class="tools">
+      <button onclick="openTool('aiProjects')">
+        🤖 AI Projects
+      </button>
 
-<button class="tool-btn"
-onclick="openTool('systemBuilder')">
-⚙️ System Builder
-</button>
+      <button onclick="openTool('technology')">
+        💻 Technology
+      </button>
 
-<button class="tool-btn"
-onclick="openTool('aiProjects')">
-🤖 AI Projects
-</button>
+    </div>
 
-<button class="tool-btn"
-onclick="openTool('technology')">
-💻 Technology
-</button>
 
-</div>
+    <!-- SYSTEM BUILDER -->
 
+    <div id="systemBuilder" class="tool">
 
-<!-- SYSTEM BUILDER -->
+      <h3>⚙️ Nova System Builder</h3>
 
-<div id="systemBuilder" class="tool">
+      <p>
+        Describe a business, idea, problem or technology system
+        you want to build.
+      </p>
 
-<h3>⚙️ System Builder</h3>
+      <textarea
+        id="systemInput"
+        placeholder="Example: I want to build a system that helps small businesses manage customers and sales."
+      ></textarea>
 
-<p>
-Describe the system you want to build.
-</p>
+      <button class="action-button" onclick="buildSystem()">
+        Build System
+      </button>
 
-<textarea
-id="systemInput"
-placeholder="Example: A system that helps businesses manage customers">
-</textarea>
+      <div id="systemResult" class="result">
+        Your system blueprint will appear here.
+      </div>
 
-<button class="run-btn"
-onclick="buildSystem()">
-Build System
-</button>
+    </div>
 
-<div id="systemResult"></div>
 
-</div>
+    <!-- AI PROJECTS -->
 
+    <div id="aiProjects" class="tool">
 
-<!-- AI PROJECTS -->
+      <h3>🤖 AI Projects</h3>
 
-<div id="aiProjects" class="tool">
+      <p>
+        Explore an AI project idea and identify its basic structure.
+      </p>
 
-<h3>🤖 AI Projects</h3>
+      <textarea
+        id="aiInput"
+        placeholder="Example: AI system that detects objects using cameras."
+      ></textarea>
 
-<p>
-Describe your AI project or idea.
-</p>
+      <button class="action-button" onclick="startAI()">
+        Start AI Project
+      </button>
 
-<textarea
-id="aiInput"
-placeholder="Example: AI system that detects objects using cameras">
-</textarea>
+      <div id="aiResult" class="result">
+        Your AI project plan will appear here.
+      </div>
 
-<button class="run-btn"
-onclick="startAI()">
-Start AI Project
-</button>
+    </div>
 
-<div id="aiResult"></div>
 
-</div>
+    <!-- TECHNOLOGY -->
 
+    <div id="technology" class="tool">
 
-<!-- TECHNOLOGY -->
+      <h3>💻 Technology</h3>
 
-<div id="technology" class="tool">
+      <p>
+        Describe a technology and Nova Cloud will organize the
+        main areas to investigate.
+      </p>
 
-<h3>💻 Technology</h3>
+      <input
+        id="technologyInput"
+        placeholder="Example: autonomous electric vehicle"
+      >
 
-<p>
-Explore the technology requirements of a project.
-</p>
+      <button class="action-button" onclick="analyzeTechnology()">
+        Analyze Technology
+      </button>
 
-<input
-id="technologyInput"
-placeholder="Example: Autonomous electric vehicle">
+      <div id="technologyResult" class="result">
+        Technology analysis will appear here.
+      </div>
 
-<button class="run-btn"
-onclick="analyzeTechnology()">
-Analyze Technology
-</button>
+    </div>
 
-<div id="technologyResult"></div>
+  </div>
 
-</div>
 
-</div>
+  <!-- BUSINESS -->
 
+  <div id="business" class="panel">
 
-<!-- BUSINESS PLACEHOLDER -->
+    <h2>🧠 Business Intelligence</h2>
 
-<div id="business" class="panel">
+    <p>
+      Understand businesses, customers, markets, competition,
+      technology and opportunities.
+    </p>
 
-<h2>🧠 Business Intelligence</h2>
+    <div class="info-box">
 
-<p>
-Business Intelligence tools will be added next.
-</p>
+      <h3>Business Intelligence Workspace</h3>
 
-</div>
+      <p>
+        Nova Cloud will eventually help investigate new business
+        ideas, young businesses, existing businesses and
+        established businesses.
+      </p>
 
+      <p>
+        The system can examine what to preserve, adapt, replace
+        or innovate as the business changes.
+      </p>
 
-<!-- RESEARCH PLACEHOLDER -->
+      <button
+        class="action-button"
+        onclick="businessMessage()">
+        Explore Business
+      </button>
 
-<div id="research" class="panel">
+      <div id="businessResult" class="result"></div>
 
-<h2>🔎 Research</h2>
+    </div>
 
-<p>
-Research tools will be added next.
-</p>
+  </div>
 
-</div>
 
+  <!-- RESEARCH -->
 
-<!-- DATA PLACEHOLDER -->
+  <div id="research" class="panel">
 
-<div id="data" class="panel">
+    <h2>🔎 Research</h2>
 
-<h2>📊 Data & Analysis</h2>
+    <p>
+      Investigate ideas, technologies, markets, problems,
+      opportunities and knowledge.
+    </p>
 
-<p>
-Data analysis tools will be added next.
-</p>
+    <div class="info-box">
 
-</div>
+      <h3>Nova Research</h3>
 
+      <p>
+        Research tools will help organize questions,
+        evidence, findings and conclusions.
+      </p>
 
-<!-- WORKSPACE PLACEHOLDER -->
+      <button
+        class="action-button"
+        onclick="researchMessage()">
+        Start Research
+      </button>
 
-<div id="workspace" class="panel">
+      <div id="researchResult" class="result"></div>
 
-<h2>☁️ Cloud Workspace</h2>
+    </div>
 
-<p>
-Cloud Workspace tools will be added next.
-</p>
+  </div>
 
-</div>
+
+  <!-- DATA -->
+
+  <div id="data" class="panel">
+
+    <h2>📊 Data & Analysis</h2>
+
+    <p>
+      Organize information and turn data into useful insights.
+    </p>
+
+    <div class="info-box">
+
+      <h3>Nova Data & Analysis</h3>
+
+      <p>
+        Future tools will support data organization,
+        calculations, comparisons, patterns and reports.
+      </p>
+
+      <button
+        class="action-button"
+        onclick="dataMessage()">
+        Explore Data
+      </button>
+
+      <div id="dataResult" class="result"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CLOUD WORKSPACE -->
+
+  <div id="workspace" class="panel">
+
+    <h2>☁️ Cloud Workspace</h2>
+
+    <p>
+      A future workspace for organizing Nova projects,
+      research, systems, data and business intelligence.
+    </p>
+
+    <div class="info-box">
+
+      <h3>Nova Cloud Workspace</h3>
+
+      <p>
+        Projects, documents, research results and system
+        blueprints can eventually be managed from one workspace.
+      </p>
+
+      <button
+        class="action-button"
+        onclick="workspaceMessage()">
+        Open Workspace
+      </button>
+
+      <div id="workspaceResult" class="result"></div>
+
+    </div>
+
+  </div>
 
 </div>
 
 
 <footer>
 
-<p><strong>Nova Cloud</strong></p>
+  <strong>Nova Cloud</strong>
 
-<p>Research • Innovation • Technology</p>
+  <p>Research • Innovation • Technology</p>
+
+  <p class="small">
+    Building a platform for business intelligence,
+    research, technology and innovation.
+  </p>
 
 </footer>
 
 
 <script>
 
-/* MAIN SECTIONS */
+/* =========================
+   MAIN NAVIGATION
+========================= */
 
-function openSection(id) {
+function openSection(sectionId) {
 
-  var panels = document.querySelectorAll(".panel");
+  const panels = document.querySelectorAll(".panel");
 
-  for (var i = 0; i < panels.length; i++) {
-    panels[i].classList.remove("active");
+  panels.forEach(function(panel) {
+    panel.classList.remove("active");
+  });
+
+  const selected = document.getElementById(sectionId);
+
+  if (selected) {
+    selected.classList.add("active");
   }
 
-  document.getElementById(id).classList.add("active");
 }
 
 
-/* TOOLS */
+/* =========================
+   SYSTEM TOOLS
+========================= */
 
-function openTool(id) {
+function openTool(toolId) {
 
-  var tools = document.querySelectorAll(".tool");
+  const tools = document.querySelectorAll(".tool");
 
-  for (var i = 0; i < tools.length; i++) {
-    tools[i].classList.remove("active");
+  tools.forEach(function(tool) {
+    tool.classList.remove("active");
+  });
+
+  const selectedTool = document.getElementById(toolId);
+
+  if (selectedTool) {
+    selectedTool.classList.add("active");
   }
 
-  document.getElementById(id).classList.add("active");
 }
 
 
-/* SYSTEM BUILDER */
+/* =========================
+   SAFE TEXT
+========================= */
+
+function escapeHtml(text) {
+
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================
+   ADAPTIVE SYSTEM BUILDER
+========================= */
 
 function buildSystem() {
 
-  var input =
-    document.getElementById("systemInput").value.trim();
+  const input = document
+    .getElementById("systemInput")
+    .value
+    .trim();
 
-  if (input === "") {
+  const result = document.getElementById("systemResult");
 
-    document.getElementById("systemResult").innerHTML =
-      "<div class='result'>Please describe the system.</div>";
+  if (!input) {
+
+    result.innerHTML =
+      "<strong>Please describe the system, business, idea or problem first.</strong>";
 
     return;
   }
 
-  document.getElementById("systemResult").innerHTML =
 
-    "<div class='result'>" +
+  const text = input.toLowerCase();
 
-    "<strong>Nova System Blueprint</strong><br><br>" +
 
-    "<strong>System:</strong><br>" +
-    input + "<br><br>" +
+  let systemType = "General Digital System";
 
-    "<strong>Recommended structure:</strong><br>" +
+  let components = [];
 
-    "1. Define the problem<br>" +
-    "2. Identify the users<br>" +
-    "3. Define system features<br>" +
-    "4. Design the workflow<br>" +
-    "5. Select technology<br>" +
-    "6. Build a prototype<br>" +
-    "7. Test the system<br>" +
-    "8. Improve and deploy" +
+  let priorities = [];
 
-    "</div>";
+
+  /* BUSINESS / CUSTOMER */
+
+  if (
+    text.includes("customer") ||
+    text.includes("client") ||
+    text.includes("sales") ||
+    text.includes("business") ||
+    text.includes("shop") ||
+    text.includes("company")
+  ) {
+
+    systemType = "Business & Customer Management System";
+
+    components = [
+      "Customer profiles",
+      "Customer communication",
+      "Sales and transactions",
+      "Follow-up management",
+      "Customer history",
+      "Reports and dashboards",
+      "Notifications"
+    ];
+
+    priorities = [
+      "Understand the customer",
+      "Track sales",
+      "Improve communication",
+      "Monitor business performance"
+    ];
+
+  }
+
+
+  /* EDUCATION */
+
+  else if (
+    text.includes("school") ||
+    text.includes("student") ||
+    text.includes("teacher") ||
+    text.includes("education") ||
+    text.includes("learning") ||
+    text.includes("class")
+  ) {
+
+    systemType = "Education Management System";
+
+    components = [
+      "Student profiles",
+      "Teacher profiles",
+      "Classes and subjects",
+      "Attendance",
+      "Assessments and results",
+      "Parent communication",
+      "Reports"
+    ];
+
+    priorities = [
+      "Manage students",
+      "Organize learning",
+      "Track performance",
+      "Improve communication"
+    ];
+
+  }
+
+
+  /* VEHICLE / AUTONOMOUS */
+
+  else if (
+    text.includes("vehicle") ||
+    text.includes("car") ||
+    text.includes("electric vehicle") ||
+    text.includes("autonomous") ||
+    text.includes("self driving") ||
+    text.includes("motor")
+  ) {
+
+    systemType = "Vehicle Technology System";
+
+    components = [
+      "Sensors",
+      "Camera and computer vision",
+      "Vehicle control",
+      "Navigation",
+      "Object detection",
+      "Collision detection",
+      "Battery and energy monitoring",
+      "Safety systems",
+      "Testing and diagnostics"
+    ];
+
+    priorities = [
+      "Detect the environment",
+      "Understand sensor information",
+      "Plan movement",
+      "Control the vehicle",
+      "Monitor safety",
+      "Test the system"
+    ];
+
+  }
+
+
+  /* HEALTH */
+
+  else if (
+    text.includes("hospital") ||
+    text.includes("clinic") ||
+    text.includes("patient") ||
+    text.includes("health")
+  ) {
+
+    systemType = "Health Management System";
+
+    components = [
+      "Patient information",
+      "Appointments",
+      "Staff management",
+      "Medical information",
+      "Notifications",
+      "Reports",
+      "Access control"
+    ];
+
+    priorities = [
+      "Organize information",
+      "Manage appointments",
+      "Improve communication",
+      "Protect sensitive information"
+    ];
+
+  }
+
+
+  /* E-COMMERCE */
+
+  else if (
+    text.includes("ecommerce") ||
+    text.includes("e-commerce") ||
+    text.includes("online store") ||
+    text.includes("online shop") ||
+    text.includes("products") ||
+    text.includes("selling online")
+  ) {
+
+    systemType = "E-Commerce System";
+
+    components = [
+      "Product catalogue",
+      "Customer accounts",
+      "Shopping cart",
+      "Orders",
+      "Payments",
+      "Inventory",
+      "Delivery",
+      "Sales analytics"
+    ];
+
+    priorities = [
+      "Manage products",
+      "Manage customers",
+      "Process orders",
+      "Track inventory",
+      "Analyze sales"
+    ];
+
+  }
+
+
+  /* AI */
+
+  else if (
+    text.includes("artificial intelligence") ||
+    text.includes(" ai ") ||
+    text.startsWith("ai ") ||
+    text.includes("machine learning") ||
+    text.includes("prediction") ||
+    text.includes("detect")
+  ) {
+
+    systemType = "AI-Powered System";
+
+    components = [
+      "Data collection",
+      "Data processing",
+      "AI model",
+      "Training or configuration",
+      "Prediction or detection",
+      "User interface",
+      "Testing",
+      "Monitoring"
+    ];
+
+    priorities = [
+      "Define the AI problem",
+      "Collect useful data",
+      "Choose an appropriate model",
+      "Test performance",
+      "Monitor results"
+    ];
+
+  }
+
+
+  /* GENERAL SYSTEM */
+
+  else {
+
+    systemType = "General Digital System";
+
+    components = [
+      "Problem definition",
+      "Users",
+      "System features",
+      "Data",
+      "User interface",
+      "System logic",
+      "Testing",
+      "Deployment"
+    ];
+
+    priorities = [
+      "Understand the problem",
+      "Identify users",
+      "Define features",
+      "Design the workflow",
+      "Build and test"
+    ];
+
+  }
+
+
+  const safeInput = escapeHtml(input);
+
+
+  let componentList = "";
+
+  components.forEach(function(item) {
+
+    componentList += "<li>" + item + "</li>";
+
+  });
+
+
+  let priorityList = "";
+
+  priorities.forEach(function(item) {
+
+    priorityList += "<li>" + item + "</li>";
+
+  });
+
+
+  result.innerHTML = `
+
+    <h3>Nova System Blueprint</h3>
+
+    <p>
+      <strong>Idea:</strong><br>
+      ${safeInput}
+    </p>
+
+    <p>
+      <strong>Detected System Type:</strong><br>
+      ${systemType}
+    </p>
+
+    <p><strong>Recommended Components:</strong></p>
+
+    <ul>
+      ${componentList}
+    </ul>
+
+    <p><strong>Priority Areas:</strong></p>
+
+    <ul>
+      ${priorityList}
+    </ul>
+
+    <p><strong>Development Path:</strong></p>
+
+    <ol>
+      <li>Define the problem</li>
+      <li>Understand the users</li>
+      <li>Design the system</li>
+      <li>Build a prototype</li>
+      <li>Test the system</li>
+      <li>Analyze results</li>
+      <li>Improve the system</li>
+      <li>Deploy and monitor</li>
+    </ol>
+
+  `;
+
 }
 
 
-/* AI PROJECT */
+/* =========================
+   AI PROJECTS
+========================= */
 
 function startAI() {
 
-  var input =
-    document.getElementById("aiInput").value.trim();
+  const input = document
+    .getElementById("aiInput")
+    .value
+    .trim();
 
-  if (input === "") {
+  const result = document.getElementById("aiResult");
 
-    document.getElementById("aiResult").innerHTML =
-      "<div class='result'>Please describe your AI project.</div>";
+  if (!input) {
+
+    result.innerHTML =
+      "<strong>Please describe your AI project first.</strong>";
 
     return;
   }
 
-  document.getElementById("aiResult").innerHTML =
+  const safeInput = escapeHtml(input);
 
-    "<div class='result'>" +
+  result.innerHTML = `
 
-    "<strong>AI Project Framework</strong><br><br>" +
+    <h3>Nova AI Project Blueprint</h3>
 
-    "<strong>Project:</strong><br>" +
-    input + "<br><br>" +
+    <p>
+      <strong>Project:</strong><br>
+      ${safeInput}
+    </p>
 
-    "1. Define the problem<br>" +
-    "2. Identify users<br>" +
-    "3. Identify required data<br>" +
-    "4. Select AI approach<br>" +
-    "5. Build prototype<br>" +
-    "6. Test<br>" +
-    "7. Improve<br>" +
-    "8. Deploy" +
+    <p><strong>Suggested AI workflow:</strong></p>
 
-    "</div>";
+    <ol>
+      <li>Define the problem</li>
+      <li>Collect data</li>
+      <li>Prepare the data</li>
+      <li>Select an AI approach</li>
+      <li>Train or configure the model</li>
+      <li>Test the model</li>
+      <li>Integrate it into the system</li>
+      <li>Monitor and improve it</li>
+    </ol>
+
+  `;
+
 }
 
 
-/* TECHNOLOGY */
+/* =========================
+   TECHNOLOGY
+========================= */
 
 function analyzeTechnology() {
 
-  var input =
-    document.getElementById("technologyInput").value.trim();
+  const input = document
+    .getElementById("technologyInput")
+    .value
+    .trim();
 
-  if (input === "") {
+  const result = document.getElementById("technologyResult");
 
-    document.getElementById("technologyResult").innerHTML =
-      "<div class='result'>Please enter a technology or project.</div>";
+  if (!input) {
+
+    result.innerHTML =
+      "<strong>Please enter a technology first.</strong>";
 
     return;
   }
 
-  document.getElementById("technologyResult").innerHTML =
+  const safeInput = escapeHtml(input);
 
-    "<div class='result'>" +
+  result.innerHTML = `
 
-    "<strong>Technology Investigation</strong><br><br>" +
+    <h3>Nova Technology Analysis</h3>
 
-    "<strong>Project:</strong><br>" +
-    input + "<br><br>" +
+    <p>
+      <strong>Technology:</strong>
+      ${safeInput}
+    </p>
 
-    "Technology areas to investigate:<br><br>" +
+    <p><strong>Investigation Areas:</strong></p>
 
-    "• Hardware<br>" +
-    "• Software<br>" +
-    "• Sensors<br>" +
-    "• Data<br>" +
-    "• Connectivity<br>" +
-    "• Security<br>" +
-    "• Automation<br>" +
-    "• Artificial Intelligence<br>" +
-    "• Testing<br>" +
-    "• Deployment" +
+    <ul>
+      <li>Purpose and applications</li>
+      <li>Main components</li>
+      <li>How it works</li>
+      <li>Required data or inputs</li>
+      <li>Advantages and limitations</li>
+      <li>Safety and reliability</li>
+      <li>Future development</li>
+    </ul>
 
-    "</div>";
+  `;
+
 }
 
 
-/* OPEN SYSTEMS AUTOMATICALLY */
+/* =========================
+   OTHER SECTIONS
+========================= */
 
-openSection("systems");
+function businessMessage() {
+
+  document.getElementById("businessResult").innerHTML = `
+
+    <h3>Business Investigation</h3>
+
+    <p>
+      Nova Cloud can investigate customers, markets,
+      competition, operations, technology and opportunities.
+    </p>
+
+  `;
+
+}
+
+
+function researchMessage() {
+
+  document.getElementById("researchResult").innerHTML = `
+
+    <h3>Research Workspace</h3>
+
+    <p>
+      Define a question, collect information, compare evidence,
+      identify findings and organize conclusions.
+    </p>
+
+  `;
+
+}
+
+
+function dataMessage() {
+
+  document.getElementById("dataResult").innerHTML = `
+
+    <h3>Data Workspace</h3>
+
+    <p>
+      Data tools can eventually support calculations,
+      comparisons, patterns, visualizations and reports.
+    </p>
+
+  `;
+
+}
+
+
+function workspaceMessage() {
+
+  document.getElementById("workspaceResult").innerHTML = `
+
+    <h3>Cloud Workspace</h3>
+
+    <p>
+      This area is designed to eventually organize Nova
+      projects, systems, research and data in one workspace.
+    </p>
+
+  `;
+
+}
 
 </script>
 
 </body>
-  </html>
+</html>
