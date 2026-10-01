@@ -272,7 +272,7 @@ Open Technology
 
 
 <!-- =========================
-     BUSINESS INTELLIGENCE
+     BUSINESS INTELLIGENCE V2
 ========================= -->
 
 <div id="business" class="panel">
@@ -280,11 +280,16 @@ Open Technology
 <h2>Business Intelligence</h2>
 
 <p>
-Understand, build, adapt and grow businesses in a changing world.
+Nova analyzes the business, idea, innovation or challenge provided
+and adapts its investigation to the situation.
 </p>
 
-
 <div class="tools">
+
+<button class="tool-btn"
+onclick="showTool('businessIntelligenceTool')">
+🧠 Business Intelligence
+</button>
 
 <button class="tool-btn"
 onclick="showTool('youngEntrepreneur')">
@@ -292,24 +297,33 @@ onclick="showTool('youngEntrepreneur')">
 </button>
 
 <button class="tool-btn"
-onclick="showTool('existingBusiness')">
-🏢 Existing Business
-</button>
-
-<button class="tool-btn"
-onclick="showTool('longTermBusiness')">
-🕰️ Long-Term Business
-</button>
-
-<button class="tool-btn"
-onclick="showTool('innovationAnalysis')">
-💡 Innovation Analysis
-</button>
-
-<button class="tool-btn"
 onclick="showTool('digitalNavigation')">
 🧭 Digital Navigation
 </button>
+
+</div>
+
+
+<div id="businessIntelligenceTool" class="tool-content">
+
+<h3>🧠 Adaptive Business Intelligence</h3>
+
+<p>
+Describe the business, idea, innovation, challenge or opportunity.
+Nova will identify important signals and create a relevant analysis.
+</p>
+
+<textarea
+id="businessInput"
+placeholder="Example: My family hardware business has operated for 25 years, but younger customers are buying from online competitors.">
+</textarea>
+
+<button class="run-btn"
+onclick="analyzeBusinessIntelligence()">
+Analyze Business
+</button>
+
+<div id="businessResult" class="results"></div>
 
 </div>
 
@@ -321,12 +335,12 @@ onclick="showTool('digitalNavigation')">
 <h3>🚀 Young Entrepreneur</h3>
 
 <p>
-Turn an early business idea into a structured opportunity.
+Analyze an early-stage business idea or startup opportunity.
 </p>
 
 <textarea
 id="youngBusinessInput"
-placeholder="Describe your business idea, even if it is still rough...">
+placeholder="Describe your business idea...">
 </textarea>
 
 <button class="run-btn"
@@ -334,91 +348,7 @@ onclick="analyzeYoungBusiness()">
 Analyze My Idea
 </button>
 
-<div id="youngBusinessResult"
-class="results">
-</div>
-
-</div>
-
-
-<!-- EXISTING BUSINESS -->
-
-<div id="existingBusiness" class="tool-content">
-
-<h3>🏢 Existing Business</h3>
-
-<p>
-Businesses change with time. Nova Cloud first identifies
-what has changed before recommending adaptation.
-</p>
-
-<textarea
-id="existingBusinessInput"
-placeholder="Describe the current business, its customers, products, challenges and recent changes...">
-</textarea>
-
-<button class="run-btn"
-onclick="analyzeExistingBusiness()">
-Analyze & Adapt
-</button>
-
-<div id="existingBusinessResult"
-class="results">
-</div>
-
-</div>
-
-
-<!-- LONG-TERM BUSINESS -->
-
-<div id="longTermBusiness" class="tool-content">
-
-<h3>🕰️ Long-Term Business</h3>
-
-<p>
-Analyze businesses that have survived for many years or decades.
-</p>
-
-<textarea
-id="longTermInput"
-placeholder="Describe the business, its history, customers, products and how it has changed over time...">
-</textarea>
-
-<button class="run-btn"
-onclick="analyzeLongTermBusiness()">
-Analyze Long-Term Strength
-</button>
-
-<div id="longTermResult"
-class="results">
-</div>
-
-</div>
-
-
-<!-- INNOVATION -->
-
-<div id="innovationAnalysis" class="tool-content">
-
-<h3>💡 Innovation Analysis</h3>
-
-<p>
-Explore inventions, technologies, products and new ideas.
-</p>
-
-<textarea
-id="innovationInput"
-placeholder="Describe your innovation, invention or technology idea...">
-</textarea>
-
-<button class="run-btn"
-onclick="analyzeInnovation()">
-Analyze Innovation
-</button>
-
-<div id="innovationResult"
-class="results">
-</div>
+<div id="youngBusinessResult" class="results"></div>
 
 </div>
 
@@ -430,12 +360,12 @@ class="results">
 <h3>🧭 Digital Navigation</h3>
 
 <p>
-Find the next areas to investigate, improve or develop.
+Find the most useful areas to investigate next.
 </p>
 
 <textarea
 id="navigationInput"
-placeholder="Describe your business, idea or problem...">
+placeholder="Describe your business, idea, problem or opportunity...">
 </textarea>
 
 <button class="run-btn"
@@ -443,9 +373,7 @@ onclick="navigateBusiness()">
 Start Navigation
 </button>
 
-<div id="navigationResult"
-class="results">
-</div>
+<div id="navigationResult" class="results"></div>
 
 </div>
 
