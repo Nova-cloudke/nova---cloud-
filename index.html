@@ -527,10 +527,7 @@ function escapeHtml(text) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-
-}
-
+    .replace
 
 /* =========================
    ADAPTIVE SYSTEM BUILDER
@@ -553,18 +550,17 @@ function buildSystem() {
     return;
   }
 
-
   const text = input.toLowerCase();
 
-
   let systemType = "General Digital System";
-
   let components = [];
-
   let priorities = [];
+  let deploymentPath = [];
 
 
-  /* BUSINESS / CUSTOMER */
+  /* =========================
+     BUSINESS / CUSTOMER SYSTEM
+  ========================= */
 
   if (
     text.includes("customer") ||
@@ -594,10 +590,25 @@ function buildSystem() {
       "Monitor business performance"
     ];
 
+    deploymentPath = [
+      "Study the business problem",
+      "Identify customers and staff who will use the system",
+      "Map the customer and sales workflow",
+      "Design customer, sales and reporting modules",
+      "Build the first working business prototype",
+      "Test the system with real business scenarios",
+      "Connect the required business tools and data",
+      "Launch the system",
+      "Monitor customer and business results",
+      "Improve the system as the business changes"
+    ];
+
   }
 
 
-  /* EDUCATION */
+  /* =========================
+     EDUCATION SYSTEM
+  ========================= */
 
   else if (
     text.includes("school") ||
@@ -627,10 +638,25 @@ function buildSystem() {
       "Improve communication"
     ];
 
+    deploymentPath = [
+      "Identify the school or learning problem",
+      "Identify students, teachers and administrators",
+      "Design the academic and administrative workflow",
+      "Create student, teacher, class and results structures",
+      "Build the first education prototype",
+      "Test attendance, assessment and reporting functions",
+      "Train users on the system",
+      "Launch the system",
+      "Monitor usage and performance",
+      "Improve the system based on school needs"
+    ];
+
   }
 
 
-  /* VEHICLE / AUTONOMOUS */
+  /* =========================
+     AUTONOMOUS / ELECTRIC VEHICLE
+  ========================= */
 
   else if (
     text.includes("vehicle") ||
@@ -664,10 +690,26 @@ function buildSystem() {
       "Test the system"
     ];
 
+    deploymentPath = [
+      "Define the vehicle mission and safety requirements",
+      "Select sensors and vehicle hardware",
+      "Develop perception and object-detection systems",
+      "Develop navigation and route-planning logic",
+      "Develop steering, acceleration and braking control",
+      "Integrate the vehicle subsystems",
+      "Test the system in simulation",
+      "Perform controlled physical testing",
+      "Validate safety and failure responses",
+      "Deploy only after required testing and validation",
+      "Continuously monitor and improve the system"
+    ];
+
   }
 
 
-  /* HEALTH */
+  /* =========================
+     HEALTH SYSTEM
+  ========================= */
 
   else if (
     text.includes("hospital") ||
@@ -695,10 +737,26 @@ function buildSystem() {
       "Protect sensitive information"
     ];
 
+    deploymentPath = [
+      "Define the healthcare problem",
+      "Identify patients, staff and administrators",
+      "Design the healthcare workflow",
+      "Create secure information structures",
+      "Build the first prototype",
+      "Test appointments, records and reporting",
+      "Test privacy and access controls",
+      "Train authorized users",
+      "Deploy the system",
+      "Monitor reliability and security",
+      "Improve the system as requirements change"
+    ];
+
   }
 
 
-  /* E-COMMERCE */
+  /* =========================
+     E-COMMERCE SYSTEM
+  ========================= */
 
   else if (
     text.includes("ecommerce") ||
@@ -730,10 +788,25 @@ function buildSystem() {
       "Analyze sales"
     ];
 
+    deploymentPath = [
+      "Research the target market and customers",
+      "Define products and online store structure",
+      "Build the product catalogue",
+      "Create customer accounts and shopping flow",
+      "Implement cart and order management",
+      "Integrate payment and delivery processes",
+      "Test the complete purchasing journey",
+      "Launch the online store",
+      "Monitor orders, sales and customer behavior",
+      "Improve products, customer experience and operations"
+    ];
+
   }
 
 
-  /* AI */
+  /* =========================
+     AI SYSTEM
+  ========================= */
 
   else if (
     text.includes("artificial intelligence") ||
@@ -765,10 +838,26 @@ function buildSystem() {
       "Monitor results"
     ];
 
+    deploymentPath = [
+      "Define the AI problem and expected output",
+      "Identify the required data",
+      "Collect and prepare the data",
+      "Select an appropriate AI approach",
+      "Train or configure the model",
+      "Evaluate model performance",
+      "Integrate the AI into the application",
+      "Test the complete system",
+      "Deploy the AI system",
+      "Monitor accuracy and system behavior",
+      "Retrain or improve the model when necessary"
+    ];
+
   }
 
 
-  /* GENERAL SYSTEM */
+  /* =========================
+     GENERAL SYSTEM
+  ========================= */
 
   else {
 
@@ -793,6 +882,19 @@ function buildSystem() {
       "Build and test"
     ];
 
+    deploymentPath = [
+      "Define the problem",
+      "Identify the users",
+      "Research the required solution",
+      "Design the system architecture",
+      "Build a working prototype",
+      "Test the system",
+      "Fix problems and improve the design",
+      "Deploy the system",
+      "Monitor performance",
+      "Continue improving the system"
+    ];
+
   }
 
 
@@ -802,18 +904,21 @@ function buildSystem() {
   let componentList = "";
 
   components.forEach(function(item) {
-
     componentList += "<li>" + item + "</li>";
-
   });
 
 
   let priorityList = "";
 
   priorities.forEach(function(item) {
-
     priorityList += "<li>" + item + "</li>";
+  });
 
+
+  let deploymentList = "";
+
+  deploymentPath.forEach(function(item) {
+    deploymentList += "<li>" + item + "</li>";
   });
 
 
@@ -843,24 +948,16 @@ function buildSystem() {
       ${priorityList}
     </ul>
 
-    <p><strong>Development Path:</strong></p>
+    <p><strong>Deployment Path:</strong></p>
 
     <ol>
-      <li>Define the problem</li>
-      <li>Understand the users</li>
-      <li>Design the system</li>
-      <li>Build a prototype</li>
-      <li>Test the system</li>
-      <li>Analyze results</li>
-      <li>Improve the system</li>
-      <li>Deploy and monitor</li>
+      ${deploymentList}
     </ol>
 
   `;
 
-}
-
-
+  }
+         
 /* =========================
    AI PROJECTS
 ========================= */
@@ -870,9 +967,6 @@ function startAI() {
   const input = document
     .getElementById("aiInput")
     .value
-    .trim();
-
-  const result = document.getElementById("aiResult");
 
   if (!input) {
 
