@@ -185,30 +185,215 @@ footer {
 </div>
 
 
-<!-- BUSINESS -->
+/* =========================================
+   NOVA BUSINESS INTELLIGENCE
+   ========================================= */
 
-<div id="business" class="panel">
-<h2>Business</h2>
-<p>Tools for business planning and digital growth.</p>
 
-<div class="tools">
-<button class="tool-btn" onclick="showTool('businessPlan')">Business Planner</button>
-<button class="tool-btn" onclick="showTool('ideaTool')">Idea Generator</button>
-</div>
+/* YOUNG ENTREPRENEUR */
 
-<div id="businessPlan" class="tool-content">
-<h3>Business Planner</h3>
-<textarea id="businessInput" placeholder="Describe your business idea"></textarea>
-<button class="run-btn" onclick="businessPlan()">Create Plan</button>
-<div id="businessResult" class="results"></div>
-</div>
+function analyzeYoungBusiness() {
 
-<div id="ideaTool" class="tool-content">
-<h3>Business Idea Generator</h3>
-<button class="run-btn" onclick="generateIdea()">Generate Idea</button>
-<div id="ideaResult" class="results"></div>
-</div>
-</div>
+  const input =
+    document.getElementById("youngBusinessInput").value.trim();
+
+  if (!input) {
+    document.getElementById("youngBusinessResult").innerHTML =
+      "Please describe your business idea.";
+    return;
+  }
+
+  document.getElementById("youngBusinessResult").innerHTML = `
+
+    <strong>Young Entrepreneur Analysis</strong><br><br>
+
+    <strong>Business concept</strong><br>
+    ${input}<br><br>
+
+    <strong>Nova Cloud Navigation</strong><br>
+    1. Identify the customer problem<br>
+    2. Define the target customer<br>
+    3. Develop the value proposition<br>
+    4. Explore the business model<br>
+    5. Identify digital opportunities<br>
+    6. Study competitors<br>
+    7. Test the idea<br>
+    8. Build a practical first action plan
+
+  `;
+}
+
+
+/* EXISTING BUSINESS */
+
+function analyzeExistingBusiness() {
+
+  const input =
+    document.getElementById("existingBusinessInput").value.trim();
+
+  if (!input) {
+    document.getElementById("existingBusinessResult").innerHTML =
+      "Please describe the existing business.";
+    return;
+  }
+
+  document.getElementById("existingBusinessResult").innerHTML = `
+
+    <strong>Existing Business Adaptation Analysis</strong><br><br>
+
+    <strong>Current business:</strong><br>
+    ${input}<br><br>
+
+    <strong>1. Understand the current state</strong><br>
+    Identify the business model, customers, products, operations
+    and current strengths.<br><br>
+
+    <strong>2. Detect change</strong><br>
+    Examine changes in customer behaviour, technology, competition,
+    markets and operating conditions.<br><br>
+
+    <strong>3. Preserve</strong><br>
+    Identify what is already working and should be protected.<br><br>
+
+    <strong>4. Adapt</strong><br>
+    Identify areas that should change to remain relevant.<br><br>
+
+    <strong>5. Replace</strong><br>
+    Identify activities, products or methods that may no longer
+    be effective.<br><br>
+
+    <strong>6. Innovate</strong><br>
+    Identify new products, services, technologies or markets
+    that could create future opportunities.<br><br>
+
+    <strong>7. Next step</strong><br>
+    Build a practical adaptation plan based on the information
+    provided.
+
+  `;
+}
+
+
+/* LONG-TERM BUSINESS */
+
+function analyzeLongTermBusiness() {
+
+  const input =
+    document.getElementById("longTermInput").value.trim();
+
+  if (!input) {
+    document.getElementById("longTermResult").innerHTML =
+      "Please describe the long-term business.";
+    return;
+  }
+
+  document.getElementById("longTermResult").innerHTML = `
+
+    <strong>Long-Term Business Analysis</strong><br><br>
+
+    <strong>Business history</strong><br>
+    ${input}<br><br>
+
+    <strong>Durability</strong><br>
+    What factors may have helped the business survive over time?<br><br>
+
+    <strong>Customer loyalty</strong><br>
+    Examine relationships, trust and customer retention.<br><br>
+
+    <strong>Adaptation</strong><br>
+    Examine how the business has responded to changing markets,
+    technology and customer behaviour.<br><br>
+
+    <strong>Competitive strength</strong><br>
+    Identify capabilities that may be difficult for competitors
+    to reproduce.<br><br>
+
+    <strong>Future adaptation</strong><br>
+    Identify what should be preserved, adapted, replaced or
+    innovated for the future.
+
+  `;
+}
+
+
+/* INNOVATION ANALYSIS */
+
+function analyzeInnovation() {
+
+  const input =
+    document.getElementById("innovationInput").value.trim();
+
+  if (!input) {
+    document.getElementById("innovationResult").innerHTML =
+      "Please describe the innovation.";
+    return;
+  }
+
+  document.getElementById("innovationResult").innerHTML = `
+
+    <strong>Innovation Analysis</strong><br><br>
+
+    <strong>Innovation:</strong><br>
+    ${input}<br><br>
+
+    <strong>Problem</strong><br>
+    What problem does the innovation attempt to solve?<br><br>
+
+    <strong>Users</strong><br>
+    Who could benefit from it?<br><br>
+
+    <strong>Value</strong><br>
+    What useful outcome could it create?<br><br>
+
+    <strong>Technology</strong><br>
+    What technology, systems or resources may be required?<br><br>
+
+    <strong>Business opportunity</strong><br>
+    What products, services or markets could develop around it?<br><br>
+
+    <strong>Risks</strong><br>
+    What technical, market or operational challenges should
+    be investigated?
+
+  `;
+}
+
+
+/* DIGITAL NAVIGATION */
+
+function navigateBusiness() {
+
+  const input =
+    document.getElementById("navigationInput").value.trim();
+
+  if (!input) {
+    document.getElementById("navigationResult").innerHTML =
+      "Please describe the business, idea or problem.";
+    return;
+  }
+
+  document.getElementById("navigationResult").innerHTML = `
+
+    <strong>Nova Digital Navigation</strong><br><br>
+
+    Starting point:<br>
+    ${input}<br><br>
+
+    <strong>Recommended investigation path</strong><br><br>
+
+    1. 🔎 Understand the problem<br>
+    2. 👥 Understand the customer<br>
+    3. 📊 Analyze the market<br>
+    4. 🏆 Examine competition<br>
+    5. 💻 Identify digital opportunities<br>
+    6. 📈 Examine growth opportunities<br>
+    7. 💡 Explore innovation<br>
+    8. 📊 Analyze available data<br>
+    9. 🧠 Develop strategy<br>
+    10. 🚀 Create an action plan
+
+  `;
+}
 
   
 <!-- RESEARCH -->
