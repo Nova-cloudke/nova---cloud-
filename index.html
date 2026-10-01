@@ -7,7 +7,6 @@
 <title>Nova Cloud</title>
 
 <style>
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,7 +22,7 @@ body {
 header {
   background: #111827;
   color: white;
-  padding: 28px 20px;
+  padding: 30px 20px;
   text-align: center;
 }
 
@@ -34,7 +33,6 @@ header h1 {
 header p {
   margin-top: 8px;
   color: #cbd5e1;
-  line-height: 1.5;
 }
 
 .container {
@@ -43,20 +41,27 @@ header p {
   padding: 25px 15px;
 }
 
-.sections {
+.sections,
+.tools {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 15px;
+}
+
+.sections {
   margin-bottom: 25px;
+}
+
+button {
+  cursor: pointer;
 }
 
 .section-btn {
   border: none;
-  padding: 18px;
+  padding: 20px 10px;
   border-radius: 12px;
   background: white;
   box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-  cursor: pointer;
   font-size: 16px;
   font-weight: bold;
 }
@@ -68,10 +73,9 @@ header p {
 .panel {
   display: none;
   background: white;
-  padding: 22px;
+  padding: 25px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
 }
 
 .panel.active {
@@ -85,21 +89,14 @@ header p {
 .panel > p {
   color: #64748b;
   line-height: 1.6;
-}
-
-.tools {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .tool-btn {
-  padding: 15px;
+  padding: 16px;
   border: 1px solid #dbe2ea;
   border-radius: 10px;
   background: #f8fafc;
-  cursor: pointer;
   font-weight: bold;
   text-align: left;
 }
@@ -109,29 +106,29 @@ header p {
 }
 
 .tool-content {
+  display: none;
   margin-top: 20px;
   padding: 20px;
   border-radius: 12px;
   background: #f8fafc;
-  display: none;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #dbe2ea;
 }
 
-.tool-content h3 {
-  margin-bottom: 8px;
+.tool-content.active {
+  display: block;
 }
 
 .tool-content p {
   color: #64748b;
   line-height: 1.6;
-  margin-bottom: 10px;
+  margin: 8px 0;
 }
 
-input,
-textarea {
+textarea,
+input {
   width: 100%;
   padding: 12px;
-  margin-top: 10px;
+  margin-top: 12px;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font-size: 16px;
@@ -149,46 +146,19 @@ textarea {
   border-radius: 8px;
   background: #111827;
   color: white;
-  cursor: pointer;
   font-weight: bold;
-}
-
-.run-btn:hover {
-  background: #263247;
 }
 
 .results {
   margin-top: 18px;
-  line-height: 1.8;
-  font-size: 16px;
+  line-height: 1.7;
 }
 
 .result-box {
-  margin-top: 15px;
-  padding: 15px;
   background: white;
+  padding: 16px;
   border-radius: 10px;
   border: 1px solid #dbe2ea;
-}
-
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.stat {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #dbe2ea;
-}
-
-.stat strong {
-  display: block;
-  font-size: 20px;
-  margin-bottom: 5px;
 }
 
 footer {
@@ -196,50 +166,43 @@ footer {
   padding: 30px 15px;
   color: #64748b;
 }
-
-.small {
-  font-size: 14px;
-  color: #64748b;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<h1>Nova Cloud</h1>
-
-<p>
-Systems • Business Intelligence • Research • Data & Analysis • Cloud Workspace
-</p>
-
+  <h1>Nova Cloud</h1>
+  <p>
+    Systems • Business Intelligence • Research • Data & Analysis • Cloud Workspace
+  </p>
 </header>
 
 <div class="container">
 
+<!-- MAIN NAVIGATION -->
+
 <div class="sections">
 
-<button class="section-btn" onclick="showSection('systems')">
-⚙️ Systems
-</button>
+  <button class="section-btn" onclick="openSection('systems')">
+    ⚙️ Systems
+  </button>
 
-<button class="section-btn" onclick="showSection('business')">
-🧠 Business
-</button>
+  <button class="section-btn" onclick="openSection('business')">
+    🧠 Business
+  </button>
 
-<button class="section-btn" onclick="showSection('research')">
-🔎 Research
-</button>
+  <button class="section-btn" onclick="openSection('research')">
+    🔎 Research
+  </button>
 
-<button class="section-btn" onclick="showSection('data')">
-📊 Data & Analysis
-</button>
+  <button class="section-btn" onclick="openSection('data')">
+    📊 Data & Analysis
+  </button>
 
-<button class="section-btn" onclick="showSection('workspace')">
-☁️ Cloud Workspace
-</button>
+  <button class="section-btn" onclick="openSection('workspace')">
+    ☁️ Cloud Workspace
+  </button>
 
 </div>
 
@@ -251,36 +214,31 @@ Systems • Business Intelligence • Research • Data & Analysis • Cloud Wor
 <h2>Systems Builder</h2>
 
 <p>
-Build, organize and explore digital systems, AI projects and technology concepts.
+Build and organize systems, AI projects and technology ideas.
 </p>
 
 <div class="tools">
 
-<button class="tool-btn" onclick="showTool('systemTool')">
+<button class="tool-btn" onclick="openTool('systemTool')">
 ⚙️ System Builder
 </button>
 
-<button class="tool-btn" onclick="showTool('aiTool')">
+<button class="tool-btn" onclick="openTool('aiTool')">
 🤖 AI Projects
 </button>
 
-<button class="tool-btn" onclick="showTool('technologyTool')">
+<button class="tool-btn" onclick="openTool('technologyTool')">
 💻 Technology
 </button>
 
 </div>
 
-
 <div id="systemTool" class="tool-content">
 
 <h3>System Builder</h3>
 
-<p>
-Describe the system you want to build.
-</p>
-
 <textarea id="systemInput"
-placeholder="Example: I want to build an online system that helps local businesses find customers."></textarea>
+placeholder="Describe the system you want to build..."></textarea>
 
 <button class="run-btn" onclick="buildSystem()">
 Build System
@@ -290,14 +248,9 @@ Build System
 
 </div>
 
-
 <div id="aiTool" class="tool-content">
 
 <h3>AI Projects</h3>
-
-<p>
-Start planning an AI-based project.
-</p>
 
 <textarea id="aiInput"
 placeholder="Describe your AI project..."></textarea>
@@ -310,17 +263,12 @@ Start Project
 
 </div>
 
-
 <div id="technologyTool" class="tool-content">
 
 <h3>Technology</h3>
 
-<p>
-Explore the technology requirements behind a project.
-</p>
-
 <input id="technologyInput"
-placeholder="Example: autonomous electric vehicle">
+placeholder="Enter a technology or project...">
 
 <button class="run-btn" onclick="technology()">
 Analyze Technology
@@ -340,50 +288,46 @@ Analyze Technology
 <h2>Business Intelligence</h2>
 
 <p>
-Nova studies businesses, ideas, innovations and challenges and adapts the investigation to the situation.
+Understand businesses, ideas, change, opportunities and innovation.
 </p>
 
 <div class="tools">
 
-<button class="tool-btn" onclick="showTool('businessIntelligenceTool')">
-🧠 Adaptive Business Intelligence
+<button class="tool-btn" onclick="openTool('businessTool')">
+🧠 Business Intelligence
 </button>
 
-<button class="tool-btn" onclick="showTool('youngEntrepreneur')">
+<button class="tool-btn" onclick="openTool('youngTool')">
 🚀 Young Entrepreneur
 </button>
 
-<button class="tool-btn" onclick="showTool('existingBusinessTool')">
+<button class="tool-btn" onclick="openTool('existingTool')">
 🏢 Existing Business
 </button>
 
-<button class="tool-btn" onclick="showTool('longTermBusinessTool')">
+<button class="tool-btn" onclick="openTool('longTermTool')">
 📚 Long-Term Business
 </button>
 
-<button class="tool-btn" onclick="showTool('innovationTool')">
+<button class="tool-btn" onclick="openTool('innovationTool')">
 💡 Innovation
 </button>
 
-<button class="tool-btn" onclick="showTool('digitalNavigation')">
+<button class="tool-btn" onclick="openTool('navigationTool')">
 🧭 Digital Navigation
 </button>
 
 </div>
 
 
-<div id="businessIntelligenceTool" class="tool-content">
+<div id="businessTool" class="tool-content">
 
 <h3>🧠 Adaptive Business Intelligence</h3>
 
-<p>
-Describe the business, idea, innovation, challenge or opportunity.
-</p>
-
 <textarea id="businessInput"
-placeholder="Describe the business, idea or challenge..."></textarea>
+placeholder="Describe the business, idea, challenge or opportunity..."></textarea>
 
-<button class="run-btn" onclick="analyzeBusinessIntelligence()">
+<button class="run-btn" onclick="analyzeBusiness()">
 Analyze Business
 </button>
 
@@ -392,59 +336,47 @@ Analyze Business
 </div>
 
 
-<div id="youngEntrepreneur" class="tool-content">
+<div id="youngTool" class="tool-content">
 
 <h3>🚀 Young Entrepreneur</h3>
 
-<p>
-Analyze an early-stage business idea or startup opportunity.
-</p>
-
-<textarea id="youngBusinessInput"
+<textarea id="youngInput"
 placeholder="Describe your business idea..."></textarea>
 
-<button class="run-btn" onclick="analyzeYoungBusiness()">
+<button class="run-btn" onclick="analyzeYoung()">
 Analyze My Idea
 </button>
 
-<div id="youngBusinessResult" class="results"></div>
+<div id="youngResult" class="results"></div>
 
 </div>
 
 
-<div id="existingBusinessTool" class="tool-content">
+<div id="existingTool" class="tool-content">
 
-<h3>🏢 Existing Business Adaptation</h3>
+<h3>🏢 Existing Business</h3>
 
-<p>
-Examine how an existing business can adapt to changing conditions.
-</p>
+<textarea id="existingInput"
+placeholder="Describe an existing business and its current situation..."></textarea>
 
-<textarea id="existingBusinessInput"
-placeholder="Describe the existing business, customers and current challenges..."></textarea>
-
-<button class="run-btn" onclick="analyzeExistingBusiness()">
+<button class="run-btn" onclick="analyzeExisting()">
 Analyze Adaptation
 </button>
 
-<div id="existingBusinessResult" class="results"></div>
+<div id="existingResult" class="results"></div>
 
 </div>
 
 
-<div id="longTermBusinessTool" class="tool-content">
+<div id="longTermTool" class="tool-content">
 
 <h3>📚 Long-Term Business</h3>
 
-<p>
-Study why a business has survived and how it can remain relevant.
-</p>
-
 <textarea id="longTermInput"
-placeholder="Example: A family business that has operated for 30 years..."></textarea>
+placeholder="Describe a long-established business..."></textarea>
 
-<button class="run-btn" onclick="analyzeLongTermBusiness()">
-Analyze Long-Term Business
+<button class="run-btn" onclick="analyzeLongTerm()">
+Analyze
 </button>
 
 <div id="longTermResult" class="results"></div>
@@ -454,14 +386,10 @@ Analyze Long-Term Business
 
 <div id="innovationTool" class="tool-content">
 
-<h3>💡 Innovation Analysis</h3>
-
-<p>
-Explore an invention, technology, product or new business opportunity.
-</p>
+<h3>💡 Innovation</h3>
 
 <textarea id="innovationInput"
-placeholder="Describe the innovation or invention..."></textarea>
+placeholder="Describe an invention, innovation or technology idea..."></textarea>
 
 <button class="run-btn" onclick="analyzeInnovation()">
 Analyze Innovation
@@ -472,16 +400,12 @@ Analyze Innovation
 </div>
 
 
-<div id="digitalNavigation" class="tool-content">
+<div id="navigationTool" class="tool-content">
 
 <h3>🧭 Digital Navigation</h3>
 
-<p>
-Find useful areas to investigate next.
-</p>
-
 <textarea id="navigationInput"
-placeholder="Describe your business, idea, problem or opportunity..."></textarea>
+placeholder="Describe your business, idea or problem..."></textarea>
 
 <button class="run-btn" onclick="navigateBusiness()">
 Start Navigation
@@ -501,30 +425,29 @@ Start Navigation
 <h2>Research</h2>
 
 <p>
-Organize research questions, investigation plans and research notes.
+Organize research questions, plans and notes.
 </p>
 
 <div class="tools">
 
-<button class="tool-btn" onclick="showTool('researchTool')">
+<button class="tool-btn" onclick="openTool('researchBuilder')">
 🔎 Research Builder
 </button>
 
-<button class="tool-btn" onclick="showTool('notesTool')">
+<button class="tool-btn" onclick="openTool('researchNotes')">
 📝 Research Notes
 </button>
 
 </div>
 
-
-<div id="researchTool" class="tool-content">
+<div id="researchBuilder" class="tool-content">
 
 <h3>Research Builder</h3>
 
-<input id="researchQuestion"
-placeholder="Enter your research topic">
+<input id="researchInput"
+placeholder="Enter a research topic...">
 
-<button class="run-btn" onclick="research()">
+<button class="run-btn" onclick="createResearch()">
 Create Research Plan
 </button>
 
@@ -532,13 +455,12 @@ Create Research Plan
 
 </div>
 
-
-<div id="notesTool" class="tool-content">
+<div id="researchNotes" class="tool-content">
 
 <h3>Research Notes</h3>
 
-<textarea id="researchNotes"
-placeholder="Write your research notes here..."></textarea>
+<textarea id="notesInput"
+placeholder="Write your research notes..."></textarea>
 
 <button class="run-btn" onclick="saveNotes()">
 Save Notes
@@ -558,48 +480,42 @@ Save Notes
 <h2>Data & Analysis</h2>
 
 <p>
-Analyze numerical data or written text.
+Analyze numerical data and written text.
 </p>
 
 <div class="tools">
 
-<button class="tool-btn" onclick="showTool('numberTool')">
+<button class="tool-btn" onclick="openTool('numberTool')">
 🔢 Numerical Analysis
 </button>
 
-<button class="tool-btn" onclick="showTool('textTool')">
+<button class="tool-btn" onclick="openTool('textTool')">
 📝 Text Analysis
 </button>
 
 </div>
 
-
 <div id="numberTool" class="tool-content">
 
 <h3>Numerical Analysis</h3>
 
-<p class="small">
-Enter numbers separated by commas.
-</p>
-
 <input id="numbersInput"
 placeholder="Example: 10,20,30,40,50">
 
-<button class="run-btn" onclick="analyzeData()">
+<button class="run-btn" onclick="analyzeNumbers()">
 Analyze Numbers
 </button>
 
-<div id="dataResult" class="results"></div>
+<div id="numbersResult" class="results"></div>
 
 </div>
-
 
 <div id="textTool" class="tool-content">
 
 <h3>Text Analysis</h3>
 
 <textarea id="textInput"
-placeholder="Enter text here..."></textarea>
+placeholder="Enter text to analyze..."></textarea>
 
 <button class="run-btn" onclick="analyzeText()">
 Analyze Text
@@ -619,28 +535,27 @@ Analyze Text
 <h2>Cloud Workspace</h2>
 
 <p>
-Your digital workspace for Nova Cloud projects, notes and ideas.
+Your workspace for projects, ideas and information.
 </p>
 
 <div class="tools">
 
-<button class="tool-btn" onclick="showTool('workspaceTool')">
+<button class="tool-btn" onclick="openTool('workspaceTool')">
 ☁️ Workspace
 </button>
 
-<button class="tool-btn" onclick="showTool('projectTool')">
+<button class="tool-btn" onclick="openTool('projectsTool')">
 📁 Projects
 </button>
 
 </div>
 
-
 <div id="workspaceTool" class="tool-content">
 
 <h3>Cloud Workspace</h3>
 
-<textarea id="workspaceNotes"
-placeholder="Write project notes or ideas..."></textarea>
+<textarea id="workspaceInput"
+placeholder="Write workspace information..."></textarea>
 
 <button class="run-btn" onclick="saveWorkspace()">
 Save Workspace
@@ -650,13 +565,12 @@ Save Workspace
 
 </div>
 
-
-<div id="projectTool" class="tool-content">
+<div id="projectsTool" class="tool-content">
 
 <h3>Projects</h3>
 
-<input id="projectName"
-placeholder="Enter project name">
+<input id="projectInput"
+placeholder="Enter project name...">
 
 <button class="run-btn" onclick="createProject()">
 Create Project
@@ -677,9 +591,9 @@ Create Project
 
 <p>Research • Innovation • Technology</p>
 
-<p class="small">
-Building a platform for business intelligence, research,
-technology and innovation.
+<p>
+Building a platform for business intelligence,
+research, technology and innovation.
 </p>
 
 </footer>
@@ -687,350 +601,408 @@ technology and innovation.
 
 <script>
 
-/* SECTION NAVIGATION */
+/* =========================
+   MAIN SECTION NAVIGATION
+========================= */
 
-function showSection(sectionId) {
+function openSection(id) {
 
-  document.querySelectorAll('.panel').forEach(function(panel) {
-    panel.classList.remove('active');
-  });
+  var panels = document.querySelectorAll(".panel");
 
-  document.querySelectorAll('.tool-content').forEach(function(tool) {
-    tool.style.display = 'none';
-  });
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].classList.remove("active");
+  }
 
-  const section = document.getElementById(sectionId);
+  var selected = document.getElementById(id);
 
-  if (section) {
-    section.classList.add('active');
+  if (selected) {
+    selected.classList.add("active");
   }
 }
 
 
-/* TOOL NAVIGATION */
+/* =========================
+   TOOL NAVIGATION
+========================= */
 
-function showTool(toolId) {
+function openTool(id) {
 
-  document.querySelectorAll('.tool-content').forEach(function(tool) {
-    tool.style.display = 'none';
-  });
+  var tools = document.querySelectorAll(".tool-content");
 
-  const tool = document.getElementById(toolId);
+  for (var i = 0; i < tools.length; i++) {
+    tools[i].classList.remove("active");
+  }
 
-  if (tool) {
-    tool.style.display = 'block';
+  var selected = document.getElementById(id);
+
+  if (selected) {
+    selected.classList.add("active");
   }
 }
 
 
-/* SYSTEM BUILDER */
+/* =========================
+   SYSTEM BUILDER
+========================= */
 
 function buildSystem() {
 
-  const input = document.getElementById('systemInput').value.trim();
+  var input = document.getElementById("systemInput").value.trim();
 
-  if (!input) {
-    document.getElementById('systemResult').innerHTML =
-      "Please describe the system.";
+  if (input === "") {
+    document.getElementById("systemResult").innerHTML =
+      "Please describe the system you want to build.";
     return;
   }
 
-  document.getElementById('systemResult').innerHTML = `
-    <div class="result-box">
-      <strong>Nova System Blueprint</strong><br><br>
-
-      <strong>System:</strong><br>
-      ${input}<br><br>
-
-      <strong>Recommended structure</strong><br>
-      1. Define the problem<br>
-      2. Identify users<br>
-      3. Define required features<br>
-      4. Design the workflow<br>
-      5. Identify technology requirements<br>
-      6. Build a prototype<br>
-      7. Test the system<br>
-      8. Improve and deploy
-    </div>
-  `;
+  document.getElementById("systemResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Nova System Blueprint</strong><br><br>" +
+    "System: " + input + "<br><br>" +
+    "1. Define the problem<br>" +
+    "2. Identify users<br>" +
+    "3. Define features<br>" +
+    "4. Design workflow<br>" +
+    "5. Select technology<br>" +
+    "6. Build prototype<br>" +
+    "7. Test<br>" +
+    "8. Improve and deploy" +
+    "</div>";
 }
 
 
-/* AI PROJECT */
+/* =========================
+   AI PROJECT
+========================= */
 
 function startAI() {
 
-  const input = document.getElementById('aiInput').value.trim();
+  var input = document.getElementById("aiInput").value.trim();
 
-  if (!input) {
-    document.getElementById('aiResult').innerHTML =
+  if (input === "") {
+    document.getElementById("aiResult").innerHTML =
       "Please describe your AI project.";
     return;
   }
 
-  document.getElementById('aiResult').innerHTML = `
-    <div class="result-box">
-      <strong>AI Project Initialized</strong><br><br>
-
-      <strong>Project:</strong><br>
-      ${input}<br><br>
-
-      <strong>AI Project Pathway</strong><br>
-      1. Define the problem<br>
-      2. Identify users<br>
-      3. Determine required data<br>
-      4. Select an AI approach<br>
-      5. Build a prototype<br>
-      6. Test results<br>
-      7. Improve the system<br>
-      8. Deploy responsibly
-    </div>
-  `;
+  document.getElementById("aiResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>AI Project Started</strong><br><br>" +
+    "Project: " + input + "<br><br>" +
+    "Next steps:<br>" +
+    "1. Define the problem<br>" +
+    "2. Identify users<br>" +
+    "3. Determine required data<br>" +
+    "4. Choose an AI approach<br>" +
+    "5. Build a prototype<br>" +
+    "6. Test and improve" +
+    "</div>";
 }
 
 
-/* TECHNOLOGY */
+/* =========================
+   TECHNOLOGY
+========================= */
 
 function technology() {
 
-  const input = document.getElementById('technologyInput').value.trim();
+  var input =
+    document.getElementById("technologyInput").value.trim();
 
-  if (!input) {
-    document.getElementById('technologyResult').innerHTML =
+  if (input === "") {
+    document.getElementById("technologyResult").innerHTML =
       "Please enter a technology or project.";
     return;
   }
 
-  document.getElementById('technologyResult').innerHTML = `
-    <div class="result-box">
-      <strong>Technology Investigation</strong><br><br>
-
-      <strong>Project:</strong><br>
-      ${input}<br><br>
-
-      <strong>Investigation Areas</strong><br>
-      • Hardware requirements<br>
-      • Software requirements<br>
-      • Data requirements<br>
-      • Connectivity<br>
-      • Security<br>
-      • Automation<br>
-      • AI opportunities<br>
-      • Testing and deployment
-    </div>
-  `;
+  document.getElementById("technologyResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Technology Investigation</strong><br><br>" +
+    "Project: " + input + "<br><br>" +
+    "Investigate:<br>" +
+    "• Hardware<br>" +
+    "• Software<br>" +
+    "• Data<br>" +
+    "• Connectivity<br>" +
+    "• Security<br>" +
+    "• Automation<br>" +
+    "• AI opportunities<br>" +
+    "• Testing" +
+    "</div>";
 }
 
 
-/* ADAPTIVE BUSINESS INTELLIGENCE */
+/* =========================
+   BUSINESS INTELLIGENCE
+========================= */
 
-function analyzeBusinessIntelligence() {
+function analyzeBusiness() {
 
-  const input = document.getElementById('businessInput').value.trim();
+  var input =
+    document.getElementById("businessInput").value.trim();
 
-  if (!input) {
-    document.getElementById('businessResult').innerHTML =
-      "Please describe the business, idea, innovation or challenge.";
+  if (input === "") {
+    document.getElementById("businessResult").innerHTML =
+      "Please describe the business, idea or challenge.";
     return;
   }
 
-  const text = input.toLowerCase();
+  document.getElementById("businessResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Nova Adaptive Business Intelligence</strong><br><br>" +
+    "Starting information:<br>" + input + "<br><br>" +
 
-  let businessType = "General Business";
+    "<strong>Investigation areas</strong><br><br>" +
 
-  if (
-    text.includes("idea") ||
-    text.includes("startup") ||
-    text.includes("young") ||
-    text.includes("new business") ||
-    text.includes("entrepreneur")
-  ) {
-    businessType = "Emerging Entrepreneur / Startup";
-  }
+    "1. Business model<br>" +
+    "How does the business create and capture value?<br><br>" +
 
-  else if (
-    text.includes("year") ||
-    text.includes("decade") ||
-    text.includes("family business") ||
-    text.includes("established") ||
-    text.includes("since")
-  ) {
-    businessType = "Established / Long-Term Business";
-  }
+    "2. Customers<br>" +
+    "Who are the customers and what is changing in their behaviour?<br><br>" +
 
-  else if (
-    text.includes("innovation") ||
-    text.includes("invention") ||
-    text.includes("technology") ||
-    text.includes("ai") ||
-    text.includes("artificial intelligence")
-  ) {
-    businessType = "Innovation / Technology Opportunity";
-  }
+    "3. Market<br>" +
+    "What market changes and opportunities are emerging?<br><br>" +
 
-  else if (
-    text.includes("online") ||
-    text.includes("digital") ||
-    text.includes("website") ||
-    text.includes("social media") ||
-    text.includes("ecommerce")
-  ) {
-    businessType = "Digital Business Opportunity";
-  }
+    "4. Competition<br>" +
+    "Who are the competitors and what are they doing differently?<br><br>" +
 
-  document.getElementById('businessResult').innerHTML = `
-    <div class="result-box">
+    "5. Technology<br>" +
+    "What technology could improve the business?<br><br>" +
 
-      <strong>Nova Adaptive Business Intelligence</strong><br><br>
+    "6. Adaptation<br>" +
+    "What should be preserved, adapted, replaced or improved?<br><br>" +
 
-      <strong>Input</strong><br>
-      ${input}<br><br>
+    "7. Innovation<br>" +
+    "What new products, services or processes could create value?<br><br>" +
 
-      <strong>Detected Business Context</strong><br>
-      ${businessType}<br><br>
+    "8. Growth<br>" +
+    "Where are the strongest growth opportunities?<br><br>" +
 
-      <strong>1. Business Model</strong><br>
-      Examine how the business creates value, serves customers
-      and generates revenue.<br><br>
+    "9. Risk<br>" +
+    "What risks require further investigation?" +
 
-      <strong>2. Customer</strong><br>
-      Identify customers, needs, behaviour and changing expectations.<br><br>
-
-      <strong>3. Market</strong><br>
-      Investigate demand, trends, opportunities and threats.<br><br>
-
-      <strong>4. Competition</strong><br>
-      Identify competitors and determine what makes the business
-      different or vulnerable.<br><br>
-
-      <strong>5. Digital Opportunities</strong><br>
-      Examine websites, social media, digital sales,
-      automation, data and AI opportunities.<br><br>
-
-      <strong>6. Adaptation</strong><br>
-      Determine what should be preserved, improved, changed
-      or replaced.<br><br>
-
-      <strong>7. Innovation</strong><br>
-      Explore products, services, technologies or processes
-      that could create new value.<br><br>
-
-      <strong>8. Growth</strong><br>
-      Identify opportunities for customers, revenue,
-      markets, partnerships or efficiency.<br><br>
-
-      <strong>9. Risk</strong><br>
-      Identify financial, operational, technological,
-      market and competitive risks.<br><br>
-
-      <strong>10. Recommended Next Investigation</strong><br>
-      Start by investigating the customer, market changes,
-      competition and the biggest current business problem.
-
-    </div>
-  `;
+    "</div>";
 }
 
 
-/* YOUNG ENTREPRENEUR */
+/* =========================
+   YOUNG ENTREPRENEUR
+========================= */
 
-function analyzeYoungBusiness() {
+function analyzeYoung() {
 
-  const input = document.getElementById('youngBusinessInput').value.trim();
+  var input =
+    document.getElementById("youngInput").value.trim();
 
-  if (!input) {
-    document.getElementById('youngBusinessResult').innerHTML =
+  if (input === "") {
+    document.getElementById("youngResult").innerHTML =
       "Please describe your business idea.";
     return;
   }
 
-  document.getElementById('youngBusinessResult').innerHTML = `
-    <div class="result-box">
-
-      <strong>Nova Young Entrepreneur Analysis</strong><br><br>
-
-      <strong>Idea:</strong><br>
-      ${input}<br><br>
-
-      <strong>Investigation Path</strong><br>
-      1. Problem being solved<br>
-      2. Target customers<br>
-      3. Customer need<br>
-      4. Existing alternatives<br>
-      5. Competitive advantage<br>
-      6. Revenue model<br>
-      7. Required resources<br>
-      8. Minimum viable product<br>
-      9. Market testing<br>
-      10. Growth opportunities
-
-    </div>
-  `;
+  document.getElementById("youngResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Young Entrepreneur Analysis</strong><br><br>" +
+    "Idea:<br>" + input + "<br><br>" +
+    "1. Customer problem<br>" +
+    "2. Target customer<br>" +
+    "3. Value proposition<br>" +
+    "4. Business model<br>" +
+    "5. Competition<br>" +
+    "6. Digital opportunities<br>" +
+    "7. Testing<br>" +
+    "8. First action plan" +
+    "</div>";
 }
 
 
-/* EXISTING BUSINESS */
+/* =========================
+   EXISTING BUSINESS
+========================= */
 
-function analyzeExistingBusiness() {
+function analyzeExisting() {
 
-  const input = document.getElementById('existingBusinessInput').value.trim();
+  var input =
+    document.getElementById("existingInput").value.trim();
 
-  if (!input) {
-    document.getElementById('existingBusinessResult').innerHTML =
+  if (input === "") {
+    document.getElementById("existingResult").innerHTML =
       "Please describe the existing business.";
     return;
   }
 
-  document.getElementById('existingBusinessResult').innerHTML = `
-    <div class="result-box">
-
-      <strong>Nova Existing Business Adaptation</strong><br><br>
-
-      <strong>Business:</strong><br>
-      ${input}<br><br>
-
-      <strong>Adaptation Framework</strong><br>
-      1. What has changed?<br>
-      2. What customers now expect<br>
-      3. How the market has changed<br>
-      4. New competitors<br>
-      5. Technology changes<br>
-      6. Operational weaknesses<br>
-      7. What should be preserved<br>
-      8. What should be improved<br>
-      9. What should be replaced<br>
-      10. What should be innovated
-
-    </div>
-  `;
+  document.getElementById("existingResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Existing Business Adaptation</strong><br><br>" +
+    input + "<br><br>" +
+    "<strong>Preserve</strong><br>" +
+    "Identify what is already working.<br><br>" +
+    "<strong>Adapt</strong><br>" +
+    "Identify what needs to change.<br><br>" +
+    "<strong>Replace</strong><br>" +
+    "Identify outdated activities or methods.<br><br>" +
+    "<strong>Innovate</strong><br>" +
+    "Explore new products, services, technology and markets.<br><br>" +
+    "<strong>Next step</strong><br>" +
+    "Create an adaptation plan based on evidence." +
+    "</div>";
 }
 
 
-/* LONG-TERM BUSINESS */
+/* =========================
+   LONG-TERM BUSINESS
+========================= */
 
-function analyzeLongTermBusiness() {
+function analyzeLongTerm() {
 
-  const input = document.getElementById('longTermInput').value.trim();
+  var input =
+    document.getElementById("longTermInput").value.trim();
 
-  if (!input) {
-    document.getElementById('longTermResult').innerHTML =
+  if (input === "") {
+    document.getElementById("longTermResult").innerHTML =
       "Please describe the long-term business.";
     return;
   }
 
-  document.getElementById('longTermResult').innerHTML = `
-    <div class="result-box">
+  document.getElementById("longTermResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Long-Term Business Analysis</strong><br><br>" +
+    input + "<br><br>" +
+    "• Business history<br>" +
+    "• Customer loyalty<br>" +
+    "• Competitive strengths<br>" +
+    "• Previous adaptations<br>" +
+    "• Market changes<br>" +
+    "• Technology changes<br>" +
+    "• Future opportunities<br>" +
+    "• Future risks" +
+    "</div>";
+}
 
-      <strong>Nova Long-Term Business Analysis</strong><br><br>
 
-      <strong>Business:</strong><br>
-      ${input}<br><br>
+/* =========================
+   INNOVATION
+========================= */
 
-      <strong>Long-Term Investigation</strong><br>
-      • History and foundation<br>
-      • Customer loyalty<br>
-      • Core strengths<br>
-      • Business model<br>
-      • Market changes<br>
-      • Technology changes<br>
-      
+function analyzeInnovation() {
+
+  var input =
+    document.getElementById("innovationInput").value.trim();
+
+  if (input === "") {
+    document.getElementById("innovationResult").innerHTML =
+      "Please describe the innovation.";
+    return;
+  }
+
+  document.getElementById("innovationResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Innovation Analysis</strong><br><br>" +
+    "Innovation:<br>" + input + "<br><br>" +
+    "1. Problem being solved<br>" +
+    "2. Potential users<br>" +
+    "3. Value created<br>" +
+    "4. Technology required<br>" +
+    "5. Business opportunity<br>" +
+    "6. Risks<br>" +
+    "7. Testing and validation" +
+    "</div>";
+}
+
+
+/* =========================
+   DIGITAL NAVIGATION
+========================= */
+
+function navigateBusiness() {
+
+  var input =
+    document.getElementById("navigationInput").value.trim();
+
+  if (input === "") {
+    document.getElementById("navigationResult").innerHTML =
+      "Please describe the business, idea or problem.";
+    return;
+  }
+
+  document.getElementById("navigationResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Nova Digital Navigation</strong><br><br>" +
+    "Starting point:<br>" + input + "<br><br>" +
+    "Recommended path:<br><br>" +
+    "1. 🔎 Understand the problem<br>" +
+    "2. 👥 Understand the customer<br>" +
+    "3. 📊 Analyze the market<br>" +
+    "4. 🏆 Examine competition<br>" +
+    "5. 💻 Identify digital opportunities<br>" +
+    "6. 📈 Examine growth<br>" +
+    "7. 💡 Explore innovation<br>" +
+    "8. 📊 Analyze data<br>" +
+    "9. 🧠 Develop strategy<br>" +
+    "10. 🚀 Create an action plan" +
+    "</div>";
+}
+
+
+/* =========================
+   RESEARCH
+========================= */
+
+function createResearch() {
+
+  var input =
+    document.getElementById("researchInput").value.trim();
+
+  if (input === "") {
+    document.getElementById("researchResult").innerHTML =
+      "Please enter a research topic.";
+    return;
+  }
+
+  document.getElementById("researchResult").innerHTML =
+    "<div class='result-box'>" +
+    "<strong>Research Plan</strong><br><br>" +
+    "Topic: " + input + "<br><br>" +
+    "1. Define the research question<br>" +
+    "2. Identify required information<br>" +
+    "3. Collect evidence<br>" +
+    "4. Compare findings<br>" +
+    "5. Analyze evidence<br>" +
+    "6. Record conclusions<br>" +
+    "7. Identify unanswered questions" +
+    "</div>";
+}
+
+
+/* =========================
+   RESEARCH NOTES
+========================= */
+
+function saveNotes() {
+
+  var notes =
+    document.getElementById("notesInput").value;
+
+  if (notes.trim() === "") {
+    document.getElementById("notesResult").innerHTML =
+      "Please write some notes first.";
+    return;
+  }
+
+  localStorage.setItem("novaResearchNotes", notes);
+
+  document.getElementById("notesResult").innerHTML =
+    "Research notes saved on this device.";
+}
+
+
+/* =========================
+   NUMERICAL ANALYSIS
+========================= */
+
+function analyzeNumbers() {
+
+  var input =
+    document.getElementById("numbersInput").value.trim();
+
+  if (i
