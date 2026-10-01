@@ -704,7 +704,169 @@ document.getElementById('technologyResult').innerHTML =
 "Technology workspace opened.";
 
 }
+/* =========================
+   ADAPTIVE BUSINESS INTELLIGENCE
+========================= */
 
+function analyzeBusinessIntelligence() {
+
+const input =
+document.getElementById('businessInput').value.trim();
+
+if (!input) {
+
+document.getElementById('businessResult').innerHTML =
+"Please describe the business, idea, innovation or challenge.";
+
+return;
+
+}
+
+const text = input.toLowerCase();
+
+let businessType = "General Business";
+
+if (
+text.includes("idea") ||
+text.includes("startup") ||
+text.includes("young") ||
+text.includes("new business") ||
+text.includes("entrepreneur")
+) {
+
+businessType = "Emerging Entrepreneur / Startup";
+
+}
+
+else if (
+text.includes("year") ||
+text.includes("decade") ||
+text.includes("family business") ||
+text.includes("established") ||
+text.includes("since")
+) {
+
+businessType = "Established / Long-Term Business";
+
+}
+
+else if (
+text.includes("innovation") ||
+text.includes("invention") ||
+text.includes("technology") ||
+text.includes("ai") ||
+text.includes("artificial intelligence")
+) {
+
+businessType = "Innovation / Technology Opportunity";
+
+}
+
+else if (
+text.includes("online") ||
+text.includes("digital") ||
+text.includes("website") ||
+text.includes("social media") ||
+text.includes("ecommerce")
+) {
+
+businessType = "Digital Business Opportunity";
+
+}
+
+
+let changeAnalysis = "";
+
+if (
+text.includes("change") ||
+text.includes("decline") ||
+text.includes("competition") ||
+text.includes("customer") ||
+text.includes("online")
+) {
+
+changeAnalysis = `
+<strong>Change Signals</strong><br>
+The description suggests that customer behaviour, competition,
+technology or market conditions may be changing.<br><br>
+
+Nova should investigate what changed, why it changed and
+how the business should respond.<br><br>
+`;
+
+}
+
+else {
+
+changeAnalysis = `
+<strong>Change Signals</strong><br>
+No specific change has been identified yet.
+Nova should investigate market, customer and technology trends.<br><br>
+`;
+
+}
+
+
+document.getElementById('businessResult').innerHTML = `
+
+<strong>Nova Adaptive Business Intelligence</strong><br><br>
+
+<strong>Input</strong><br>
+${input}<br><br>
+
+<strong>Detected Business Context</strong><br>
+${businessType}<br><br>
+
+${changeAnalysis}
+
+<strong>1. Business Model</strong><br>
+Examine how the business creates value, serves customers
+and generates revenue.<br><br>
+
+<strong>2. Customer</strong><br>
+Identify the main customers, their needs, behaviour and
+changing expectations.<br><br>
+
+<strong>3. Market</strong><br>
+Investigate market demand, trends, opportunities and
+possible threats.<br><br>
+
+<strong>4. Competition</strong><br>
+Identify competitors and determine what makes this business
+different or vulnerable.<br><br>
+
+<strong>5. Digital Opportunities</strong><br>
+Look for useful opportunities involving websites, social media,
+digital sales, automation, data or AI.<br><br>
+
+<strong>6. Adaptation</strong><br>
+Determine what should be preserved, improved, changed,
+replaced or newly introduced.<br><br>
+
+<strong>7. Innovation</strong><br>
+Explore products, services, technologies or processes that
+could create new value.<br><br>
+
+<strong>8. Growth</strong><br>
+Identify realistic opportunities for customers, revenue,
+markets, partnerships or efficiency.<br><br>
+
+<strong>9. Risk</strong><br>
+Identify important financial, operational, technological,
+market or competitive risks that require investigation.<br><br>
+
+<strong>10. Recommended Next Investigation</strong><br>
+Nova should investigate the areas above that are most relevant
+to the specific business rather than giving every business
+the same strategy.<br><br>
+
+<strong>Nova Insight</strong><br>
+This analysis is a starting point. Deeper conclusions require
+reliable business, market, customer and financial information.
+
+`;
+
+  }
 
 /* =========================
    YOUNG ENTREPRENEUR
