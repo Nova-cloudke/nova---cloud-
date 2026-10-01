@@ -28,12 +28,11 @@
 
     header h1 {
       font-size: 42px;
-      margin-bottom: 8px;
     }
 
     header p {
-      font-size: 20px;
       color: #c8d0df;
+      font-size: 20px;
     }
 
     nav {
@@ -41,7 +40,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       padding: 18px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
@@ -49,10 +48,9 @@
     nav button {
       border: none;
       background: transparent;
-      color: #172033;
-      font-size: 17px;
-      font-weight: bold;
       padding: 10px 14px;
+      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
       border-radius: 8px;
     }
@@ -63,37 +61,37 @@
 
     .hero {
       text-align: center;
-      padding: 75px 25px;
+      padding: 70px 25px;
       background: linear-gradient(#eef4ff, #ffffff);
     }
 
     .hero h2 {
-      font-size: 42px;
-      margin-bottom: 25px;
+      font-size: 40px;
+      margin-bottom: 20px;
     }
 
     .hero p {
       max-width: 700px;
       margin: auto;
-      font-size: 19px;
       color: #536174;
+      font-size: 18px;
     }
 
     .explore {
-      margin-top: 30px;
-      padding: 16px 28px;
+      margin-top: 28px;
+      padding: 14px 25px;
       border: none;
-      border-radius: 10px;
+      border-radius: 9px;
       background: #2864e8;
       color: white;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
     .section {
       display: none;
-      padding: 55px 25px;
+      padding: 50px 25px;
       max-width: 1000px;
       margin: auto;
     }
@@ -105,14 +103,13 @@
     .section h2 {
       text-align: center;
       font-size: 32px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .section-intro {
       text-align: center;
       color: #5b6678;
-      max-width: 700px;
-      margin: 0 auto 35px;
+      margin-bottom: 30px;
     }
 
     .cards {
@@ -129,12 +126,62 @@
     }
 
     .card h3 {
-      margin-bottom: 10px;
       color: #1e56c8;
+      margin-bottom: 10px;
     }
 
     .card p {
       color: #5b6678;
+    }
+
+    /* DATA ANALYZER */
+
+    .analyzer {
+      background: white;
+      padding: 25px;
+      margin-top: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .analyzer h3 {
+      margin-bottom: 10px;
+      color: #1e56c8;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 130px;
+      padding: 14px;
+      border: 1px solid #ccd3df;
+      border-radius: 8px;
+      resize: vertical;
+      font-size: 16px;
+      margin-top: 12px;
+    }
+
+    .analyze-btn {
+      margin-top: 15px;
+      padding: 13px 22px;
+      border: none;
+      border-radius: 8px;
+      background: #2864e8;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .results {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f5f7fb;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .results p {
+      margin: 8px 0;
     }
 
     footer {
@@ -144,198 +191,285 @@
       color: #c8d0df;
       margin-top: 40px;
     }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 34px;
-      }
-
-      .hero h2 {
-        font-size: 32px;
-      }
-
-      nav button {
-        font-size: 15px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Nova Cloud</h1>
-    <p>Nova Agencies</p>
-  </header>
+<header>
+  <h1>Nova Cloud</h1>
+  <p>Nova Agencies</p>
+</header>
 
-  <nav>
-    <button onclick="showSection('systems')">Systems</button>
-    <button onclick="showSection('business')">Business</button>
-    <button onclick="showSection('research')">Research</button>
-    <button onclick="showSection('data')">Data</button>
-    <button onclick="showSection('workspace')">Workspace</button>
-  </nav>
+<nav>
+  <button onclick="showSection('systems')">Systems</button>
+  <button onclick="showSection('business')">Business</button>
+  <button onclick="showSection('research')">Research</button>
+  <button onclick="showSection('data')">Data</button>
+  <button onclick="showSection('workspace')">Workspace</button>
+</nav>
 
-  <section class="hero">
-    <h2>Build. Research.<br>Analyze. Innovate.</h2>
+<section class="hero">
+  <h2>Build. Research.<br>Analyze. Innovate.</h2>
+
+  <p>
+    Nova Cloud is a digital workspace for building systems,
+    exploring business opportunities, conducting research,
+    analyzing data and developing new ideas.
+  </p>
+
+  <button class="explore" onclick="showSection('systems')">
+    Explore Nova Cloud
+  </button>
+</section>
+
+<section id="systems" class="section active">
+  <h2>Systems</h2>
+
+  <p class="section-intro">
+    Design and develop digital systems, applications and intelligent solutions.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>System Builder</h3>
+      <p>Create and organize ideas for digital systems and applications.</p>
+    </div>
+
+    <div class="card">
+      <h3>AI Projects</h3>
+      <p>Explore artificial intelligence concepts and intelligent automation.</p>
+    </div>
+
+    <div class="card">
+      <h3>Technology</h3>
+      <p>Develop technology concepts that solve real-world problems.</p>
+    </div>
+  </div>
+</section>
+
+<section id="business" class="section">
+  <h2>Business</h2>
+
+  <p class="section-intro">
+    Explore businesses, markets, opportunities and digital growth strategies.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Business Ideas</h3>
+      <p>Develop and organize new business opportunities.</p>
+    </div>
+
+    <div class="card">
+      <h3>Market Research</h3>
+      <p>Study customers, competitors and market opportunities.</p>
+    </div>
+
+    <div class="card">
+      <h3>Digital Growth</h3>
+      <p>Develop strategies for businesses to attract and retain customers.</p>
+    </div>
+  </div>
+</section>
+
+<section id="research" class="section">
+  <h2>Research</h2>
+
+  <p class="section-intro">
+    A space for investigation, learning, experiments and innovation.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Research Projects</h3>
+      <p>Organize research questions, findings and project ideas.</p>
+    </div>
+
+    <div class="card">
+      <h3>Innovation</h3>
+      <p>Explore new technologies and solutions.</p>
+    </div>
+
+    <div class="card">
+      <h3>Knowledge</h3>
+      <p>Collect and develop knowledge across different fields.</p>
+    </div>
+  </div>
+</section>
+
+<section id="data" class="section">
+
+  <h2>Data</h2>
+
+  <p class="section-intro">
+    Organize, understand and analyze information.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Data Analysis</h3>
+      <p>Examine information and identify useful patterns.</p>
+    </div>
+
+    <div class="card">
+      <h3>Insights</h3>
+      <p>Turn data into useful knowledge and insights.</p>
+    </div>
+
+    <div class="card">
+      <h3>Future Analytics</h3>
+      <p>Build toward advanced data-driven systems.</p>
+    </div>
+
+  </div>
+
+  <div class="analyzer">
+
+    <h3>Nova Data Analyzer</h3>
 
     <p>
-      Nova Cloud is a digital workspace for building systems,
-      exploring business opportunities, conducting research,
-      analyzing data and developing new ideas.
+      Enter numbers separated by commas.
+      Example: 10, 20, 30, 40, 50
     </p>
 
-    <button class="explore" onclick="showSection('systems')">
-      Explore Nova Cloud
+    <textarea
+      id="dataInput"
+      placeholder="Enter numbers here..."
+    ></textarea>
+
+    <button class="analyze-btn" onclick="analyzeData()">
+      Analyze Data
     </button>
-  </section>
 
-  <section id="systems" class="section active">
-    <h2>Systems</h2>
+    <div id="results" class="results">
 
-    <p class="section-intro">
-      Design and develop digital systems, applications and intelligent solutions.
-    </p>
+      <p><strong>Number of values:</strong>
+        <span id="count"></span>
+      </p>
 
-    <div class="cards">
-      <div class="card">
-        <h3>System Builder</h3>
-        <p>Create and organize ideas for new digital systems and applications.</p>
-      </div>
+      <p><strong>Total:</strong>
+        <span id="total"></span>
+      </p>
 
-      <div class="card">
-        <h3>AI Projects</h3>
-        <p>Explore artificial intelligence concepts and intelligent automation.</p>
-      </div>
+      <p><strong>Average:</strong>
+        <span id="average"></span>
+      </p>
 
-      <div class="card">
-        <h3>Technology</h3>
-        <p>Develop technology concepts that can solve real-world problems.</p>
-      </div>
+      <p><strong>Highest:</strong>
+        <span id="highest"></span>
+      </p>
+
+      <p><strong>Lowest:</strong>
+        <span id="lowest"></span>
+      </p>
+
     </div>
-  </section>
 
-  <section id="business" class="section">
-    <h2>Business</h2>
+  </div>
 
-    <p class="section-intro">
-      Explore businesses, markets, opportunities and digital growth strategies.
-    </p>
+</section>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Business Ideas</h3>
-        <p>Develop and organize new business opportunities.</p>
-      </div>
+<section id="workspace" class="section">
+  <h2>Workspace</h2>
 
-      <div class="card">
-        <h3>Market Research</h3>
-        <p>Study customers, competitors and market opportunities.</p>
-      </div>
+  <p class="section-intro">
+    Your central space for organizing Nova Cloud projects and ideas.
+  </p>
 
-      <div class="card">
-        <h3>Digital Growth</h3>
-        <p>Develop strategies for businesses to attract and retain customers.</p>
-      </div>
+  <div class="cards">
+    <div class="card">
+      <h3>Projects</h3>
+      <p>Organize current and future Nova projects.</p>
     </div>
-  </section>
 
-  <section id="research" class="section">
-    <h2>Research</h2>
-
-    <p class="section-intro">
-      A space for investigation, learning, experiments and innovation.
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Research Projects</h3>
-        <p>Organize research questions, findings and project ideas.</p>
-      </div>
-
-      <div class="card">
-        <h3>Innovation</h3>
-        <p>Explore new technologies and solutions to important problems.</p>
-      </div>
-
-      <div class="card">
-        <h3>Knowledge</h3>
-        <p>Collect and develop knowledge across different fields.</p>
-      </div>
+    <div class="card">
+      <h3>Ideas</h3>
+      <p>Store concepts for future systems and businesses.</p>
     </div>
-  </section>
 
-  <section id="data" class="section">
-    <h2>Data</h2>
-
-    <p class="section-intro">
-      Organize, understand and analyze information to support better decisions.
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Data Analysis</h3>
-        <p>Examine information and identify useful patterns.</p>
-      </div>
-
-      <div class="card">
-        <h3>Insights</h3>
-        <p>Turn data into useful knowledge and business insights.</p>
-      </div>
-
-      <div class="card">
-        <h3>Future Analytics</h3>
-        <p>Build toward more advanced data-driven systems.</p>
-      </div>
+    <div class="card">
+      <h3>Development</h3>
+      <p>Build Nova Cloud step by step.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="workspace" class="section">
-    <h2>Workspace</h2>
+<footer>
+  <p>Nova Cloud — Nova Agencies</p>
+  <p>Research • Technology • Business • Innovation</p>
+</footer>
 
-    <p class="section-intro">
-      Your central space for organizing Nova Cloud projects and ideas.
-    </p>
+<script>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Projects</h3>
-        <p>Organize current and future Nova projects.</p>
-      </div>
+function showSection(sectionId) {
 
-      <div class="card">
-        <h3>Ideas</h3>
-        <p>Store concepts that can become future systems or businesses.</p>
-      </div>
+  const sections = document.querySelectorAll(".section");
 
-      <div class="card">
-        <h3>Development</h3>
-        <p>Build Nova Cloud step by step into a real digital platform.</p>
-      </div>
-    </div>
-  </section>
+  sections.forEach(function(section) {
+    section.classList.remove("active");
+  });
 
-  <footer>
-    <p>Nova Cloud — Nova Agencies</p>
-    <p>Research • Technology • Business • Innovation</p>
-  </footer>
+  const selected = document.getElementById(sectionId);
 
-  <script>
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('.section');
+  selected.classList.add("active");
 
-      sections.forEach(function(section) {
-        section.classList.remove('active');
-      });
+  window.scrollTo({
+    top: selected.offsetTop - 20,
+    behavior: "smooth"
+  });
+}
 
-      document.getElementById(sectionId).classList.add('active');
 
-      window.scrollTo({
-        top: document.getElementById(sectionId).offsetTop - 20,
-        behavior: 'smooth'
-      });
-    }
-  </script>
+function analyzeData() {
+
+  const input = document.getElementById("dataInput").value;
+
+  const numbers = input
+    .split(",")
+    .map(Number)
+    .filter(function(number) {
+      return !isNaN(number);
+    });
+
+  if (numbers.length === 0) {
+
+    alert("Please enter numbers separated by commas.");
+
+    return;
+  }
+
+  const total = numbers.reduce(function(sum, number) {
+    return sum + number;
+  }, 0);
+
+  const average = total / numbers.length;
+
+  const highest = Math.max(...numbers);
+
+  const lowest = Math.min(...numbers);
+
+  document.getElementById("count").textContent =
+    numbers.length;
+
+  document.getElementById("total").textContent =
+    total;
+
+  document.getElementById("average").textContent =
+    average.toFixed(2);
+
+  document.getElementById("highest").textContent =
+    highest;
+
+  document.getElementById("lowest").textContent =
+    lowest;
+
+  document.getElementById("results").style.display =
+    "block";
+}
+
+</script>
 
 </body>
-                 </html>
+  </html>
