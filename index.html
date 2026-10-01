@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="Nova Cloud - an accessible digital platform for business, research, data and cloud-based tools."
-  >
+  <meta name="description" content="Nova Cloud - Systems, Business, Research, Data and Analysis, Cloud Workspace, Research and Innovation.">
 
   <title>Nova Cloud - Nova Agencies</title>
 
@@ -19,141 +15,177 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f8fafc;
+      background: #f5f7fb;
       color: #172033;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    button,
-    a {
-      min-height: 44px;
+      line-height: 1.6;
     }
 
     header {
-      background: #101827;
+      background: #101828;
       color: white;
-      padding: 18px 20px;
-    }
-
-    .nav {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      padding: 8px;
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: auto;
-      padding: 80px 20px;
+      padding: 20px;
       text-align: center;
     }
 
-    .hero h1 {
-      font-size: clamp(36px, 7vw, 64px);
-      margin-bottom: 18px;
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      color: #b8c2d1;
+    }
+
+    nav {
+      background: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    nav a {
+      color: #172033;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .hero {
+      padding: 70px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #eaf2ff, #ffffff);
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
     }
 
     .hero p {
       max-width: 700px;
       margin: auto;
       font-size: 18px;
-      color: #526070;
+      color: #526071;
     }
 
-    .cta {
+    .button {
       display: inline-block;
-      margin-top: 28px;
-      padding: 14px 24px;
-      border-radius: 8px;
+      margin-top: 25px;
+      padding: 13px 24px;
       background: #2563eb;
       color: white;
       text-decoration: none;
+      border-radius: 8px;
       font-weight: bold;
     }
 
-    .section {
+    section {
+      padding: 55px 20px;
       max-width: 1100px;
       margin: auto;
-      padding: 60px 20px;
     }
 
-    .section h2 {
+    section h2 {
       text-align: center;
-      margin-bottom: 35px;
-      font-size: 32px;
+      margin-bottom: 12px;
+      font-size: 30px;
     }
 
-    .systems {
+    .section-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 35px;
+      color: #667085;
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
     }
 
-    .system-card {
+    .card {
       background: white;
       padding: 25px;
       border-radius: 12px;
-      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
-    .system-card h3 {
+    .card h3 {
       margin-bottom: 10px;
+      font-size: 21px;
     }
 
-    .system-card p {
-      color: #5b6678;
+    .card p {
+      color: #667085;
     }
 
-    footer {
-      margin-top: 40px;
-      padding: 30px 20px;
-      background: #101827;
+    .number {
+      font-size: 14px;
+      font-weight: bold;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .workspace {
+      background: #101828;
       color: white;
+      max-width: none;
       text-align: center;
     }
 
-    @media (max-width: 650px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
+    .workspace p {
+      max-width: 700px;
+      margin: auto;
+      color: #c5cedb;
+    }
+
+    .workspace .button {
+      background: white;
+      color: #101828;
+    }
+
+    .innovation {
+      text-align: center;
+      background: #eef4ff;
+      max-width: none;
+    }
+
+    .innovation p {
+      max-width: 750px;
+      margin: auto;
+      color: #526071;
+    }
+
+    footer {
+      background: #0b1220;
+      color: #aeb8c7;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 32px;
       }
 
-      .nav-links {
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .hero {
-        padding: 60px 20px;
+      nav a {
+        display: inline-block;
+        margin: 5px;
       }
     }
   </style>
@@ -162,86 +194,151 @@
 <body>
 
   <header>
-    <nav class="nav" aria-label="Main navigation">
-      <div class="logo">Nova Cloud</div>
-
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#systems">Systems</a>
-        <a href="#research">Research</a>
-      </div>
-    </nav>
+    <h1>Nova Cloud</h1>
+    <p>Nova Agencies</p>
   </header>
 
-  <main>
+  <nav>
+    <a href="#systems">Systems</a>
+    <a href="#business">Business</a>
+    <a href="#research">Research</a>
+    <a href="#data">Data</a>
+    <a href="#workspace">Workspace</a>
+  </nav>
 
-    <section class="hero" id="home">
-      <h1>Nova Cloud</h1>
+  <section class="hero">
+    <h2>Build. Research. Analyze. Innovate.</h2>
+    <p>
+      Nova Cloud is a digital workspace for building systems,
+      exploring business opportunities, conducting research,
+      analyzing data and developing new ideas.
+    </p>
 
-      <p>
-        A digital platform designed to bring business,
-        research, data and cloud-based tools together
-        in one accessible workspace.
-      </p>
+    <a href="#systems" class="button">Explore Nova Cloud</a>
+  </section>
 
-      <a class="cta" href="#systems">Explore Nova Cloud</a>
-    </section>
+  <section id="systems">
+    <h2>Systems</h2>
+    <p class="section-intro">
+      Develop and organize digital systems designed to solve real-world problems.
+    </p>
 
-    <section class="section" id="systems">
-      <h2>Nova Cloud Systems</h2>
-
-      <div class="systems">
-
-        <article class="system-card">
-          <h3>Business</h3>
-          <p>
-            Digital tools that can help businesses manage,
-            grow and connect with their customers.
-          </p>
-        </article>
-
-        <article class="system-card">
-          <h3>Research</h3>
-          <p>
-            A future workspace for collecting, organizing,
-            analyzing and presenting research.
-          </p>
-        </article>
-
-        <article class="system-card">
-          <h3>Data & Analytics</h3>
-          <p>
-            Tools for understanding information, creating
-            useful insights and supporting decisions.
-          </p>
-        </article>
-
-        <article class="system-card">
-          <h3>Cloud Workspace</h3>
-          <p>
-            A centralized environment for projects,
-            files, tools and future digital services.
-          </p>
-        </article>
-
+    <div class="grid">
+      <div class="card">
+        <div class="number">01</div>
+        <h3>Digital Systems</h3>
+        <p>Plan and develop practical digital tools and platforms.</p>
       </div>
-    </section>
 
-    <section class="section" id="research">
-      <h2>Research & Innovation</h2>
+      <div class="card">
+        <div class="number">02</div>
+        <h3>Automation</h3>
+        <p>Explore ways technology can simplify repetitive processes.</p>
+      </div>
 
-      <p style="text-align:center; max-width:700px; margin:auto;">
-        Nova Cloud is being designed with research and
-        innovation in mind, creating a foundation that can
-        grow into powerful research and data systems.
-      </p>
-    </section>
+      <div class="card">
+        <div class="number">03</div>
+        <h3>Technology</h3>
+        <p>Explore modern technologies and their practical applications.</p>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <section id="business">
+    <h2>Business</h2>
+    <p class="section-intro">
+      Explore businesses, markets, opportunities and digital growth.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Business Research</h3>
+        <p>Study markets, customers, competitors and emerging opportunities.</p>
+      </div>
+
+      <div class="card">
+        <h3>Digital Growth</h3>
+        <p>Develop strategies that help businesses attract and retain customers.</p>
+      </div>
+
+      <div class="card">
+        <h3>Opportunity Discovery</h3>
+        <p>Identify problems that can become useful products or services.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <p class="section-intro">
+      A space for learning, investigation, experimentation and discovery.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Technology Research</h3>
+        <p>Investigate emerging technologies and their possible applications.</p>
+      </div>
+
+      <div class="card">
+        <h3>Market Research</h3>
+        <p>Study markets and customer needs before building solutions.</p>
+      </div>
+
+      <div class="card">
+        <h3>Innovation Research</h3>
+        <p>Explore new approaches to existing problems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="data">
+    <h2>Data &amp; Analysis</h2>
+    <p class="section-intro">
+      Turn information into useful insights for better decisions.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Data Collection</h3>
+        <p>Organize information from different sources for analysis.</p>
+      </div>
+
+      <div class="card">
+        <h3>Analysis</h3>
+        <p>Examine patterns, trends and relationships within data.</p>
+      </div>
+
+      <div class="card">
+        <h3>Insights</h3>
+        <p>Convert research and data into practical knowledge.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="workspace" class="workspace">
+    <h2>Cloud Workspace</h2>
+    <p>
+      A central digital environment for projects, research,
+      experiments, data and future Nova systems.
+    </p>
+
+    <a href="#research" class="button">Enter Workspace</a>
+  </section>
+
+  <section class="innovation">
+    <h2>Research &amp; Innovation</h2>
+    <p>
+      Nova Cloud is designed to grow into a platform where ideas
+      can move from research and analysis to prototypes, systems
+      and real-world solutions.
+    </p>
+  </section>
 
   <footer>
-    <p>© 2026 Nova Cloud</p>
+    <p><strong>Nova Cloud</strong> — Nova Agencies</p>
+    <p>Research • Technology • Business • Innovation</p>
   </footer>
-<script src="app.js"></script>
+
 </body>
-    </html>
+  </html>
