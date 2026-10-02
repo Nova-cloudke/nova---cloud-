@@ -1010,15 +1010,444 @@ Investigate:
 }
 
 
-/* =====================================================
-   RESEARCH PLANNER
-   ===================================================== */
+/*
+/*
+==================================================
+RESEARCH PLANNER
+==================================================
+*/
+
+function createResearchPlan() {
+
+  const topic = document.getElementById("researchTopic").value.trim();
+
+  const result = document.getElementById("researchPlanResult");
+
+  if (topic === "") {
+    result.innerHTML = "Please enter a research topic, idea, business, or problem.";
+    return;
+  }
+
+  result.innerHTML = `
+    <div class="nova-result-card">
+
+      <h3>🔎 Nova Research Planner</h3>
+
+      <p><strong>Research topic:</strong> ${topic}</p>
+
+      <hr>
+
+      <h4>1. Define the Problem</h4>
+      <p>
+        Clearly explain what you are trying to understand,
+        solve, improve, or discover.
+      </p>
+
+      <h4>2. Understand the Customer or User</h4>
+      <p>
+        Identify who is affected by the problem and who
+        could benefit from the solution.
+      </p>
+
+      <h4>3. Study the Market</h4>
+      <p>
+        Investigate demand, existing solutions, competitors,
+        trends, opportunities, and market gaps.
+      </p>
+
+      <h4>4. Investigate Existing Solutions</h4>
+      <p>
+        Find out what products, businesses, technologies,
+        or systems already exist.
+      </p>
+
+      <h4>5. Identify the Opportunity</h4>
+      <p>
+        Look for weaknesses, unmet needs, inefficiencies,
+        or opportunities for improvement.
+      </p>
+
+      <h4>6. Research Technology</h4>
+      <p>
+        Identify technologies, digital systems, AI tools,
+        software, hardware, or infrastructure that could
+        help solve the problem.
+      </p>
+
+      <h4>7. Collect Evidence</h4>
+      <p>
+        Record important facts, statistics, observations,
+        customer feedback, competitors, and research sources.
+      </p>
+
+      <h4>8. Analyze the Findings</h4>
+      <p>
+        Compare the information collected and identify
+        patterns, opportunities, risks, and important insights.
+      </p>
+
+      <h4>9. Develop Possible Solutions</h4>
+      <p>
+        Create several possible approaches before choosing
+        the strongest solution.
+      </p>
+
+      <h4>10. Next Action</h4>
+      <p>
+        Decide what should be investigated, tested, designed,
+        or built next.
+      </p>
+
+      <hr>
+
+      <h4>📌 Nova Research Output</h4>
+
+      <p>
+        Your research should eventually answer:
+      </p>
+
+      <ul>
+        <li>What is the problem?</li>
+        <li>Who has the problem?</li>
+        <li>Why does the problem matter?</li>
+        <li>What solutions already exist?</li>
+        <li>What opportunities exist?</li>
+        <li>What technology can help?</li>
+        <li>What solution should be developed?</li>
+        <li>What should happen next?</li>
+      </ul>
+
+      <button onclick="saveResearchPlan('${topic.replace(/'/g, "\\'")}')">
+        💾 Save Research Plan
+      </button>
+
+    </div>
+  `;
+}
+
+
+/*
+==================================================
+SAVE RESEARCH PLAN
+==================================================
+*/
+
+function saveResearchPlan(topic) {
+
+  const savedPlans =
+    JSON.parse(localStorage.getItem("novaResearchPlans")) || [];
+
+  const plan = {
+    topic: topic,
+    date: new Date().toLocaleString()
+  };
+
+  savedPlans.push(plan);
+
+  localStorage.setItem(
+    "novaResearchPlans",
+    JSON.stringify(savedPlans)
+  );
+
+  const result = document.getElementById("researchPlanResult");
+
+  result.innerHTML += `
+    <p style="margin-top:15px;">
+      ✅ Research plan saved successfully.
+    </p>
+  `;
+}
+
+
+/*
+==================================================
+LOAD SAVED RESEARCH PLANS
+==================================================
+*/
+
+function loadResearchPlans() {
+
+  const savedPlans =
+    JSON.parse(localStorage.getItem("novaResearchPlans")) || [];
+
+  const result =
+    document.getElementById("savedResearchPlans");
+
+  if (savedPlans.length === 0) {
+    result.innerHTML =
+      "No saved research plans yet.";
+    return;
+  }
+
+  result.innerHTML = `
+    <h3>📚 Saved Research Plans</h3>
+  `;
+
+  savedPlans.forEach((plan, index) => {
+
+    result.innerHTML += `
+      <div class="nova-result-card">
+
+        <strong>${index + 1}. ${plan.topic}</strong>
+
+        <p>
+          Created: ${plan.date}
+        </p>
+
+      </div>
+    `;
+  });
+}
+
+
+/*
+==================================================
+CLEAR SAVED RESEARCH PLANS
+==================================================
+*/
+
+function clearResearchPlans() {
+
+  localStorage.removeItem("novaResearchPlans");
+
+  const result =
+    document.getElementById("savedResearchPlans");
+
+  result.innerHTML =
+    "All saved research plans have been cleared.";
+}
+
+
+/*
+==================================================
+RESEARCH PLANNER
+==================================================
+*/
+
+function createResearchPlan() {
+
+  const topic = document.getElementById("researchTopic").value.trim();
+
+  const result = document.getElementById("researchPlanResult");
+
+  if (topic === "") {
+    result.innerHTML = "Please enter a research topic, idea, business, or problem.";
+    return;
+  }
+
+  result.innerHTML = `
+    <div class="nova-result-card">
+
+      <h3>🔎 Nova Research Planner</h3>
+
+      <p><strong>Research topic:</strong> ${topic}</p>
+
+      <hr>
+
+      <h4>1. Define the Problem</h4>
+      <p>
+        Clearly explain what you are trying to understand,
+        solve, improve, or discover.
+      </p>
+
+      <h4>2. Understand the Customer or User</h4>
+      <p>
+        Identify who is affected by the problem and who
+        could benefit from the solution.
+      </p>
+
+      <h4>3. Study the Market</h4>
+      <p>
+        Investigate demand, existing solutions, competitors,
+        trends, opportunities, and market gaps.
+      </p>
+
+      <h4>4. Investigate Existing Solutions</h4>
+      <p>
+        Find out what products, businesses, technologies,
+        or systems already exist.
+      </p>
+
+      <h4>5. Identify the Opportunity</h4>
+      <p>
+        Look for weaknesses, unmet needs, inefficiencies,
+        or opportunities for improvement.
+      </p>
+
+      <h4>6. Research Technology</h4>
+      <p>
+        Identify technologies, digital systems, AI tools,
+        software, hardware, or infrastructure that could
+        help solve the problem.
+      </p>
+
+      <h4>7. Collect Evidence</h4>
+      <p>
+        Record important facts, statistics, observations,
+        customer feedback, competitors, and research sources.
+      </p>
+
+      <h4>8. Analyze the Findings</h4>
+      <p>
+        Compare the information collected and identify
+        patterns, opportunities, risks, and important insights.
+      </p>
+
+      <h4>9. Develop Possible Solutions</h4>
+      <p>
+        Create several possible approaches before choosing
+        the strongest solution.
+      </p>
+
+      <h4>10. Next Action</h4>
+      <p>
+        Decide what should be investigated, tested, designed,
+        or built next.
+      </p>
+
+      <hr>
+
+      <h4>📌 Nova Research Output</h4>
+
+      <p>
+        Your research should eventually answer:
+      </p>
+
+      <ul>
+        <li>What is the problem?</li>
+        <li>Who has the problem?</li>
+        <li>Why does the problem matter?</li>
+        <li>What solutions already exist?</li>
+        <li>What opportunities exist?</li>
+        <li>What technology can help?</li>
+        <li>What solution should be developed?</li>
+        <li>What should happen next?</li>
+      </ul>
+
+      <button onclick="saveResearchPlan('${topic.replace(/'/g, "\\'")}')">
+        💾 Save Research Plan
+      </button>
+
+    </div>
+  `;
+}
+
+
+/*
+==================================================
+SAVE RESEARCH PLAN
+==================================================
+*/
+
+function saveResearchPlan(topic) {
+
+  const savedPlans =
+    JSON.parse(localStorage.getItem("novaResearchPlans")) || [];
+
+  const plan = {
+    topic: topic,
+    date: new Date().toLocaleString()
+  };
+
+  savedPlans.push(plan);
+
+  localStorage.setItem(
+    "novaResearchPlans",
+    JSON.stringify(savedPlans)
+  );
+
+  const result = document.getElementById("researchPlanResult");
+
+  result.innerHTML += `
+    <p style="margin-top:15px;">
+      ✅ Research plan saved successfully.
+    </p>
+  `;
+}
+
+
+/*
+==================================================
+LOAD SAVED RESEARCH PLANS
+==================================================
+*/
+
+function loadResearchPlans() {
+
+  const savedPlans =
+    JSON.parse(localStorage.getItem("novaResearchPlans")) || [];
+
+  const result =
+    document.getElementById("savedResearchPlans");
+
+  if (savedPlans.length === 0) {
+    result.innerHTML =
+      "No saved research plans yet.";
+    return;
+  }
+
+  result.innerHTML = `
+    <h3>📚 Saved Research Plans</h3>
+  `;
+
+  savedPlans.forEach((plan, index) => {
+
+    result.innerHTML += `
+      <div class="nova-result-card">
+
+        <strong>${index + 1}. ${plan.topic}</strong>
+
+        <p>
+          Created: ${plan.date}
+        </p>
+
+      </div>
+    `;
+  });
+}
+
+
+/*
+==================================================
+CLEAR SAVED RESEARCH PLANS
+==================================================
+*/
+
+function clearResearchPlans() {
+
+  localStorage.removeItem("novaResearchPlans");
+
+  const result =
+    document.getElementById("savedResearchPlans");
+
+  result.innerHTML =
+    "All saved research plans have been cleared.";
+}
+
+
+/* RESEARCH PLANNER */
 
 function planResearch() {
 
-  const input =
-    document.getElementById("researchInput").value.trim();
+  var input = document.getElementById("researchInput").value.trim();
+  var result = document.getElementById("researchResult");
 
   if (!input) {
-    document.getElementById("researchResult").innerText =
-      "Please
+    result.innerText = "Please enter a research topic.";
+    return;
+  }
+
+  result.innerHTML =
+    "<b>Nova Research Plan</b><br><br>" +
+    "Topic: " + input + "<br><br>" +
+    "1. Define the problem.<br>" +
+    "2. Identify the target users.<br>" +
+    "3. Research the market.<br>" +
+    "4. Study existing solutions.<br>" +
+    "5. Identify opportunities.<br>" +
+    "6. Research useful technology.<br>" +
+    "7. Collect evidence.<br>" +
+    "8. Analyze the findings.<br>" +
+    "9. Develop possible solutions.<br>" +
+    "10. Decide the next action.";
+  }
