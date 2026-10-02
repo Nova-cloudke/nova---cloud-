@@ -1343,19 +1343,33 @@ function createTasks() {
    START NOVA CLOUD
    ===================================================== */
 
-document.querySelectorAll("button").forEach(function(button) {
-  button.addEventListener("click", function() {
-    const target = button.getAttribute("data-target");
+document.querySelectorAll(".category").forEach(function(button) {
+  button.onclick = function() {
+    const text = button.innerText.toLowerCase();
 
-    if (!target) return;
+    const sections = {
+      systems: "systems",
+      business: "business",
+      research: "research",
+      "data & analysis": "data",
+      "cloud workspace": "cloud"
+    };
 
-    const section = document.getElementById(target);
+    for (const name in sections) {
+      if (text.includes(name)) {
+        document.querySelectorAll(".section").forEach(function(section) {
+          section.style.display = "none";
+        });
 
-    if (section) {
-      section.style.display =
-        section.style.display === "none" ? "block" : "none";
+        const target = document.getElementById(sections[name]);
+
+        if (target) {
+          target.style.display = "block";
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
     }
-  });
+  };
 });
 </script>
 
