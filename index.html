@@ -1343,7 +1343,20 @@ function createTasks() {
    START NOVA CLOUD
    ===================================================== */
 
+document.querySelectorAll("button").forEach(function(button) {
+  button.addEventListener("click", function() {
+    const target = button.getAttribute("data-target");
 
+    if (!target) return;
+
+    const section = document.getElementById(target);
+
+    if (section) {
+      section.style.display =
+        section.style.display === "none" ? "block" : "none";
+    }
+  });
+});
 </script>
 
 </body>
