@@ -2,1375 +2,497 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Nova Cloud</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background: #f4f7fb;
-  color: #172033;
-}
-
-header {
-  background: #172033;
-  color: white;
-  text-align: center;
-  padding: 35px 20px;
-}
-
-header h1 {
-  font-size: 48px;
-  margin-bottom: 12px;
-}
-
-header p {
-  font-size: 20px;
-  line-height: 1.7;
-  color: #dce3ef;
-}
-
-.container {
-  width: 94%;
-  max-width: 1100px;
-  margin: 30px auto;
-}
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.category {
-  background: white;
-  border: none;
-  border-radius: 20px;
-  padding: 25px;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: 0.2s;
-}
-
-.category:hover {
-  transform: translateY(-3px);
-}
-
-.section {
-  display: none;
-  background: white;
-  margin-top: 30px;
-  padding: 35px;
-  border-radius: 24px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-.section.active {
-  display: block;
-}
-
-.section h2 {
-  font-size: 34px;
-  margin-bottom: 12px;
-}
-
-.section-description {
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 25px;
-  color: #4b5563;
-}
-
-.tools {
-  display: grid;
-  gap: 16px;
-}
-
-.tool {
-  background: #f8fafc;
-  border: 1px solid #e3e8ef;
-  border-radius: 18px;
-  padding: 22px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.tool:hover {
-  background: #eef4ff;
-  transform: translateY(-2px);
-}
-
-.tool h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.tool p {
-  color: #5b6472;
-  line-height: 1.5;
-}
-
-.workspace {
-  display: none;
-  background: white;
-  margin-top: 25px;
-  padding: 30px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-.workspace.active {
-  display: block;
-}
-
-.workspace h2 {
-  margin-bottom: 10px;
-}
-
-textarea,
-input,
-select {
-  width: 100%;
-  padding: 14px;
-  margin: 12px 0;
-  border: 1px solid #ccd3dd;
-  border-radius: 12px;
-  font-size: 16px;
-}
-
-textarea {
-  min-height: 160px;
-  resize: vertical;
-}
-
-button.action {
-  background: #172033;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 13px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 8px;
-}
-
-button.action:hover {
-  opacity: 0.9;
-}
-
-.result {
-  margin-top: 20px;
-  padding: 18px;
-  background: #f1f5f9;
-  border-radius: 14px;
-  line-height: 1.7;
-  white-space: pre-line;
-}
-
-.back {
-  margin-top: 20px;
-  background: #e8edf5;
-  color: #172033;
-}
-
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  color: #64748b;
-}
-
-@media (max-width: 700px) {
-
-  header h1 {
-    font-size: 38px;
-  }
-
-  header p {
-    font-size: 17px;
-  }
-
-  .category-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section {
-    padding: 24px;
-  }
-
-  .section h2 {
-    font-size: 28px;
-  }
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f4f7fb;color:#172033}
+header{background:#172033;color:white;text-align:center;padding:25px}
+header h1{font-size:30px}
+header p{margin-top:8px;color:#d8e0ea}
+main{max-width:950px;margin:auto;padding:20px}
+.section{display:none;background:white;padding:22px;border-radius:15px;margin-top:20px;box-shadow:0 3px 15px #0002}
+.section.active{display:block}
+h2{margin-bottom:12px}
+.section-description{color:#566274;line-height:1.6;margin-bottom:20px}
+.category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.category,.back,.action{border:0;border-radius:10px;padding:14px;cursor:pointer;font-weight:bold}
+.category{background:#e7edf6;color:#172033;font-size:16px}
+.category:hover,.tool:hover{background:#dce7f5}
+.back,.action{background:#172033;color:white;margin-bottom:18px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.tool{border:1px solid #dce3ec;border-radius:12px;padding:18px;cursor:pointer;background:#fafcff}
+.tool h3{margin-bottom:8px}
+.tool p{color:#5c6878;line-height:1.5}
+#toolWorkspace{display:none;background:white;margin-top:20px;padding:22px;border-radius:15px;box-shadow:0 3px 15px #0002}
+textarea{width:100%;min-height:120px;padding:12px;border:1px solid #ccd5df;border-radius:8px;margin:12px 0}
+#output{margin-top:15px;padding:15px;background:#eef4fb;border-radius:10px;line-height:1.6}
+footer{text-align:center;padding:30px;color:#657184}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Nova Cloud</h1>
-  <p>
-    Systems • Business Intelligence • Research •
-    Data & Analysis • Cloud Workspace
-  </p>
+<h1>☁️ Nova Cloud</h1>
+<p>Research • Innovation • Technology</p>
 </header>
 
-<div class="container">
+<main>
 
-  <!-- MAIN NAVIGATION -->
+<section id="home" class="section active">
+<h2>🚀 Nova Cloud</h2>
 
-  <div class="category-grid">
+<p class="section-description">
+A business and innovation intelligence platform for ideas, businesses,
+research, data, technology and digital systems.
+</p>
 
-    <button class="category" onclick="openSection('systems')">
-      ⚙️ Systems
-    </button>
+<div class="category-grid">
 
-    <button class="category" onclick="openSection('business')">
-      🧠 Business
-    </button>
+<button class="category" onclick="openSection('systems')">
+⚙️ Systems
+</button>
 
-    <button class="category" onclick="openSection('research')">
-      🔎 Research
-    </button>
+<button class="category" onclick="openSection('business')">
+🧠 Business Intelligence
+</button>
 
-    <button class="category" onclick="openSection('data')">
-      📊 Data & Analysis
-    </button>
+<button class="category" onclick="openSection('research')">
+🔎 Research
+</button>
 
-    <button class="category" onclick="openSection('workspace')">
-      ☁️ Cloud Workspace
-    </button>
+<button class="category" onclick="openSection('data')">
+📊 Data & Analysis
+</button>
 
-  </div>
+<button class="category" onclick="openSection('workspace')">
+☁️ Cloud Workspace
+</button>
 
+</div>
+</section>
 
-  <!-- SYSTEMS -->
 
-  <section id="systems" class="section">
+<section id="systems" class="section">
+<button class="back" onclick="openSection('home')">← Back</button>
 
-    <h2>⚙️ Systems</h2>
+<h2>⚙️ Systems</h2>
+<p class="section-description">
+Build and organize digital systems, AI projects and technology concepts.
+</p>
 
-    <p class="section-description">
-      Build and organize digital systems, AI projects
-      and technology concepts.
-    </p>
+<div class="tools">
 
-    <div class="tools">
+<div class="tool" onclick="openTool('System Builder')">
+<h3>🛠️ System Builder</h3>
+<p>Turn an idea or problem into a structured digital system.</p>
+</div>
 
-      <div class="tool" onclick="openTool('systemBuilder')">
-        <h3>⚙️ System Builder</h3>
-        <p>Turn an idea or problem into a structured digital system.</p>
-      </div>
+<div class="tool" onclick="openTool('AI Projects')">
+<h3>🤖 AI Projects</h3>
+<p>Plan an AI project, its purpose, users and required technology.</p>
+</div>
 
-      <div class="tool" onclick="openTool('aiProjects')">
-        <h3>🤖 AI Projects</h3>
-        <p>Organize AI ideas, projects, features and development plans.</p>
-      </div>
+<div class="tool" onclick="openTool('Technology')">
+<h3>💻 Technology</h3>
+<p>Explore technology concepts, systems and innovation opportunities.</p>
+</div>
 
-      <div class="tool" onclick="openTool('technology')">
-        <h3>💻 Technology</h3>
-        <p>Explore technology concepts and plan technology projects.</p>
-      </div>
+</div>
+</section>
 
-    </div>
 
-  </section>
+<section id="business" class="section">
+<button class="back" onclick="openSection('home')">← Back</button>
 
+<h2>🧠 Business Intelligence</h2>
+<p class="section-description">
+Understand businesses, customers, markets, competition, operations and opportunities.
+</p>
 
-  <!-- BUSINESS -->
+<div class="tools">
 
-  <section id="business" class="section">
+<div class="tool" onclick="openTool('Business Analyzer')">
+<h3>🏢 Business Analyzer</h3>
+<p>Analyze an existing business and identify what to preserve, adapt, replace or innovate.</p>
+</div>
 
-    <h2>🧠 Business Intelligence</h2>
+<div class="tool" onclick="openTool('Business Idea Analyzer')">
+<h3>💡 Business Idea Analyzer</h3>
+<p>Turn a new business idea into a structured opportunity.</p>
+</div>
 
-    <p class="section-description">
-      Understand businesses, customers, markets, problems
-      and opportunities.
-    </p>
+<div class="tool" onclick="openTool('Customer Research')">
+<h3>👥 Customer Research</h3>
+<p>Understand customers, their problems, needs and buying behavior.</p>
+</div>
 
-    <div class="tools">
+</div>
+</section>
 
-      <div class="tool" onclick="openTool('businessAnalyzer')">
-        <h3>🏢 Business Analyzer</h3>
-        <p>Analyze a business and identify areas that can improve.</p>
-      </div>
 
-      <div class="tool" onclick="openTool('ideaAnalyzer')">
-        <h3>💡 Business Idea Analyzer</h3>
-        <p>Turn a business idea into a structured concept.</p>
-      </div>
+<section id="research" class="section">
+<button class="back" onclick="openSection('home')">← Back</button>
 
-      <div class="tool" onclick="openTool('customerResearch')">
-        <h3>👥 Customer Research</h3>
-        <p>Identify customers, their problems and possible solutions.</p>
-      </div>
+<h2>🔎 Research</h2>
+<p class="section-description">
+Capture questions, organize research and turn information into useful knowledge.
+</p>
 
-    </div>
+<div class="tools">
 
-  </section>
+<div class="tool" onclick="openTool('Research Planner')">
+<h3>🔎 Research Planner</h3>
+<p>Create a structured research plan from a question or topic.</p>
+</div>
 
+<div class="tool" onclick="openTool('Research Notes')">
+<h3>📝 Research Notes</h3>
+<p>Organize important research information and observations.</p>
+</div>
 
-  <!-- RESEARCH -->
+<div class="tool" onclick="openTool('Problem Research')">
+<h3>🧩 Problem Research</h3>
+<p>Break a problem into smaller questions for investigation.</p>
+</div>
 
-  <section id="research" class="section">
+</div>
+</section>
 
-    <h2>🔎 Research</h2>
 
-    <p class="section-description">
-      Capture questions, organize research and turn information
-      into useful knowledge.
-    </p>
+<section id="data" class="section">
+<button class="back" onclick="openSection('home')">← Back</button>
 
-    <div class="tools">
+<h2>📊 Data & Analysis</h2>
+<p class="section-description">
+Analyze numbers, sentences, information and decisions to produce useful insights.
+</p>
 
-      <div class="tool" onclick="openTool('researchPlanner')">
-        <h3>🔎 Research Planner</h3>
-        <p>Create a structured investigation path.</p>
-      </div>
+<div class="tools">
 
-      <div class="tool" onclick="openTool('researchNotes')">
-        <h3>📝 Research Notes</h3>
-        <p>Save and organize your research notes directly in Nova Cloud.</p>
-      </div>
+<div class="tool" onclick="openTool('Data Analyzer')">
+<h3>📊 Data Analyzer</h3>
+<p>Analyze numbers or information and identify patterns.</p>
+</div>
 
-      <div class="tool" onclick="openTool('problemResearch')">
-        <h3>🧩 Problem Research</h3>
-        <p>Break a problem into questions that need investigation.</p>
-      </div>
+<div class="tool" onclick="openTool('Decision Analysis')">
+<h3>🎯 Decision Analysis</h3>
+<p>Compare options and organize the factors behind a decision.</p>
+</div>
 
-    </div>
+<div class="tool" onclick="openTool('Text Analysis')">
+<h3>📄 Text Analysis</h3>
+<p>Break down sentences or written information into useful points.</p>
+</div>
 
-  </section>
+</div>
+</section>
 
 
-  <!-- DATA -->
+<section id="workspace" class="section">
+<button class="back" onclick="openSection('home')">← Back</button>
 
-  <section id="data" class="section">
+<h2>☁️ Cloud Workspace</h2>
+<p class="section-description">
+Organize projects, ideas, tasks and knowledge in one workspace.
+</p>
 
-    <h2>📊 Data & Analysis</h2>
+<div class="tools">
 
-    <p class="section-description">
-      Work with numbers, calculations, patterns and business data.
-    </p>
+<div class="tool" onclick="openTool('Project Workspace')">
+<h3>📁 Project Workspace</h3>
+<p>Organize a project, its objectives and next actions.</p>
+</div>
 
-    <div class="tools">
+<div class="tool" onclick="openTool('Idea Workspace')">
+<h3>💡 Idea Workspace</h3>
+<p>Capture and develop new ideas.</p>
+</div>
 
-      <div class="tool" onclick="openTool('calculator')">
-        <h3>🧮 Calculator</h3>
-        <p>Perform quick calculations.</p>
-      </div>
+<div class="tool" onclick="openTool('Task Workspace')">
+<h3>✅ Task Workspace</h3>
+<p>Turn a project or idea into practical tasks.</p>
+</div>
 
-      <div class="tool" onclick="openTool('dataAnalyzer')">
-        <h3>📊 Data Analyzer</h3>
-        <p>Enter data and get basic totals and averages.</p>
-      </div>
+</div>
+</section>
 
-      <div class="tool" onclick="openTool('decisionAnalysis')">
-        <h3>📈 Decision Analysis</h3>
-        <p>Compare options and organize decision factors.</p>
-      </div>
 
-    </div>
+<div id="toolWorkspace">
 
-  </section>
+<button class="back" onclick="closeTool()">← Back to Tools</button>
 
+<h2 id="toolTitle"></h2>
 
-  <!-- CLOUD WORKSPACE -->
+<p id="toolDescription" class="section-description"></p>
 
-  <section id="workspace" class="section">
+<textarea id="toolInput"
+placeholder="Enter your idea, business, problem, question or information here..."></textarea>
 
-    <h2>☁️ Cloud Workspace</h2>
+<button class="action" onclick="runTool()">Analyze / Build</button>
 
-    <p class="section-description">
-      A central workspace for ideas, projects, notes and planning.
-    </p>
-
-    <div class="tools">
-
-      <div class="tool" onclick="openTool('projectWorkspace')">
-        <h3>📁 Project Workspace</h3>
-        <p>Create and organize a project.</p>
-      </div>
-
-      <div class="tool" onclick="openTool('ideaWorkspace')">
-        <h3>💡 Idea Workspace</h3>
-        <p>Capture and develop new ideas.</p>
-      </div>
-
-      <div class="tool" onclick="openTool('taskWorkspace')">
-        <h3>✅ Task Workspace</h3>
-        <p>Break projects into actionable tasks.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- REUSABLE TOOL WORKSPACE -->
-
-  <div id="toolWorkspace" class="workspace">
-
-    <h2 id="toolTitle">Nova Tool</h2>
-
-    <div id="toolContent"></div>
-
-    <button class="action back" onclick="closeTool()">
-      ← Back to Section
-    </button>
-
-  </div>
+<div id="output"></div>
 
 </div>
 
+</main>
 
 <footer>
-  Nova Cloud — Research • Innovation • Technology
+Nova Cloud — Research • Innovation • Technology
 </footer>
 
 
 <script>
 
-/* =====================================================
-   NOVA CLOUD REUSABLE NAVIGATION SYSTEM
-   ===================================================== */
+let currentTool="";
 
-function openSection(sectionId) {
 
-  // Hide all sections
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active");
-  });
+function openSection(id){
 
-  // Hide tool workspace
-  document.getElementById("toolWorkspace")
-    .classList.remove("active");
+document.querySelectorAll(".section").forEach(function(section){
+section.classList.remove("active");
+});
 
-  // Show selected section
-  const section = document.getElementById(sectionId);
+document.getElementById("toolWorkspace").style.display="none";
 
-  if (section) {
-    section.classList.add("active");
+document.getElementById(id).classList.add("active");
 
-    section.scrollIntoView({
-      behavior: "smooth"
-    });
-  }
+window.scrollTo(0,0);
 }
 
 
-/* =====================================================
-   REUSABLE TOOL ENGINE
-   ===================================================== */
+function openTool(tool){
 
-const tools = {
+currentTool=tool;
 
-  systemBuilder: {
-    title: "⚙️ System Builder",
+document.querySelectorAll(".section").forEach(function(section){
+section.classList.remove("active");
+});
 
-    content: `
-      <p>Describe the system you want to build.</p>
+document.getElementById("toolWorkspace").style.display="block";
 
-      <textarea id="systemInput"
-        placeholder="Example: I want a system that helps small businesses manage customers..."></textarea>
+document.getElementById("toolTitle").innerText=tool;
 
-      <button class="action" onclick="buildSystem()">
-        Build System Plan
-      </button>
+document.getElementById("toolInput").value="";
 
-      <div id="systemResult" class="result"></div>
-    `
-  },
+document.getElementById("output").innerHTML=
+"Enter information above and select <b>Analyze / Build</b>.";
 
+let descriptions={
 
-  aiProjects: {
-    title: "🤖 AI Projects",
+"System Builder":
+"Describe the system you want to build. Nova Cloud will organize the idea into a practical system structure.",
 
-    content: `
-      <p>Describe your AI project.</p>
+"AI Projects":
+"Describe your AI project idea. Think about the problem, users, data, AI capability and expected result.",
 
-      <textarea id="aiInput"
-        placeholder="Describe the AI project, problem or idea..."></textarea>
+"Technology":
+"Describe a technology, technology problem or innovation you want to explore.",
 
-      <button class="action" onclick="createAIPlan()">
-        Create AI Project Plan
-      </button>
+"Business Analyzer":
+"Enter a business and Nova Cloud will organize its customers, problems, products, competition, marketing, operations and opportunities.",
 
-      <div id="aiResult" class="result"></div>
-    `
-  },
+"Business Idea Analyzer":
+"Enter a business idea and examine its customers, problem, solution, market, competition and opportunities.",
 
+"Customer Research":
+"Describe a product, service or business. Identify possible customers, their needs and problems.",
 
-  technology: {
-    title: "💻 Technology",
+"Research Planner":
+"Enter a research question or topic and organize it into objectives, questions, information needs and actions.",
 
-    content: `
-      <p>Enter a technology concept or project.</p>
+"Research Notes":
+"Enter your research notes and organize the important points.",
 
-      <input id="technologyInput"
-        placeholder="Example: Autonomous electric vehicle">
+"Problem Research":
+"Describe a problem and break it into research questions and areas to investigate.",
 
-      <button class="action" onclick="exploreTechnology()">
-        Explore
-      </button>
+"Data Analyzer":
+"Enter numbers or information. Nova Cloud will organize the information and identify basic insights.",
 
-      <div id="technologyResult" class="result"></div>
-    `
-  },
+"Decision Analysis":
+"Enter a decision and its options. Organize advantages, disadvantages, risks and opportunities.",
 
+"Text Analysis":
+"Enter a sentence or text and identify its main ideas, issues, themes and useful points.",
 
-  businessAnalyzer: {
-    title: "🏢 Business Analyzer",
+"Project Workspace":
+"Describe your project and organize its objective, activities and next steps.",
 
-    content: `
-      <p>Describe an existing business.</p>
+"Idea Workspace":
+"Enter an idea and organize it into a clear concept and possible next steps.",
 
-      <textarea id="businessInput"
-        placeholder="Business type, customers, products, problems, location..."></textarea>
-
-      <button class="action" onclick="analyzeBusiness()">
-        Analyze Business
-      </button>
-
-      <div id="businessResult" class="result"></div>
-    `
-  },
-
-
-  ideaAnalyzer: {
-    title: "💡 Business Idea Analyzer",
-
-    content: `
-      <p>Enter your business idea.</p>
-
-      <textarea id="ideaInput"
-        placeholder="Describe your business idea..."></textarea>
-
-      <button class="action" onclick="analyzeIdea()">
-        Analyze Idea
-      </button>
-
-      <div id="ideaResult" class="result"></div>
-    `
-  },
-
-
-  customerResearch: {
-    title: "👥 Customer Research",
-
-    content: `
-      <p>Describe the product, service or business.</p>
-
-      <textarea id="customerInput"
-        placeholder="What are you trying to sell or improve?"></textarea>
-
-      <button class="action" onclick="researchCustomers()">
-        Build Customer Research
-      </button>
-
-      <div id="customerResult" class="result"></div>
-    `
-  },
-
-
-  researchPlanner: {
-    title: "🔎 Research Planner",
-
-    content: `
-      <p>What do you want to investigate?</p>
-
-      <textarea id="researchInput"
-        placeholder="Enter your research question..."></textarea>
-
-      <button class="action" onclick="planResearch()">
-        Create Research Path
-      </button>
-
-      <div id="researchResult" class="result"></div>
-    `
-  },
-
-
-  researchNotes: {
-    title: "📝 Research Notes",
-
-    content: `
-      <p>Your notes are saved in this browser.</p>
-
-      <textarea id="notesInput"
-        placeholder="Write your research notes here..."></textarea>
-
-      <button class="action" onclick="saveNotes()">
-        Save Notes
-      </button>
-
-      <button class="action" onclick="loadNotes()">
-        Load Notes
-      </button>
-
-      <div id="notesResult" class="result"></div>
-    `
-  },
-
-
-  problemResearch: {
-    title: "🧩 Problem Research",
-
-    content: `
-      <p>Describe the problem.</p>
-
-      <textarea id="problemInput"
-        placeholder="What problem are you investigating?"></textarea>
-
-      <button class="action" onclick="breakProblem()">
-        Break Down Problem
-      </button>
-
-      <div id="problemResult" class="result"></div>
-    `
-  },
-
-
-  calculator: {
-    title: "🧮 Calculator",
-
-    content: `
-      <p>Enter a calculation.</p>
-
-      <input id="calcInput"
-        placeholder="Example: 250 * 12">
-
-      <button class="action" onclick="calculate()">
-        Calculate
-      </button>
-
-      <div id="calcResult" class="result"></div>
-    `
-  },
-
-
-  dataAnalyzer: {
-    title: "📊 Data Analyzer",
-
-    content: `
-      <p>Enter numbers separated by commas.</p>
-
-      <input id="dataInput"
-        placeholder="Example: 10, 20, 30, 40, 50">
-
-      <button class="action" onclick="analyzeData()">
-        Analyze Data
-      </button>
-
-      <div id="dataResult" class="result"></div>
-    `
-  },
-
-
-  decisionAnalysis: {
-    title: "📈 Decision Analysis",
-
-    content: `
-      <p>Describe the decision you need to make.</p>
-
-      <textarea id="decisionInput"
-        placeholder="Example: Should Nova Cloud focus first on businesses or entrepreneurs?"></textarea>
-
-      <button class="action" onclick="analyzeDecision()">
-        Structure Decision
-      </button>
-
-      <div id="decisionResult" class="result"></div>
-    `
-  },
-
-
-  projectWorkspace: {
-    title: "📁 Project Workspace",
-
-    content: `
-      <p>Create a simple project record.</p>
-
-      <input id="projectName"
-        placeholder="Project name">
-
-      <textarea id="projectDescription"
-        placeholder="Project description"></textarea>
-
-      <button class="action" onclick="saveProject()">
-        Save Project
-      </button>
-
-      <div id="projectResult" class="result"></div>
-    `
-  },
-
-
-  ideaWorkspace: {
-    title: "💡 Idea Workspace",
-
-    content: `
-      <p>Capture a new idea.</p>
-
-      <textarea id="ideaWorkspaceInput"
-        placeholder="Write your idea..."></textarea>
-
-      <button class="action" onclick="saveIdea()">
-        Save Idea
-      </button>
-
-      <div id="ideaWorkspaceResult" class="result"></div>
-    `
-  },
-
-
-  taskWorkspace: {
-    title: "✅ Task Workspace",
-
-    content: `
-      <p>Enter tasks for your project.</p>
-
-      <textarea id="taskInput"
-        placeholder="Example:
-Build homepage
-Create database
-Test navigation
-Publish system"></textarea>
-
-      <button class="action" onclick="createTasks()">
-        Organize Tasks
-      </button>
-
-      <div id="taskResult" class="result"></div>
-    `
-  }
+"Task Workspace":
+"Enter a project or goal and break it into practical tasks."
 
 };
 
+document.getElementById("toolDescription").innerText=
+descriptions[tool] || "Enter information to begin.";
 
-/* =====================================================
-   OPEN ANY TOOL USING THE SAME REUSABLE FUNCTION
-   ===================================================== */
-
-function openTool(toolName) {
-
-  const tool = tools[toolName];
-
-  if (!tool) {
-    return;
-  }
-
-  document.getElementById("toolTitle").innerHTML =
-    tool.title;
-
-  document.getElementById("toolContent").innerHTML =
-    tool.content;
-
-  document.getElementById("toolWorkspace")
-    .classList.add("active");
-
-  document.getElementById("toolWorkspace")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
+window.scrollTo(0,0);
 }
 
 
-function closeTool() {
+function closeTool(){
 
-  document.getElementById("toolWorkspace")
-    .classList.remove("active");
+document.getElementById("toolWorkspace").style.display="none";
+
+document.getElementById("home").classList.add("active");
+
+window.scrollTo(0,0);
 }
 
 
-/* =====================================================
-   SYSTEM BUILDER
-   ===================================================== */
+function runTool(){
 
-function buildSystem() {
+let input=document.getElementById("toolInput").value.trim();
 
-  const input =
-    document.getElementById("systemInput").value.trim();
+if(!input){
 
-  if (!input) {
-    document.getElementById("systemResult").innerText =
-      "Please describe the system first.";
-    return;
-  }
+document.getElementById("output").innerHTML=
+"Please enter some information first.";
 
-  document.getElementById("systemResult").innerText =
-`NOVA SYSTEM PLAN
-
-Starting idea:
-${input}
-
-1. Define the problem
-2. Identify the users
-3. Define the required features
-4. Design the workflow
-5. Choose the technology
-6. Build the first version
-7. Test the system
-8. Improve and expand
-
-Next step:
-Turn the most important feature into a working prototype.`;
+return;
 }
 
+let result="";
 
-/* =====================================================
-   AI PROJECTS
-   ===================================================== */
+if(currentTool==="Business Analyzer"){
 
-function createAIPlan() {
+result=
+"<b>Business:</b> "+input+
+"<br><br><b>Analyze:</b> Customers → Problems → Products/Services → Competition → Marketing → Technology → Operations → Revenue → Opportunities."+
+"<br><br><b>Adaptation:</b> Consider what the business should preserve, adapt, replace or innovate.";
 
-  const input =
-    document.getElementById("aiInput").value.trim();
-
-  if (!input) {
-    document.getElementById("aiResult").innerText =
-      "Please describe the AI project first.";
-    return;
-  }
-
-  document.getElementById("aiResult").innerText =
-`NOVA AI PROJECT PLAN
-
-Project:
-${input}
-
-Problem:
-What problem should the AI solve?
-
-Users:
-Who will use it?
-
-Inputs:
-What information will the system receive?
-
-AI Function:
-What should the AI understand, predict, generate or recommend?
-
-Output:
-What should the user receive?
-
-Prototype:
-Build the smallest useful version first.`;
 }
 
+else if(currentTool==="Business Idea Analyzer"){
 
-/* =====================================================
-   TECHNOLOGY
-   ===================================================== */
+result=
+"<b>Business Idea:</b> "+input+
+"<br><br><b>Key areas:</b> Customer → Problem → Solution → Market → Competition → Revenue → Marketing → Technology → Operations → Growth.";
 
-function exploreTechnology() {
-
-  const input =
-    document.getElementById("technologyInput").value.trim();
-
-  if (!input) {
-    document.getElementById("technologyResult").innerText =
-      "Please enter a technology concept.";
-    return;
-  }
-
-  document.getElementById("technologyResult").innerText =
-`TECHNOLOGY EXPLORATION
-
-Concept:
-${input}
-
-Study:
-
-1. What is it?
-2. What problem does it solve?
-3. How does it work?
-4. What components are required?
-5. Where can it be used?
-6. What limitations exist?
-7. What could be improved?
-8. Can Nova Cloud build a practical version?`;
 }
 
+else if(currentTool==="Customer Research"){
 
-/* =====================================================
-   BUSINESS ANALYZER
-   ===================================================== */
+result=
+"<b>Customer Research:</b> "+input+
+"<br><br>Investigate who the customers are, what problem they have, what they currently use, what they value and what could make them choose a solution.";
 
-function analyzeBusiness() {
-
-  const input =
-    document.getElementById("businessInput").value.trim();
-
-  if (!input) {
-    document.getElementById("businessResult").innerText =
-      "Please describe the business first.";
-    return;
-  }
-
-  document.getElementById("businessResult").innerText =
-`NOVA BUSINESS ANALYSIS
-
-Business:
-${input}
-
-Investigate:
-
-1. Customers
-2. Customer problems
-3. Products and services
-4. Competition
-5. Marketing
-6. Technology
-7. Operations
-8. Revenue
-9. Opportunities
-10. What should be preserved, adapted, replaced or innovated?
-
-Next:
-Identify the most important improvement opportunity.`;
 }
 
+else if(currentTool==="Research Planner"){
 
-/* =====================================================
-   BUSINESS IDEA
-   ===================================================== */
+result=
+"<b>Research Topic:</b> "+input+
+"<br><br><b>Plan:</b> 1. Define the problem. 2. Create research questions. 3. Identify information needed. 4. Find reliable sources. 5. Compare findings. 6. Develop conclusions. 7. Decide next actions.";
 
-function analyzeIdea() {
-
-  const input =
-    document.getElementById("ideaInput").value.trim();
-
-  if (!input) {
-    document.getElementById("ideaResult").innerText =
-      "Please enter the business idea.";
-    return;
-  }
-
-  document.getElementById("ideaResult").innerText =
-`BUSINESS IDEA STRUCTURE
-
-Idea:
-${input}
-
-1. Problem
-2. Customer
-3. Solution
-4. Value proposition
-5. Business model
-6. Competition
-7. Required resources
-8. Technology
-9. Marketing
-10. First prototype
-
-Goal:
-Turn the idea into something that can be tested in the real world.`;
 }
 
+else if(currentTool==="Problem Research"){
 
-/* =====================================================
-   CUSTOMER RESEARCH
-   ===================================================== */
+result=
+"<b>Problem:</b> "+input+
+"<br><br><b>Research areas:</b> Cause → People affected → Current solutions → Gaps → Evidence → Possible solutions → Opportunities.";
 
-function researchCustomers() {
-
-  const input =
-    document.getElementById("customerInput").value.trim();
-
-  if (!input) {
-    document.getElementById("customerResult").innerText =
-      "Please describe the product or service.";
-    return;
-  }
-
-  document.getElementById("customerResult").innerText =
-`CUSTOMER RESEARCH
-
-Subject:
-${input}
-
-Investigate:
-
-• Who needs it?
-• What problem do they have?
-• How are they solving it now?
-• What do they value?
-• What prevents them from buying?
-• Where can they be reached?
-• What would make them choose this solution?`;
 }
 
+else if(currentTool==="System Builder"){
 
-/* =====================================================
-   RESEARCH PLANNER
-   ===================================================== */
+result=
+"<b>System:</b> "+input+
+"<br><br><b>Structure:</b> Purpose → Users → Inputs → Process → Technology → Outputs → Data → Feedback → Improvements.";
 
-function planResearch() {
-
-  const input =
-    document.getElementById("researchInput").value.trim();
-
-  if (!input) {
-    document.getElementById("researchResult").innerText =
-      "Please.getElementById("researchInput").value.trim();
-
-  if (!input) {
-    document.getElementById("researchResult").innerText =
-      "Please enter a research question.";
-    return;
-  }
-
-  document.getElementById("researchResult").innerText =
-`RESEARCH PATH
-
-Question:
-${input}
-
-1. Define the question
-2. Identify what is already known
-3. Identify information gaps
-4. Find reliable sources
-5. Compare evidence
-6. Identify patterns
-7. Draw conclusions
-8. Identify new questions
-9. Apply the findings`;
 }
 
+else if(currentTool==="AI Projects"){
 
-/* =====================================================
-   RESEARCH NOTES
-   ===================================================== */
+result=
+"<b>AI Project:</b> "+input+
+"<br><br><b>Structure:</b> Problem → Users → Data → AI capability → System → Output → Testing → Safety → Improvement.";
 
-function saveNotes() {
-
-  const notes =
-    document.getElementById("notesInput").value;
-
-  if (notes.trim() === "") {
-
-    document.getElementById("notesResult").innerText =
-      "Please write some notes first.";
-
-    return;
-  }
-
-  localStorage.setItem(
-    "novaResearchNotes",
-    notes
-  );
-
-  document.getElementById("notesResult").innerText =
-    "Research notes saved successfully.";
 }
 
+else if(currentTool==="Technology"){
 
-function loadNotes() {
+result=
+"<b>Technology Topic:</b> "+input+
+"<br><br><b>Explore:</b> Purpose → Current technology → Users → Benefits → Limitations → Digital opportunities → Innovation.";
 
-  const notes =
-    localStorage.getItem("novaResearchNotes");
-
-  if (!notes) {
-
-    document.getElementById("notesResult").innerText =
-      "No saved research notes found.";
-
-    return;
-  }
-
-  document.getElementById("notesInput").value =
-    notes;
-
-  document.getElementById("notesResult").innerText =
-    "Saved research notes loaded.";
 }
 
+else if(currentTool==="Data Analyzer"){
 
-/* =====================================================
-   PROBLEM RESEARCH
-   ===================================================== */
+result=
+"<b>Data:</b> "+input+
+"<br><br>Organize the information into categories, identify patterns, compare values and look for useful insights.";
 
-function breakProblem() {
-
-  const input =
-    document.getElementById("problemInput").value.trim();
-
-  if (!input) {
-    document.getElementById("problemResult").innerText =
-      "Please describe the problem.";
-    return;
-  }
-
-  document.getElementById("problemResult").innerText =
-`PROBLEM INVESTIGATION
-
-Problem:
-${input}
-
-Investigate:
-
-1. What exactly is happening?
-2. Who is affected?
-3. Why does it happen?
-4. How often does it happen?
-5. What causes it?
-6. What solutions already exist?
-7. What are their weaknesses?
-8. What new solution could work?`;
 }
 
+else if(currentTool==="Decision Analysis"){
 
-/* =====================================================
-   CALCULATOR
-   ===================================================== */
+result=
+"<b>Decision:</b> "+input+
+"<br><br><b>Compare:</b> Options → Benefits → Costs → Risks → Resources → Opportunities → Long-term effects.";
 
-function calculate() {
-
-  const input =
-    document.getElementById("calcInput").value.trim();
-
-  if (!input) {
-    document.getElementById("calcResult").innerText =
-      "Please enter a calculation.";
-    return;
-  }
-
-  try {
-
-    const result =
-      Function('"use strict"; return (' + input + ')')();
-
-    document.getElementById("calcResult").innerText =
-      "Result: " + result;
-
-  } catch {
-
-    document.getElementById("calcResult").innerText =
-      "Unable to calculate that expression.";
-  }
 }
 
+else if(currentTool==="Text Analysis"){
 
-/* =====================================================
-   DATA ANALYZER
-   ===================================================== */
+result=
+"<b>Text:</b> "+input+
+"<br><br><b>Analysis:</b> Main idea → Important points → Problems → Opportunities → Questions → Possible actions.";
 
-function analyzeData() {
-
-  const input =
-    document.getElementById("dataInput").value;
-
-  const numbers =
-    input
-      .split(",")
-      .map(Number)
-      .filter(n => !isNaN(n));
-
-  if (numbers.length === 0) {
-
-    document.getElementById("dataResult").innerText =
-      "Please enter numbers separated by commas.";
-
-    return;
-  }
-
-  const total =
-    numbers.reduce((a,b) => a + b, 0);
-
-  const average =
-    total / numbers.length;
-
-  const highest =
-    Math.max(...numbers);
-
-  const lowest =
-    Math.min(...numbers);
-
-  document.getElementById("dataResult").innerText =
-`DATA ANALYSIS
-
-Number of values: ${numbers.length}
-
-Total: ${total}
-
-Average: ${average}
-
-Highest: ${highest}
-
-Lowest: ${lowest}`;
 }
 
+else if(currentTool==="Project Workspace"){
 
-/* =====================================================
-   DECISION ANALYSIS
-   ===================================================== */
+result=
+"<b>Project:</b> "+input+
+"<br><br><b>Workspace:</b> Goal → Deliverables → Activities → Resources → Tasks → Progress → Next action.";
 
-function analyzeDecision() {
-
-  const input =
-    document.getElementById("decisionInput").value.trim();
-
-  if (!input) {
-    document.getElementById("decisionResult").innerText =
-      "Please describe the decision.";
-    return;
-  }
-
-  document.getElementById("decisionResult").innerText =
-`DECISION STRUCTURE
-
-Decision:
-${input}
-
-Compare:
-
-1. Benefits
-2. Costs
-3. Risks
-4. Resources required
-5. Time required
-6. Expected impact
-7. Long-term potential
-8. Best first step
-
-Nova principle:
-Choose the option that creates the strongest practical progress with available resources.`;
 }
 
+else if(currentTool==="Idea Workspace"){
 
-/* =====================================================
-   PROJECT WORKSPACE
-   ===================================================== */
+result=
+"<b>Idea:</b> "+input+
+"<br><br><b>Develop:</b> Problem → Customer → Solution → Value → Market → Technology → Business model → Next experiment.";
 
-function saveProject() {
-
-  const name =
-    document.getElementById("projectName").value.trim();
-
-  const description =
-    document.getElementById("projectDescription").value.trim();
-
-  if (!name) {
-
-    document.getElementById("projectResult").innerText =
-      "Please enter a project name.";
-
-    return;
-  }
-
-  localStorage.setItem(
-    "novaProjectName",
-    name
-  );
-
-  localStorage.setItem(
-    "novaProjectDescription",
-    description
-  );
-
-  document.getElementById("projectResult").innerText =
-    "Project saved successfully in this browser.";
 }
 
+else if(currentTool==="Task Workspace"){
 
-/* =====================================================
-   IDEA WORKSPACE
-   ===================================================== */
+result=
+"<b>Goal:</b> "+input+
+"<br><br><b>Tasks:</b> Define objective → List actions → Prioritize → Assign resources → Start → Review → Improve.";
 
-function saveIdea() {
-
-  const idea =
-    document.getElementById("ideaWorkspaceInput").value.trim();
-
-  if (!idea) {
-
-    document.getElementById("ideaWorkspaceResult").innerText =
-      "Please write an idea first.";
-
-    return;
-  }
-
-  localStorage.setItem(
-    "novaIdea",
-    idea
-  );
-
-  document.getElementById("ideaWorkspaceResult").innerText =
-    "Idea saved successfully.";
 }
 
+else if(currentTool==="Research Notes"){
 
-/* =====================================================
-   TASK WORKSPACE
-   ===================================================== */
+result=
+"<b>Research Notes:</b><br><br>"+input+
+"<br><br><b>Next step:</b> Identify the most important findings, unanswered questions and actions.";
 
-function createTasks() {
-
-  const input =
-    document.getElementById("taskInput").value.trim();
-
-  if (!input) {
-
-    document.getElementById("taskResult").innerText =
-      "Please enter some tasks.";
-
-    return;
-  }
-
-  const tasks =
-    input
-      .split("\n")
-      .filter(task => task.trim() !== "");
-
-  document.getElementById("taskResult").innerText =
-    "PROJECT TASKS\n\n" +
-    tasks.map((task, index) =>
-      (index + 1) + ". ☐ " + task
-    ).join("\n");
 }
 
+else{
 
-/* =====================================================
-   START NOVA CLOUD
-   ===================================================== */
+result=
+"<b>"+currentTool+"</b><br><br>"+input+
+"<br><br>Information received and organized for further work.";
 
-document.querySelectorAll(".category").forEach(function(button) {
-  button.onclick = function() {
-    const text = button.innerText.toLowerCase();
+}
 
-    const sections = {
-      systems: "systems",
-      business: "business",
-      research: "research",
-      "data & analysis": "data",
-      "cloud workspace": "cloud"
-    };
+document.getElementById("output").innerHTML=result;
 
-    for (const name in sections) {
-      if (text.includes(name)) {
-        document.querySelectorAll(".section").forEach(function(section) {
-          section.style.display = "none";
-        });
+}
 
-        const target = document.getElementById(sections[name]);
-
-        if (target) {
-          target.style.display = "block";
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    }
-  };
-});
 </script>
 
 </body>
