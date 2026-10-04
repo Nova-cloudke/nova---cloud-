@@ -6,7 +6,12 @@
 <title>Nova Cloud</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif
+}
 
 body{
 background:#f4f7fb;
@@ -21,7 +26,11 @@ padding:25px;
 }
 
 header h1{font-size:30px}
-header p{margin-top:8px;color:#d8e0ea}
+
+header p{
+margin-top:8px;
+color:#d8e0ea
+}
 
 main{
 max-width:950px;
@@ -38,9 +47,13 @@ margin-top:20px;
 box-shadow:0 3px 15px #0002;
 }
 
-.section.active{display:block}
+.section.active{
+display:block
+}
 
-h2{margin-bottom:12px}
+h2{
+margin-bottom:12px
+}
 
 .section-description{
 color:#566274;
@@ -92,7 +105,9 @@ cursor:pointer;
 background:#fafcff;
 }
 
-.tool h3{margin-bottom:8px}
+.tool h3{
+margin-bottom:8px
+}
 
 .tool p{
 color:#5c6878;
@@ -110,12 +125,13 @@ box-shadow:0 3px 15px #0002;
 
 textarea{
 width:100%;
-min-height:140px;
+min-height:150px;
 padding:12px;
 border:1px solid #ccd5df;
 border-radius:8px;
 margin:12px 0;
 font-size:16px;
+line-height:1.5;
 }
 
 #output{
@@ -127,14 +143,20 @@ line-height:1.7;
 }
 
 .result-title{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
-margin-bottom:12px;
+margin-bottom:14px;
 }
 
 .result-section{
-margin-top:16px;
+margin-top:18px;
 font-weight:bold;
+font-size:18px;
+}
+
+.result-text{
+font-weight:normal;
+margin-top:5px;
 }
 
 ul{
@@ -142,7 +164,14 @@ margin:8px 0 8px 20px;
 }
 
 li{
-margin-bottom:5px;
+margin-bottom:6px;
+}
+
+.info{
+padding:12px;
+background:#f8fafc;
+border-left:4px solid #172033;
+margin-top:10px;
 }
 
 footer{
@@ -167,8 +196,9 @@ color:#657184;
 <h2>🚀 Nova Cloud</h2>
 
 <p class="section-description">
-A business and innovation intelligence platform for ideas, businesses,
-research, data, technology and digital systems.
+A business and innovation intelligence platform that helps turn
+questions, ideas, problems and confusion into understanding,
+structured knowledge and practical action.
 </p>
 
 <div class="category-grid">
@@ -206,24 +236,25 @@ research, data, technology and digital systems.
 <h2>⚙️ Systems</h2>
 
 <p class="section-description">
-Build and organize digital systems, AI projects and technology concepts.
+Build systems, understand technology and develop AI projects from
+ideas, questions and problems.
 </p>
 
 <div class="tools">
 
 <div class="tool" onclick="openTool('System Builder')">
 <h3>🛠️ System Builder</h3>
-<p>Turn an idea or problem into a structured practical system.</p>
+<p>Turn an idea, question or problem into an understandable practical system.</p>
 </div>
 
 <div class="tool" onclick="openTool('AI Projects')">
 <h3>🤖 AI Projects</h3>
-<p>Plan an AI project, its purpose, users and required technology.</p>
+<p>Understand an AI idea, its problem, users, data and possible system.</p>
 </div>
 
 <div class="tool" onclick="openTool('Technology')">
 <h3>💻 Technology</h3>
-<p>Explore technology concepts, systems and innovation opportunities.</p>
+<p>Explore technology, explain how it works and identify opportunities.</p>
 </div>
 
 </div>
@@ -239,24 +270,25 @@ Build and organize digital systems, AI projects and technology concepts.
 <h2>🧠 Business Intelligence</h2>
 
 <p class="section-description">
-Understand businesses, customers, markets, competition, operations and opportunities.
+Understand businesses, customers, markets, competition, operations,
+technology, opportunities and change.
 </p>
 
 <div class="tools">
 
 <div class="tool" onclick="openTool('Business Analyzer')">
 <h3>🏢 Business Analyzer</h3>
-<p>Analyze an existing business and identify what to preserve, adapt, replace or innovate.</p>
+<p>Understand an existing business and identify what to preserve, adapt, replace or innovate.</p>
 </div>
 
 <div class="tool" onclick="openTool('Business Idea Analyzer')">
 <h3>💡 Business Idea Analyzer</h3>
-<p>Turn a new business idea into a structured opportunity.</p>
+<p>Turn a business idea into a clearer opportunity and action plan.</p>
 </div>
 
 <div class="tool" onclick="openTool('Customer Research')">
 <h3>👥 Customer Research</h3>
-<p>Understand customers, their problems, needs and buying behavior.</p>
+<p>Understand customers, their needs, problems and buying behavior.</p>
 </div>
 
 </div>
@@ -272,24 +304,24 @@ Understand businesses, customers, markets, competition, operations and opportuni
 <h2>🔎 Research</h2>
 
 <p class="section-description">
-Capture questions, organize research and turn information into useful knowledge.
+Turn questions and uncertainty into structured research and useful knowledge.
 </p>
 
 <div class="tools">
 
 <div class="tool" onclick="openTool('Research Planner')">
 <h3>🔎 Research Planner</h3>
-<p>Create a structured research plan from a question or topic.</p>
+<p>Turn a question or topic into a research plan.</p>
 </div>
 
 <div class="tool" onclick="openTool('Research Notes')">
 <h3>📝 Research Notes</h3>
-<p>Organize important research information and observations.</p>
+<p>Organize research information and identify what it means.</p>
 </div>
 
 <div class="tool" onclick="openTool('Problem Research')">
 <h3>🧩 Problem Research</h3>
-<p>Break a problem into research questions and areas to investigate.</p>
+<p>Break a problem into causes, questions, evidence and possible solutions.</p>
 </div>
 
 </div>
@@ -305,7 +337,7 @@ Capture questions, organize research and turn information into useful knowledge.
 <h2>📊 Data & Analysis</h2>
 
 <p class="section-description">
-Analyze numbers, sentences, information and decisions to produce useful insights.
+Analyze numbers, written information, choices and evidence to produce useful insights.
 </p>
 
 <div class="tools">
@@ -317,12 +349,12 @@ Analyze numbers, sentences, information and decisions to produce useful insights
 
 <div class="tool" onclick="openTool('Decision Analysis')">
 <h3>🎯 Decision Analysis</h3>
-<p>Compare options and organize the factors behind a decision.</p>
+<p>Understand choices, trade-offs, risks and opportunities.</p>
 </div>
 
 <div class="tool" onclick="openTool('Text Analysis')">
 <h3>📄 Text Analysis</h3>
-<p>Break down sentences or written information into useful points.</p>
+<p>Break down written information into understandable points.</p>
 </div>
 
 </div>
@@ -338,24 +370,24 @@ Analyze numbers, sentences, information and decisions to produce useful insights
 <h2>☁️ Cloud Workspace</h2>
 
 <p class="section-description">
-Organize projects, ideas, tasks and knowledge in one workspace.
+Turn understanding into organized projects, ideas and actions.
 </p>
 
 <div class="tools">
 
 <div class="tool" onclick="openTool('Project Workspace')">
 <h3>📁 Project Workspace</h3>
-<p>Organize a project, its objectives and next actions.</p>
+<p>Organize a project, objective, activities and next actions.</p>
 </div>
 
 <div class="tool" onclick="openTool('Idea Workspace')">
 <h3>💡 Idea Workspace</h3>
-<p>Capture and develop new ideas.</p>
+<p>Develop an idea from uncertainty toward a practical concept.</p>
 </div>
 
 <div class="tool" onclick="openTool('Task Workspace')">
 <h3>✅ Task Workspace</h3>
-<p>Turn a project or idea into practical tasks.</p>
+<p>Turn a goal into practical tasks.</p>
 </div>
 
 </div>
@@ -373,7 +405,7 @@ Organize projects, ideas, tasks and knowledge in one workspace.
 <p id="toolDescription" class="section-description"></p>
 
 <textarea id="toolInput"
-placeholder="Enter your idea, business, problem, question or information here..."></textarea>
+placeholder="Enter your question, idea, problem, business or information here..."></textarea>
 
 <button class="action" onclick="runTool()">
 Analyze / Build
@@ -394,6 +426,10 @@ Nova Cloud — Research • Innovation • Technology
 
 let currentTool="";
 
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
 
 function openSection(id){
 
@@ -429,49 +465,49 @@ document.getElementById("output").innerHTML=
 let descriptions={
 
 "System Builder":
-"Describe the system, business idea or problem you want to build. Nova Cloud will organize it into a practical structure.",
+"Describe an idea, business, system, question or problem. Nova Cloud will explain it, identify its parts and organize a practical system.",
 
 "AI Projects":
-"Describe your AI project idea. Think about the problem, users, data, AI capability and expected result.",
+"Describe an AI idea or question. Nova Cloud will explain the problem, users, data, AI capability, system flow and next steps.",
 
 "Technology":
-"Describe a technology, technology problem or innovation you want to explore.",
+"Describe a technology, technology question or innovation. Nova Cloud will explain its purpose, users, components, benefits, limitations and opportunities.",
 
 "Business Analyzer":
-"Enter an existing business and analyze customers, market, competition, operations, technology and opportunities.",
+"Enter an existing business or business question. Nova Cloud will examine customers, market, competition, operations, technology and opportunities.",
 
 "Business Idea Analyzer":
-"Enter a business idea and examine its customers, problem, solution, market, competition and opportunities.",
+"Enter a business idea or question. Nova Cloud will explain the opportunity, customer problem, solution, market, competition and next steps.",
 
 "Customer Research":
-"Describe a product, service or business and identify possible customers, needs and problems.",
+"Describe a customer, product, service or customer question. Nova Cloud will organize what should be understood and researched.",
 
 "Research Planner":
-"Enter a research question or topic and organize it into objectives, questions, information needs and actions.",
+"Enter a question, problem or topic. Nova Cloud will turn uncertainty into research questions, information needs and actions.",
 
 "Research Notes":
-"Enter your research notes and organize the important points.",
+"Enter research information. Nova Cloud will organize the important findings, questions, implications and actions.",
 
 "Problem Research":
-"Describe a problem and break it into research questions and areas to investigate.",
+"Describe a problem. Nova Cloud will help explain the problem, possible causes, people affected, evidence needed and opportunities.",
 
 "Data Analyzer":
-"Enter numbers or information and identify basic patterns and insights.",
+"Enter numbers or information. Nova Cloud will calculate basic statistics or organize the information into patterns and insights.",
 
 "Decision Analysis":
-"Enter a decision and its options. Organize advantages, disadvantages, risks and opportunities.",
+"Enter a decision or question. Nova Cloud will identify options, benefits, costs, risks, opportunities and decision factors.",
 
 "Text Analysis":
-"Enter a sentence or text and identify its main ideas, issues, themes and useful points.",
+"Enter written information. Nova Cloud will identify the main idea, important points, problems, opportunities, questions and actions.",
 
 "Project Workspace":
-"Describe your project and organize its objective, activities and next steps.",
+"Describe a project. Nova Cloud will turn it into objectives, activities, resources, risks and next actions.",
 
 "Idea Workspace":
-"Enter an idea and organize it into a clear concept and possible next steps.",
+"Enter an idea or question. Nova Cloud will help develop it into a clearer concept and practical experiment.",
 
 "Task Workspace":
-"Enter a project or goal and break it into practical tasks."
+"Enter a goal or project. Nova Cloud will break it into practical tasks and a logical sequence."
 
 };
 
@@ -493,316 +529,1047 @@ window.scrollTo(0,0);
 
 
 /* =====================================================
+   HELPER FUNCTIONS
+   ===================================================== */
+
+function clean(text){
+
+return text
+.replace(/\s+/g," ")
+.trim();
+}
+
+
+function lower(text){
+
+return text.toLowerCase();
+}
+
+
+function has(text,words){
+
+let t=lower(text);
+
+return words.some(function(word){
+return t.includes(word);
+});
+}
+
+
+function titleFromInput(input){
+
+let t=clean(input);
+
+if(t.length>70){
+return t.substring(0,70)+"...";
+}
+
+return t;
+}
+
+
+function list(items){
+
+return "<ul>"+
+items.map(function(item){
+return "<li>"+item+"</li>";
+}).join("")+
+"</ul>";
+}
+
+
+function section(title,text){
+
+return `
+<div class="result-section">${title}</div>
+<div class="result-text">${text}</div>
+`;
+}
+
+
+/* =====================================================
+   TOPIC UNDERSTANDING
+   ===================================================== */
+
+function understandTopic(input){
+
+let t=lower(input);
+
+let topic="general";
+
+if(has(t,[
+"school","student","teacher","education",
+"uniform","college","university"
+])){
+topic="education";
+}
+
+if(has(t,[
+"sell","selling","shop","store","business",
+"customer","product","service","market"
+])){
+topic="business";
+}
+
+if(has(t,[
+"car","vehicle","engine","ecu","brake",
+"electric vehicle","ev","sensor"
+])){
+topic="vehicle";
+}
+
+if(has(t,[
+"ai","artificial intelligence","machine learning",
+"chatbot","automation"
+])){
+topic="ai";
+}
+
+if(has(t,[
+"website","app","software","computer",
+"technology","digital system","platform"
+])){
+topic="technology";
+}
+
+return topic;
+}
+
+
+/* =====================================================
    SYSTEM BUILDER
    ===================================================== */
 
 function buildSystem(input){
 
-let text=input.toLowerCase();
+let topic=understandTopic(input);
 
-let type="general";
+let answer="";
 
-if(
-text.includes("uniform") ||
-text.includes("selling") ||
-text.includes("shop") ||
-text.includes("business") ||
-text.includes("store") ||
-text.includes("sell") ||
-text.includes("product")
-){
-type="business";
-}
+answer+=`
+<div class="result-title">🛠️ Nova Cloud System Analysis</div>
 
-if(
-text.includes("school") ||
-text.includes("education") ||
-text.includes("student") ||
-text.includes("teacher")
-){
-type="education";
-}
-
-if(
-text.includes("car") ||
-text.includes("vehicle") ||
-text.includes("engine") ||
-text.includes("electric vehicle") ||
-text.includes("ev")
-){
-type="vehicle";
-}
-
-if(
-text.includes("ai") ||
-text.includes("artificial intelligence") ||
-text.includes("machine learning")
-){
-type="ai";
-}
-
-
-if(type==="education" && text.includes("uniform")){
-
-return `
-<div class="result-title">🛠️ School Uniform Business System</div>
-
-<b>Idea:</b> ${input}
-
-<div class="result-section">1. Purpose</div>
-Create a reliable system for sourcing and selling school uniforms to students, parents and schools.
-
-<div class="result-section">2. Target Customers</div>
-<ul>
-<li>Parents and guardians</li>
-<li>Students</li>
-<li>Schools</li>
-<li>School administrators</li>
-</ul>
-
-<div class="result-section">3. Customer Problems</div>
-<ul>
-<li>Uniforms may be difficult to find.</li>
-<li>Parents need correct sizes.</li>
-<li>Customers want reasonable prices.</li>
-<li>Parents need uniforms available when required.</li>
-</ul>
-
-<div class="result-section">4. Products</div>
-<ul>
-<li>Shirts</li>
-<li>Trousers</li>
-<li>Skirts</li>
-<li>Sweaters</li>
-<li>Socks</li>
-<li>Sports uniforms</li>
-<li>Other school-required items</li>
-</ul>
-
-<div class="result-section">5. Supply System</div>
-Supplier → Purchase → Stock → Store → Customer Order → Sale → Delivery/Collection.
-
-<div class="result-section">6. Sales Channels</div>
-<ul>
-<li>Physical shop</li>
-<li>WhatsApp</li>
-<li>Social media</li>
-<li>School partnerships</li>
-<li>Online ordering</li>
-</ul>
-
-<div class="result-section">7. Technology Opportunities</div>
-<ul>
-<li>Digital product catalogue</li>
-<li>Customer records</li>
-<li>Inventory tracking</li>
-<li>WhatsApp ordering</li>
-<li>Digital payments</li>
-<li>Sales reporting</li>
-</ul>
-
-<div class="result-section">8. Revenue Model</div>
-Buy or manufacture uniforms → Set selling price → Make sales → Track costs → Calculate profit.
-
-<div class="result-section">9. Important Data</div>
-<ul>
-<li>Best-selling uniform types</li>
-<li>Popular sizes</li>
-<li>Stock levels</li>
-<li>Sales by school</li>
-<li>Customer demand</li>
-<li>Repeat customers</li>
-</ul>
-
-<div class="result-section">10. Competition</div>
-Compare competitors on price, quality, availability, location, delivery, customer service and convenience.
-
-<div class="result-section">11. Growth Opportunities</div>
-<ul>
-<li>Supply uniforms directly to schools.</li>
-<li>Offer pre-ordering before school terms.</li>
-<li>Create an online catalogue.</li>
-<li>Expand to additional schools.</li>
-<li>Add related school products.</li>
-</ul>
-
-<div class="result-section">12. First Actions</div>
-<ol>
-<li>Identify target schools.</li>
-<li>Research uniform requirements.</li>
-<li>Find reliable suppliers.</li>
-<li>Calculate costs and possible prices.</li>
-<li>Test demand with a small stock.</li>
-<li>Create a simple ordering system.</li>
-<li>Track every sale and customer.</li>
-</ol>
-
-<div class="result-section">13. Improve Over Time</div>
-<b>Preserve:</b> Products and processes that customers value.<br>
-<b>Adapt:</b> Pricing, stock and sales channels when demand changes.<br>
-<b>Replace:</b> Suppliers or processes that create unnecessary problems.<br>
-<b>Innovate:</b> Digital ordering, school partnerships and better customer information.
+<div class="info">
+<b>Your idea/question:</b><br>
+${titleFromInput(input)}
+</div>
 `;
 
-}
+answer+=section(
+"1. What Nova Cloud understands",
+"Your input describes a "+topic+
+" related idea, problem or opportunity. The first step is to understand what you are trying to achieve, who is affected and what needs to change."
+);
 
 
-if(type==="business"){
+if(topic==="education"){
 
-return `
-<div class="result-title">🛠️ Practical Business System</div>
+answer+=section(
+"2. The likely problem",
+"Education-related systems often involve access to learning resources, communication, administration, cost, availability or the needs of students, parents and schools."
+);
 
-<b>Idea:</b> ${input}
+answer+=section(
+"3. People involved",
+list([
+"Students",
+"Parents or guardians",
+"Teachers",
+"Schools and administrators",
+"Suppliers or service providers"
+])
+);
 
-<div class="result-section">1. Purpose</div>
-Define what the business is trying to provide and the customer problem it solves.
+answer+=section(
+"4. Information the system needs",
+list([
+"Users and their needs",
+"School or education requirements",
+"Products or services involved",
+"Prices and costs",
+"Availability",
+"Orders or requests",
+"Feedback"
+])
+);
 
-<div class="result-section">2. Customers</div>
-Identify the people or organizations most likely to buy the product or service.
+answer+=section(
+"5. Possible system flow",
+"User need → Information → Decision or order → Service/product → Result → Feedback → Improvement."
+);
 
-<div class="result-section">3. Customer Problem</div>
-What problem exists? How are customers solving it now? What is missing from current solutions?
-
-<div class="result-section">4. Product / Service</div>
-Define exactly what will be sold, how it works and what value it provides.
-
-<div class="result-section">5. Market</div>
-Research demand, customer groups, location, trends and market size.
-
-<div class="result-section">6. Competition</div>
-Identify competitors and compare price, quality, availability, convenience, technology and customer experience.
-
-<div class="result-section">7. Operations</div>
-Supplier → Resources → Process → Product/Service → Customer → Payment → Support.
-
-<div class="result-section">8. Technology</div>
-Consider digital marketing, websites, WhatsApp, payments, customer records, inventory and data analysis.
-
-<div class="result-section">9. Revenue</div>
-Track selling price, costs, profit, repeat purchases and opportunities for additional revenue.
-
-<div class="result-section">10. Data</div>
-Collect customer, sales, product, cost, market and operational information.
-
-<div class="result-section">11. Growth</div>
-Look for new customers, new products, new locations, partnerships, digital channels and improved processes.
-
-<div class="result-section">12. Adaptation</div>
-<b>Preserve:</b> What works.<br>
-<b>Adapt:</b> What needs improvement.<br>
-<b>Replace:</b> What is no longer effective.<br>
-<b>Innovate:</b> New ways to create value.
-
-<div class="result-section">13. First Action</div>
-Start with customer research, competition research, cost calculation and a small real-world test before expanding.
-`;
-
-}
-
-
-if(type==="ai"){
-
-return `
-<div class="result-title">🤖 AI System Concept</div>
-
-<b>Project:</b> ${input}
-
-<div class="result-section">Problem</div>
-Define the problem the AI system should solve.
-
-<div class="result-section">Users</div>
-Identify who will use the system and what they need.
-
-<div class="result-section">Data</div>
-Determine what information the system needs.
-
-<div class="result-section">AI Capability</div>
-Decide whether the system needs prediction, classification, recommendation, text analysis, image analysis, automation or another AI capability.
-
-<div class="result-section">System Flow</div>
-User Input → Data → AI Processing → Result → User Action → Feedback.
-
-<div class="result-section">Technology</div>
-Consider the interface, database, AI model/API, security and cloud infrastructure.
-
-<div class="result-section">Testing</div>
-Test accuracy, reliability, usability and safety.
-
-<div class="result-section">Improvement</div>
-Use feedback and performance data to continuously improve the system.
-`;
+answer+=section(
+"6. Technology opportunities",
+list([
+"Website or digital catalogue",
+"Mobile-friendly ordering",
+"WhatsApp communication",
+"Digital payments",
+"Customer records",
+"Inventory management",
+"Data and sales reporting"
+])
+);
 
 }
 
 
-if(type==="vehicle"){
+else if(topic==="business"){
 
-return `
-<div class="result-title">🚗 Vehicle System Concept</div>
+answer+=section(
+"2. Business problem or opportunity",
+"The business should solve a real customer problem or satisfy a real need. The important question is not only what you want to sell, but why customers would choose it."
+);
 
-<b>Idea:</b> ${input}
+answer+=section(
+"3. Customers",
+"Identify the specific people or organizations that experience the problem and are most likely to pay for the solution."
+);
 
-<div class="result-section">Purpose</div>
-Define the vehicle problem or capability the system should provide.
+answer+=section(
+"4. Customer questions to answer",
+list([
+"What exactly do customers need?",
+"How are they solving the problem now?",
+"What makes the current solution difficult?",
+"What influences their buying decision?",
+"What would make them switch?",
+"What would make them return?"
+])
+);
 
-<div class="result-section">Inputs</div>
-Sensors, driver commands, vehicle data, cameras and environmental information.
+answer+=section(
+"5. Business system",
+"Customer need → Research → Product/service → Marketing → Order → Delivery → Payment → Customer feedback → Improvement."
+);
 
-<div class="result-section">Processing</div>
-ECU/software processes the information and determines the appropriate response.
+answer+=section(
+"6. Important business information",
+list([
+"Customer demand",
+"Competitors",
+"Prices",
+"Costs",
+"Suppliers",
+"Stock",
+"Sales",
+"Profit",
+"Customer feedback"
+])
+);
 
-<div class="result-section">Outputs</div>
-Vehicle controls, dashboard information, warnings or automated actions.
-
-<div class="result-section">Technology</div>
-Sensors → ECU → Software → Communication → Actuators → Feedback.
-
-<div class="result-section">Safety</div>
-The system should detect failures, provide appropriate warnings and use safe fallback behavior.
-
-<div class="result-section">Improvement</div>
-Use diagnostic data, testing and feedback to improve performance.
-`;
+answer+=section(
+"7. Technology opportunities",
+"Digital catalogues, websites, social media, WhatsApp, digital payments, customer databases, inventory systems and analytics can reduce work and improve customer experience."
+);
 
 }
 
 
+else if(topic==="vehicle"){
+
+answer+=section(
+"2. What the vehicle system needs to understand",
+"A vehicle system normally receives information from the driver, sensors and other vehicle components, processes that information and produces a controlled response."
+);
+
+answer+=section(
+"3. System flow",
+"Sensor/Input → ECU or software → Processing → Decision → Actuator/output → Feedback."
+);
+
+answer+=section(
+"4. Important components",
+list([
+"Sensors",
+"ECU or control unit",
+"Software",
+"Communication systems",
+"Actuators",
+"Power system",
+"Human-machine interface"
+])
+);
+
+answer+=section(
+"5. Safety",
+"The system should consider incorrect sensor readings, communication failures, software errors and safe responses when something goes wrong."
+);
+
+}
+
+
+else if(topic==="ai"){
+
+answer+=section(
+"2. Problem",
+"The AI should solve a clearly defined problem. AI is useful when information can be analyzed, predicted, classified, generated, recommended or used to automate a task."
+);
+
+answer+=section(
+"3. Users",
+"Identify who will use the AI system, what decision or task they need help with and what result they expect."
+);
+
+answer+=section(
+"4. Data",
+"The quality and relevance of the data strongly affect the usefulness of an AI system."
+);
+
+answer+=section(
+"5. AI system flow",
+"User/Input → Data → AI Processing → Result → Human/System Action → Feedback → Improvement."
+);
+
+answer+=section(
+"6. Questions still requiring investigation",
+list([
+"What data is available?",
+"Is AI actually necessary?",
+"What level of accuracy is required?",
+"What happens when the AI is wrong?",
+"How will the system be tested?",
+"How will users provide feedback?"
+])
+);
+
+}
+
+
+else{
+
+answer+=section(
+"2. Purpose",
+"Clearly define what you want the system to achieve and what problem it should solve."
+);
+
+answer+=section(
+"3. Users",
+"Identify who experiences the problem, who uses the system and who benefits from the result."
+);
+
+answer+=section(
+"4. Inputs",
+"Identify information, resources, data or actions that enter the system."
+);
+
+answer+=section(
+"5. Process",
+"Explain how the system transforms those inputs into something useful."
+);
+
+answer+=section(
+"6. Outputs",
+"Define what the system should produce: information, a product, decision, service, action or other result."
+);
+
+answer+=section(
+"7. Feedback",
+"Users and system data should show what works, what fails and what needs improvement."
+);
+
+}
+
+answer+=section(
+"8. What is still unknown?",
+"Before building the full system, identify assumptions that need evidence. This prevents building a solution before understanding the real problem."
+);
+
+answer+=section(
+"9. Practical next step",
+"Start with the smallest version that can test the most important assumption. Learn from the result and improve the system."
+);
+
+return answer;
+}
+
+
+/* =====================================================
+   BUSINESS ANALYSIS
+   ===================================================== */
+
+function businessAnalysis(input){
+
+let t=lower(input);
+
+let customerHint=
+has(t,["school","student","uniform"])
+?
+"Likely customer groups include parents, guardians, students, schools and school administrators."
+:
+"Customer groups should be identified according to who experiences the problem and who is willing to pay for the solution.";
+
+let opportunity=
+has(t,["sell","selling","shop","product","service"])
+?
+"The opportunity should be tested by comparing customer demand, price, availability, competition and the ability to deliver consistently."
+:
+"The opportunity should be tested against customer demand, existing alternatives, cost and the ability to deliver a useful solution.";
+
 return `
-<div class="result-title">🛠️ System Structure</div>
+<div class="result-title">🏢 Business Intelligence Analysis</div>
 
-<b>Idea:</b> ${input}
+<div class="info">
+<b>Business/question:</b><br>
+${titleFromInput(input)}
+</div>
 
-<div class="result-section">1. Purpose</div>
-What is the system supposed to achieve?
+${section("1. What we need to understand",
+"The purpose is to understand how this business creates value, who it serves, how it operates, how it makes money and where it can improve.")}
 
-<div class="result-section">2. Users</div>
-Who will use or benefit from the system?
+${section("2. Customers",customerHint)}
 
-<div class="result-section">3. Inputs</div>
-What information, resources or data enter the system?
+${section("3. Customer problem",
+"The strongest business opportunity normally exists where customers have an important problem, unmet need or inefficient existing solution.")}
 
-<div class="result-section">4. Process</div>
-How does the system transform inputs into useful results?
+${section("4. Market",
+"Research customer demand, location, trends, purchasing behavior, market size and changes affecting the business.")}
 
-<div class="result-section">5. Technology</div>
-What digital tools, software, hardware or infrastructure could support it?
+${section("5. Competition",
+"Compare competitors on price, quality, availability, convenience, customer service, technology, trust and overall customer experience.")}
 
-<div class="result-section">6. Outputs</div>
-What should the system produce?
+${section("6. Operations",
+"Review suppliers, people, processes, stock, technology, delivery, communication and other resources required to provide the product or service.")}
 
-<div class="result-section">7. Data</div>
-What information should be collected and measured?
+${section("7. Revenue and costs",
+"Understand selling prices, direct costs, operating costs, profit margins, repeat purchases and possible additional revenue.")}
 
-<div class="result-section">8. Feedback</div>
-How will users and system data show what is working or failing?
+${section("8. Technology",
+"Ask where technology can reduce repetitive work, improve communication, collect information, reach customers, manage operations or support decisions.")}
 
-<div class="result-section">9. Improvement</div>
-Use feedback and evidence to improve the system over time.
+${section("9. Opportunity",opportunity)}
 
-<div class="result-section">10. Next Action</div>
-Define the smallest practical version that can be tested first.
+${section("10. What should change?",
+"<b>Preserve:</b> What customers already value.<br><b>Adapt:</b> Areas affected by changing customers, markets, technology or competition.<br><b>Replace:</b> Processes that no longer work well.<br><b>Innovate:</b> New products, services, channels, systems or experiences.")}
+
+${section("11. Information still needed",
+"Customer interviews, competitor research, pricing information, sales data, cost information and operational evidence can turn assumptions into better decisions.")}
+
+${section("12. Next action",
+"Choose one important assumption and test it with real evidence before making a major investment.")}
 `;
+}
 
+
+/* =====================================================
+   BUSINESS IDEA
+   ===================================================== */
+
+function businessIdeaAnalysis(input){
+
+return `
+<div class="result-title">💡 Business Idea Intelligence</div>
+
+<div class="info">
+<b>Idea:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. What is the idea?",
+"The idea describes something you want to offer, create, sell or improve. The next step is to understand the value behind it.")}
+
+${section("2. Customer",
+"Who has the problem or need? Who would actually use the solution? Who would pay for it? These may be different people.")}
+
+${section("3. Problem",
+"What problem exists? How serious is it? How frequently does it occur? How are people solving it today?")}
+
+${section("4. Proposed solution",
+"Define exactly what will be offered and how it would make the customer's situation better.")}
+
+${section("5. Existing alternatives",
+"Customers may already use competitors, traditional methods, substitutes or do nothing. Understanding these alternatives is essential.")}
+
+${section("6. Value",
+"The idea becomes stronger when it saves customers time, money or effort, improves results, reduces risk or provides something they cannot easily get elsewhere.")}
+
+${section("7. Business model",
+"Consider how customers will discover the offer, how they will buy, what it costs to deliver and how the business will generate profit.")}
+
+${section("8. Technology opportunity",
+"Technology could improve marketing, ordering, communication, payments, records, operations, personalization, research or analysis depending on the idea.")}
+
+${section("9. What must be researched?",
+list([
+"Customer demand",
+"Customer willingness to pay",
+"Competitors",
+"Prices",
+"Costs",
+"Suppliers or resources",
+"Regulations or constraints",
+"Best way to reach customers"
+]))}
+
+${section("10. First experiment",
+"Test the smallest practical version with real potential customers. The goal is to learn before spending heavily.")}
+
+`;
+}
+
+
+/* =====================================================
+   CUSTOMER RESEARCH
+   ===================================================== */
+
+function customerResearch(input){
+
+return `
+<div class="result-title">👥 Customer Understanding</div>
+
+<div class="info">
+<b>Subject:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Who are the customers?",
+"Identify the people or organizations that experience the need or problem. Separate users, buyers, decision-makers and influencers when necessary.")}
+
+${section("2. What do they need?",
+"Understand the outcome customers are trying to achieve rather than only the product they currently buy.")}
+
+${section("3. What problems do they experience?",
+"Look for problems involving cost, time, availability, quality, convenience, trust, access, information or poor service.")}
+
+${section("4. What do they use now?",
+"Identify competitors, substitutes, traditional methods and other ways customers currently solve the problem.")}
+
+${section("5. What influences buying?",
+"Price, quality, trust, convenience, availability, recommendations, brand reputation and previous experience can all influence buying decisions.")}
+
+${section("6. Questions to research",
+list([
+"What is the customer's biggest problem?",
+"How often does it happen?",
+"What does the customer currently do?",
+"What does the current solution cost?",
+"What frustrates the customer?",
+"What would a better solution look like?",
+"How much would the customer realistically pay?"
+]))}
+
+${section("7. Important principle",
+"Do not assume that what the business thinks customers want is what customers actually want. Evidence from real customers is more valuable.")}
+
+`;
+}
+
+
+/* =====================================================
+   RESEARCH PLANNER
+   ===================================================== */
+
+function researchPlanner(input){
+
+return `
+<div class="result-title">🔎 Research & Understanding Plan</div>
+
+<div class="info">
+<b>Question / Topic:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. What are we trying to understand?",
+"Turn the topic into a clear research problem. State exactly what is uncertain, confusing or unknown.")}
+
+${section("2. Main research questions",
+list([
+"What is happening?",
+"Why is it happening?",
+"Who is affected?",
+"What solutions already exist?",
+"What evidence supports the different explanations?",
+"What information is still missing?"
+]))}
+
+${section("3. Information required",
+"Identify facts, statistics, opinions, observations, customer experiences, documents, market information or technical information needed to answer the questions.")}
+
+${section("4. Sources",
+"Possible sources include reliable websites, official documents, books, datasets, experts, customers, direct observations and experiments. Match the source to the question.")}
+
+${section("5. Compare evidence",
+"Look for agreements, contradictions, patterns, gaps and changes over time. Do not treat every piece of information as equally reliable.")}
+
+${section("6. Turn research into understanding",
+"Explain what the evidence means, why it matters and how it changes your understanding of the original question.")}
+
+${section("7. From understanding to action",
+"Identify the decision, experiment, system, business change or next research question that follows from the findings.")}
+
+`;
+}
+
+
+/* =====================================================
+   PROBLEM RESEARCH
+   ===================================================== */
+
+function problemResearch(input){
+
+return `
+<div class="result-title">🧩 Problem Intelligence</div>
+
+<div class="info">
+<b>Problem:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Define the problem",
+"Describe what is happening, who experiences it, when it happens and why it matters.")}
+
+${section("2. People affected",
+"Identify the direct users, customers, organizations and other groups affected by the problem.")}
+
+${section("3. Possible causes",
+"Separate symptoms from possible underlying causes. A visible problem may be produced by several different causes.")}
+
+${section("4. Current solutions",
+"Find out how people currently deal with the problem. Existing behavior reveals what customers already consider useful.")}
+
+${section("5. Gaps",
+"Identify what current solutions fail to provide: lower cost, better quality, faster service, easier access, better information, convenience or another important outcome.")}
+
+${section("6. Evidence required",
+"Determine what information would confirm whether the problem is real, important and worth solving.")}
+
+${section("7. Possible opportunities",
+"Different causes and gaps can lead to different solutions. Do not choose a solution before understanding the problem.")}
+
+${section("8. Next step",
+"Research the most uncertain and important part of the problem first.")}
+
+`;
+}
+
+
+/* =====================================================
+   AI PROJECTS
+   ===================================================== */
+
+function aiProject(input){
+
+return `
+<div class="result-title">🤖 AI Project Intelligence</div>
+
+<div class="info">
+<b>Project:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Problem to solve",
+"Define the task or decision that needs improvement. AI should have a clear purpose rather than being added simply because it is available.")}
+
+${section("2. Users",
+"Identify who will use the system, what they need and what action they will take from the AI result.")}
+
+${section("3. Data",
+"Determine what information the AI needs, where it comes from, whether it is reliable and how it will be stored.")}
+
+${section("4. Possible AI capability",
+list([
+"Prediction",
+"Classification",
+"Recommendation",
+"Text understanding",
+"Text generation",
+"Image understanding",
+"Pattern detection",
+"Automation",
+"Decision support"
+]))}
+
+${section("5. System flow",
+"User/Input → Data → AI Processing → Result → Human/System Action → Feedback → Improvement.")}
+
+${section("6. What can go wrong?",
+"Consider incorrect results, poor data, missing information, bias, security, privacy, system failures and users misunderstanding the AI output.")}
+
+${section("7. Testing",
+"Test whether the system produces useful and reliable results and whether people can actually use those results effectively.")}
+
+${section("8. Next step",
+"Define one small AI capability that can be tested before building the complete system.")}
+
+`;
+}
+
+
+/* =====================================================
+   TECHNOLOGY
+   ===================================================== */
+
+function technologyAnalysis(input){
+
+let t=lower(input);
+
+let likely="The technology should be understood according to the problem it is intended to solve.";
+
+if(has(t,["ai","artificial intelligence","machine learning"])){
+likely="AI may be useful for analyzing information, generating content, recognizing patterns, making predictions or automating decisions, depending on the exact problem.";
+}
+
+if(has(t,["website","app","software","platform"])){
+likely="Digital software can organize information, connect users, automate processes, provide services and create digital access.";
+}
+
+if(has(t,["vehicle","car","engine","sensor","ecu"])){
+likely="Vehicle technology normally combines hardware, sensors, software, control systems and feedback to produce a physical response.";
+}
+
+return `
+<div class="result-title">💻 Technology Intelligence</div>
+
+<div class="info">
+<b>Technology/question:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. What are we trying to understand?",likely)}
+
+${section("2. Purpose",
+"What problem does the technology solve? A technology becomes useful when it produces a valuable result for a real user or system.")}
+
+${section("3. Users",
+"Who needs the technology? What are they trying to accomplish? What would make the technology useful or difficult to use?")}
+
+${section("4. How it works",
+"Identify the inputs, components, processing, outputs, communication and feedback involved.")}
+
+${section("5. Existing technology",
+"Research what already exists before building something new. Existing systems may reveal useful approaches, weaknesses and opportunities.")}
+
+${section("6. Benefits",
+"Consider improvements in speed, cost, accuracy, access, convenience, safety, productivity, communication or decision-making.")}
+
+${section("7. Limitations",
+"Consider cost, technical complexity, infrastructure, reliability, data requirements, security, skills, maintenance and user adoption.")}
+
+${section("8. Innovation opportunities",
+"Look for ways to improve an existing technology, combine technologies, reduce limitations or solve a problem that current systems do not solve well.")}
+
+${section("9. Next step",
+"Define the specific problem and research existing solutions before deciding what technology should be built.")}
+
+`;
+}
+
+
+/* =====================================================
+   DATA ANALYZER
+   ===================================================== */
+
+function dataAnalysis(input){
+
+let numbers=input.match(/-?\d+(\.\d+)?/g);
+
+if(numbers){
+
+let values=numbers.map(Number);
+let total=values.reduce(function(a,b){return a+b},0);
+let average=total/values.length;
+
+let highest=Math.max.apply(null,values);
+let lowest=Math.min.apply(null,values);
+
+return `
+<div class="result-title">📊 Data Analysis</div>
+
+<div class="info">
+<b>Data:</b> ${values.join(", ")}
+</div>
+
+${section("Count",values.length)}
+
+${section("Total",total)}
+
+${section("Average",average.toFixed(2))}
+
+${section("Highest value",highest)}
+
+${section("Lowest value",lowest)}
+
+${section("What does this tell us?",
+"The calculations describe the data, but the meaning depends on what these values represent. The next step is to compare them with a target, previous period, group or expected result.")}
+
+${section("Questions to ask",
+list([
+"Why are some values higher or lower?",
+"Are there unusual values?",
+"Is there a trend?",
+"What do the values represent?",
+"What decision should the data support?"
+]))}
+
+`;
+}
+
+return `
+<div class="result-title">📊 Information Analysis</div>
+
+<div class="info">
+<b>Information:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Main information",
+"Separate the input into the important facts, claims, observations and ideas.")}
+
+${section("2. Patterns",
+"Look for repeated ideas, differences, relationships, changes and unusual information.")}
+
+${section("3. Evidence",
+"Identify which statements are supported by evidence and which require further investigation.")}
+
+${section("4. Insight",
+"An insight explains why a pattern or fact matters and what it could mean for a decision.")}
+
+${section("5. Action",
+"Use the strongest evidence to identify what should be investigated, changed, tested or decided next.")}
+
+`;
+}
+
+
+/* =====================================================
+   DECISION ANALYSIS
+   ===================================================== */
+
+function decisionAnalysis(input){
+
+return `
+<div class="result-title">🎯 Decision Intelligence</div>
+
+<div class="info">
+<b>Decision:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. What decision is being made?",
+"Clearly state what must be decided and what successful outcome would look like.")}
+
+${section("2. Options",
+"Identify realistic choices. Include the option of waiting, testing first or doing nothing when appropriate.")}
+
+${section("3. Benefits",
+"Determine what each option could improve or make possible.")}
+
+${section("4. Costs",
+"Consider money, time, people, equipment, learning requirements and opportunity cost.")}
+
+${section("5. Risks",
+"Identify what could fail, what is uncertain and what consequences could result.")}
+
+${section("6. Evidence",
+"Separate facts from assumptions. Research the assumptions that could most strongly change the decision.")}
+
+${section("7. Opportunity",
+"Consider what new possibilities could become available if the option succeeds.")}
+
+${section("8. Decision approach",
+"The strongest choice is not automatically the cheapest or most ambitious. Compare each option against the actual objective, evidence, resources, risks and expected value.")}
+
+${section("9. Next action",
+"If uncertainty is high, run a small test before making an irreversible decision.")}
+
+`;
+}
+
+
+/* =====================================================
+   TEXT ANALYSIS
+   ===================================================== */
+
+function textAnalysis(input){
+
+let sentences=input.split(/[.!?]+/).filter(function(s){
+return s.trim().length>0;
+});
+
+let words=input.trim().split(/\s+/).filter(Boolean);
+
+return `
+<div class="result-title">📄 Understanding the Text</div>
+
+<div class="info">
+<b>Text:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Basic structure",
+"The text contains approximately "+words.length+" words and "+sentences.length+" main sentence(s).")}
+
+${section("2. Main idea",
+"The central idea should be expressed in one clear sentence: what is this text mainly trying to communicate?")}
+
+${section("3. Important points",
+"Separate the main claims, facts, problems, requests and proposed actions from supporting information.")}
+
+${section("4. Problems or confusion",
+"Identify statements that are unclear, contradictory, incomplete or based on assumptions.")}
+
+${section("5. Opportunities",
+"Look for possible solutions, improvements, questions worth investigating or ideas that could be developed.")}
+
+${section("6. Missing information",
+"Ask what information would be needed before making a confident decision or conclusion.")}
+
+${section("7. Understanding",
+"The purpose of analysis is not simply to repeat the text. It is to explain what the information means and why it matters.")}
+
+${section("8. Action",
+"Turn the strongest understanding from the text into a question, decision, experiment or next step.")}
+
+`;
+}
+
+
+/* =====================================================
+   WORKSPACE TOOLS
+   ===================================================== */
+
+function projectWorkspace(input){
+
+return `
+<div class="result-title">📁 Project Workspace</div>
+
+<div class="info">
+<b>Project:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Objective",
+"Define exactly what the project should achieve.")}
+
+${section("2. Deliverable",
+"What should exist when the project is completed?")}
+
+${section("3. Activities",
+list([
+"Understand the objective",
+"Research requirements",
+"Plan the solution",
+"Build or execute",
+"Test the result",
+"Review performance",
+"Improve"
+]))}
+
+${section("4. Resources",
+"Identify people, skills, tools, money, information, technology and time required.")}
+
+${section("5. Risks",
+"Identify assumptions, dependencies and possible obstacles before they become larger problems.")}
+
+${section("6. Next action",
+"Choose the smallest useful task that moves the project forward.")}
+
+`;
+}
+
+
+function ideaWorkspace(input){
+
+return `
+<div class="result-title">💡 Idea Development Workspace</div>
+
+<div class="info">
+<b>Idea:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Understand the idea",
+"Explain what the idea is trying to achieve and why it could be useful.")}
+
+${section("2. Problem",
+"What problem, need or opportunity is behind the idea?")}
+
+${section("3. People",
+"Who could use, benefit from or pay for the idea?")}
+
+${section("4. Possible solution",
+"What could be created, offered or changed?")}
+
+${section("5. Unknowns",
+"Identify the assumptions that are still unproven.")}
+
+${section("6. Research",
+"Find the evidence needed to understand the unknowns.")}
+
+${section("7. Experiment",
+"Test the smallest version of the idea with real users or realistic evidence.")}
+
+${section("8. Next action",
+"Use what is learned from the experiment to improve, change, continue or stop the idea.")}
+
+`;
+}
+
+
+function taskWorkspace(input){
+
+return `
+<div class="result-title">✅ Practical Task Plan</div>
+
+<div class="info">
+<b>Goal:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. Understand the goal",
+"Make sure the desired result is clear before creating tasks.")}
+
+${section("2. Suggested sequence",
+list([
+"Define the objective",
+"Identify requirements",
+"Research what is unknown",
+"Prepare resources",
+"Complete the main work",
+"Test the result",
+"Review evidence",
+"Improve or finalize"
+]))}
+
+${section("3. Priority",
+"Do the task that removes the biggest uncertainty or unlocks the next important step first.")}
+
+${section("4. Completion",
+"A task is complete when its expected result has been produced and checked.")}
+
+`;
+}
+
+
+function researchNotes(input){
+
+return `
+<div class="result-title">📝 Research Understanding</div>
+
+<div class="info">
+<b>Notes:</b><br>
+${titleFromInput(input)}
+</div>
+
+${section("1. What was learned?",
+"Separate useful findings from background information.")}
+
+${section("2. Evidence",
+"Identify which findings are supported by reliable evidence and which are observations or assumptions.")}
+
+${section("3. Meaning",
+"Explain why the findings matter and how they change your understanding of the topic.")}
+
+${section("4. Questions remaining",
+"Identify what is still unknown, unclear or contradictory.")}
+
+${section("5. Implications",
+"Ask what the findings could mean for a business, project, system, decision or research question.")}
+
+${section("6. Next action",
+"Identify the next research question, experiment or decision that should follow.")}
+
+`;
 }
 
 
@@ -817,7 +1584,7 @@ let input=document.getElementById("toolInput").value.trim();
 if(!input){
 
 document.getElementById("output").innerHTML=
-"Please enter some information first.";
+"Please enter your question, idea, problem or information first.";
 
 return;
 }
@@ -826,251 +1593,80 @@ let result="";
 
 
 if(currentTool==="System Builder"){
-
 result=buildSystem(input);
-
 }
-
 
 else if(currentTool==="Business Analyzer"){
-
-result=
-"<div class='result-title'>🏢 Business Analysis</div>"+
-"<b>Business:</b> "+input+
-"<div class='result-section'>Customers</div>"+
-"Identify current and potential customer groups, their needs and buying behavior."+
-"<div class='result-section'>Market</div>"+
-"Research demand, trends, location and changes in customer behavior."+
-"<div class='result-section'>Competition</div>"+
-"Compare competitors on price, quality, availability, technology and customer experience."+
-"<div class='result-section'>Operations</div>"+
-"Review suppliers, people, processes, technology and resources."+
-"<div class='result-section'>Revenue</div>"+
-"Review sales, costs, pricing, profit and repeat customers."+
-"<div class='result-section'>Adaptation</div>"+
-"<b>Preserve:</b> What works. "+
-"<b>Adapt:</b> What needs improvement. "+
-"<b>Replace:</b> What no longer works. "+
-"<b>Innovate:</b> New opportunities.";
+result=businessAnalysis(input);
 }
-
 
 else if(currentTool==="Business Idea Analyzer"){
-
-result=
-"<div class='result-title'>💡 Business Idea Analysis</div>"+
-"<b>Idea:</b> "+input+
-"<div class='result-section'>Customer</div>Who is most likely to buy?"+
-"<div class='result-section'>Problem</div>What important problem or need does the idea address?"+
-"<div class='result-section'>Solution</div>What exactly will be offered?"+
-"<div class='result-section'>Market</div>Who else is already serving this market?"+
-"<div class='result-section'>Competition</div>What alternatives do customers have?"+
-"<div class='result-section'>Revenue</div>How will money be generated?"+
-"<div class='result-section'>Technology</div>How can digital tools reduce cost, save time or improve customer experience?"+
-"<div class='result-section'>Next Step</div>Test the idea with real potential customers before investing heavily.";
+result=businessIdeaAnalysis(input);
 }
-
 
 else if(currentTool==="Customer Research"){
-
-result=
-"<div class='result-title'>👥 Customer Research</div>"+
-"<b>Subject:</b> "+input+
-"<div class='result-section'>Identify</div>Who are the likely customers?"+
-"<div class='result-section'>Needs</div>What do they need or want?"+
-"<div class='result-section'>Problems</div>What difficulties do they experience?"+
-"<div class='result-section'>Current Solutions</div>What do they currently use?"+
-"<div class='result-section'>Buying Behavior</div>What influences their purchase decision?"+
-"<div class='result-section'>Research Questions</div>"+
-"What do customers value most? What prevents them from buying? What would make them switch? What would make them return?";
+result=customerResearch(input);
 }
-
 
 else if(currentTool==="Research Planner"){
-
-result=
-"<div class='result-title'>🔎 Research Plan</div>"+
-"<b>Topic:</b> "+input+
-"<div class='result-section'>1. Define the problem</div>"+
-"Clearly describe what needs to be understood."+
-"<div class='result-section'>2. Research questions</div>"+
-"Create specific questions that the research must answer."+
-"<div class='result-section'>3. Information needed</div>"+
-"Identify facts, data, opinions and evidence required."+
-"<div class='result-section'>4. Sources</div>"+
-"Use reliable documents, websites, people, datasets or direct observations."+
-"<div class='result-section'>5. Compare findings</div>"+
-"Look for agreements, differences, patterns and gaps."+
-"<div class='result-section'>6. Conclusion</div>"+
-"Turn evidence into useful findings."+
-"<div class='result-section'>7. Action</div>"+
-"Decide what should happen next.";
+result=researchPlanner(input);
 }
-
 
 else if(currentTool==="Problem Research"){
-
-result=
-"<div class='result-title'>🧩 Problem Research</div>"+
-"<b>Problem:</b> "+input+
-"<div class='result-section'>Cause</div>What may be causing the problem?"+
-"<div class='result-section'>People affected</div>Who experiences the problem?"+
-"<div class='result-section'>Current solutions</div>How is the problem currently handled?"+
-"<div class='result-section'>Gaps</div>What is missing or ineffective?"+
-"<div class='result-section'>Evidence</div>What information is needed to verify the problem?"+
-"<div class='result-section'>Opportunities</div>What possible solutions could address it?";
+result=problemResearch(input);
 }
-
 
 else if(currentTool==="AI Projects"){
-
-result=
-"<div class='result-title'>🤖 AI Project</div>"+
-"<b>Project:</b> "+input+
-"<div class='result-section'>Problem</div>Define the problem."+
-"<div class='result-section'>Users</div>Identify the users."+
-"<div class='result-section'>Data</div>Determine the required data."+
-"<div class='result-section'>AI Capability</div>Prediction, recommendation, classification, generation, automation or analysis."+
-"<div class='result-section'>System</div>User → Input → AI Processing → Result → Action → Feedback."+
-"<div class='result-section'>Testing</div>Test accuracy, reliability, usability and safety.";
+result=aiProject(input);
 }
-
 
 else if(currentTool==="Technology"){
-
-result=
-"<div class='result-title'>💻 Technology Exploration</div>"+
-"<b>Topic:</b> "+input+
-"<div class='result-section'>Purpose</div>What problem does the technology solve?"+
-"<div class='result-section'>Users</div>Who needs it?"+
-"<div class='result-section'>Current Technology</div>What technologies already exist?"+
-"<div class='result-section'>Benefits</div>What can improve?"+
-"<div class='result-section'>Limitations</div>What problems or constraints exist?"+
-"<div class='result-section'>Innovation</div>What could be improved, combined or created?";
+result=technologyAnalysis(input);
 }
-
 
 else if(currentTool==="Data Analyzer"){
-
-let numbers=input.match(/-?\\d+(\\.\\d+)?/g);
-
-if(numbers){
-
-let values=numbers.map(Number);
-let total=values.reduce((a,b)=>a+b,0);
-let average=total/values.length;
-
-result=
-"<div class='result-title'>📊 Data Analysis</div>"+
-"<b>Values:</b> "+values.join(", ")+
-"<div class='result-section'>Count</div>"+values.length+
-"<div class='result-section'>Total</div>"+total+
-"<div class='result-section'>Average</div>"+average.toFixed(2)+
-"<div class='result-section'>Basic Insight</div>Compare the values, identify high and low values and investigate unusual changes.";
-}else{
-
-result=
-"<div class='result-title'>📊 Information Analysis</div>"+
-"<b>Information:</b> "+input+
-"<div class='result-section'>Categories</div>Organize the information into meaningful groups."+
-"<div class='result-section'>Patterns</div>Look for repeated ideas, differences and relationships."+
-"<div class='result-section'>Insights</div>Identify information that could support a decision or action.";
+result=dataAnalysis(input);
 }
-
-}
-
 
 else if(currentTool==="Decision Analysis"){
-
-result=
-"<div class='result-title'>🎯 Decision Analysis</div>"+
-"<b>Decision:</b> "+input+
-"<div class='result-section'>Options</div>List the realistic choices."+
-"<div class='result-section'>Benefits</div>What does each option provide?"+
-"<div class='result-section'>Costs</div>What money, time or resources are required?"+
-"<div class='result-section'>Risks</div>What could go wrong?"+
-"<div class='result-section'>Opportunities</div>What could become possible?"+
-"<div class='result-section'>Decision</div>Choose the option that best fits the objective and available resources.";
+result=decisionAnalysis(input);
 }
-
 
 else if(currentTool==="Text Analysis"){
-
-result=
-"<div class='result-title'>📄 Text Analysis</div>"+
-"<b>Text:</b> "+input+
-"<div class='result-section'>Main Idea</div>Identify the central message."+
-"<div class='result-section'>Important Points</div>Separate the key information."+
-"<div class='result-section'>Problems</div>Identify issues or challenges mentioned."+
-"<div class='result-section'>Opportunities</div>Identify possible opportunities."+
-"<div class='result-section'>Questions</div>Identify information that is still missing."+
-"<div class='result-section'>Actions</div>Determine what could be done next.";
+result=textAnalysis(input);
 }
-
 
 else if(currentTool==="Project Workspace"){
-
-result=
-"<div class='result-title'>📁 Project Workspace</div>"+
-"<b>Project:</b> "+input+
-"<div class='result-section'>Goal</div>Define the main objective."+
-"<div class='result-section'>Deliverables</div>Define what must be produced."+
-"<div class='result-section'>Activities</div>List the major activities."+
-"<div class='result-section'>Resources</div>Identify people, tools, money and information required."+
-"<div class='result-section'>Progress</div>Track completed and remaining work."+
-"<div class='result-section'>Next Action</div>Choose the next practical step.";
+result=projectWorkspace(input);
 }
-
 
 else if(currentTool==="Idea Workspace"){
-
-result=
-"<div class='result-title'>💡 Idea Workspace</div>"+
-"<b>Idea:</b> "+input+
-"<div class='result-section'>Problem</div>What problem does the idea address?"+
-"<div class='result-section'>Customer</div>Who needs it?"+
-"<div class='result-section'>Solution</div>What will be created?"+
-"<div class='result-section'>Value</div>Why would people use it?"+
-"<div class='result-section'>Market</div>Where could it be used?"+
-"<div class='result-section'>Next Experiment</div>Test the smallest version of the idea.";
+result=ideaWorkspace(input);
 }
-
 
 else if(currentTool==="Task Workspace"){
-
-result=
-"<div class='result-title'>✅ Task Workspace</div>"+
-"<b>Goal:</b> "+input+
-"<div class='result-section'>Tasks</div>"+
-"1. Define objective<br>"+
-"2. Research requirements<br>"+
-"3. Prepare resources<br>"+
-"4. Complete the main work<br>"+
-"5. Test the result<br>"+
-"6. Review performance<br>"+
-"7. Improve";
+result=taskWorkspace(input);
 }
-
 
 else if(currentTool==="Research Notes"){
-
-result=
-"<div class='result-title'>📝 Research Notes</div>"+
-"<b>Notes:</b><br><br>"+input+
-"<div class='result-section'>Next Step</div>"+
-"Identify the strongest findings, unanswered questions, evidence needed and actions that should follow.";
+result=researchNotes(input);
 }
-
 
 else{
 
-result=
-"<div class='result-title'>"+currentTool+"</div>"+
-input;
+result=`
+<div class="result-title">${currentTool}</div>
+${input}
+`;
+
 }
 
-
 document.getElementById("output").innerHTML=result;
+
+window.scrollTo({
+top:document.getElementById("output").offsetTop-20,
+behavior:"smooth"
+});
 
 }
 
