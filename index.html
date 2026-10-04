@@ -207,7 +207,8 @@ input:focus{
   line-height:1.8;
 }
 
-.nova-message ul{
+.nova-message ul,
+.nova-message ol{
   margin:12px 0 12px 22px;
 }
 
@@ -217,6 +218,35 @@ input:focus{
 
 .nova-ask textarea{
   min-height:110px;
+}
+
+.suggestion-box{
+  margin-top:18px;
+  background:#f8fafc;
+  padding:15px;
+  border-radius:12px;
+}
+
+.suggestion-btn{
+  background:white;
+  color:#172033;
+  border:1px solid #ccd5e0;
+  padding:9px 12px;
+  margin:5px 3px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.suggestion-btn:hover{
+  background:#edf4fc;
+}
+
+.status-box{
+  background:#172033;
+  color:white;
+  padding:15px;
+  border-radius:12px;
+  margin-top:18px;
 }
 
 .close-btn{
@@ -265,718 +295,766 @@ footer{
 
 <header>
   <h1>Nova Cloud</h1>
+
   <p>
     Systems • Business Intelligence • Research • Data & Analysis • Cloud Workspace
   </p>
 </header>
 
+
 <div class="container">
 
-  <!-- CATEGORY BUTTONS -->
+<!-- =====================================================
+     CATEGORY BUTTONS
+===================================================== -->
 
-  <div class="categories">
+<div class="categories">
 
-    <button class="category-btn"
-      onclick="openSection('systems')">
-      Systems
-    </button>
+<button class="category-btn"
+onclick="openSection('systems')">
+Systems
+</button>
 
-    <button class="category-btn"
-      onclick="openSection('business')">
-      Business Intelligence
-    </button>
+<button class="category-btn"
+onclick="openSection('business')">
+Business Intelligence
+</button>
 
-    <button class="category-btn"
-      onclick="openSection('research')">
-      Research
-    </button>
+<button class="category-btn"
+onclick="openSection('research')">
+Research
+</button>
 
-    <button class="category-btn"
-      onclick="openSection('data')">
-      Data & Analysis
-    </button>
+<button class="category-btn"
+onclick="openSection('data')">
+Data & Analysis
+</button>
 
-    <button class="category-btn"
-      onclick="openSection('cloud')">
-      Cloud Workspace
-    </button>
+<button class="category-btn"
+onclick="openSection('cloud')">
+Cloud Workspace
+</button>
 
-  </div>
+</div>
 
 
-  <!-- ================= SYSTEMS ================= -->
+<!-- =====================================================
+     SYSTEMS
+===================================================== -->
 
-  <section id="systems" class="section">
+<section id="systems" class="section">
 
-    <h2>⚙️ Systems</h2>
+<h2>⚙️ Systems</h2>
 
-    <p class="section-intro">
-      Understand problems, explore ideas and build practical systems.
-    </p>
+<p class="section-intro">
+Understand problems, explore ideas and build practical systems.
+</p>
 
-    <div class="tools">
+<div class="tools">
 
-      <div class="tool-card">
-        <h3>🛠️ System Analysis</h3>
-        <p>
-          Start with an idea, question or problem and continue
-          exploring it with Nova Cloud.
-        </p>
+<div class="tool-card">
 
-        <button onclick="openTool('systemTool')">
-          Analyze / Build
-        </button>
-      </div>
+<h3>🛠️ System Analysis</h3>
 
-      <div class="tool-card">
-        <h3>🤖 AI Projects</h3>
-        <p>
-          Explore how AI could be used in a project or business.
-        </p>
+<p>
+Start with an idea, question, problem or business and
+continue exploring it with Nova Cloud.
+</p>
 
-        <button onclick="openTool('aiTool')">
-          Explore
-        </button>
-      </div>
+<button onclick="openTool('systemTool')">
+Analyze / Build
+</button>
 
-      <div class="tool-card">
-        <h3>💻 Technology</h3>
-        <p>
-          Explore technologies that could help solve a problem.
-        </p>
+</div>
 
-        <button onclick="openTool('technologyTool')">
-          Explore
-        </button>
-      </div>
 
-    </div>
+<div class="tool-card">
 
+<h3>🤖 AI Projects</h3>
 
-    <!-- SYSTEM TOOL -->
+<p>
+Explore how AI could be used in a project or business.
+</p>
 
-    <div id="systemTool" class="workspace">
+<button onclick="openTool('aiTool')">
+Explore
+</button>
 
-      <div class="workspace-box">
+</div>
 
-        <h2>🛠️ Nova Cloud System Analysis</h2>
 
-        <p>
-          Start with an idea, problem, question or business.
-          Nova Cloud will help you understand it and explore it
-          step by step.
-        </p>
+<div class="tool-card">
 
-        <textarea
-          id="systemInput"
-          placeholder="Example: I want to start selling school uniforms"></textarea>
+<h3>💻 Technology</h3>
 
-        <button
-          class="primary-btn"
-          onclick="startSystemAnalysis()">
-          Analyze / Build
-        </button>
+<p>
+Explore technologies that could help solve a problem.
+</p>
 
-        <div id="systemResult"></div>
+<button onclick="openTool('technologyTool')">
+Explore
+</button>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
 
-    <!-- AI TOOL -->
+<!-- SYSTEM TOOL -->
 
-    <div id="aiTool" class="workspace">
+<div id="systemTool" class="workspace">
 
-      <div class="workspace-box">
+<div class="workspace-box">
 
-        <h2>🤖 AI Project Explorer</h2>
+<h2>🛠️ Nova Cloud System Analysis</h2>
 
-        <textarea
-          id="aiInput"
-          placeholder="Describe the project or problem where you want to use AI"></textarea>
+<p>
+Start with an idea, problem or question. Nova Cloud will
+help you understand it, investigate it and move toward
+practical action.
+</p>
 
-        <button
-          class="primary-btn"
-          onclick="createAIPlan()">
-          Explore AI
-        </button>
+<textarea
+id="systemInput"
+placeholder="Example: I want to start selling school uniforms">
+</textarea>
 
-        <div id="aiResult" class="result"></div>
+<button
+class="primary-btn"
+onclick="startSystemAnalysis()">
+Start Nova Cloud Analysis
+</button>
 
-      </div>
+<div id="systemResult"></div>
 
-    </div>
+</div>
 
+</div>
 
-    <!-- TECHNOLOGY TOOL -->
 
-    <div id="technologyTool" class="workspace">
+<!-- AI TOOL -->
 
-      <div class="workspace-box">
+<div id="aiTool" class="workspace">
 
-        <h2>💻 Technology Explorer</h2>
+<div class="workspace-box">
 
-        <textarea
-          id="technologyInput"
-          placeholder="What problem or project do you want technology to help with?"></textarea>
+<h2>🤖 AI Project Explorer</h2>
 
-        <button
-          class="primary-btn"
-          onclick="exploreTechnology()">
-          Explore Technology
-        </button>
+<textarea
+id="aiInput"
+placeholder="Describe the project or problem where you want to use AI">
+</textarea>
 
-        <div id="technologyResult" class="result"></div>
+<button
+class="primary-btn"
+onclick="createAIPlan()">
+Explore AI
+</button>
 
-      </div>
+<div id="aiResult" class="result"></div>
 
-    </div>
+</div>
 
-  </section>
+</div>
 
 
-  <!-- ================= BUSINESS ================= -->
+<!-- TECHNOLOGY TOOL -->
 
-  <section id="business" class="section">
+<div id="technologyTool" class="workspace">
 
-    <h2>📊 Business Intelligence</h2>
+<div class="workspace-box">
 
-    <p class="section-intro">
-      Understand businesses, customers, markets, competition,
-      opportunities and decisions.
-    </p>
+<h2>💻 Technology Explorer</h2>
 
-    <div class="tools">
+<textarea
+id="technologyInput"
+placeholder="What problem or project do you want technology to help with?">
+</textarea>
 
-      <div class="tool-card">
+<button
+class="primary-btn"
+onclick="exploreTechnology()">
+Explore Technology
+</button>
 
-        <h3>Business Analyzer</h3>
+<div id="technologyResult" class="result"></div>
 
-        <p>
-          Analyze an existing business and identify what to
-          preserve, adapt, replace or innovate.
-        </p>
+</div>
 
-        <button onclick="openTool('businessTool')">
-          Analyze
-        </button>
+</div>
 
-      </div>
+</section>
 
 
-      <div class="tool-card">
+<!-- =====================================================
+     BUSINESS
+===================================================== -->
 
-        <h3>Business Idea Analyzer</h3>
+<section id="business" class="section">
 
-        <p>
-          Explore a new business idea before investing heavily.
-        </p>
+<h2>📊 Business Intelligence</h2>
 
-        <button onclick="openTool('ideaTool')">
-          Analyze
-        </button>
+<p class="section-intro">
+Understand businesses, customers, markets, competition,
+opportunities and decisions.
+</p>
 
-      </div>
+<div class="tools">
 
+<div class="tool-card">
 
-      <div class="tool-card">
+<h3>Business Analyzer</h3>
 
-        <h3>Customer Research</h3>
+<p>
+Analyze an existing business and identify what to
+preserve, adapt, replace or innovate.
+</p>
 
-        <p>
-          Understand customers, their problems and their needs.
-        </p>
+<button onclick="openTool('businessTool')">
+Analyze
+</button>
 
-        <button onclick="openTool('customerTool')">
-          Research
-        </button>
+</div>
 
-      </div>
 
-    </div>
+<div class="tool-card">
 
+<h3>Business Idea Analyzer</h3>
 
-    <div id="businessTool" class="workspace">
+<p>
+Explore a new business idea before investing heavily.
+</p>
 
-      <div class="workspace-box">
+<button onclick="openTool('ideaTool')">
+Analyze
+</button>
 
-        <h2>📊 Business Analyzer</h2>
+</div>
 
-        <textarea
-          id="businessInput"
-          placeholder="Describe the business"></textarea>
 
-        <button
-          class="primary-btn"
-          onclick="analyzeBusiness()">
-          Analyze Business
-        </button>
+<div class="tool-card">
 
-        <div id="businessResult" class="result"></div>
+<h3>Customer Research</h3>
 
-      </div>
+<p>
+Understand customers, their problems and their needs.
+</p>
 
-    </div>
+<button onclick="openTool('customerTool')">
+Research
+</button>
 
+</div>
 
-    <div id="ideaTool" class="workspace">
+</div>
 
-      <div class="workspace-box">
 
-        <h2>💡 Business Idea Analyzer</h2>
+<div id="businessTool" class="workspace">
 
-        <textarea
-          id="ideaInput"
-          placeholder="Describe your business idea"></textarea>
+<div class="workspace-box">
 
-        <button
-          class="primary-btn"
-          onclick="analyzeIdea()">
-          Analyze Idea
-        </button>
+<h2>📊 Business Analyzer</h2>
 
-        <div id="ideaResult" class="result"></div>
+<textarea
+id="businessInput"
+placeholder="Describe the business">
+</textarea>
 
-      </div>
+<button
+class="primary-btn"
+onclick="analyzeBusiness()">
+Analyze Business
+</button>
 
-    </div>
+<div id="businessResult" class="result"></div>
 
+</div>
 
-    <div id="customerTool" class="workspace">
+</div>
 
-      <div class="workspace-box">
 
-        <h2>👥 Customer Research</h2>
+<div id="ideaTool" class="workspace">
 
-        <textarea
-          id="customerInput"
-          placeholder="Describe the product, service or business"></textarea>
+<div class="workspace-box">
 
-        <button
-          class="primary-btn"
-          onclick="researchCustomers()">
-          Research Customers
-        </button>
+<h2>💡 Business Idea Analyzer</h2>
 
-        <div id="customerResult" class="result"></div>
+<textarea
+id="ideaInput"
+placeholder="Describe your business idea">
+</textarea>
 
-      </div>
+<button
+class="primary-btn"
+onclick="analyzeIdea()">
+Analyze Idea
+</button>
 
-    </div>
+<div id="ideaResult" class="result"></div>
 
-  </section>
+</div>
 
+</div>
 
-  <!-- ================= RESEARCH ================= -->
 
-  <section id="research" class="section">
+<div id="customerTool" class="workspace">
 
-    <h2>🔎 Research</h2>
+<div class="workspace-box">
 
-    <p class="section-intro">
-      Organize questions, investigate problems and turn findings
-      into useful understanding.
-    </p>
+<h2>👥 Customer Research</h2>
 
-    <div class="tools">
+<textarea
+id="customerInput"
+placeholder="Describe the product, service or business">
+</textarea>
 
-      <div class="tool-card">
+<button
+class="primary-btn"
+onclick="researchCustomers()">
+Research Customers
+</button>
 
-        <h3>Research Planner</h3>
+<div id="customerResult" class="result"></div>
 
-        <p>
-          Turn a question into a structured research process.
-        </p>
+</div>
 
-        <button onclick="openTool('researchPlanTool')">
-          Plan Research
-        </button>
+</div>
 
-      </div>
+</section>
 
 
-      <div class="tool-card">
+<!-- =====================================================
+     RESEARCH
+===================================================== -->
 
-        <h3>Research Notes</h3>
+<section id="research" class="section">
 
-        <p>
-          Save research notes directly in this browser.
-        </p>
+<h2>🔎 Research</h2>
 
-        <button onclick="openTool('notesTool')">
-          Open Notes
-        </button>
+<p class="section-intro">
+Organize questions, investigate problems and turn findings
+into useful understanding.
+</p>
 
-      </div>
+<div class="tools">
 
+<div class="tool-card">
 
-      <div class="tool-card">
+<h3>Research Planner</h3>
 
-        <h3>Problem Research</h3>
+<p>
+Turn a question into a structured research process.
+</p>
 
-        <p>
-          Break a difficult problem into smaller questions.
-        </p>
+<button onclick="openTool('researchPlanTool')">
+Plan Research
+</button>
 
-        <button onclick="openTool('problemTool')">
-          Break Problem
-        </button>
+</div>
 
-      </div>
 
-    </div>
+<div class="tool-card">
 
+<h3>Research Notes</h3>
 
-    <div id="researchPlanTool" class="workspace">
+<p>
+Save research notes directly in this browser.
+</p>
 
-      <div class="workspace-box">
+<button onclick="openTool('notesTool')">
+Open Notes
+</button>
 
-        <h2>🔎 Research Planner</h2>
+</div>
 
-        <textarea
-          id="researchInput"
-          placeholder="What do you want to research?"></textarea>
 
-        <button
-          class="primary-btn"
-          onclick="planResearch()">
-          Create Research Plan
-        </button>
+<div class="tool-card">
 
-        <div id="researchResult" class="result"></div>
+<h3>Problem Research</h3>
 
-      </div>
+<p>
+Break a difficult problem into smaller questions.
+</p>
 
-    </div>
+<button onclick="openTool('problemTool')">
+Break Problem
+</button>
 
+</div>
 
-    <div id="notesTool" class="workspace">
+</div>
 
-      <div class="workspace-box">
 
-        <h2>📝 Research Notes</h2>
+<div id="researchPlanTool" class="workspace">
 
-        <textarea
-          id="notesInput"
-          placeholder="Write your research notes here"></textarea>
+<div class="workspace-box">
 
-        <button
-          class="primary-btn"
-          onclick="saveNotes()">
-          Save Notes
-        </button>
+<h2>🔎 Research Planner</h2>
 
-        <button
-          class="close-btn"
-          onclick="loadNotes()">
-          Load Saved Notes
-        </button>
+<textarea
+id="researchInput"
+placeholder="What do you want to research?">
+</textarea>
 
-        <div id="notesResult" class="result"></div>
+<button
+class="primary-btn"
+onclick="planResearch()">
+Create Research Plan
+</button>
 
-      </div>
+<div id="researchResult" class="result"></div>
 
-    </div>
+</div>
 
+</div>
 
-    <div id="problemTool" class="workspace">
 
-      <div class="workspace-box">
+<div id="notesTool" class="workspace">
 
-        <h2>🧩 Problem Research</h2>
+<div class="workspace-box">
 
-        <textarea
-          id="problemInput"
-          placeholder="Describe the problem"></textarea>
+<h2>📝 Research Notes</h2>
 
-        <button
-          class="primary-btn"
-          onclick="breakProblem()">
-          Analyze Problem
-        </button>
+<textarea
+id="notesInput"
+placeholder="Write your research notes here">
+</textarea>
 
-        <div id="problemResult" class="result"></div>
+<button
+class="primary-btn"
+onclick="saveNotes()">
+Save Notes
+</button>
 
-      </div>
+<button
+class="close-btn"
+onclick="loadNotes()">
+Load Saved Notes
+</button>
 
-    </div>
+<div id="notesResult" class="result"></div>
 
-  </section>
+</div>
 
+</div>
 
-  <!-- ================= DATA ================= -->
 
-  <section id="data" class="section">
+<div id="problemTool" class="workspace">
 
-    <h2>📈 Data & Analysis</h2>
+<div class="workspace-box">
 
-    <p class="section-intro">
-      Work with numbers, text and decisions.
-    </p>
+<h2>🧩 Problem Research</h2>
 
-    <div class="tools">
+<textarea
+id="problemInput"
+placeholder="Describe the problem">
+</textarea>
 
-      <div class="tool-card">
+<button
+class="primary-btn"
+onclick="breakProblem()">
+Analyze Problem
+</button>
 
-        <h3>🧮 Calculator</h3>
+<div id="problemResult" class="result"></div>
 
-        <p>
-          Calculate basic numerical information.
-        </p>
+</div>
 
-        <button onclick="openTool('calculatorTool')">
-          Calculate
-        </button>
+</div>
 
-      </div>
+</section>
 
 
-      <div class="tool-card">
+<!-- =====================================================
+     DATA
+===================================================== -->
 
-        <h3>📊 Data Analyzer</h3>
+<section id="data" class="section">
 
-        <p>
-          Analyze numbers or written information.
-        </p>
+<h2>📈 Data & Analysis</h2>
 
-        <button onclick="openTool('dataTool')">
-          Analyze
-        </button>
+<p class="section-intro">
+Work with numbers, text and decisions.
+</p>
 
-      </div>
+<div class="tools">
 
+<div class="tool-card">
 
-      <div class="tool-card">
+<h3>🧮 Calculator</h3>
 
-        <h3>⚖️ Decision Analysis</h3>
+<p>
+Calculate basic numerical information.
+</p>
 
-        <p>
-          Break down a decision and compare possible choices.
-        </p>
+<button onclick="openTool('calculatorTool')">
+Calculate
+</button>
 
-        <button onclick="openTool('decisionTool')">
-          Analyze
-        </button>
+</div>
 
-      </div>
 
-    </div>
+<div class="tool-card">
 
+<h3>📊 Data Analyzer</h3>
 
-    <div id="calculatorTool" class="workspace">
+<p>
+Analyze numbers or written information.
+</p>
 
-      <div class="workspace-box">
+<button onclick="openTool('dataTool')">
+Analyze
+</button>
 
-        <h2>🧮 Calculator</h2>
+</div>
 
-        <input
-          id="calcInput"
-          placeholder="Example: 25 + 50 * 2">
 
-        <button
-          class="primary-btn"
-          onclick="calculate()">
-          Calculate
-        </button>
+<div class="tool-card">
 
-        <div id="calcResult" class="result"></div>
+<h3>⚖️ Decision Analysis</h3>
 
-      </div>
+<p>
+Break down a decision and compare possible choices.
+</p>
 
-    </div>
+<button onclick="openTool('decisionTool')">
+Analyze
+</button>
 
+</div>
 
-    <div id="dataTool" class="workspace">
+</div>
 
-      <div class="workspace-box">
 
-        <h2>📊 Data Analyzer</h2>
+<div id="calculatorTool" class="workspace">
 
-        <textarea
-          id="dataInput"
-          placeholder="Example: 60,70,80,90,100 or paste some text"></textarea>
+<div class="workspace-box">
 
-        <button
-          class="primary-btn"
-          onclick="analyzeData()">
-          Analyze Data
-        </button>
+<h2>🧮 Calculator</h2>
 
-        <div id="dataResult" class="result"></div>
+<input
+id="calcInput"
+placeholder="Example: 25 + 50 * 2">
 
-      </div>
+<button
+class="primary-btn"
+onclick="calculate()">
+Calculate
+</button>
 
-    </div>
+<div id="calcResult" class="result"></div>
 
+</div>
 
-    <div id="decisionTool" class="workspace">
+</div>
 
-      <div class="workspace-box">
 
-        <h2>⚖️ Decision Analysis</h2>
+<div id="dataTool" class="workspace">
 
-        <textarea
-          id="decisionInput"
-          placeholder="Describe the decision you need to make"></textarea>
+<div class="workspace-box">
 
-        <button
-          class="primary-btn"
-          onclick="analyzeDecision()">
-          Analyze Decision
-        </button>
+<h2>📊 Data Analyzer</h2>
 
-        <div id="decisionResult" class="result"></div>
+<textarea
+id="dataInput"
+placeholder="Example: 60,70,80,90,100 or paste some text">
+</textarea>
 
-      </div>
+<button
+class="primary-btn"
+onclick="analyzeData()">
+Analyze Data
+</button>
 
-    </div>
+<div id="dataResult" class="result"></div>
 
-  </section>
+</div>
 
+</div>
 
-  <!-- ================= CLOUD ================= -->
 
-  <section id="cloud" class="section">
+<div id="decisionTool" class="workspace">
 
-    <h2>☁️ Cloud Workspace</h2>
+<div class="workspace-box">
 
-    <p class="section-intro">
-      Keep ideas, projects and tasks organized in one workspace.
-    </p>
+<h2>⚖️ Decision Analysis</h2>
 
-    <div class="tools">
+<textarea
+id="decisionInput"
+placeholder="Describe the decision you need to make">
+</textarea>
 
-      <div class="tool-card">
+<button
+class="primary-btn"
+onclick="analyzeDecision()">
+Analyze Decision
+</button>
 
-        <h3>📁 Project Workspace</h3>
+<div id="decisionResult" class="result"></div>
 
-        <p>
-          Save a project description.
-        </p>
+</div>
 
-        <button onclick="openTool('projectTool')">
-          Open
-        </button>
+</div>
 
-      </div>
+</section>
 
 
-      <div class="tool-card">
+<!-- =====================================================
+     CLOUD
+===================================================== -->
 
-        <h3>💡 Idea Workspace</h3>
+<section id="cloud" class="section">
 
-        <p>
-          Save and develop an idea.
-        </p>
+<h2>☁️ Cloud Workspace</h2>
 
-        <button onclick="openTool('ideaWorkspaceTool')">
-          Open
-        </button>
+<p class="section-intro">
+Keep ideas, projects and tasks organized in one workspace.
+</p>
 
-      </div>
+<div class="tools">
 
+<div class="tool-card">
 
-      <div class="tool-card">
+<h3>📁 Project Workspace</h3>
 
-        <h3>✅ Task Workspace</h3>
+<p>
+Save a project description.
+</p>
 
-        <p>
-          Turn an idea into practical tasks.
-        </p>
+<button onclick="openTool('projectTool')">
+Open
+</button>
 
-        <button onclick="openTool('taskTool')">
-          Open
-        </button>
+</div>
 
-      </div>
 
-    </div>
+<div class="tool-card">
 
+<h3>💡 Idea Workspace</h3>
 
-    <div id="projectTool" class="workspace">
+<p>
+Save and develop an idea.
+</p>
 
-      <div class="workspace-box">
+<button onclick="openTool('ideaWorkspaceTool')">
+Open
+</button>
 
-        <h2>📁 Project Workspace</h2>
+</div>
 
-        <textarea
-          id="projectInput"
-          placeholder="Describe your project"></textarea>
 
-        <button
-          class="primary-btn"
-          onclick="saveProject()">
-          Save Project
-        </button>
+<div class="tool-card">
 
-        <div id="projectResult" class="result"></div>
+<h3>✅ Task Workspace</h3>
 
-      </div>
+<p>
+Turn an idea into practical tasks.
+</p>
 
-    </div>
+<button onclick="openTool('taskTool')">
+Open
+</button>
 
+</div>
 
-    <div id="ideaWorkspaceTool" class="workspace">
+</div>
 
-      <div class="workspace-box">
 
-        <h2>💡 Idea Workspace</h2>
+<div id="projectTool" class="workspace">
 
-        <textarea
-          id="ideaWorkspaceInput"
-          placeholder="Write your idea"></textarea>
+<div class="workspace-box">
 
-        <button
-          class="primary-btn"
-          onclick="saveIdea()">
-          Save Idea
-        </button>
+<h2>📁 Project Workspace</h2>
 
-        <div id="ideaWorkspaceResult" class="result"></div>
+<textarea
+id="projectInput"
+placeholder="Describe your project">
+</textarea>
 
-      </div>
+<button
+class="primary-btn"
+onclick="saveProject()">
+Save Project
+</button>
 
-    </div>
+<div id="projectResult" class="result"></div>
 
+</div>
 
-    <div id="taskTool" class="workspace">
+</div>
 
-      <div class="workspace-box">
 
-        <h2>✅ Task Workspace</h2>
+<div id="ideaWorkspaceTool" class="workspace">
 
-        <textarea
-          id="taskInput"
-          placeholder="Describe what you want to accomplish"></textarea>
+<div class="workspace-box">
 
-        <button
-          class="primary-btn"
-          onclick="createTasks()">
-          Create Tasks
-        </button>
+<h2>💡 Idea Workspace</h2>
 
-        <div id="taskResult" class="result"></div>
+<textarea
+id="ideaWorkspaceInput"
+placeholder="Write your idea">
+</textarea>
 
-      </div>
+<button
+class="primary-btn"
+onclick="saveIdea()">
+Save Idea
+</button>
 
-    </div>
+<div id="ideaWorkspaceResult" class="result"></div>
 
-  </section>
+</div>
+
+</div>
+
+
+<div id="taskTool" class="workspace">
+
+<div class="workspace-box">
+
+<h2>✅ Task Workspace</h2>
+
+<textarea
+id="taskInput"
+placeholder="Describe what you want to accomplish">
+</textarea>
+
+<button
+class="primary-btn"
+onclick="createTasks()">
+Create Tasks
+</button>
+
+<div id="taskResult" class="result"></div>
+
+</div>
+
+</div>
+
+</section>
 
 </div>
 
 
 <footer>
-  Nova Cloud — Research • Innovation • Technology
+Nova Cloud — Research • Innovation • Technology
 </footer>
 
 
 <script>
 
 /* =====================================================
+   GLOBAL NOVA CLOUD MEMORY
+===================================================== */
+
+let novaContext = "";
+let novaConversation = [];
+let novaTopicHistory = [];
+
+
+/* =====================================================
    NAVIGATION
-   ===================================================== */
+===================================================== */
 
 function openSection(sectionId){
 
@@ -984,12 +1062,16 @@ function openSection(sectionId){
     section.classList.remove("active");
   });
 
-  document.getElementById(sectionId).classList.add("active");
+  const section = document.getElementById(sectionId);
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  if(section){
+    section.classList.add("active");
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+  }
 }
 
 
@@ -999,22 +1081,25 @@ function openTool(toolId){
     tool.classList.remove("active");
   });
 
-  document.getElementById(toolId).classList.add("active");
+  const tool = document.getElementById(toolId);
 
-  document.getElementById(toolId).scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
+  if(tool){
+
+    tool.classList.add("active");
+
+    setTimeout(function(){
+      tool.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+    },100);
+  }
 }
 
 
 /* =====================================================
-   NOVA CLOUD INTERACTIVE SYSTEM ANALYSIS
-   ===================================================== */
-
-let novaContext = "";
-let novaConversation = [];
-
+   NOVA CLOUD SYSTEM ANALYSIS
+===================================================== */
 
 function startSystemAnalysis(){
 
@@ -1033,16 +1118,17 @@ function startSystemAnalysis(){
 
   novaContext = input;
   novaConversation = [];
+  novaTopicHistory = [];
 
   document.getElementById("systemResult").innerHTML =
 
     "<div class='nova-analysis'>" +
 
-      "<h2>🛠️ Nova Cloud System Analysis</h2>" +
+      "<h2>🧠 Nova Cloud Analysis</h2>" +
 
       "<div class='nova-input'>" +
 
-        "<strong>Your idea/question:</strong>" +
+        "<strong>Your starting point:</strong>" +
 
         "<p>" +
         escapeHTML(input) +
@@ -1058,30 +1144,26 @@ function startSystemAnalysis(){
 
 
   addNovaMessage(
-    "1. What Nova Cloud understands",
-
-    "Your input describes an idea, problem or opportunity " +
-    "that you want to explore. Instead of immediately assuming " +
-    "the answer, Nova Cloud will help investigate what you are " +
-    "trying to achieve, who is affected, what needs exist and " +
-    "what information is still missing."
+    "1. Understand",
+    "Nova Cloud will first try to understand what you are " +
+    "trying to achieve, the problem involved and what may " +
+    "still be unclear."
   );
 
 
   addNovaMessage(
-    "2. The investigation",
-
-    "We can explore customers, problems, market demand, " +
-    "competition, technology, costs, operations, opportunities " +
-    "and possible business models."
+    "2. Investigate",
+    "The idea can then be examined through customers, " +
+    "problems, market demand, competition, technology, " +
+    "costs, operations and possible opportunities."
   );
 
 
   addNovaMessage(
-    "3. Continue the conversation",
-
-    "You can now ask Nova Cloud questions about your idea. " +
-    "Each question remains connected to the original idea."
+    "3. Decide and act",
+    "The purpose is not just to produce information. " +
+    "The goal is to turn understanding into better decisions " +
+    "and practical next steps."
   );
 
 
@@ -1089,12 +1171,18 @@ function startSystemAnalysis(){
 }
 
 
+/* =====================================================
+   ADD NOVA MESSAGE
+===================================================== */
+
 function addNovaMessage(title,text){
 
   const box =
     document.getElementById("novaConversation");
 
-  if(!box) return;
+  if(!box){
+    return;
+  }
 
   box.innerHTML +=
 
@@ -1112,17 +1200,28 @@ function addNovaMessage(title,text){
 }
 
 
+/* =====================================================
+   QUESTION BOX
+===================================================== */
+
 function showQuestionBox(){
 
-  document.getElementById("novaQuestion").innerHTML =
+  const box =
+    document.getElementById("novaQuestion");
+
+  if(!box){
+    return;
+  }
+
+  box.innerHTML =
 
     "<div class='nova-ask'>" +
 
       "<h3>💬 Ask Nova Cloud</h3>" +
 
       "<p>" +
-      "Ask anything about your idea, problem, customers, " +
-      "market, competition, technology, money or next steps." +
+      "Continue asking questions about your original idea. " +
+      "Nova Cloud keeps the original context during this analysis." +
       "</p>" +
 
       "<textarea " +
@@ -1136,42 +1235,126 @@ function showQuestionBox(){
       "Ask Nova Cloud" +
       "</button>" +
 
+      "<div class='suggestion-box'>" +
+
+        "<strong>Try asking:</strong><br>" +
+
+        "<button class='suggestion-btn' onclick=\"useNovaSuggestion('Who should I sell to?')\">" +
+        "Who are my customers?" +
+        "</button>" +
+
+        "<button class='suggestion-btn' onclick=\"useNovaSuggestion('What problem are customers trying to solve?')\">" +
+        "What problem exists?"
+        + "</button>" +
+
+        "<button class='suggestion-btn' onclick=\"useNovaSuggestion('Is there market demand for this?')\">" +
+        "Is there demand?"
+        + "</button>" +
+
+        "<button class='suggestion-btn' onclick=\"useNovaSuggestion('How can I compete with existing businesses?')\">" +
+        "How can I compete?"
+        + "</button>" +
+
+        "<button class='suggestion-btn' onclick=\"useNovaSuggestion('What technology could improve this idea?')\">" +
+        "What technology?"
+        + "</button>" +
+
+        "<button class='suggestion-btn' onclick=\"useNovaSuggestion('What should I do first?')\">" +
+        "What should I do first?"
+        + "</button>" +
+
+      "</div>" +
+
     "</div>";
 }
 
+
+/* =====================================================
+   SUGGESTED QUESTION
+===================================================== */
+
+function useNovaSuggestion(question){
+
+  const input =
+    document.getElementById("novaQuestionInput");
+
+  if(input){
+
+    input.value = question;
+
+    input.focus();
+  }
+}
+
+
+/* =====================================================
+   ASK NOVA CLOUD
+===================================================== */
 
 function askNovaCloud(){
 
   const input =
     document.getElementById("novaQuestionInput");
 
+  if(!input){
+    return;
+  }
+
   const question =
     input.value.trim();
 
   if(!question){
-
     return;
   }
 
-
   novaConversation.push(question);
 
-
   addNovaMessage(
-    "💬 You asked",
+     "💬 You asked",
     escapeHTML(question)
   );
 
+  let answer = "";
 
-  const answer =
-    generateNovaResponse(question);
+  try{
+
+    answer =
+      generateNovaResponse(question);
+
+  }catch(error){
+
+    answer =
+      "Nova Cloud could not complete that analysis. " +
+      "Let's approach the question by identifying the problem, " +
+      "the people affected, the information needed and the " +
+      "possible next action.";
+
+  }
+
+
+  /* IMPORTANT:
+     This prevents "undefined" from ever appearing.
+  */
+
+  if(
+    answer === undefined ||
+    answer === null ||
+    String(answer).trim() === ""
+  ){
+
+    answer =
+      "Nova Cloud understands your question, but more information " +
+      "is needed before giving a useful conclusion. " +
+      "Let's break the question into the problem, customer, " +
+      "market, options and next action.";
+
+  }
 
 
   addNovaMessage(
     "🧠 Nova Cloud analysis",
-    answer
+    String(answer)
   );
-
 
   input.value = "";
 
@@ -1179,96 +1362,220 @@ function askNovaCloud(){
 }
 
 
+/* =====================================================
+   MAIN NOVA RESPONSE ENGINE
+===================================================== */
+
 function generateNovaResponse(question){
 
   const q =
-    question.toLowerCase();
+    question.toLowerCase().trim();
 
 
-  /* CUSTOMER */
+  /*
+     CUSTOMER
+  */
 
   if(
     q.includes("customer") ||
     q.includes("customers") ||
     q.includes("sell to") ||
     q.includes("buyer") ||
-    q.includes("buyers")
+    q.includes("buyers") ||
+    q.includes("who should")
   ){
+
+    novaTopicHistory.push("customers");
 
     return
 
-      "Your question is about <strong>customers</strong>." +
+      "This question moves us into the <strong>customer</strong> side of your idea." +
 
       "<br><br>" +
 
       "For <strong>" +
       escapeHTML(novaContext) +
-      "</strong>, we need to identify who has the problem " +
-      "or need, who makes the buying decision, what they value " +
-      "and what would make them choose one option over another." +
+      "</strong>, the important question is not simply " +
+      "\"who could buy it?\" We need to understand who has " +
+      "the problem or need, who makes the buying decision, " +
+      "what they currently use and what they value." +
 
       "<br><br>" +
 
-      "<strong>Next investigation:</strong> " +
-      "Find real potential customers and learn about their " +
-      "current choices, problems, expectations and buying behavior.";
+      "<strong>Investigate:</strong>" +
+
+      "<ul>" +
+
+        "<li>Who experiences the problem?</li>" +
+
+        "<li>Who pays for the solution?</li>" +
+
+        "<li>How do they solve it today?</li>" +
+
+        "<li>What frustrates them about current options?</li>" +
+
+        "<li>What would make them change?</li>" +
+
+      "</ul>" +
+
+      "<strong>Next step:</strong> talk to or observe real " +
+      "potential customers before assuming what they want.";
   }
 
 
-  /* COMPETITION */
+  /*
+     CUSTOMER NEED
+  */
 
   if(
-    q.includes("competitor") ||
-    q.includes("competition") ||
-    q.includes("competitors")
+    q.includes("problem") ||
+    q.includes("need") ||
+    q.includes("pain") ||
+    q.includes("difficult") ||
+    q.includes("frustrat")
   ){
+
+    novaTopicHistory.push("problem");
 
     return
 
-      "Your question is about <strong>competition</strong>." +
+      "This question is about understanding the <strong>problem</strong>." +
 
       "<br><br>" +
 
-      "Look for businesses already solving the same or a " +
-      "similar problem. Study their products, prices, " +
-      "customers, marketing, strengths and weaknesses." +
+      "The original idea is:" +
+
+      "<br><strong>" +
+      escapeHTML(novaContext) +
+      "</strong>" +
 
       "<br><br>" +
 
-      "<strong>The goal is not simply to copy competitors.</strong> " +
-      "The goal is to discover where customers are underserved " +
-      "and where a better opportunity may exist.";
+      "Before designing a solution, identify what is actually " +
+      "causing difficulty and how serious that difficulty is." +
+
+      "<br><br>" +
+
+      "<strong>Investigate:</strong>" +
+
+      "<ul>" +
+
+        "<li>What exactly is happening?</li>" +
+
+        "<li>Who is affected?</li>" +
+
+        "<li>How often does it happen?</li>" +
+
+        "<li>What does it cost in time or money?</li>" +
+
+        "<li>How do people currently deal with it?</li>" +
+
+      "</ul>" +
+
+      "A strong opportunity usually becomes clearer when the " +
+      "real problem is understood first.";
   }
 
 
-  /* MARKET */
+  /*
+     MARKET
+  */
 
   if(
     q.includes("market") ||
     q.includes("demand") ||
-    q.includes("need")
+    q.includes("demanding") ||
+    q.includes("need for") ||
+    q.includes("people want")
   ){
+
+    novaTopicHistory.push("market");
 
     return
 
-      "Your question is about <strong>market demand</strong>." +
+      "This moves the analysis into <strong>market demand</strong>." +
 
       "<br><br>" +
 
-      "We need to determine whether people actually need " +
-      "this solution, how frequently they need it, who currently " +
-      "serves them and whether there is evidence that customers " +
-      "are willing to pay." +
+      "The key question is whether enough people have the " +
+      "problem and whether existing solutions are satisfying them." +
 
       "<br><br>" +
 
-      "<strong>Next investigation:</strong> " +
-      "Research real customers and existing businesses before " +
-      "making major investments.";
+      "<strong>Investigate:</strong>" +
+
+      "<ul>" +
+
+        "<li>Who is already buying similar solutions?</li>" +
+
+        "<li>How frequently do they buy?</li>" +
+
+        "<li>What alternatives already exist?</li>" +
+
+        "<li>What are customers dissatisfied with?</li>" +
+
+        "<li>Is the problem important enough for people to pay to solve?</li>" +
+
+      "</ul>" +
+
+      "<strong>Important:</strong> Nova Cloud should distinguish " +
+      "an assumption from evidence. Market demand should be " +
+      "validated with real research.";
   }
 
 
-  /* MONEY */
+  /*
+     COMPETITION
+  */
+
+  if(
+    q.includes("competitor") ||
+    q.includes("competition") ||
+    q.includes("competitors") ||
+    q.includes("compete")
+  ){
+
+    novaTopicHistory.push("competition");
+
+    return
+
+      "This question is about <strong>competition</strong>." +
+
+      "<br><br>" +
+
+      "Instead of simply asking who your competitors are, " +
+      "study how customers are currently getting the job done." +
+
+      "<br><br>" +
+
+      "<strong>Compare:</strong>" +
+
+      "<ul>" +
+
+        "<li>Products or services</li>" +
+
+        "<li>Prices</li>" +
+
+        "<li>Customer experience</li>" +
+
+        "<li>Accessibility</li>" +
+
+        "<li>Marketing</li>" +
+
+        "<li>Speed and convenience</li>" +
+
+        "<li>Technology</li>" +
+
+      "</ul>" +
+
+      "The objective is to discover where customers are " +
+      "underserved and where your idea could create genuine value.";
+  }
+
+
+  /*
+     MONEY / PRICE
+  */
 
   if(
     q.includes("money") ||
@@ -1277,137 +1584,258 @@ function generateNovaResponse(question){
     q.includes("capital") ||
     q.includes("budget") ||
     q.includes("price") ||
-    q.includes("profit")
+    q.includes("pricing") ||
+    q.includes("profit") ||
+    q.includes("revenue")
   ){
+
+    novaTopicHistory.push("money");
 
     return
 
-      "Your question is about the <strong>financial side</strong>." +
+      "This question moves us into the <strong>financial side</strong>." +
 
       "<br><br>" +
 
-      "Break the idea into startup costs, operating costs, " +
-      "product or service costs, selling price, expected sales " +
-      "and possible profit." +
-
-      "<br><br>" +
-
-      "<strong>Important:</strong> " +
-      "real prices and market information should be researched " +
-      "before making a financial decision.";
-  }
-
-
-  /* STARTING */
-
-  if(
-    q.includes("how do i") ||
-    q.includes("how can i") ||
-    q.includes("start") ||
-    q.includes("begin")
-  ){
-
-    return
-
-      "Your question is about <strong>turning the idea into action</strong>." +
-
-      "<br><br>" +
-
-      "A useful sequence is:" +
+      "For <strong>" +
+      escapeHTML(novaContext) +
+      "</strong>, separate the financial assumptions into:" +
 
       "<ul>" +
 
-        "<li>Understand the problem.</li>" +
+        "<li>Startup costs</li>" +
 
-        "<li>Identify the customer.</li>" +
+        "<li>Operating costs</li>" +
 
-        "<li>Research the market.</li>" +
+        "<li>Cost of delivering the product or service</li>" +
 
-        "<li>Study existing solutions.</li>" +
+        "<li>Possible selling price</li>" +
 
-        "<li>Identify what you need.</li>" +
+        "<li>Expected sales volume</li>" +
 
-        "<li>Test the idea on a small scale.</li>" +
+        "<li>Revenue</li>" +
 
-        "<li>Learn from the results.</li>" +
-
-        "<li>Improve the solution.</li>" +
+        "<li>Potential profit</li>" +
 
       "</ul>" +
 
-      "<strong>Do not build everything before testing whether " +
-      "the idea actually works.</strong>";
+      "<strong>Next step:</strong> collect real local prices " +
+      "and realistic customer information before making major " +
+      "financial decisions.";
   }
 
 
-  /* DIFFERENTIATION */
-
-  if(
-    q.includes("different") ||
-    q.includes("unique") ||
-    q.includes("better") ||
-    q.includes("advantage")
-  ){
-
-    return
-
-      "Your question is about <strong>opportunity and differentiation</strong>." +
-
-      "<br><br>" +
-
-      "Compare your idea with existing alternatives. Ask:" +
-
-      "<ul>" +
-
-        "<li>What are customers unhappy with?</li>" +
-
-        "<li>What is expensive or inconvenient?</li>" +
-
-        "<li>What is difficult to access?</li>" +
-
-        "<li>What could be faster or easier?</li>" +
-
-        "<li>What technology could improve the experience?</li>" +
-
-      "</ul>" +
-
-      "The answers can reveal opportunities for innovation.";
-  }
-
-
-  /* TECHNOLOGY */
+  /*
+     TECHNOLOGY
+  */
 
   if(
     q.includes("technology") ||
     q.includes("digital") ||
     q.includes("software") ||
     q.includes("website") ||
-    q.includes("app")
+    q.includes("app") ||
+    q.includes("ai") ||
+    q.includes("automation")
   ){
+
+    novaTopicHistory.push("technology");
 
     return
 
-      "Your question involves <strong>technology or digital opportunities</strong>." +
+      "This question is about <strong>technology and digital opportunity</strong>." +
 
       "<br><br>" +
 
-      "First identify the business problem. Then determine " +
-      "whether technology can reduce cost, save time, improve " +
-      "customer experience, reach more customers, automate work " +
-      "or create a new service." +
+      "Start with the business or customer problem, then ask " +
+      "where technology can create an advantage." +
 
       "<br><br>" +
 
-      "Technology should solve a real problem rather than " +
-      "being added simply because it is available.";
+      "<strong>Technology could potentially:</strong>" +
+
+      "<ul>" +
+
+        "<li>Reduce repetitive work</li>" +
+
+        "<li>Save time</li>" +
+
+        "<li>Improve customer service</li>" +
+
+        "<li>Collect and analyze data</li>" +
+
+        "<li>Reach customers digitally</li>" +
+
+        "<li>Automate processes</li>" +
+
+        "<li>Create an entirely new service</li>" +
+
+      "</ul>" +
+
+      "Technology should be connected to a real problem or " +
+      "opportunity rather than added simply because it exists.";
   }
 
 
-  /* GENERAL ANALYSIS */
+  /*
+     START / ACTION
+  */
+
+  if(
+    q.includes("how do i") ||
+    q.includes("how can i") ||
+    q.includes("where do i start") ||
+    q.includes("what should i do") ||
+    q.includes("start") ||
+    q.includes("begin") ||
+    q.includes("next step") ||
+    q.includes("next")
+  ){
+
+    novaTopicHistory.push("action");
+
+    return
+
+      "This question is about moving from <strong>understanding to action</strong>." +
+
+      "<br><br>" +
+
+      "For your original idea, a useful sequence is:" +
+
+      "<ol>" +
+
+        "<li>Clearly define the problem.</li>" +
+
+        "<li>Identify the people affected.</li>" +
+
+        "<li>Research the market.</li>" +
+
+        "<li>Study existing alternatives.</li>" +
+
+        "<li>Identify the most important customer need.</li>" +
+
+        "<li>Develop a simple solution.</li>" +
+
+        "<li>Test it on a small scale.</li>" +
+
+        "<li>Measure what happens.</li>" +
+
+        "<li>Improve the solution.</li>" +
+
+      "</ol>" +
+
+      "<strong>Best next action:</strong> start with the part " +
+      "of the idea that has the greatest uncertainty and " +
+      "investigate it before spending heavily.";
+  }
+
+
+  /*
+     DIFFERENTIATION
+  */
+
+  if(
+    q.includes("different") ||
+    q.includes("unique") ||
+    q.includes("better") ||
+    q.includes("advantage") ||
+    q.includes("innovation") ||
+    q.includes("innovate")
+  ){
+
+    novaTopicHistory.push("opportunity");
+
+    return
+
+      "This question is about <strong>differentiation and opportunity</strong>." +
+
+      "<br><br>" +
+
+      "Compare your idea with existing alternatives and look " +
+      "for areas where customers are not being served well." +
+
+      "<br><br>" +
+
+      "<strong>Look for:</strong>" +
+
+      "<ul>" +
+
+        "<li>Something customers find too expensive</li>" +
+
+        "<li>Something difficult to access</li>" +
+
+        "<li>Something too slow</li>" +
+
+        "<li>A poor customer experience</li>" +
+
+        "<li>A process that could be automated</li>" +
+
+        "<li>A group of customers being ignored</li>" +
+
+        "<li>A service that could be simpler</li>" +
+
+      "</ul>" +
+
+      "That gap may become the opportunity Nova Cloud should " +
+      "investigate further.";
+  }
+
+
+  /*
+     BUSINESS MODEL
+  */
+
+  if(
+    q.includes("business model") ||
+    q.includes("make money") ||
+    q.includes("earn") ||
+    q.includes("sell")
+  ){
+
+    novaTopicHistory.push("business model");
+
+    return
+
+      "This question is about the <strong>business model</strong>." +
+
+      "<br><br>" +
+
+      "We need to understand how the idea creates value " +
+      "and how that value can become sustainable revenue." +
+
+      "<br><br>" +
+
+      "<strong>Explore:</strong>" +
+
+      "<ul>" +
+
+        "<li>Who is the customer?</li>" +
+
+        "<li>What are they paying for?</li>" +
+
+        "<li>How much could they pay?</li>" +
+
+        "<li>How will the product or service be delivered?</li>" +
+
+        "<li>What will it cost to deliver?</li>" +
+
+        "<li>How will customers find the business?</li>" +
+
+        "<li>Can the model continue as the business grows?</li>" +
+
+      "</ul>";
+  }
+
+
+  /*
+     GENERAL QUESTION
+  */
+
+  novaTopicHistory.push("general");
 
   return
 
-    "Let's connect this question to your original idea:" +
+    "Let's connect your question to the original idea:" +
 
     "<br><br>" +
 
@@ -1417,33 +1845,41 @@ function generateNovaResponse(question){
 
     "<br><br>" +
 
-    "Nova Cloud can examine the question through six areas:" +
+    "Nova Cloud can investigate this through:" +
 
     "<ul>" +
 
       "<li><strong>Understand:</strong> What are you really trying to solve?</li>" +
 
-      "<li><strong>Investigate:</strong> What information is missing?</li>" +
+      "<li><strong>Problem:</strong> What is actually happening?</li>" +
 
-      "<li><strong>Explain:</strong> What do the findings mean?</li>" +
+      "<li><strong>Customers:</strong> Who is affected or willing to pay?</li>" +
 
-      "<li><strong>Opportunities:</strong> What possibilities exist?</li>" +
+      "<li><strong>Market:</strong> Is there real demand?</li>" +
 
-      "<li><strong>Decide:</strong> Which option makes the most sense?</li>" +
+      "<li><strong>Competition:</strong> What alternatives already exist?</li>" +
 
-      "<li><strong>Action:</strong> What should happen next?</li>" +
+      "<li><strong>Technology:</strong> Could digital systems improve the solution?</li>" +
+
+      "<li><strong>Money:</strong> What could it cost and how could it generate revenue?</li>" +
+
+      "<li><strong>Opportunity:</strong> Where could the idea create better value?</li>" +
+
+      "<li><strong>Decision:</strong> Which option makes the most sense?</li>" +
+
+      "<li><strong>Action:</strong> What should be tested next?</li>" +
 
     "</ul>" +
 
-    "Your original idea remains the context for the discussion, " +
-    "so you can continue asking questions instead of starting " +
-    "a completely new analysis each time.";
+    "Your question has been connected to the original idea. " +
+    "You can continue asking another question and Nova Cloud " +
+    "will keep using the same context.";
 }
 
 
 /* =====================================================
    AI PROJECT
-   ===================================================== */
+===================================================== */
 
 function createAIPlan(){
 
@@ -1460,7 +1896,7 @@ function createAIPlan(){
 
   document.getElementById("aiResult").innerHTML =
 
-    "<h3>AI Project Analysis</h3>" +
+    "<h3>🤖 AI Project Analysis</h3>" +
 
     "<p><strong>Project:</strong> " +
     escapeHTML(input) +
@@ -1471,25 +1907,25 @@ function createAIPlan(){
     "<p><strong>Possible AI opportunities:</strong></p>" +
 
     "<ul>" +
+
       "<li>Automate repetitive work.</li>" +
       "<li>Analyze information.</li>" +
-      "<li>Assist users with questions.</li>" +
+      "<li>Answer user questions.</li>" +
       "<li>Identify patterns.</li>" +
-      "<li>Support decision-making.</li>" +
+      "<li>Support decisions.</li>" +
+      "<li>Personalize experiences.</li>" +
+
     "</ul>" +
 
     "<br>" +
 
-    "<p>" +
-    "The next step is to identify the specific problem " +
-    "AI should solve and what information it would need." +
-    "</p>";
+    "<p><strong>Next question:</strong> What exact problem should AI solve?</p>";
 }
 
 
 /* =====================================================
    TECHNOLOGY
-   ===================================================== */
+===================================================== */
 
 function exploreTechnology(){
 
@@ -1506,7 +1942,7 @@ function exploreTechnology(){
 
   document.getElementById("technologyResult").innerHTML =
 
-    "<h3>Technology Analysis</h3>" +
+    "<h3>💻 Technology Analysis</h3>" +
 
     "<p><strong>Problem:</strong> " +
     escapeHTML(input) +
@@ -1514,24 +1950,24 @@ function exploreTechnology(){
 
     "<br>" +
 
-    "<p>" +
-    "Consider whether technology could improve:" +
-    "</p>" +
+    "<p>Technology could potentially improve:</p>" +
 
     "<ul>" +
+
       "<li>Efficiency</li>" +
       "<li>Communication</li>" +
       "<li>Customer experience</li>" +
       "<li>Data management</li>" +
       "<li>Automation</li>" +
       "<li>Access to information</li>" +
+
     "</ul>";
 }
 
 
 /* =====================================================
    BUSINESS ANALYZER
-   ===================================================== */
+===================================================== */
 
 function analyzeBusiness(){
 
@@ -1548,7 +1984,7 @@ function analyzeBusiness(){
 
   document.getElementById("businessResult").innerHTML =
 
-    "<h3>Business Analysis</h3>" +
+    "<h3>📊 Business Analysis</h3>" +
 
     "<p><strong>Business:</strong> " +
     escapeHTML(input) +
@@ -1559,6 +1995,7 @@ function analyzeBusiness(){
     "<p>Nova Cloud should examine:</p>" +
 
     "<ul>" +
+
       "<li>Customers</li>" +
       "<li>Customer problems</li>" +
       "<li>Products and services</li>" +
@@ -1568,23 +2005,24 @@ function analyzeBusiness(){
       "<li>Operations</li>" +
       "<li>Revenue</li>" +
       "<li>Opportunities</li>" +
+
     "</ul>" +
 
     "<br>" +
 
-    "<p><strong>Adaptation question:</strong></p>" +
+    "<p><strong>Adaptation:</strong></p>" +
 
     "<p>" +
-    "What should the business preserve, adapt, replace " +
-    "or innovate as customers, markets, technology and " +
-    "competition change?" +
+    "Identify what the business should preserve, adapt, " +
+    "replace or innovate as customers, markets, technology " +
+    "and competition change." +
     "</p>";
 }
 
 
 /* =====================================================
    BUSINESS IDEA
-   ===================================================== */
+===================================================== */
 
 function analyzeIdea(){
 
@@ -1601,7 +2039,7 @@ function analyzeIdea(){
 
   document.getElementById("ideaResult").innerHTML =
 
-    "<h3>Business Idea Analysis</h3>" +
+    "<h3>💡 Business Idea Analysis</h3>" +
 
     "<p><strong>Idea:</strong> " +
     escapeHTML(input) +
@@ -1609,17 +2047,28 @@ function analyzeIdea(){
 
     "<br>" +
 
-    "<p>" +
-    "Before investing heavily, investigate the problem, " +
-    "customer, market demand, competition, costs, " +
-    "business model and possible differentiation." +
-    "</p>";
+    "<p>Investigate the idea through:</p>" +
+
+    "<ol>" +
+
+      "<li>Problem</li>" +
+      "<li>Customer</li>" +
+      "<li>Market demand</li>" +
+      "<li>Competition</li>" +
+      "<li>Solution</li>" +
+      "<li>Technology</li>" +
+      "<li>Costs</li>" +
+      "<li>Business model</li>" +
+      "<li>Differentiation</li>" +
+      "<li>Testing</li>" +
+
+    "</ol>";
 }
 
 
 /* =====================================================
    CUSTOMER RESEARCH
-   ===================================================== */
+===================================================== */
 
 function researchCustomers(){
 
@@ -1636,7 +2085,7 @@ function researchCustomers(){
 
   document.getElementById("customerResult").innerHTML =
 
-    "<h3>Customer Research Framework</h3>" +
+    "<h3>👥 Customer Research Framework</h3>" +
 
     "<p><strong>Subject:</strong> " +
     escapeHTML(input) +
@@ -1645,19 +2094,21 @@ function researchCustomers(){
     "<br>" +
 
     "<ul>" +
+
       "<li>Who needs it?</li>" +
       "<li>What problem do they have?</li>" +
-      "<li>How are they solving it now?</li>" +
+      "<li>How do they solve it now?</li>" +
       "<li>What do they dislike about current options?</li>" +
       "<li>What influences their buying decision?</li>" +
       "<li>What would make them choose a new option?</li>" +
+
     "</ul>";
 }
 
 
 /* =====================================================
    RESEARCH PLANNER
-   ===================================================== */
+===================================================== */
 
 function planResearch(){
 
@@ -1674,29 +2125,32 @@ function planResearch(){
 
   document.getElementById("researchResult").innerHTML =
 
-    "<h3>Research Plan</h3>" +
+    "<h3>🔎 Research Plan</h3>" +
 
-    "<p><strong>Research question:</strong> " +
+    "<p><strong>Research subject:</strong> " +
     escapeHTML(input) +
     "</p>" +
 
     "<br>" +
 
     "<ol>" +
+
       "<li>Define exactly what needs to be understood.</li>" +
       "<li>Identify the information required.</li>" +
       "<li>Find reliable sources.</li>" +
       "<li>Compare the evidence.</li>" +
       "<li>Identify important findings.</li>" +
-      "<li>Determine what the findings mean.</li>" +
+      "<li>Explain what the findings mean.</li>" +
+      "<li>Identify opportunities.</li>" +
       "<li>Turn findings into decisions or actions.</li>" +
+
     "</ol>";
 }
 
 
 /* =====================================================
-   RESEARCH NOTES
-   ===================================================== */
+   NOTES
+===================================================== */
 
 function saveNotes(){
 
@@ -1744,7 +2198,7 @@ function loadNotes(){
 
 /* =====================================================
    PROBLEM RESEARCH
-   ===================================================== */
+===================================================== */
 
 function breakProblem(){
 
@@ -1761,7 +2215,7 @@ function breakProblem(){
 
   document.getElementById("problemResult").innerHTML =
 
-    "<h3>Problem Breakdown</h3>" +
+    "<h3>🧩 Problem Breakdown</h3>" +
 
     "<p><strong>Problem:</strong> " +
     escapeHTML(input) +
@@ -1770,6 +2224,7 @@ function breakProblem(){
     "<br>" +
 
     "<ol>" +
+
       "<li>What exactly is happening?</li>" +
       "<li>Who is affected?</li>" +
       "<li>What causes the problem?</li>" +
@@ -1777,13 +2232,14 @@ function breakProblem(){
       "<li>What information is missing?</li>" +
       "<li>What possible solutions exist?</li>" +
       "<li>Which solution should be tested first?</li>" +
+
     "</ol>";
 }
 
 
 /* =====================================================
    CALCULATOR
-   ===================================================== */
+===================================================== */
 
 function calculate(){
 
@@ -1803,7 +2259,7 @@ function calculate(){
     const result =
       Function('"use strict";return (' + input + ')')();
 
-    document.getElementById("calcResult").innerHTML =
+  document.getElementById("calcResult").innerHTML =
       "<strong>Result:</strong> " + result;
 
   }catch(error){
@@ -1816,7 +2272,7 @@ function calculate(){
 
 /* =====================================================
    DATA ANALYZER
-   ===================================================== */
+===================================================== */
 
 function analyzeData(){
 
@@ -1830,7 +2286,6 @@ function analyzeData(){
 
     return;
   }
-
 
   const numbers =
     input
@@ -1859,7 +2314,7 @@ function analyzeData(){
 
     document.getElementById("dataResult").innerHTML =
 
-      "<h3>Numerical Analysis</h3>" +
+      "<h3>📊 Numerical Analysis</h3>" +
 
       "<p><strong>Total:</strong> " +
       total +
@@ -1892,7 +2347,7 @@ function analyzeData(){
 
   document.getElementById("dataResult").innerHTML =
 
-    "<h3>Text Analysis</h3>" +
+    "<h3>📝 Text Analysis</h3>" +
 
     "<p><strong>Characters:</strong> " +
     input.length +
@@ -1917,7 +2372,7 @@ function analyzeData(){
 
 /* =====================================================
    DECISION ANALYSIS
-   ===================================================== */
+===================================================== */
 
 function analyzeDecision(){
 
@@ -1934,7 +2389,7 @@ function analyzeDecision(){
 
   document.getElementById("decisionResult").innerHTML =
 
-    "<h3>Decision Analysis</h3>" +
+    "<h3>⚖️ Decision Analysis</h3>" +
 
     "<p><strong>Decision:</strong> " +
     escapeHTML(input) +
@@ -1945,20 +2400,22 @@ function analyzeDecision(){
     "<p>Consider:</p>" +
 
     "<ul>" +
+
       "<li>What is the goal?</li>" +
       "<li>What options are available?</li>" +
-      "<li>What are the benefits of each option?</li>" +
+      "<li>What are the benefits?</li>" +
       "<li>What are the risks?</li>" +
       "<li>What resources are required?</li>" +
-      "<li>What information is still missing?</li>" +
+      "<li>What information is missing?</li>" +
       "<li>What happens if no action is taken?</li>" +
+
     "</ul>";
 }
 
 
 /* =====================================================
    PROJECT WORKSPACE
-   ===================================================== */
+===================================================== */
 
 function saveProject(){
 
@@ -1985,7 +2442,7 @@ function saveProject(){
 
 /* =====================================================
    IDEA WORKSPACE
-   ===================================================== */
+===================================================== */
 
 function saveIdea(){
 
@@ -2012,7 +2469,7 @@ function saveIdea(){
 
 /* =====================================================
    TASK WORKSPACE
-   ===================================================== */
+===================================================== */
 
 function createTasks(){
 
@@ -2029,15 +2486,17 @@ function createTasks(){
 
   document.getElementById("taskResult").innerHTML =
 
-    "<h3>Suggested Action Sequence</h3>" +
+    "<h3>✅ Suggested Action Sequence</h3>" +
 
     "<ol>" +
+
       "<li>Define the objective.</li>" +
       "<li>Research what is required.</li>" +
       "<li>Identify resources.</li>" +
       "<li>Start with the most important task.</li>" +
       "<li>Test the result.</li>" +
       "<li>Review and improve.</li>" +
+
     "</ol>" +
 
     "<p><strong>Your objective:</strong> " +
@@ -2047,12 +2506,12 @@ function createTasks(){
 
 
 /* =====================================================
-   SECURITY / TEXT DISPLAY
-   ===================================================== */
+   SECURITY
+===================================================== */
 
 function escapeHTML(text){
 
-  return text
+  return String(text)
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -2062,8 +2521,8 @@ function escapeHTML(text){
 
 
 /* =====================================================
-   START WITH SYSTEMS OPEN
-   ===================================================== */
+   START
+===================================================== */
 
 window.onload = function(){
 
@@ -2074,4 +2533,4 @@ window.onload = function(){
 </script>
 
 </body>
-</htm
+</html>
