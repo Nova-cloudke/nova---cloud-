@@ -22,30 +22,31 @@ header{
   background:#172033;
   color:white;
   text-align:center;
-  padding:28px 18px;
+  padding:25px 15px;
 }
 
 header h1{
-  font-size:32px;
+  font-size:28px;
   margin-bottom:8px;
 }
 
 header p{
-  color:#cbd5e1;
+  font-size:14px;
+  opacity:.9;
 }
 
 .container{
-  width:94%;
-  max-width:1100px;
-  margin:25px auto;
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
 }
 
 .card{
   background:white;
   border-radius:14px;
-  padding:22px;
+  padding:20px;
   margin-bottom:20px;
-  box-shadow:0 4px 15px rgba(0,0,0,.07);
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
 .card h2{
@@ -54,39 +55,30 @@ header p{
 
 .card p{
   line-height:1.6;
-  color:#536174;
+  color:#566176;
 }
 
 button{
   border:none;
   border-radius:9px;
-  padding:12px 16px;
-  margin:6px 4px 6px 0;
+  padding:12px 18px;
   background:#172033;
   color:white;
   cursor:pointer;
   font-size:15px;
+  margin-top:12px;
 }
 
 button:hover{
-  opacity:.88;
+  opacity:.9;
 }
 
-.secondary{
-  background:#e8edf5;
-  color:#172033;
-}
-
-.hidden{
-  display:none;
-}
-
-input,textarea,select{
+input,textarea{
   width:100%;
   padding:13px;
-  margin:8px 0 12px;
-  border:1px solid #ccd5e1;
+  border:1px solid #ccd3df;
   border-radius:8px;
+  margin-top:10px;
   font-size:15px;
 }
 
@@ -95,66 +87,88 @@ textarea{
   resize:vertical;
 }
 
-.grid{
+/* PROJECT WORKSPACE */
+
+.workspace-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
   margin-top:18px;
 }
 
-.tool{
-  background:#f8fafc;
-  border:1px solid #dbe3ed;
+.workspace-tool{
+  background:#f7f9fc;
+  border:1px solid #dce2ec;
   border-radius:12px;
-  padding:18px;
+  padding:16px;
+  cursor:pointer;
+  transition:.2s;
 }
 
-.tool h3{
+.workspace-tool:hover{
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.workspace-tool h3{
+  font-size:16px;
   margin-bottom:7px;
 }
 
-.tool p{
-  font-size:14px;
-  margin-bottom:10px;
+.workspace-tool p{
+  font-size:13px;
+  line-height:1.4;
+}
+
+.tool-page{
+  display:none;
+}
+
+.tool-page.active{
+  display:block;
+}
+
+.back-button{
+  background:#657083;
+  margin-bottom:18px;
 }
 
 .output{
   margin-top:18px;
-  padding:18px;
-  background:#eef4ff;
+  background:#f4f7fb;
   border-left:4px solid #172033;
+  padding:16px;
   border-radius:8px;
-  line-height:1.7;
-  white-space:pre-line;
-}
-
-.status{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:20px;
-  background:#e8f5e9;
-  color:#216e39;
-  font-size:13px;
-  margin-top:8px;
-}
-
-.project-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.small{
-  font-size:13px;
-  color:#64748b;
+  line-height:1.6;
 }
 
 footer{
   text-align:center;
-  padding:30px;
-  color:#64748b;
+  padding:25px;
+  color:#687386;
+  font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+  .workspace-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:450px){
+  .workspace-grid{
+    grid-template-columns:1fr;
+  }
+
+  header h1{
+    font-size:24px;
+  }
+
+  .container{
+    padding:14px;
+  }
 }
 </style>
 </head>
@@ -168,80 +182,28 @@ footer{
 
 <div class="container">
 
-<!-- WELCOME -->
-<section id="welcome">
+<!-- PROJECT HOME -->
+
+<section id="projectHome">
 
   <div class="card">
-    <h2>Welcome to Nova Cloud</h2>
+    <h2>Nova Agencies</h2>
 
     <p>
-      Turn your ideas, questions and business challenges into
-      understanding, research, decisions and action.
+      <strong>Project Active</strong>
     </p>
 
-    <div style="margin-top:18px;">
-      <button onclick="showNewProject()">Start a New Project</button>
-      <button class="secondary" onclick="continueProject()">Continue Project</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>What is Nova Cloud?</h2>
-    <p>
-      Nova Cloud is being developed as a business and innovation
-      intelligence workspace. It helps users understand problems,
-      research opportunities, organize projects, make decisions and
-      move toward action.
+    <p style="margin-top:10px;">
+      Nova Agencies is a digital marketing and technology project that
+      helps businesses grow through digital marketing, social media,
+      content creation, websites, customer research, lead generation,
+      and digital systems.
     </p>
   </div>
 
-</section>
-
-
-<!-- NEW PROJECT -->
-<section id="newProject" class="hidden">
+  <!-- ASK NOVA CLOUD -->
 
   <div class="card">
-    <h2>Create a Project</h2>
-
-    <label>Project name</label>
-    <input id="projectName" placeholder="Example: Nova Agencies">
-
-    <label>What is this project about?</label>
-    <textarea id="projectDescription"
-      placeholder="Describe the business, idea or project..."></textarea>
-
-    <button onclick="createProject()">Create Project</button>
-    <button class="secondary" onclick="goHome()">Back</button>
-  </div>
-
-</section>
-
-
-<!-- PROJECT -->
-<section id="project" class="hidden">
-
-  <div class="card">
-
-    <div class="project-title">
-
-      <div>
-        <h2 id="projectTitle">Project</h2>
-        <span class="status">Project Active</span>
-      </div>
-
-      <button class="secondary" onclick="goHome()">Home</button>
-
-    </div>
-
-    <p id="projectDescriptionView" style="margin-top:12px;"></p>
-
-  </div>
-
-
-  <!-- QUESTION ENGINE -->
-  <div class="card">
-
     <h2>Ask Nova Cloud</h2>
 
     <p>
@@ -249,107 +211,399 @@ footer{
       what you are trying to understand before suggesting action.
     </p>
 
-    <textarea id="projectQuestion"
-      placeholder="Example: How can Nova Agencies get more customers?"></textarea>
+    <textarea
+      id="questionInput"
+      placeholder="Ask something about Nova Agencies..."
+    ></textarea>
 
-    <button onclick="analyzeQuestion()">Analyze Question</button>
+    <button onclick="analyzeQuestion()">
+      Analyze Question
+    </button>
 
-    <div id="analysisOutput"></div>
-
+    <div id="questionOutput"></div>
   </div>
 
 
-  <!-- PROJECT TOOLS -->
+  <!-- PROJECT WORKSPACE -->
+
   <div class="card">
 
     <h2>Project Workspace</h2>
 
-    <div class="grid">
+    <p>
+      Everything for Nova Agencies is organized here.
+      Select the area you want to work on.
+    </p>
 
-      <div class="tool">
+    <div class="workspace-grid">
+
+      <div class="workspace-tool" onclick="openTool('business')">
         <h3>Business</h3>
         <p>Understand the business and how it operates.</p>
-        <button onclick="openTool('business')">Open</button>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('customers')">
         <h3>Customers</h3>
-        <p>Record customer knowledge and customer problems.</p>
-        <button onclick="openTool('customers')">Open</button>
+        <p>Understand customers and their problems.</p>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('services')">
         <h3>Services</h3>
         <p>Manage products and services offered.</p>
-        <button onclick="openTool('services')">Open</button>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('marketing')">
         <h3>Marketing</h3>
-        <p>Plan content, visibility and customer attraction.</p>
-        <button onclick="openTool('marketing')">Open</button>
+        <p>Plan content, visibility and attraction.</p>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('leads')">
         <h3>Leads</h3>
         <p>Track potential customers and opportunities.</p>
-        <button onclick="openTool('leads')">Open</button>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('tasks')">
         <h3>Tasks</h3>
         <p>Record work that needs to be completed.</p>
-        <button onclick="openTool('tasks')">Open</button>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('research')">
         <h3>Research</h3>
         <p>Store research questions and findings.</p>
-        <button onclick="openTool('research')">Open</button>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('notes')">
         <h3>Notes</h3>
         <p>Keep important project information.</p>
-        <button onclick="openTool('notes')">Open</button>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('decisions')">
         <h3>Decisions</h3>
-        <p>Record important decisions and why they were made.</p>
-        <button onclick="openTool('decisions')">Open</button>
+        <p>Record important decisions and reasons.</p>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('opportunities')">
         <h3>Opportunities</h3>
-        <p>Capture ideas and possible growth opportunities.</p>
-        <button onclick="openTool('opportunities')">Open</button>
+        <p>Capture ideas and growth opportunities.</p>
       </div>
 
-      <div class="tool">
+      <div class="workspace-tool" onclick="openTool('progress')">
         <h3>Progress</h3>
-        <p>Review what has been completed and what remains.</p>
-        <button onclick="openProgress()">Open</button>
+        <p>Review what is completed and what remains.</p>
       </div>
 
     </div>
 
   </div>
 
+</section>
 
-  <!-- TOOL WORKSPACE -->
-  <div id="toolWorkspace" class="card hidden">
 
-    <h2 id="toolTitle"></h2>
+<!-- BUSINESS -->
 
-    <textarea id="toolInput"
-      placeholder="Enter information for this project..."></textarea>
+<section id="business" class="tool-page">
 
-    <button onclick="saveTool()">Save</button>
-    <button class="secondary" onclick="closeTool()">Close</button>
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
 
-    <div id="toolSaved" class="output hidden"></div>
+  <div class="card">
+    <h2>Business</h2>
 
+    <p>
+      Understand Nova Agencies, how it operates, who it serves,
+      how it creates value and where it can improve.
+    </p>
+
+    <textarea id="businessInput"
+      placeholder="Describe something about the business..."></textarea>
+
+    <button onclick="saveToolData('businessInput','businessOutput')">
+      Save Business Information
+    </button>
+
+    <div id="businessOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- CUSTOMERS -->
+
+<section id="customers" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Customers</h2>
+
+    <p>
+      Record customer types, problems, needs, questions and feedback.
+    </p>
+
+    <textarea id="customersInput"
+      placeholder="Enter customer information..."></textarea>
+
+    <button onclick="saveToolData('customersInput','customersOutput')">
+      Save Customer Information
+    </button>
+
+    <div id="customersOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Services</h2>
+
+    <p>
+      Record and develop Nova Agencies products and services.
+    </p>
+
+    <textarea id="servicesInput"
+      placeholder="Enter services, packages or new service ideas..."></textarea>
+
+    <button onclick="saveToolData('servicesInput','servicesOutput')">
+      Save Services
+    </button>
+
+    <div id="servicesOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- MARKETING -->
+
+<section id="marketing" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Marketing</h2>
+
+    <p>
+      Plan content, visibility, customer attraction and digital campaigns.
+    </p>
+
+    <textarea id="marketingInput"
+      placeholder="Enter a marketing idea, campaign or problem..."></textarea>
+
+    <button onclick="saveToolData('marketingInput','marketingOutput')">
+      Save Marketing Information
+    </button>
+
+    <div id="marketingOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- LEADS -->
+
+<section id="leads" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Leads</h2>
+
+    <p>
+      Record potential customers and opportunities.
+    </p>
+
+    <textarea id="leadsInput"
+      placeholder="Enter lead information..."></textarea>
+
+    <button onclick="saveToolData('leadsInput','leadsOutput')">
+      Save Lead
+    </button>
+
+    <div id="leadsOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- TASKS -->
+
+<section id="tasks" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Tasks</h2>
+
+    <p>
+      Record work that needs to be completed.
+    </p>
+
+    <textarea id="tasksInput"
+      placeholder="Enter a task..."></textarea>
+
+    <button onclick="saveToolData('tasksInput','tasksOutput')">
+      Save Task
+    </button>
+
+    <div id="tasksOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- RESEARCH -->
+
+<section id="research" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Research</h2>
+
+    <p>
+      Store research questions, findings and information that
+      can help Nova Agencies make better decisions.
+    </p>
+
+    <textarea id="researchInput"
+      placeholder="Enter a research question or finding..."></textarea>
+
+    <button onclick="saveToolData('researchInput','researchOutput')">
+      Save Research
+    </button>
+
+    <div id="researchOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- NOTES -->
+
+<section id="notes" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Notes</h2>
+
+    <p>
+      Keep important information about Nova Agencies.
+    </p>
+
+    <textarea id="notesInput"
+      placeholder="Write a project note..."></textarea>
+
+    <button onclick="saveToolData('notesInput','notesOutput')">
+      Save Note
+    </button>
+
+    <div id="notesOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- DECISIONS -->
+
+<section id="decisions" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Decisions</h2>
+
+    <p>
+      Record important decisions and why they were made.
+    </p>
+
+    <textarea id="decisionsInput"
+      placeholder="Enter a decision and the reason..."></textarea>
+
+    <button onclick="saveToolData('decisionsInput','decisionsOutput')">
+      Save Decision
+    </button>
+
+    <div id="decisionsOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- OPPORTUNITIES -->
+
+<section id="opportunities" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Opportunities</h2>
+
+    <p>
+      Capture ideas, market opportunities and possible growth areas.
+    </p>
+
+    <textarea id="opportunitiesInput"
+      placeholder="Enter an opportunity or idea..."></textarea>
+
+    <button onclick="saveToolData('opportunitiesInput','opportunitiesOutput')">
+      Save Opportunity
+    </button>
+
+    <div id="opportunitiesOutput"></div>
+  </div>
+
+</section>
+
+
+<!-- PROGRESS -->
+
+<section id="progress" class="tool-page">
+
+  <button class="back-button" onclick="backToWorkspace()">
+    ← Back to Project Workspace
+  </button>
+
+  <div class="card">
+    <h2>Progress</h2>
+
+    <p>
+      Review what has been completed and what remains.
+    </p>
+
+    <textarea id="progressInput"
+      placeholder="Enter completed work, remaining work or project progress..."></textarea>
+
+    <button onclick="saveToolData('progressInput','progressOutput')">
+      Save Progress
+    </button>
+
+    <div id="progressOutput"></div>
   </div>
 
 </section>
@@ -358,549 +612,178 @@ footer{
 
 
 <footer>
-Nova Cloud — Research • Innovation • Technology
+  Nova Cloud — Research • Innovation • Technology
 </footer>
 
 
 <script>
 
-let project = JSON.parse(localStorage.getItem("novaCloudProject")) || null;
-
-let currentTool = "";
-
-
-/* ---------------- HOME ---------------- */
-
-function hideAll(){
-
-  document.getElementById("welcome").classList.add("hidden");
-  document.getElementById("newProject").classList.add("hidden");
-  document.getElementById("project").classList.add("hidden");
-
-}
-
-
-function goHome(){
-
-  hideAll();
-
-  document.getElementById("welcome").classList.remove("hidden");
-
-}
-
-
-function showNewProject(){
-
-  hideAll();
-
-  document.getElementById("newProject").classList.remove("hidden");
-
-}
-
-
-function continueProject(){
-
-  if(!project){
-
-    alert("No project has been created yet.");
-
-    showNewProject();
-
-    return;
-  }
-
-  loadProject();
-
-}
-
-
-/* ---------------- PROJECT ---------------- */
-
-function createProject(){
-
-  let name =
-    document.getElementById("projectName").value.trim();
-
-  let description =
-    document.getElementById("projectDescription").value.trim();
-
-  if(!name){
-
-    alert("Please enter a project name.");
-
-    return;
-  }
-
-  project = {
-
-    name:name,
-
-    description:description,
-
-    created:new Date().toLocaleString(),
-
-    data:{},
-
-    questions:[]
-
-  };
-
-  localStorage.setItem(
-    "novaCloudProject",
-    JSON.stringify(project)
-  );
-
-  loadProject();
-
-}
-
-
-function loadProject(){
-
-  hideAll();
-
-  document.getElementById("project").classList.remove("hidden");
-
-  document.getElementById("projectTitle").textContent =
-    project.name;
-
-  document.getElementById("projectDescriptionView").textContent =
-    project.description || "No project description added yet.";
-
-}
-
-
-/* ---------------- QUESTION ENGINE ---------------- */
-
-function analyzeQuestion(){
-
-  let question =
-    document.getElementById("projectQuestion").value.trim();
-
-  if(!question){
-
-    alert("Enter a question first.");
-
-    return;
-  }
-
-  let q = question.toLowerCase();
-
-  let type = "general";
-
-  if(
-    q.includes("customer") ||
-    q.includes("client") ||
-    q.includes("people")
-  ){
-
-    type = "customers";
-
-  }
-
-  else if(
-    q.includes("marketing") ||
-    q.includes("advert") ||
-    q.includes("content") ||
-    q.includes("social media") ||
-    q.includes("visibility")
-  ){
-
-    type = "marketing";
-
-  }
-
-  else if(
-    q.includes("sales") ||
-    q.includes("sell") ||
-    q.includes("revenue") ||
-    q.includes("money")
-  ){
-
-    type = "sales";
-
-  }
-
-  else if(
-    q.includes("technology") ||
-    q.includes("software") ||
-    q.includes("system") ||
-    q.includes("ai")
-  ){
-
-    type = "technology";
-
-  }
-
-  else if(
-    q.includes("competition") ||
-    q.includes("competitor")
-  ){
-
-    type = "competition";
-
-  }
-
-  else if(
-    q.includes("grow") ||
-    q.includes("growth") ||
-    q.includes("expand")
-  ){
-
-    type = "growth";
-
-  }
-
-  else if(
-    q.includes("problem") ||
-    q.includes("wrong") ||
-    q.includes("falling") ||
-    q.includes("decline")
-  ){
-
-    type = "diagnosis";
-
-  }
-
-
-  let answer = buildAnalysis(question,type);
-
-
-  project.questions.push({
-
-    question:question,
-
-    type:type,
-
-    answer:answer,
-
-    time:new Date().toLocaleString()
-
-  });
-
-
-  localStorage.setItem(
-    "novaCloudProject",
-    JSON.stringify(project)
-  );
-
-
-  document.getElementById("analysisOutput").innerHTML =
-    `<div class="output">${answer}</div>`;
-
-}
-
-
-function buildAnalysis(question,type){
-
-  let title = "";
-  let focus = "";
-  let actions = "";
-  let research = "";
-
-  if(type === "customers"){
-
-    title = "Customer Analysis";
-
-    focus =
-      "Your question is mainly about understanding the people who buy, use or may need the business.";
-
-    research =
-      "Research should examine who the customers are, what problem they have, what they currently use, why they choose alternatives, and what prevents them from buying.";
-
-    actions =
-      "Next actions: identify the main customer group, list their important problems, review existing customer feedback, and identify one clear customer problem the business can solve better.";
-
-  }
-
-  else if(type === "marketing"){
-
-    title = "Marketing Analysis";
-
-    focus =
-      "Your question is mainly about how the business attracts attention and turns that attention into customers.";
-
-    research =
-      "Research should examine the target audience, channels, content, competitors, customer journey, offers, trust signals and conversion process.";
-
-    actions =
-      "Next actions: identify the target customer, define the main offer, choose the strongest channel, create useful content around customer problems, and measure enquiries rather than only views or likes.";
-
-  }
-
-  else if(type === "sales"){
-
-    title = "Sales & Revenue Analysis";
-
-    focus =
-      "Your question is connected to converting demand into actual business revenue.";
-
-    research =
-      "Research should examine pricing, offers, customer needs, sales process, objections, conversion points and repeat purchases.";
-
-    actions =
-      "Next actions: map the customer journey from first contact to purchase, identify where customers stop, improve the offer or explanation, and track leads through each stage.";
-
-  }
-
-  else if(type === "technology"){
-
-    title = "Technology Analysis";
-
-    focus =
-      "Your question is about whether technology can improve the way the business works.";
-
-    research =
-      "Research should identify repetitive work, information gaps, communication problems, customer-service problems and areas where digital systems could save time.";
-
-    actions =
-      "Next actions: identify one major operational problem, determine whether technology can solve it, compare simple solutions, and test the smallest useful version first.";
-
-  }
-
-  else if(type === "competition"){
-
-    title = "Competition Analysis";
-
-    focus =
-      "Your question is about understanding alternatives that customers can choose instead of this business.";
-
-    research =
-      "Research should compare competitors' offers, customers, pricing approach, positioning, visibility, strengths and weaknesses.";
-
-    actions =
-      "Next actions: identify the strongest alternatives, understand why customers choose them, find an underserved need, and build a clearer reason for customers to choose this business.";
-
-  }
-
-  else if(type === "growth"){
-
-    title = "Growth Analysis";
-
-    focus =
-      "Your question is about increasing the size, reach or capability of the business.";
-
-    research =
-      "Research should examine current customers, market demand, capacity, competition, technology, finances and possible expansion opportunities.";
-
-    actions =
-      "Next actions: determine what is currently limiting growth, identify the most realistic growth opportunity, estimate the resources required, and test the opportunity before committing heavily.";
-
-  }
-
-  else if(type === "diagnosis"){
-
-    title = "Problem Diagnosis";
-
-    focus =
-      "Your question suggests that something is not working as expected. The first step is diagnosis rather than immediately choosing a solution.";
-
-    research =
-      "Research should separate symptoms from causes and examine changes in customers, market conditions, competition, operations, technology and internal processes.";
-
-    actions =
-      "Next actions: describe what changed, compare the situation with the previous period, identify possible causes, collect evidence, and test the strongest explanation.";
-
-  }
-
-  else{
-
-    title = "Project Analysis";
-
-    focus =
-      "Your question requires understanding the situation before deciding what to do.";
-
-    research =
-      "Research should clarify the problem, people affected, current situation, alternatives, evidence, opportunities and constraints.";
-
-    actions =
-      "Next actions: define the problem clearly, collect relevant information, identify possible options, compare them, and choose a practical next step.";
-
-  }
-
-
-  return `
-<strong>${title}</strong>
-
-<br><br>
-
-<strong>Your question:</strong>
-${escapeHTML(question)}
-
-<br><br>
-
-<strong>What Nova Cloud understands:</strong>
-${focus}
-
-<br><br>
-
-<strong>What should be investigated:</strong>
-${research}
-
-<br><br>
-
-<strong>Recommended next step:</strong>
-${actions}
-
-<br><br>
-
-<strong>Continue the analysis:</strong>
-Ask another question about this project. Nova Cloud will use the new question to continue from the current project rather than treating every question as the same problem.
-`;
-
-}
-
-
-/* ---------------- PROJECT TOOLS ---------------- */
+/* OPEN PROJECT TOOL */
 
 function openTool(tool){
 
-  currentTool = tool;
+  document.getElementById("projectHome").style.display="none";
 
-  let names = {
+  document.querySelectorAll(".tool-page").forEach(function(page){
+    page.classList.remove("active");
+  });
 
-    business:"Business",
+  const selected=document.getElementById(tool);
 
-    customers:"Customers",
-
-    services:"Services",
-
-    marketing:"Marketing",
-
-    leads:"Leads",
-
-    tasks:"Tasks",
-
-    research:"Research",
-
-    notes:"Notes",
-
-    decisions:"Decisions",
-
-    opportunities:"Opportunities"
-
-  };
-
-  document.getElementById("toolWorkspace")
-    .classList.remove("hidden");
-
-  document.getElementById("toolTitle").textContent =
-    names[tool] + " Workspace";
-
-  document.getElementById("toolInput").value =
-    project.data[tool] || "";
-
-  document.getElementById("toolSaved").classList.add("hidden");
-
-  document.getElementById("toolWorkspace")
-    .scrollIntoView({behavior:"smooth"});
-
+  if(selected){
+    selected.classList.add("active");
+    window.scrollTo(0,0);
+  }
 }
 
 
-function saveTool(){
+/* RETURN TO WORKSPACE */
 
-  let value =
-    document.getElementById("toolInput").value;
+function backToWorkspace(){
 
-  project.data[currentTool] = value;
+  document.querySelectorAll(".tool-page").forEach(function(page){
+    page.classList.remove("active");
+  });
+
+  document.getElementById("projectHome").style.display="block";
+
+  window.scrollTo(0,0);
+}
+
+
+/* ASK NOVA CLOUD */
+
+function analyzeQuestion(){
+
+  const question=
+    document.getElementById("questionInput").value.trim();
+
+  const output=
+    document.getElementById("questionOutput");
+
+  if(!question){
+    output.innerHTML=
+      "<div class='output'>Please enter a question first.</div>";
+    return;
+  }
+
+  let result="";
+
+  const q=question.toLowerCase();
+
+  if(q.includes("customer") || q.includes("client")){
+    result=
+      "<strong>Understanding:</strong><br>" +
+      "Your question appears to be about customers or clients.<br><br>" +
+      "<strong>Next direction:</strong><br>" +
+      "Look at who the customer is, what problem they have, " +
+      "what they need, how they currently solve it, and what " +
+      "could make Nova Agencies more useful to them.";
+  }
+
+  else if(q.includes("marketing") || q.includes("advertising")){
+    result=
+      "<strong>Understanding:</strong><br>" +
+      "Your question appears to be about marketing or visibility.<br><br>" +
+      "<strong>Next direction:</strong><br>" +
+      "Examine the target customer, message, content, channels, " +
+      "customer journey, conversion and retention.";
+  }
+
+  else if(q.includes("service") || q.includes("website")){
+    result=
+      "<strong>Understanding:</strong><br>" +
+      "Your question appears to concern a service or digital offering.<br><br>" +
+      "<strong>Next direction:</strong><br>" +
+      "Examine the customer problem, value provided, alternatives, " +
+      "delivery process and opportunities for improvement.";
+  }
+
+  else if(q.includes("business")){
+    result=
+      "<strong>Understanding:</strong><br>" +
+      "Your question appears to concern the business itself.<br><br>" +
+      "<strong>Next direction:</strong><br>" +
+      "Examine customers, services, operations, marketing, revenue, " +
+      "competition, technology and opportunities.";
+  }
+
+  else{
+    result=
+      "<strong>Understanding:</strong><br>" +
+      "Nova Cloud needs to understand the main issue behind your question.<br><br>" +
+      "<strong>Next direction:</strong><br>" +
+      "Identify the problem, gather relevant information, " +
+      "compare possible options and then decide what action is useful.";
+  }
+
+  output.innerHTML="<div class='output'>"+result+"</div>";
+}
+
+
+/* SAVE TOOL INFORMATION */
+
+function saveToolData(inputId,outputId){
+
+  const input=document.getElementById(inputId);
+  const output=document.getElementById(outputId);
+
+  const value=input.value.trim();
+
+  if(!value){
+    output.innerHTML=
+      "<div class='output'>Enter some information first.</div>";
+    return;
+  }
 
   localStorage.setItem(
-    "novaCloudProject",
-    JSON.stringify(project)
+    "nova_"+inputId,
+    value
   );
 
-  let saved =
-    document.getElementById("toolSaved");
-
-  saved.textContent =
-    "Saved successfully. Your project information is stored in this browser.";
-
-  saved.classList.remove("hidden");
-
+  output.innerHTML=
+    "<div class='output'>" +
+    "<strong>Saved.</strong><br><br>" +
+    "This information has been saved in this browser for the Nova Agencies project." +
+    "</div>";
 }
 
 
-function closeTool(){
+/* LOAD SAVED INFORMATION */
 
-  document.getElementById("toolWorkspace")
-    .classList.add("hidden");
+window.addEventListener("load",function(){
 
-}
+  const fields=[
+    "businessInput",
+    "customersInput",
+    "servicesInput",
+    "marketingInput",
+    "leadsInput",
+    "tasksInput",
+    "researchInput",
+    "notesInput",
+    "decisionsInput",
+    "opportunitiesInput",
+    "progressInput"
+  ];
 
+  fields.forEach(function(id){
 
-/* ---------------- PROGRESS ---------------- */
+    const saved=localStorage.getItem("nova_"+id);
 
-function openProgress(){
+    if(saved){
+      const element=document.getElementById(id);
 
-  let savedSections =
-    Object.keys(project.data).length;
+      if(element){
+        element.value=saved;
+      }
+    }
 
-  let questions =
-    project.questions.length;
+  });
 
-  let output = `
-<strong>Project Progress</strong>
-
-<br><br>
-
-Project: ${escapeHTML(project.name)}
-
-<br><br>
-
-Workspace sections containing information:
-<strong>${savedSections}</strong>
-
-<br><br>
-
-Questions analyzed:
-<strong>${questions}</strong>
-
-<br><br>
-
-Project status:
-<strong>Active</strong>
-
-<br><br>
-
-Keep adding information, questions, research and decisions as the project develops.
-`;
-
-  document.getElementById("analysisOutput").innerHTML =
-    `<div class="output">${output}</div>`;
-
-  document.getElementById("analysisOutput")
-    .scrollIntoView({behavior:"smooth"});
-
-}
-
-
-/* ---------------- SAFETY FOR TEXT OUTPUT ---------------- */
-
-function escapeHTML(text){
-
-  return text
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* ---------------- STARTUP ---------------- */
-
-if(project){
-
-  // Keep the project available,
-  // but start with the welcome screen.
-
-  goHome();
-
-}
+});
 
 </script>
 
 </body>
-</html>                                                             </html>
+</html>
