@@ -6,178 +6,221 @@
 <title>Nova Cloud</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-  margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7f9;
-  color:#17212b;
+  background:#f4f7fb;
+  color:#172033;
+  line-height:1.5;
 }
 
 header{
-  background:#102a43;
+  background:#111827;
   color:white;
-  padding:22px 18px;
+  padding:24px 18px;
 }
 
 header h1{
-  margin:0 0 6px;
-  font-size:24px;
+  font-size:28px;
+  margin-bottom:5px;
 }
 
 header p{
-  margin:0;
-  color:#c9d8e6;
+  color:#cbd5e1;
+  font-size:14px;
 }
 
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
   padding:20px;
 }
 
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
 .back{
   display:inline-block;
-  margin-bottom:20px;
-  color:#1769aa;
-  text-decoration:none;
+  margin-bottom:18px;
+  color:#2563eb;
   font-weight:bold;
+  cursor:pointer;
+}
+
+.hero{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  margin-bottom:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.hero h2{
+  margin-bottom:8px;
+}
+
+.hero p{
+  color:#64748b;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
 }
 
 .card{
   background:white;
-  border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
-  box-shadow:0 3px 12px rgba(0,0,0,.07);
-}
-
-h2,h3{
-  margin-top:0;
-}
-
-textarea,input{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccd6df;
-  border-radius:9px;
-  font-size:16px;
-  margin-top:8px;
-}
-
-textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-button{
-  border:0;
-  border-radius:9px;
-  padding:11px 16px;
+  border-radius:16px;
+  border:1px solid #e2e8f0;
   cursor:pointer;
-  font-size:15px;
-  font-weight:bold;
-  margin:6px 4px 6px 0;
+  transition:.2s;
 }
 
-.primary{
-  background:#1769aa;
-  color:white;
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-.success{
-  background:#198754;
-  color:white;
+.card h3{
+  margin-bottom:7px;
 }
 
-.secondary{
-  background:#e9eef3;
-  color:#17212b;
-}
-
-.danger{
-  background:#dc3545;
-  color:white;
-}
-
-.status{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:20px;
-  background:#e8f5e9;
-  color:#18743b;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.area{
-  border:1px solid #dce4ea;
-  border-radius:12px;
-  margin:18px 0;
-  overflow:hidden;
-}
-
-.area-header{
-  background:#f0f5f8;
-  padding:15px;
-}
-
-.area-header h3{
-  margin:0 0 5px;
-}
-
-.area-body{
-  padding:16px;
-}
-
-.question{
-  color:#667786;
+.card p{
+  color:#64748b;
   font-size:14px;
 }
 
+.badge{
+  display:inline-block;
+  background:#e0e7ff;
+  color:#3730a3;
+  padding:4px 9px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:11px 16px;
+  cursor:pointer;
+  font-weight:bold;
+  background:#2563eb;
+  color:white;
+}
+
+button.secondary{
+  background:#e2e8f0;
+  color:#172033;
+}
+
+button.danger{
+  background:#dc2626;
+}
+
+button.green{
+  background:#16a34a;
+}
+
+input,textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  margin:8px 0 15px;
+  font:inherit;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.tool{
+  background:white;
+  padding:22px;
+  border-radius:16px;
+  margin-bottom:18px;
+  border:1px solid #e2e8f0;
+}
+
+.result{
+  background:#f8fafc;
+  border-left:4px solid #2563eb;
+  padding:16px;
+  margin-top:15px;
+  border-radius:8px;
+  white-space:pre-line;
+}
+
+.research-area{
+  background:white;
+  border:1px solid #dbe3ed;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+}
+
+.research-area h3{
+  margin-bottom:7px;
+}
+
+.question{
+  color:#475569;
+  font-style:italic;
+  margin-bottom:15px;
+}
+
 .finding{
-  background:#f8fafb;
-  border-left:4px solid #1769aa;
-  padding:14px;
-  border-radius:7px;
-  line-height:1.6;
+  background:#f8fafc;
+  padding:15px;
+  border-radius:10px;
   margin:12px 0;
 }
 
-.evidence{
-  background:#fff8e6;
-  border-left:4px solid #e0a800;
-  padding:12px;
-  border-radius:7px;
-  margin-top:10px;
+.finding strong{
+  display:block;
+  margin-bottom:6px;
 }
 
-.connection{
-  background:#102a43;
-  color:white;
-  padding:18px;
-  border-radius:12px;
-  line-height:1.7;
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
 }
 
-.connection strong{
-  color:#8fd3ff;
+.confirmed{
+  border-left:4px solid #16a34a;
 }
 
-.hidden{
-  display:none;
+.removed{
+  opacity:.5;
 }
 
 .small{
   font-size:13px;
-  color:#697986;
+  color:#64748b;
 }
 
 footer{
   text-align:center;
   padding:30px 15px;
-  color:#71808d;
+  color:#64748b;
+  font-size:13px;
 }
 </style>
 </head>
@@ -191,557 +234,1230 @@ footer{
 
 <div class="container">
 
-<a href="index.html" class="back">← Back to Nova Cloud</a>
+<!-- ================= HOME ================= -->
 
-<div class="card">
-  <span class="status">RESEARCH WORKSPACE</span>
+<section id="home" class="screen active">
 
-  <h2>Ask one main question</h2>
-
-  <p>
-    Nova Cloud breaks your question into useful research areas,
-    investigates each area, and connects the findings into one
-    understandable picture.
-  </p>
-
-  <label><strong>Main Question</strong></label>
-
-  <input
-    id="mainQuestion"
-    type="text"
-    value="What is inside Nova Agencies"
-    placeholder="Example: What is inside Nova Agencies?"
-  >
-
-  <br>
-
-  <button class="primary" onclick="buildResearchMap()">
-    Build Research Map
-  </button>
-</div>
-
-<div id="workspace" class="hidden">
-
-  <div class="card">
-    <h2>ACTIVE RESEARCH</h2>
-
-    <p><strong>Main Question</strong></p>
-    <div id="questionDisplay"></div>
-
-    <p class="small">
-      Nova Cloud has generated the initial intelligence.
-      You can confirm, correct, expand, or connect the findings.
+  <div class="hero">
+    <h2>Nova Cloud</h2>
+    <p>
+      A workspace for research, business intelligence,
+      technology, data and action.
     </p>
   </div>
 
-  <div id="researchAreas"></div>
+  <div class="grid">
 
-  <div class="card">
-    <button class="secondary" onclick="addResearchArea()">
-      + Add Research Area
-    </button>
+    <div class="card" onclick="showScreen('research')">
+      <span class="badge">Research</span>
+      <h3>Research Workspace</h3>
+      <p>
+        Break important questions into multiple research areas,
+        investigate them and connect the findings.
+      </p>
+    </div>
 
-    <button class="primary" onclick="connectFindings()">
-      Connect Findings
+    <div class="card" onclick="showScreen('business')">
+      <span class="badge">Business Intelligence</span>
+      <h3>Business Intelligence</h3>
+      <p>
+        Understand businesses, customers, markets, competition,
+        problems and opportunities.
+      </p>
+    </div>
+
+    <div class="card" onclick="showScreen('systems')">
+      <span class="badge">Systems</span>
+      <h3>Systems</h3>
+      <p>
+        Design useful digital systems and explore technology
+        and AI projects.
+      </p>
+    </div>
+
+    <div class="card" onclick="showScreen('data')">
+      <span class="badge">Data & Analysis</span>
+      <h3>Data & Analysis</h3>
+      <p>
+        Analyze numbers, text, decisions and information.
+      </p>
+    </div>
+
+    <div class="card" onclick="showScreen('workspace')">
+      <span class="badge">Cloud Workspace</span>
+      <h3>Cloud Workspace</h3>
+      <p>
+        Organize projects, ideas and tasks.
+      </p>
+    </div>
+
+    <div class="card" onclick="showScreen('innovation')">
+      <span class="badge">Innovation</span>
+      <h3>Innovation & Technology</h3>
+      <p>
+        Explore ideas, emerging technology and opportunities.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="tool" style="margin-top:20px;">
+    <h3>Active Projects</h3>
+    <div id="projectList"></div>
+    <br>
+    <button onclick="showScreen('workspace')">Open Project Workspace</button>
+  </div>
+
+</section>
+
+
+<!-- ================= RESEARCH ================= -->
+
+<section id="research" class="screen">
+
+  <span class="back" onclick="showScreen('home')">
+    ← Back to Nova Cloud
+  </span>
+
+  <div class="hero">
+    <h2>RESEARCH WORKSPACE</h2>
+    <p>
+      Ask one main question. Nova Cloud breaks your question
+      into useful research areas, investigates each area and
+      connects the findings into one understandable picture.
+    </p>
+  </div>
+
+  <div class="tool">
+    <label><strong>Main Question</strong></label>
+    <input id="mainQuestion"
+      placeholder="Example: What is inside Nova Agencies">
+
+    <button onclick="buildResearchMap()">
+      Build Research Map
     </button>
   </div>
 
-  <div id="connectedResult" class="hidden"></div>
+  <div id="researchOutput"></div>
+
+</section>
+
+
+<!-- ================= BUSINESS ================= -->
+
+<section id="business" class="screen">
+
+  <span class="back" onclick="showScreen('home')">
+    ← Back to Nova Cloud
+  </span>
+
+  <div class="hero">
+    <h2>Business Intelligence</h2>
+    <p>
+      Understand a business as a changing system rather than
+      simply a list of products or services.
+    </p>
+  </div>
+
+  <div class="tool">
+    <label><strong>Business</strong></label>
+    <input id="businessName" placeholder="Example: Nova Agencies">
+
+    <button onclick="analyzeBusiness()">Analyze Business</button>
+
+    <div id="businessResult"></div>
+  </div>
+
+</section>
+
+
+<!-- ================= SYSTEMS ================= -->
+
+<section id="systems" class="screen">
+
+  <span class="back" onclick="showScreen('home')">
+    ← Back to Nova Cloud
+  </span>
+
+  <div class="hero">
+    <h2>Systems</h2>
+    <p>Design systems that turn ideas into practical workflows.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" onclick="openSystemTool('builder')">
+      <h3>System Builder</h3>
+      <p>Turn a problem or idea into a structured system.</p>
+    </div>
+
+    <div class="card" onclick="openSystemTool('ai')">
+      <h3>AI Projects</h3>
+      <p>Explore how AI can become part of a useful project.</p>
+    </div>
+
+    <div class="card" onclick="openSystemTool('technology')">
+      <h3>Technology</h3>
+      <p>Explore technology opportunities and applications.</p>
+    </div>
+
+  </div>
+
+  <div id="systemTool" style="margin-top:20px;"></div>
+
+</section>
+
+
+<!-- ================= DATA ================= -->
+
+<section id="data" class="screen">
+
+  <span class="back" onclick="showScreen('home')">
+    ← Back to Nova Cloud
+  </span>
+
+  <div class="hero">
+    <h2>Data & Analysis</h2>
+    <p>
+      Work with numbers, text and decisions to turn information
+      into understanding.
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" onclick="openDataTool('calculator')">
+      <h3>Calculator</h3>
+      <p>Calculate totals and averages.</p>
+    </div>
+
+    <div class="card" onclick="openDataTool('text')">
+      <h3>Text Analysis</h3>
+      <p>Analyze important sentences and information.</p>
+    </div>
+
+    <div class="card" onclick="openDataTool('decision')">
+      <h3>Decision Analysis</h3>
+      <p>Compare options and understand trade-offs.</p>
+    </div>
+
+  </div>
+
+  <div id="dataTool" style="margin-top:20px;"></div>
+
+</section>
+
+
+<!-- ================= WORKSPACE ================= -->
+
+<section id="workspace" class="screen">
+
+  <span class="back" onclick="showScreen('home')">
+    ← Back to Nova Cloud
+  </span>
+
+  <div class="hero">
+    <h2>Cloud Workspace</h2>
+    <p>
+      Your projects, ideas and tasks in one place.
+    </p>
+  </div>
+
+  <div class="tool">
+
+    <h3>Create Project</h3>
+
+    <input id="projectName"
+      placeholder="Project name">
+
+    <textarea id="projectDescription"
+      placeholder="What is this project about?"></textarea>
+
+    <button onclick="createProject()">Create Project</button>
+
+  </div>
+
+  <div id="workspaceProjects"></div>
+
+</section>
+
+
+<!-- ================= INNOVATION ================= -->
+
+<section id="innovation" class="screen">
+
+  <span class="back" onclick="showScreen('home')">
+    ← Back to Nova Cloud
+  </span>
+
+  <div class="hero">
+    <h2>Innovation & Technology</h2>
+    <p>
+      Explore ideas, technologies and opportunities that could
+      become useful systems or businesses.
+    </p>
+  </div>
+
+  <div class="tool">
+
+    <input id="innovationIdea"
+      placeholder="Enter an idea or technology">
+
+    <button onclick="exploreInnovation()">
+      Explore
+    </button>
+
+    <div id="innovationResult"></div>
+
+  </div>
+
+</section>
 
 </div>
 
-</div>
 
 <footer>
-Nova Cloud — Research • Innovation • Technology
+  Nova Cloud — Research • Innovation • Technology • Business Intelligence
 </footer>
 
 
 <script>
 
-let areas = [];
+/* =========================================================
+   NOVA CLOUD NAVIGATION
+========================================================= */
+
+function showScreen(id){
+
+  document.querySelectorAll(".screen").forEach(screen=>{
+    screen.classList.remove("active");
+  });
+
+  const target=document.getElementById(id);
+
+  if(target){
+    target.classList.add("active");
+    window.scrollTo(0,0);
+  }
+
+  if(id==="workspace"){
+    renderProjects();
+  }
+
+  if(id==="home"){
+    renderProjects();
+  }
+}
 
 
-/* =========================================
-   BUILD RESEARCH MAP
-========================================= */
+/* =========================================================
+   RESEARCH WORKSPACE
+   KEEP THIS STRUCTURE INTACT
+========================================================= */
+
+let researchAreas=[];
 
 function buildResearchMap(){
 
-  const question =
-    document.getElementById("mainQuestion").value.trim();
+  const question=document.getElementById("mainQuestion").value.trim();
 
   if(!question){
-    alert("Enter a main question first.");
+    alert("Enter a main research question first.");
     return;
   }
 
-  document.getElementById("workspace").classList.remove("hidden");
-
-  document.getElementById("questionDisplay").innerHTML =
-    "<strong>" + escapeHTML(question) + "</strong>";
-
-  areas = generateResearchAreas(question);
-
-  renderAreas();
-
-  document.getElementById("connectedResult").classList.add("hidden");
-
-  window.scrollTo({
-    top:document.getElementById("workspace").offsetTop,
-    behavior:"smooth"
-  });
-}
-
-
-/* =========================================
-   NOVA CLOUD RESEARCH ENGINE
-========================================= */
-
-function generateResearchAreas(question){
-
-  const q = question.toLowerCase();
-
-  if(q.includes("nova agencies")){
-
-    return [
-
-      {
-        title:"What Nova Agencies Is",
-        question:"What is this business and what is it designed to do?",
-        finding:
-        "Nova Agencies is positioned as a digital marketing and technology-oriented business that helps businesses improve their online presence, reach customers, create digital content and use digital systems more effectively.",
-        evidence:
-        "Current project information identifies digital marketing, content creation, social media and website-related capabilities."
-      },
-
-      {
-        title:"Services",
-        question:"What products, services or capabilities does it provide?",
-        finding:
-        "The business can provide services such as social media management, digital marketing, content creation, website development, online visibility improvement and lead-generation support.",
-        evidence:
-        "These services represent the current service direction supplied to Nova Cloud."
-      },
-
-      {
-        title:"Problems It Solves",
-        question:"What problems or needs are these services designed to solve?",
-        finding:
-        "Nova Agencies addresses problems such as weak online visibility, inconsistent content, difficulty reaching customers online, limited digital systems and difficulty turning online attention into business opportunities.",
-        evidence:
-        "The finding connects the current services to common business growth needs rather than treating services as isolated products."
-      },
-
-      {
-        title:"Customers",
-        question:"Who could need these solutions?",
-        finding:
-        "Potential customers include small and growing businesses that need help becoming more visible online, communicating with customers, creating consistent content and developing practical digital systems.",
-        evidence:
-        "The customer definition can become more specific as Nova Cloud receives additional customer and market evidence."
-      },
-
-      {
-        title:"Solutions",
-        question:"How does Nova Agencies attempt to solve those problems?",
-        finding:
-        "The solution approach combines digital presence, content, marketing, websites and customer-reach systems so that businesses can move from simply being online toward attracting, engaging and converting potential customers.",
-        evidence:
-        "This connects the individual services into a broader business solution."
-      },
-
-      {
-        title:"Business Results",
-        question:"How could these solutions improve a customer's business?",
-        finding:
-        "The intended results include stronger online visibility, clearer communication, better customer reach, more consistent digital activity and improved opportunities for customer acquisition.",
-        evidence:
-        "Specific measurable results should be added when actual client performance data becomes available."
-      },
-
-      {
-        title:"Market",
-        question:"What is happening around this business and its customers?",
-        finding:
-        "Businesses increasingly need digital channels to communicate with customers, demonstrate their products and compete for attention. This creates demand for practical digital marketing and technology support.",
-        evidence:
-        "The market finding should later be strengthened with external market research, competitor evidence and customer research."
-      },
-
-      {
-        title:"Technology Opportunities",
-        question:"Where could technology make Nova Agencies more useful?",
-        finding:
-        "Nova Agencies could move beyond individual marketing services toward integrated digital systems that help businesses manage content, customer research, marketing activity, data, websites and business decisions.",
-        evidence:
-        "This creates a direct connection between Nova Agencies and the wider Nova Cloud technology vision."
-      },
-
-      {
-        title:"Opportunities",
-        question:"What opportunities become visible after connecting these findings?",
-        finding:
-        "A major opportunity is to turn Nova Agencies from a service-only business into a technology-supported growth system that combines marketing, research, customer understanding, data and digital tools.",
-        evidence:
-        "The opportunity emerges from connecting the service, problem, customer and technology findings."
-      },
-
-      {
-        title:"Action",
-        question:"What should happen next?",
-        finding:
-        "The next step is to validate the assumptions with real customers, actual business results, competitor research and market evidence, then improve the services and systems around what the evidence shows.",
-        evidence:
-        "This prevents Nova Cloud from treating assumptions as final facts."
-      }
-
-    ];
-  }
-
-
-  /* GENERIC QUESTIONS */
-
-  return [
-
+  researchAreas=[
     {
-      title:"Problem or Need",
-      question:"What problem or need is behind the main question?",
-      finding:
-      "Nova Cloud identifies the central problem or need implied by the question and separates it from the wording of the question itself.",
-      evidence:
-      "Further evidence is required before treating this finding as confirmed."
+      title:"What It Is",
+      question:"What is this business, idea or subject and what is it designed to do?",
+      finding:"Nova Cloud should establish what the subject actually is, what it does and what purpose it serves."
     },
-
     {
-      title:"People Affected",
-      question:"Who is affected or involved?",
-      finding:
-      "The relevant people, customers, organisations or groups connected to the question need to be identified.",
-      evidence:
-      "Nova Cloud marks this as an area requiring additional evidence."
+      title:"Services / Products",
+      question:"What products, services or capabilities does it provide?",
+      finding:"Identify the actual products, services, capabilities or functions connected to the subject."
     },
-
     {
-      title:"Current Solutions",
-      question:"How is the problem currently being solved?",
-      finding:
-      "Existing solutions, alternatives and behaviours should be compared to understand what already exists.",
-      evidence:
-      "External research can later strengthen this finding."
+      title:"Problems It Solves",
+      question:"What problems or needs does it address?",
+      finding:"Identify the problems, needs or gaps that the subject is intended to address."
     },
-
     {
-      title:"Market and Environment",
-      question:"What is happening around the question?",
-      finding:
-      "The surrounding market, technology, competition and environmental changes may influence the answer.",
-      evidence:
-      "More evidence is needed for a confirmed market conclusion."
+      title:"Customers / Users",
+      question:"Who needs or uses these solutions?",
+      finding:"Identify the people, businesses or organizations that could need or use the solution."
     },
-
+    {
+      title:"Solutions",
+      question:"How does it attempt to solve those problems?",
+      finding:"Connect the products or capabilities to the problems they are intended to solve."
+    },
+    {
+      title:"Results",
+      question:"What results could it create?",
+      finding:"Identify the practical outcomes, improvements or changes that could result."
+    },
+    {
+      title:"Market",
+      question:"What is happening around this subject and its customers?",
+      finding:"Investigate the market, customer behaviour, competitors, trends and external conditions."
+    },
+    {
+      title:"Technology Opportunities",
+      question:"Where could technology make it more useful?",
+      finding:"Identify technologies and digital systems that could improve the subject."
+    },
     {
       title:"Opportunities",
-      question:"What opportunities could come from understanding this question?",
-      finding:
-      "The strongest opportunities should emerge from connecting the problem, people, existing solutions and market conditions.",
-      evidence:
-      "Opportunities should be tested against evidence."
+      question:"What opportunities become visible after connecting the findings?",
+      finding:"Look for opportunities created by the relationship between problems, customers, solutions, market and technology."
     },
-
     {
       title:"Action",
-      question:"What practical action could follow?",
-      finding:
-      "The final action should be based on the strongest findings rather than assumptions made at the beginning.",
-      evidence:
-      "Action becomes stronger as research evidence improves."
+      question:"What should happen next?",
+      finding:"Turn the strongest evidence and opportunities into practical next steps."
     }
-
   ];
+
+  saveResearch();
+
+  renderResearch(question);
 }
 
 
-/* =========================================
-   DISPLAY AREAS
-========================================= */
+function renderResearch(question){
 
-function renderAreas(){
+  let html=`
+  <div class="hero">
+    <span class="badge">ACTIVE RESEARCH</span>
+    <h2>Main Question</h2>
+    <p><strong>${escapeHTML(question)}</strong></p>
 
-  const container =
-    document.getElementById("researchAreas");
+    <p class="small">
+      Nova Cloud has generated the initial intelligence.
+      You can confirm, correct, expand or connect the findings.
+    </p>
+  </div>
+  `;
 
-  container.innerHTML = "";
+  researchAreas.forEach((area,index)=>{
 
-  areas.forEach((area,index)=>{
+    html+=`
+    <div class="research-area" id="area-${index}">
 
-    const div = document.createElement("div");
+      <span class="badge">RESEARCH AREA ${index+1}</span>
 
-    div.className = "area";
+      <h3>${area.title}</h3>
 
-    div.innerHTML = `
-
-      <div class="area-header">
-
-        <h3>RESEARCH AREA ${index+1}: ${escapeHTML(area.title)}</h3>
-
-        <div class="question">
-          ${escapeHTML(area.question)}
-        </div>
-
+      <div class="question">
+        ${area.question}
       </div>
 
-      <div class="area-body">
-
+      <div class="finding">
         <strong>Nova Cloud Finding</strong>
-
-        <div class="finding">
+        <span id="finding-text-${index}">
           ${escapeHTML(area.finding)}
-        </div>
+        </span>
+      </div>
 
-        <div class="evidence">
-          <strong>Evidence / Confidence Note</strong><br>
-          ${escapeHTML(area.evidence)}
-        </div>
+      <div class="finding">
+        <strong>Evidence / Confidence Note</strong>
+        <span id="evidence-${index}">
+          This is an initial finding and should be strengthened
+          with user information, research and evidence.
+        </span>
+      </div>
 
-        <br>
-
-        <button class="success"
+      <div class="actions">
+        <button class="green"
           onclick="confirmFinding(${index})">
           ✓ Confirm Finding
         </button>
 
         <button class="secondary"
           onclick="editFinding(${index})">
-          Edit
-        </button>
-
-        <button class="secondary"
-          onclick="addInformation(${index})">
-          + Add Information
+          Edit + Add Information
         </button>
 
         <button class="danger"
-          onclick="removeArea(${index})">
+          onclick="removeFinding(${index})">
           Remove
         </button>
-
-        <div id="areaStatus${index}" class="small"></div>
-
       </div>
+
+    </div>
     `;
 
-    container.appendChild(div);
-
   });
+
+  html+=`
+    <div class="tool">
+      <button onclick="addResearchArea()">
+        + Add Research Area
+      </button>
+
+      <button class="secondary"
+        onclick="connectFindings()">
+        Connect Findings
+      </button>
+
+      <div id="connectionResult"></div>
+    </div>
+  `;
+
+  document.getElementById("researchOutput").innerHTML=html;
 }
 
 
-/* =========================================
-   USER CONNECTION ACTIONS
-========================================= */
-
 function confirmFinding(index){
 
-  document.getElementById(
-    "areaStatus"+index
-  ).innerHTML =
-  "✓ Finding confirmed and available for connection.";
+  const area=document.getElementById("area-"+index);
 
+  area.classList.add("confirmed");
+
+  researchAreas[index].confirmed=true;
+
+  saveResearch();
+
+  alert("Finding confirmed and saved.");
 }
 
 
 function editFinding(index){
 
-  const newFinding = prompt(
-    "Edit Nova Cloud's finding:",
-    areas[index].finding
+  const current=researchAreas[index].finding;
+
+  const updated=prompt(
+    "Edit or add information to this finding:",
+    current
   );
 
-  if(newFinding && newFinding.trim()){
+  if(updated===null) return;
 
-    areas[index].finding =
-      newFinding.trim();
+  researchAreas[index].finding=updated;
 
-    renderAreas();
+  saveResearch();
+
+  const element=document.getElementById("finding-text-"+index);
+
+  if(element){
+    element.textContent=updated;
   }
-
 }
 
 
-function addInformation(index){
+function removeFinding(index){
 
-  const info = prompt(
-    "Add information that should be connected to this finding:"
-  );
+  if(!confirm("Remove this research area?")) return;
 
-  if(info && info.trim()){
+  researchAreas[index].removed=true;
 
-    areas[index].finding +=
-      " Additional information: " +
-      info.trim();
+  const area=document.getElementById("area-"+index);
 
-    renderAreas();
-  }
+  area.classList.add("removed");
 
+  saveResearch();
 }
 
-
-function removeArea(index){
-
-  if(confirm("Remove this research area?")){
-
-    areas.splice(index,1);
-
-    renderAreas();
-  }
-
-}
-
-
-/* =========================================
-   ADD NEW AREA
-========================================= */
 
 function addResearchArea(){
 
-  const title =
-    prompt("What additional research area should Nova Cloud investigate?");
+  const title=prompt("Name of the new research area:");
 
-  if(!title || !title.trim()) return;
+  if(!title) return;
 
-  areas.push({
+  const question=prompt(
+    "What should this research area investigate?"
+  );
 
-    title:title.trim(),
+  if(!question) return;
 
-    question:
-    "What should be understood about this area?",
-
-    finding:
-    "Nova Cloud has created this research area. Add or investigate evidence to develop the finding.",
-
-    evidence:
-    "This is a newly created research area and requires evidence."
-
+  researchAreas.push({
+    title:title,
+    question:question,
+    finding:"Initial finding has not yet been developed.",
+    confirmed:false
   });
 
-  renderAreas();
+  saveResearch();
+
+  const questionText=
+    document.getElementById("mainQuestion").value;
+
+  renderResearch(questionText);
 }
 
-
-/* =========================================
-   CONNECT FINDINGS
-========================================= */
 
 function connectFindings(){
 
-  if(areas.length === 0){
+  const active=researchAreas.filter(
+    area=>!area.removed
+  );
 
-    alert("Add at least one research area.");
+  let connections="";
 
-    return;
-  }
+  active.forEach((area,index)=>{
 
-  const question =
-    document.getElementById("mainQuestion").value;
+    if(index<active.length-1){
 
-  const result =
-    document.getElementById("connectedResult");
+      connections+=
+      (index+1)+". "+
+      area.title+
+      " → "+
+      active[index+1].title+
+      "\n";
 
-  result.classList.remove("hidden");
-
-  let html = `
-
-    <div class="card">
-
-      <h2>CONNECTED INTELLIGENCE</h2>
-
-      <p>
-        Nova Cloud has connected the research areas around:
-      </p>
-
-      <div class="connection">
-
-        <strong>${escapeHTML(question)}</strong>
-
-        <br><br>
-
-  `;
-
-  areas.forEach((area,index)=>{
-
-    html += `
-      <strong>${index+1}. ${escapeHTML(area.title)}</strong><br>
-      ${escapeHTML(area.finding)}
-      <br><br>
-    `;
+    }
 
   });
 
-  html += `
+  document.getElementById("connectionResult").innerHTML=`
+    <div class="result">
+      <strong>Connected Research Picture</strong>
 
-        <strong>Overall Understanding</strong><br>
+      Nova Cloud can now examine how these areas influence
+      one another:
 
-        The findings above should not be treated as separate
-        pieces of information. Together they form a picture of
-        the problem, people, solutions, market, opportunities
-        and possible actions surrounding the main question.
+      ${escapeHTML(connections)}
 
-      </div>
-
-      <br>
-
-      <button class="primary"
-        onclick="saveResearch()">
-        Save Research
-      </button>
-
+      The purpose is to move from isolated findings toward
+      one understandable picture.
     </div>
-
   `;
 
-  result.innerHTML = html;
-
-  result.scrollIntoView({
-    behavior:"smooth"
-  });
+  saveResearch();
 }
 
-
-/* =========================================
-   SAVE RESEARCH
-========================================= */
 
 function saveResearch(){
 
-  const data = {
-
-    question:
-      document.getElementById("mainQuestion").value,
-
-    areas:areas,
-
-    savedAt:
-      new Date().toISOString()
-
-  };
+  const question=
+    document.getElementById("mainQuestion")?.value || "";
 
   localStorage.setItem(
-    "novaResearchWorkspace",
-    JSON.stringify(data)
+    "novaResearch",
+    JSON.stringify({
+      question:question,
+      areas:researchAreas,
+      savedAt:new Date().toISOString()
+    })
   );
-
-  alert("Research saved in this browser.");
 }
 
 
-/* =========================================
-   SECURITY / TEXT CLEANING
-========================================= */
+function loadResearch(){
 
-function escapeHTML(text){
+  const saved=localStorage.getItem("novaResearch");
 
-  return String(text)
+  if(!saved) return;
+
+  try{
+
+    const data=JSON.parse(saved);
+
+    researchAreas=data.areas || [];
+
+    if(data.question){
+
+      document.getElementById("mainQuestion").value=
+        data.question;
+
+      renderResearch(data.question);
+
+    }
+
+  }catch(error){
+
+    console.log("Research could not be loaded.");
+
+  }
+}
+
+
+/* =========================================================
+   BUSINESS INTELLIGENCE
+========================================================= */
+
+function analyzeBusiness(){
+
+  const name=
+    document.getElementById("businessName").value.trim();
+
+  if(!name){
+    alert("Enter a business name.");
+    return;
+  }
+
+  document.getElementById("businessResult").innerHTML=`
+    <div class="result">
+      <strong>${escapeHTML(name)} — Initial Business Intelligence</strong>
+
+      <br><br>
+
+      <strong>Customers</strong><br>
+      Who does the business serve?
+
+      <br><br>
+
+      <strong>Problems</strong><br>
+      What customer problem or need does the business address?
+
+      <br><br>
+
+      <strong>Products / Services</strong><br>
+      What does the business actually provide?
+
+      <br><br>
+
+      <strong>Competition</strong><br>
+      What alternatives do customers have?
+
+      <br><br>
+
+      <strong>Marketing</strong><br>
+      How does the business attract attention and customers?
+
+      <br><br>
+
+      <strong>Technology</strong><br>
+      What digital systems could improve the business?
+
+      <br><br>
+
+      <strong>Operations</strong><br>
+      How does the business deliver its solution?
+
+      <br><br>
+
+      <strong>Opportunities</strong><br>
+      What could be preserved, adapted, replaced or innovated?
+
+      <br><br>
+
+      This is an initial intelligence layer. Further research
+      should validate each assumption.
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   SYSTEMS
+========================================================= */
+
+function openSystemTool(type){
+
+  let title="";
+  let text="";
+
+  if(type==="builder"){
+
+    title="System Builder";
+
+    text=`
+      <input id="systemProblem"
+        placeholder="What problem should the system solve?">
+
+      <button onclick="buildSystem()">
+        Build System
+      </button>
+
+      <div id="systemResult"></div>
+    `;
+
+  }
+
+  if(type==="ai"){
+
+    title="AI Projects";
+
+    text=`
+      <input id="aiIdea"
+        placeholder="Describe an AI project idea">
+
+      <button onclick="createAIPlan()">
+        Create AI Plan
+      </button>
+
+      <div id="aiResult"></div>
+    `;
+
+  }
+
+  if(type==="technology"){
+
+    title="Technology Explorer";
+
+    text=`
+      <input id="technologyIdea"
+        placeholder="What technology or problem are you exploring?">
+
+      <button onclick="exploreTechnology()">
+        Explore
+      </button>
+
+      <div id="technologyResult"></div>
+    `;
+
+  }
+
+  document.getElementById("systemTool").innerHTML=`
+    <div class="tool">
+      <h3>${title}</h3>
+      ${text}
+    </div>
+  `;
+}
+
+
+function buildSystem(){
+
+  const problem=
+    document.getElementById("systemProblem").value.trim();
+
+  if(!problem) return;
+
+  document.getElementById("systemResult").innerHTML=`
+    <div class="result">
+      <strong>System Structure</strong>
+
+      <br><br>
+
+      Problem:<br>
+      ${escapeHTML(problem)}
+
+      <br><br>
+
+      Inputs → Processing → Intelligence → Action → Results
+
+      <br><br>
+
+      The next development stage should define the users,
+      data, workflow, tools and measurable outcome.
+    </div>
+  `;
+}
+
+
+function createAIPlan(){
+
+  const idea=
+    document.getElementById("aiIdea").value.trim();
+
+  if(!idea) return;
+
+  document.getElementById("aiResult").innerHTML=`
+    <div class="result">
+      <strong>AI Project Plan</strong>
+
+      <br><br>
+
+      Project:<br>
+      ${escapeHTML(idea)}
+
+      <br><br>
+
+      1. Define the problem<br>
+      2. Identify required information<br>
+      3. Determine where AI adds value<br>
+      4. Design the workflow<br>
+      5. Test the system<br>
+      6. Measure the result
+    </div>
+  `;
+}
+
+
+function exploreTechnology(){
+
+  const idea=
+    document.getElementById("technologyIdea").value.trim();
+
+  if(!idea) return;
+
+  document.getElementById("technologyResult").innerHTML=`
+    <div class="result">
+      <strong>Technology Investigation</strong>
+
+      <br><br>
+
+      Subject:<br>
+      ${escapeHTML(idea)}
+
+      <br><br>
+
+      Investigate:
+      <br>
+      • What the technology does
+      <br>
+      • What problem it solves
+      <br>
+      • Who can use it
+      <br>
+      • What data it requires
+      <br>
+      • What opportunities it creates
+      <br>
+      • What limitations exist
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   DATA & ANALYSIS
+========================================================= */
+
+function openDataTool(type){
+
+  let html="";
+
+  if(type==="calculator"){
+
+    html=`
+      <div class="tool">
+        <h3>Calculator</h3>
+
+        <input id="numbers"
+          placeholder="Example: 60,70,80,90,100">
+
+        <button onclick="calculateData()">
+          Calculate
+        </button>
+
+        <div id="calcResult"></div>
+      </div>
+    `;
+  }
+
+  if(type==="text"){
+
+    html=`
+      <div class="tool">
+        <h3>Text Analysis</h3>
+
+        <textarea id="analysisText"
+          placeholder="Enter a sentence, idea or information"></textarea>
+
+        <button onclick="analyzeText()">
+          Analyze
+        </button>
+
+        <div id="textResult"></div>
+      </div>
+    `;
+  }
+
+  if(type==="decision"){
+
+    html=`
+      <div class="tool">
+        <h3>Decision Analysis</h3>
+
+        <textarea id="decisionText"
+          placeholder="Describe the decision and available options"></textarea>
+
+        <button onclick="analyzeDecision()">
+          Analyze Decision
+        </button>
+
+        <div id="decisionResult"></div>
+      </div>
+    `;
+  }
+
+  document.getElementById("dataTool").innerHTML=html;
+}
+
+
+function calculateData(){
+
+  const raw=
+    document.getElementById("numbers").value;
+
+  const values=raw
+    .split(",")
+    .map(x=>Number(x.trim()))
+    .filter(x=>!isNaN(x));
+
+  if(!values.length) return;
+
+  const total=
+    values.reduce((a,b)=>a+b,0);
+
+  const average=
+    total/values.length;
+
+  document.getElementById("calcResult").innerHTML=`
+    <div class="result">
+      Total: ${total}
+
+      <br>
+      Average: ${average.toFixed(2)}
+    </div>
+  `;
+}
+
+
+function analyzeText(){
+
+  const text=
+    document.getElementById("analysisText").value.trim();
+
+  if(!text) return;
+
+  document.getElementById("textResult").innerHTML=`
+    <div class="result">
+      <strong>Text Analysis</strong>
+
+      <br><br>
+
+      Main information identified:
+      <br>
+      ${escapeHTML(text)}
+
+      <br><br>
+
+      Next analysis should identify:
+      <br>
+      • Main subject
+      <br>
+      • Problem
+      <br>
+      • People affected
+      <br>
+      • Possible causes
+      <br>
+      • Opportunities
+      <br>
+      • Required evidence
+    </div>
+  `;
+}
+
+
+function analyzeDecision(){
+
+  const text=
+    document.getElementById("decisionText").value.trim();
+
+  if(!text) return;
+
+  document.getElementById("decisionResult").innerHTML=`
+    <div class="result">
+      <strong>Decision Framework</strong>
+
+      <br><br>
+
+      Decision:<br>
+      ${escapeHTML(text)}
+
+      <br><br>
+
+      Compare each option by:
+      <br>
+      • Expected benefit
+      <br>
+      • Cost
+      <br>
+      • Risk
+      <br>
+      • Required resources
+      <br>
+      • Time
+      <br>
+      • Long-term opportunity
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   PROJECT WORKSPACE
+========================================================= */
+
+function createProject(){
+
+  const name=
+    document.getElementById("projectName").value.trim();
+
+  const description=
+    document.getElementById("projectDescription").value.trim();
+
+  if(!name){
+    alert("Enter a project name.");
+    return;
+  }
+
+  const projects=
+    JSON.parse(
+      localStorage.getItem("novaProjects") || "[]"
+    );
+
+  projects.push({
+    id:Date.now(),
+    name:name,
+    description:description,
+    createdAt:new Date().toISOString()
+  });
+
+  localStorage.setItem(
+    "novaProjects",
+    JSON.stringify(projects)
+  );
+
+  document.getElementById("projectName").value="";
+  document.getElementById("projectDescription").value="";
+
+  renderProjects();
+}
+
+
+function renderProjects(){
+
+  const projects=
+    JSON.parse(
+      localStorage.getItem("novaProjects") || "[]"
+    );
+
+  const containers=[
+    document.getElementById("workspaceProjects"),
+    document.getElementById("projectList")
+  ];
+
+  containers.forEach(container=>{
+
+    if(!container) return;
+
+    if(!projects.length){
+
+      container.innerHTML=
+        `<p class="small">No projects created yet.</p>`;
+
+      return;
+    }
+
+    container.innerHTML=
+      projects.map(project=>`
+        <div class="research-area">
+
+          <span class="badge">PROJECT</span>
+
+          <h3>${escapeHTML(project.name)}</h3>
+
+          <p>${escapeHTML(
+            project.description || "No description."
+          )}</p>
+
+          <div class="actions">
+
+            <button onclick="openProjectResearch(
+              '${encodeURIComponent(project.name)}'
+            )">
+              Research
+            </button>
+
+            <button class="secondary"
+              onclick="deleteProject(${project.id})">
+              Delete
+            </button>
+
+          </div>
+
+        </div>
+      `).join("");
+
+  });
+}
+
+
+function openProjectResearch(encodedName){
+
+  const name=
+    decodeURIComponent(encodedName);
+
+  showScreen("research");
+
+  document.getElementById("mainQuestion").value=
+    "What should we understand about "+name+"?";
+
+  buildResearchMap();
+}
+
+
+function deleteProject(id){
+
+  if(!confirm("Delete this project?")) return;
+
+  let projects=
+    JSON.parse(
+      localStorage.getItem("novaProjects") || "[]"
+    );
+
+  projects=
+    projects.filter(project=>project.id!==id);
+
+  localStorage.setItem(
+    "novaProjects",
+    JSON.stringify(projects)
+  );
+
+  renderProjects();
+}
+
+
+/* =========================================================
+   INNOVATION
+========================================================= */
+
+function exploreInnovation(){
+
+  const idea=
+    document.getElementById("innovationIdea")
+      .value.trim();
+
+  if(!idea) return;
+
+  document.getElementById("innovationResult").innerHTML=`
+    <div class="result">
+
+      <strong>Innovation Exploration</strong>
+
+      <br><br>
+
+      Idea / Technology:<br>
+      ${escapeHTML(idea)}
+
+      <br><br>
+
+      Investigate:
+      <br>
+      • The problem
+      <br>
+      • The current alternatives
+      <br>
+      • The people affected
+      <br>
+      • Technology possibilities
+      <br>
+      • Business opportunities
+      <br>
+      • What could be built
+      <br>
+      • What should be tested first
+
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   SECURITY / DISPLAY HELPER
+========================================================= */
+
+function escapeHTML(value){
+
+  return String(value)
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -750,34 +1466,14 @@ function escapeHTML(text){
 }
 
 
-/* =========================================
-   LOAD SAVED RESEARCH
-========================================= */
+/* =========================================================
+   STARTUP
+========================================================= */
 
-window.addEventListener("load",()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
-  const saved =
-    localStorage.getItem("novaResearchWorkspace");
-
-  if(!saved) return;
-
-  try{
-
-    const data = JSON.parse(saved);
-
-    if(data.question){
-
-      document.getElementById(
-        "mainQuestion"
-      ).value = data.question;
-
-    }
-
-  }catch(error){
-
-    console.log("Saved research could not be loaded.");
-
-  }
+  loadResearch();
+  renderProjects();
 
 });
 
