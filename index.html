@@ -7,194 +7,40 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  font-family:Arial,sans-serif;
-  background:#f4f7fb;
-  color:#172033;
-  line-height:1.5;
-}
-
-header{
-  background:#111827;
-  color:white;
-  padding:22px 18px;
-}
-
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.5}
+header{background:#111827;color:white;padding:22px 18px}
 header h1{font-size:27px}
 header p{color:#cbd5e1;font-size:14px}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-}
-
+.container{max-width:1100px;margin:auto;padding:20px}
 .screen{display:none}
 .screen.active{display:block}
-
-.back{
-  display:inline-block;
-  margin-bottom:18px;
-  color:#2563eb;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.hero,.tool,.card,.research-area{
-  background:white;
-  border-radius:16px;
-  border:1px solid #e2e8f0;
-}
-
-.hero{
-  padding:24px;
-  margin-bottom:20px;
-}
-
+.back{display:inline-block;margin-bottom:18px;color:#2563eb;font-weight:bold;cursor:pointer}
+.hero,.tool,.card,.research-area{background:white;border-radius:16px;border:1px solid #e2e8f0}
+.hero{padding:24px;margin-bottom:20px}
 .hero p{color:#64748b}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-}
-
-.card{
-  padding:20px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
-}
-
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{padding:20px;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 5px 18px #0001}
 .card h3{margin-bottom:7px}
 .card p{color:#64748b;font-size:14px}
-
-.tool{
-  padding:20px;
-  margin-bottom:18px;
-}
-
-input,textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #cbd5e1;
-  border-radius:10px;
-  margin:8px 0 14px;
-  font:inherit;
-}
-
-textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-button{
-  border:0;
-  border-radius:10px;
-  padding:11px 16px;
-  cursor:pointer;
-  font-weight:bold;
-  background:#2563eb;
-  color:white;
-}
-
-button.secondary{
-  background:#e2e8f0;
-  color:#172033;
-}
-
+.tool{padding:20px;margin-bottom:18px}
+input,textarea{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;margin:8px 0 14px;font:inherit}
+textarea{min-height:120px;resize:vertical}
+button{border:0;border-radius:10px;padding:11px 16px;cursor:pointer;font-weight:bold;background:#2563eb;color:white}
+button.secondary{background:#e2e8f0;color:#172033}
 button.green{background:#16a34a}
 button.red{background:#dc2626}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:12px;
-}
-
-.badge{
-  display:inline-block;
-  padding:4px 9px;
-  border-radius:20px;
-  background:#e0e7ff;
-  color:#3730a3;
-  font-size:12px;
-  margin-bottom:9px;
-}
-
-.result{
-  background:#f8fafc;
-  border-left:4px solid #2563eb;
-  padding:16px;
-  border-radius:9px;
-  margin-top:15px;
-  white-space:pre-line;
-}
-
-.chat{
-  max-height:480px;
-  overflow-y:auto;
-  margin:15px 0;
-}
-
-.message{
-  padding:14px;
-  border-radius:12px;
-  margin:10px 0;
-  white-space:pre-line;
-}
-
-.user{
-  background:#dbeafe;
-  margin-left:12%;
-}
-
-.nova{
-  background:#f1f5f9;
-  margin-right:12%;
-}
-
-.followups{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:12px;
-}
-
-.research-area{
-  padding:20px;
-  margin-bottom:18px;
-}
-
-.question{
-  color:#475569;
-  font-style:italic;
-  margin-bottom:14px;
-}
-
-.finding{
-  background:#f8fafc;
-  padding:15px;
-  border-radius:10px;
-  margin:10px 0;
-}
-
-.confirmed{
-  border-left:4px solid #16a34a;
-}
-
-footer{
-  text-align:center;
-  padding:30px;
-  color:#64748b;
-  font-size:13px;
-}
+.actions,.followups{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:inline-block;padding:4px 9px;border-radius:20px;background:#e0e7ff;color:#3730a3;font-size:12px;margin-bottom:9px}
+.result{background:#f8fafc;border-left:4px solid #2563eb;padding:16px;border-radius:9px;margin-top:15px;white-space:pre-line}
+.chat{max-height:480px;overflow-y:auto;margin:15px 0}
+.message{padding:14px;border-radius:12px;margin:10px 0;white-space:pre-line;overflow-wrap:anywhere}
+.user{background:#dbeafe;margin-left:12%}
+.nova{background:#f1f5f9;margin-right:12%}
+.question{color:#475569;font-style:italic;margin-bottom:14px}
+.finding{background:#f8fafc;padding:15px;border-radius:10px;margin:10px 0;white-space:pre-line}
+.confirmed{border-left:4px solid #16a34a}
+footer{text-align:center;padding:30px;color:#64748b;font-size:13px}
 </style>
 </head>
 
@@ -207,1280 +53,612 @@ footer{
 
 <div class="container">
 
-<!-- HOME -->
-
 <section id="home" class="screen active">
-
 <div class="hero">
 <h2>Nova Cloud</h2>
-<p>
-A neutral intelligence workspace for questions, ideas,
-businesses, research, technology and decisions.
-</p>
+<p>A neutral intelligence workspace for questions, ideas, businesses, research, technology and decisions.</p>
 </div>
 
 <div class="grid">
-
 <div class="card" onclick="showScreen('research')">
 <span class="badge">Research</span>
 <h3>Research Workspace</h3>
 <p>Break one important question into connected research areas.</p>
 </div>
-
 <div class="card" onclick="showScreen('business')">
 <span class="badge">Business Intelligence</span>
 <h3>Business Intelligence</h3>
 <p>Understand businesses, customers, markets and opportunities.</p>
 </div>
-
 <div class="card" onclick="showScreen('systems')">
 <span class="badge">Systems</span>
 <h3>Systems</h3>
 <p>Turn problems and ideas into useful systems.</p>
 </div>
-
 <div class="card" onclick="showScreen('data')">
 <span class="badge">Data & Analysis</span>
 <h3>Data & Analysis</h3>
 <p>Analyze information, text, numbers and decisions.</p>
 </div>
-
 <div class="card" onclick="showScreen('workspace')">
 <span class="badge">Cloud Workspace</span>
 <h3>Cloud Workspace</h3>
 <p>Organize projects, ideas and tasks.</p>
 </div>
-
 <div class="card" onclick="showScreen('innovation')">
 <span class="badge">Innovation</span>
 <h3>Innovation & Technology</h3>
 <p>Explore unfamiliar ideas and technologies.</p>
 </div>
-
 </div>
-
 </section>
-
-
-<!-- RESEARCH -->
 
 <section id="research" class="screen">
-
-<span class="back" onclick="showScreen('home')">
-← Back to Nova Cloud
-</span>
-
+<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
 <div class="hero">
-<h2>RESEARCH WORKSPACE</h2>
-<p>
-Ask one main question. Nova Cloud breaks it into useful
-research areas and connects the findings into one picture.
-</p>
+<h2>Research Workspace</h2>
+<p>Ask one main question. Investigate several connected areas, add findings and connect what you discover.</p>
 </div>
-
 <div class="tool">
-
-<label><strong>Main Question</strong></label>
-
-<input id="mainQuestion"
-placeholder="Ask anything you want to understand">
-
-<button onclick="buildResearchMap()">
-Build Research Map
-</button>
-
+<label for="mainQuestion"><strong>Main Question</strong></label>
+<input id="mainQuestion" placeholder="What do you want to understand?">
+<button onclick="buildResearchMap()">Build Research Map</button>
+<button class="secondary" onclick="loadResearch()">Load Saved Research</button>
 </div>
-
 <div id="researchOutput"></div>
-
 </section>
-
-
-<!-- BUSINESS -->
 
 <section id="business" class="screen">
-
-<span class="back" onclick="showScreen('home')">
-← Back to Nova Cloud
-</span>
-
+<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
 <div class="hero">
 <h2>Business Intelligence</h2>
-<p>
-Start with any business question. Nova Cloud will investigate
-the relevant dimensions instead of displaying a fixed answer.
-</p>
+<p>Investigate business models, customers, services, markets and opportunities.</p>
 </div>
-
-<div id="businessConversation" class="chat"></div>
-
+<div id="businessChat" class="chat"></div>
 <div class="tool">
-
-<input id="businessInput"
-placeholder="Example: Why is my business losing customers?">
-
-<div class="actions">
-<button onclick="startConversation('business')">
-Start Investigation
-</button>
-
-<button class="secondary"
-onclick="clearConversation('business')">
-New Investigation
-</button>
+<input id="businessInput" placeholder="What do you want to understand about a business?">
+<button onclick="startConversation('business')">Start / Continue Investigation</button>
+<button class="secondary" onclick="clearConversation('business')">New Investigation</button>
 </div>
-
-</div>
-
 </section>
-
-
-<!-- SYSTEMS -->
 
 <section id="systems" class="screen">
-
-<span class="back" onclick="showScreen('home')">
-← Back to Nova Cloud
-</span>
-
+<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
 <div class="hero">
 <h2>Systems</h2>
-<p>
-Do not choose a predetermined answer. Describe what you want
-to build, understand or improve.
-</p>
+<p>Describe what you want to build, understand or improve.</p>
 </div>
-
 <div class="grid">
-
 <div class="card" onclick="openConversation('system')">
-<h3>System Builder</h3>
-<p>Describe a problem or idea and investigate the system needed.</p>
+<h3>System Builder</h3><p>Investigate a problem and the system needed to address it.</p>
 </div>
-
 <div class="card" onclick="openConversation('ai')">
-<h3>AI Projects</h3>
-<p>Explore whether and how AI could solve your problem.</p>
+<h3>AI Projects</h3><p>Explore whether and how AI could help.</p>
 </div>
-
 <div class="card" onclick="openConversation('technology')">
-<h3>Technology</h3>
-<p>Ask about any technology and continue investigating it.</p>
+<h3>Technology</h3><p>Understand technologies and how they operate.</p>
 </div>
-
 </div>
-
 <div id="systemConversation"></div>
-
 </section>
-
-
-<!-- DATA -->
 
 <section id="data" class="screen">
-
-<span class="back" onclick="showScreen('home')">
-← Back to Nova Cloud
-</span>
-
+<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
 <div class="hero">
 <h2>Data & Analysis</h2>
-<p>
-Give Nova Cloud the information you have. The analysis path
-should depend on what you provide.
-</p>
+<p>Enter text, numbers, a decision or information to examine.</p>
 </div>
-
-<div id="dataConversation"></div>
-
 <div class="tool">
-
-<textarea id="dataInput"
-placeholder="Enter numbers, text, a decision or any information you want analyzed"></textarea>
-
-<button onclick="analyzeDataInput()">
-Analyze
-</button>
-
+<textarea id="dataInput" placeholder="Enter the information you want to analyze"></textarea>
+<button onclick="analyzeDataInput()">Analyze</button>
+<button class="secondary" onclick="document.getElementById('dataInput').value='';document.getElementById('dataOutput').innerHTML=''">Clear</button>
 </div>
-
+<div id="dataOutput"></div>
 </section>
-
-
-<!-- WORKSPACE -->
 
 <section id="workspace" class="screen">
-
-<span class="back" onclick="showScreen('home')">
-← Back to Nova Cloud
-</span>
-
+<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
 <div class="hero">
 <h2>Cloud Workspace</h2>
-<p>Organize your projects and return to your work.</p>
+<p>Create projects and open their research workspace.</p>
 </div>
-
 <div class="tool">
-
 <h3>Create Project</h3>
-
-<input id="projectName"
-placeholder="Project name">
-
-<textarea id="projectDescription"
-placeholder="What is this project about?"></textarea>
-
-<button onclick="createProject()">
-Create Project
-</button>
-
+<input id="projectName" placeholder="Project name">
+<textarea id="projectDescription" placeholder="What is this project about?"></textarea>
+<button onclick="createProject()">Create Project</button>
 </div>
-
 <div id="projects"></div>
-
 </section>
-
-
-<!-- INNOVATION -->
 
 <section id="innovation" class="screen">
-
-<span class="back" onclick="showScreen('home')">
-← Back to Nova Cloud
-</span>
-
+<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
 <div class="hero">
 <h2>Innovation & Technology</h2>
-<p>
-Start with an idea, technology, problem or opportunity.
-Nova Cloud will help investigate what it could become.
-</p>
+<p>Investigate an idea, technology, problem or opportunity.</p>
 </div>
-
-<div id="innovationConversation" class="chat"></div>
-
+<div id="innovationChat" class="chat"></div>
 <div class="tool">
-
-<input id="innovationInput"
-placeholder="Enter an idea, technology or problem">
-
-<button onclick="startConversation('innovation')">
-Explore
-</button>
-
+<input id="innovationInput" placeholder="Enter an idea, technology or problem">
+<button onclick="startConversation('innovation')">Explore / Continue</button>
+<button class="secondary" onclick="clearConversation('innovation')">New Investigation</button>
 </div>
-
 </section>
 
 </div>
 
-<footer>
-Nova Cloud — Research • Innovation • Technology • Business Intelligence
-</footer>
-
+<footer>Nova Cloud — Research • Innovation • Technology • Business Intelligence</footer>
 
 <script>
+"use strict";
 
-/* =========================================================
-   CORE NAVIGATION
-========================================================= */
+/* NAVIGATION */
 
 function showScreen(id){
-
-document.querySelectorAll(".screen").forEach(s=>{
-s.classList.remove("active");
-});
-
-document.getElementById(id).classList.add("active");
-
-window.scrollTo(0,0);
-
-if(id==="workspace") renderProjects();
-
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  const target=document.getElementById(id);
+  if(target) target.classList.add("active");
+  window.scrollTo(0,0);
+  if(id==="workspace") renderProjects();
 }
 
+/* SAFE LOCAL STORAGE */
 
-/* =========================================================
-   NEUTRAL CONVERSATION ENGINE
-========================================================= */
+function readStore(key,fallback){
+  try{
+    const value=localStorage.getItem(key);
+    return value===null?fallback:JSON.parse(value);
+  }catch(e){return fallback;}
+}
 
-let conversations=
-JSON.parse(localStorage.getItem("novaConversations") || "{}");
+function writeStore(key,value){
+  try{localStorage.setItem(key,JSON.stringify(value));}
+  catch(e){console.error("Could not save:",key,e);}
+}
 
+/* CONVERSATION ENGINE */
+
+let conversations=readStore("novaConversations",{});
 
 const engineRules={
-
-business:{
-title:"Business Intelligence",
-opening:
-"What are you trying to understand about this business?",
-areas:[
-"business model",
-"customers",
-"customer problems",
-"products or services",
-"competition",
-"market",
-"marketing",
-"operations",
-"technology",
-"financial or growth opportunities"
-]
-},
-
-system:{
-title:"System Investigation",
-opening:
-"What problem, workflow or idea are you trying to turn into a system?",
-areas:[
-"problem",
-"users",
-"inputs",
-"workflow",
-"technology",
-"data",
-"automation",
-"outputs",
-"risks",
-"success criteria"
-]
-},
-
-ai:{
-title:"AI Project Investigation",
-opening:
-"What are you trying to accomplish, and where do you think AI might help?",
-areas:[
-"problem",
-"users",
-"current process",
-"data",
-"AI opportunity",
-"automation",
-"limitations",
-"risks",
-"testing",
-"expected result"
-]
-},
-
-technology:{
-title:"Technology Investigation",
-opening:
-"What technology or technology-related question do you want to understand?",
-areas:[
-"what it is",
-"how it works",
-"why it exists",
-"problem it solves",
-"users",
-"components",
-"data",
-"applications",
-"limitations",
-"future opportunities"
-]
-},
-
-innovation:{
-title:"Innovation Investigation",
-opening:
-"What idea, problem, technology or opportunity are you exploring?",
-areas:[
-"problem",
-"users",
-"existing alternatives",
-"new approach",
-"technology",
-"market",
-"feasibility",
-"opportunity",
-"risks",
-"first experiment"
-]
-}
-
+  business:{
+    title:"Business Intelligence",
+    opening:"What are you trying to understand about this business?",
+    areas:["business model","customers","customer problems","products or services","competition","market","marketing","operations","technology","growth opportunities"]
+  },
+  system:{
+    title:"System Builder",
+    opening:"What problem, workflow or idea are you trying to turn into a system?",
+    areas:["problem","users","inputs","workflow","technology","data","automation","outputs","risks","success criteria"]
+  },
+  ai:{
+    title:"AI Projects",
+    opening:"What are you trying to accomplish, and where might AI help?",
+    areas:["problem","users","current process","data","AI opportunity","automation","limitations","risks","testing","expected result"]
+  },
+  technology:{
+    title:"Technology Investigation",
+    opening:"What technology or technology-related question do you want to understand?",
+    areas:["what it is","how it works","why it exists","problem it solves","users","components","data","applications","limitations","future opportunities"]
+  },
+  innovation:{
+    title:"Innovation Investigation",
+    opening:"What idea, problem, technology or opportunity are you exploring?",
+    areas:["problem","users","existing alternatives","new approach","technology","market","feasibility","opportunity","risks","first experiment"]
+  }
 };
 
-
-function openConversation(type){
-
-showScreen("systems");
-
-const container=
-document.getElementById("systemConversation");
-
-container.innerHTML=conversationInterface(type);
-
+function ensureConversation(type){
+  if(!conversations[type] || !Array.isArray(conversations[type].messages)){
+    conversations[type]={messages:[]};
+  }
 }
-
-
-function conversationInterface(type){
-
-const rule=engineRules[type];
-
-return `
-<div class="tool">
-
-<span class="badge">${rule.title}</span>
-
-<div id="${type}Chat" class="chat"></div>
-
-<div class="tool">
-
-<input id="${type}Input"
-placeholder="Type your question, idea or information">
-
-<button onclick="sendMessage('${type}')">
-Continue Investigation
-</button>
-
-</div>
-
-</div>
-`;
-
-}
-
-
-function startConversation(type){
-
-let inputId=
-type==="business"
-?"businessInput"
-:type==="innovation"
-?"innovationInput"
-:"";
-
-const input=
-document.getElementById(inputId);
-
-if(!input) return;
-
-const text=input.value.trim();
-
-if(!text){
-alert("Enter something for Nova Cloud to investigate.");
-return;
-}
-
-createConversation(type);
-
-addMessage(type,"user",text);
-
-input.value="";
-
-generateFirstResponse(type,text);
-
-}
-
-
-function createConversation(type){
-
-if(!conversations[type]){
-
-conversations[type]={
-messages:[],
-context:"",
-stage:0
-};
-
-}
-
-saveConversations();
-
-}
-
-
-function sendMessage(type){
-
-createConversation(type);
-
-const input=
-document.getElementById(type+"Input");
-
-if(!input) return;
-
-const text=input.value.trim();
-
-if(!text) return;
-
-addMessage(type,"user",text);
-
-input.value="";
-
-continueInvestigation(type,text);
-
-}
-
-
-function addMessage(type,role,text){
-
-const chat=
-document.getElementById(type+"Chat");
-
-if(!chat) return;
-
-const div=document.createElement("div");
-
-div.className=
-"message "+(role==="user"?"user":"nova");
-
-div.textContent=text;
-
-chat.appendChild(div);
-
-chat.scrollTop=chat.scrollHeight;
-
-conversations[type].messages.push({
-role:role,
-text:text
-});
-
-saveConversations();
-
-}
-
-
-function generateFirstResponse(type,text){
-
-const rule=engineRules[type];
-
-const response=
-"I understand that you want to investigate:\n\n"+
-text+
-"\n\n"+
-"Rather than assuming the answer, Nova Cloud will investigate "+
-"the parts that matter to your specific question.\n\n"+
-"Some useful areas may include:\n"+
-"• "+rule.areas.slice(0,5).join("\n• ")+
-"\n\nWhat would you like to investigate first?";
-
-addMessage(type,"nova",response);
-
-showFollowups(type,rule.areas.slice(0,5));
-
-}
-
-
-function continueInvestigation(type,text){
-
-const rule=engineRules[type];
-
-let previous=
-conversations[type].messages
-.filter(m=>m.role==="user")
-.length;
-
-let response="";
-
-if(previous===1){
-
-response=
-"Good. That gives Nova Cloud more context.\n\n"+
-"Let's examine the issue you just raised instead of returning "+
-"a generic answer.\n\n"+
-"What evidence, example or information do you already have about it?";
-
-}else if(previous===2){
-
-response=
-"Now we have a more specific direction.\n\n"+
-"Nova Cloud should separate what is known from what is still "+
-"an assumption.\n\n"+
-"What do you know for certain, and what are you unsure about?";
-
-}else if(previous===3){
-
-response=
-"The investigation is becoming more specific.\n\n"+
-"Next, we can compare the possible explanations or approaches.\n\n"+
-"Which part should we examine more deeply?";
-
-}else{
-
-response=
-"Nova Cloud has more context now.\n\n"+
-"We can continue investigating, change direction, or turn "+
-"what we have discovered into an action.\n\n"+
-"What should we do next?";
-}
-
-addMessage(type,"nova",response);
-
-showFollowups(
-type,
-[
-"Go deeper",
-"Look for evidence",
-"Compare alternatives",
-"Find opportunities",
-"Next action"
-]
-);
-
-}
-
-
-/* =========================================================
-   FOLLOW-UP BUTTONS
-========================================================= */
-
-function showFollowups(type,items){
-
-const chat=
-document.getElementById(type+"Chat");
-
-if(!chat) return;
-
-const div=document.createElement("div");
-
-div.className="followups";
-
-items.forEach(item=>{
-
-const button=document.createElement("button");
-
-button.className="secondary";
-
-button.textContent=item;
-
-button.onclick=()=>{
-
-const input=
-document.getElementById(type+"Input");
-
-if(!input) return;
-
-input.value=item;
-
-sendMessage(type);
-
-};
-
-div.appendChild(button);
-
-});
-
-chat.appendChild(div);
-
-}
-
-
-/* =========================================================
-   CONVERSATION STORAGE
-========================================================= */
 
 function saveConversations(){
-
-localStorage.setItem(
-"novaConversations",
-JSON.stringify(conversations)
-);
-
+  writeStore("novaConversations",conversations);
 }
 
+function openConversation(type){
+  if(!engineRules[type]) return;
+  showScreen("systems");
+  const container=document.getElementById("systemConversation");
+  container.innerHTML=conversationInterface(type);
+  renderConversation(type);
+}
+
+function conversationInterface(type){
+  const rule=engineRules[type];
+  return `
+    <div class="tool">
+      <span class="badge">${escapeHTML(rule.title)}</span>
+      <p>${escapeHTML(rule.opening)}</p>
+      <div id="${type}Chat" class="chat"></div>
+      <input id="${type}Input" placeholder="Type your question or reply"
+        onkeydown="if(event.key==='Enter')sendMessage('${type}')">
+      <button onclick="sendMessage('${type}')">Continue Investigation</button>
+      <button class="secondary" onclick="clearConversation('${type}')">New Investigation</button>
+    </div>`;
+}
+
+function renderConversation(type){
+  const chat=document.getElementById(type+"Chat");
+  if(!chat) return;
+  chat.innerHTML="";
+  ensureConversation(type);
+  conversations[type].messages.forEach(m=>appendMessageElement(chat,m.role,m.text));
+  chat.scrollTop=chat.scrollHeight;
+}
+
+function appendMessageElement(chat,role,text){
+  const div=document.createElement("div");
+  div.className="message "+(role==="user"?"user":"nova");
+  div.textContent=text;
+  chat.appendChild(div);
+}
+
+function addMessage(type,role,text){
+  ensureConversation(type);
+  conversations[type].messages.push({role,text});
+  saveConversations();
+  const chat=document.getElementById(type+"Chat");
+  if(chat){
+    appendMessageElement(chat,role,text);
+    chat.scrollTop=chat.scrollHeight;
+  }
+}
+
+function startConversation(type){
+  if(!engineRules[type]) return;
+  const input=document.getElementById(type+"Input");
+  if(!input) return;
+  const text=input.value.trim();
+  if(!text){alert("Enter something for Nova Cloud to investigate.");return;}
+  ensureConversation(type);
+  addMessage(type,"user",text);
+  input.value="";
+  if(conversations[type].messages.filter(m=>m.role==="user").length===1){
+    generateFirstResponse(type,text);
+  }else{
+    continueInvestigation(type,text);
+  }
+}
+
+function sendMessage(type){
+  if(!engineRules[type]) return;
+  const input=document.getElementById(type+"Input");
+  if(!input) return;
+  const text=input.value.trim();
+  if(!text) return;
+  ensureConversation(type);
+  addMessage(type,"user",text);
+  input.value="";
+  continueInvestigation(type,text);
+}
+
+function generateFirstResponse(type,text){
+  const rule=engineRules[type];
+  addMessage(type,"nova",
+    "Let's investigate:\n\n"+text+
+    "\n\nWe should establish what is known, what needs evidence, and which options are available.\n\nUseful areas to investigate:\n• "+
+    rule.areas.slice(0,5).join("\n• ")+
+    "\n\nWhich area would you like to examine first?");
+  showFollowups(type,rule.areas.slice(0,5));
+}
+
+function continueInvestigation(type,text){
+  const count=conversations[type].messages.filter(m=>m.role==="user").length;
+  let response;
+  if(count===2){
+    response="Let's examine that more closely.\n\nWhat evidence, real example or information do you already have about \""+text+"\"?";
+  }else if(count===3){
+    response="Now let's separate facts from assumptions.\n\nWhat do you know for certain, and what still needs verification?";
+  }else if(count===4){
+    response="We can now compare explanations or possible approaches.\n\nWhat alternatives have you considered, if any?";
+  }else{
+    response="We can continue investigating, look for evidence, compare alternatives, identify opportunities or decide on a next step.\n\nWhich direction would be most useful now?";
+  }
+  addMessage(type,"nova",response);
+  showFollowups(type,["Go deeper","Look for evidence","Compare alternatives","Find opportunities","Next action"]);
+}
+
+function showFollowups(type,items){
+  const chat=document.getElementById(type+"Chat");
+  if(!chat) return;
+  const old=document.getElementById(type+"Followups");
+  if(old) old.remove();
+  const wrap=document.createElement("div");
+  wrap.id=type+"Followups";
+  wrap.className="followups";
+  items.forEach(item=>{
+    const button=document.createElement("button");
+    button.className="secondary";
+    button.textContent=item;
+    button.onclick=()=>{
+      const input=document.getElementById(type+"Input");
+      if(input){input.value=item;sendMessage(type);}
+    };
+    wrap.appendChild(button);
+  });
+  chat.appendChild(wrap);
+}
 
 function clearConversation(type){
-
-delete conversations[type];
-
-saveConversations();
-
-const chat=
-document.getElementById(type+"Chat");
-
-if(chat) chat.innerHTML="";
-
+  delete conversations[type];
+  saveConversations();
+  const chat=document.getElementById(type+"Chat");
+  if(chat) chat.innerHTML="";
+  if(type==="business"){
+    const el=document.getElementById("businessChat");
+    if(el)el.innerHTML="";
+  }
+  if(type==="innovation"){
+    const el=document.getElementById("innovationChat");
+    if(el)el.innerHTML="";
+  }
 }
 
+/* RESEARCH WORKSPACE */
 
-/* =========================================================
-   RESEARCH WORKSPACE
-   PRESERVED AS THE CORE RESEARCH STRUCTURE
-========================================================= */
-
+let researchQuestion="";
 let researchAreas=[];
 
 function buildResearchMap(){
+  const input=document.getElementById("mainQuestion");
+  const question=input.value.trim();
+  if(!question){alert("Enter a main research question first.");return;}
 
-const question=
-document.getElementById("mainQuestion")
-.value.trim();
-
-if(!question){
-alert("Enter a main research question first.");
-return;
+  researchQuestion=question;
+  researchAreas=[
+    {title:"What It Is",question:"What is this subject and what is it designed to do?",finding:"Establish what the subject is, what it does and its purpose."},
+    {title:"Services / Products",question:"What products, services or capabilities are involved?",finding:"Identify the products, services or capabilities connected to the subject."},
+    {title:"Problems and Needs",question:"What problems or needs are involved?",finding:"Identify the needs, problems or gaps that require investigation."},
+    {title:"Customers / Users",question:"Who is affected, served or involved?",finding:"Identify the relevant people, businesses or organizations."},
+    {title:"Solutions",question:"How are the problems addressed?",finding:"Investigate existing solutions and possible alternatives."},
+    {title:"Results",question:"What results or changes can be demonstrated?",finding:"Identify outcomes and what evidence would demonstrate them."},
+    {title:"Market / Environment",question:"What external conditions affect the subject?",finding:"Investigate customers, competitors, trends and external conditions."},
+    {title:"Technology",question:"Where can technology improve the situation?",finding:"Identify relevant technologies and their potential uses."},
+    {title:"Opportunities",question:"What opportunities emerge from the investigation?",finding:"Identify opportunities supported by the findings."},
+    {title:"Action",question:"What should happen next?",finding:"Choose practical next steps based on the strongest findings."}
+  ];
+  renderResearch();
+  saveResearch();
 }
 
-researchAreas=[
-{
-title:"What It Is",
-question:"What is this subject and what is it designed to do?",
-finding:"Nova Cloud will establish what the subject actually is, what it does and its purpose."
-},
-{
-title:"Services / Products",
-question:"What products, services or capabilities are involved?",
-finding:"Identify the actual products, services, capabilities or functions connected to the subject."
-},
-{
-title:"Problems",
-question:"What problems or needs are involved?",
-finding:"Identify the problems, needs or gaps connected to the question."
-},
-{
-title:"Customers / Users",
-question:"Who is affected, served or involved?",
-finding:"Identify the people, businesses or organizations connected to the subject."
-},
-{
-title:"Solutions",
-question:"How are the problems addressed?",
-finding:"Connect possible solutions to the problems identified."
-},
-{
-title:"Results",
-question:"What results or changes could occur?",
-finding:"Identify practical outcomes and measurable changes."
-},
-{
-title:"Market / Environment",
-question:"What is happening around the subject?",
-finding:"Investigate external conditions, competitors, trends and behaviour."
-},
-{
-title:"Technology",
-question:"Where can technology improve the situation?",
-finding:"Identify relevant digital and technological opportunities."
-},
-{
-title:"Opportunities",
-question:"What opportunities emerge when the findings are connected?",
-finding:"Look for new possibilities created by the investigation."
-},
-{
-title:"Action",
-question:"What should happen next?",
-finding:"Turn the strongest findings into practical next steps."
+function renderResearch(){
+  const output=document.getElementById("researchOutput");
+  if(!output)return;
+
+  let html=`<div class="hero">
+    <span class="badge">ACTIVE RESEARCH</span>
+    <h2>Main Question</h2>
+    <p><strong>${escapeHTML(researchQuestion)}</strong></p>
+    <p>Investigate each area, add evidence and connect findings. These initial suggestions are not verified facts.</p>
+  </div>`;
+
+  researchAreas.forEach((area,i)=>{
+    if(area.removed)return;
+    html+=`<div class="research-area ${area.confirmed?"confirmed":""}" id="area-${i}">
+      <span class="badge">RESEARCH AREA ${i+1}</span>
+      <h3>${escapeHTML(area.title)}</h3>
+      <div class="question">${escapeHTML(area.question)}</div>
+      <div class="finding"><strong>Working Finding</strong><br><span id="finding-${i}">${escapeHTML(area.finding)}</span></div>
+      <div class="finding"><strong>Evidence / Notes</strong><br><span>${escapeHTML(area.evidence||"No supporting evidence added yet.")}</span></div>
+      <div class="actions">
+        <button class="green" onclick="confirmFinding(${i})">${area.confirmed?"✓ Confirmed":"✓ Confirm Finding"}</button>
+        <button class="secondary" onclick="editFinding(${i})">Edit Finding</button>
+        <button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button>
+        <button class="red" onclick="removeFinding(${i})">Remove</button>
+      </div>
+    </div>`;
+  });
+
+  html+=`<div class="tool">
+    <button onclick="addResearchArea()">+ Add Research Area</button>
+    <button class="secondary" onclick="connectFindings()">Connect Findings</button>
+    <button class="secondary" onclick="saveResearch()">Save Research</button>
+    <div id="connectionResult"></div>
+  </div>`;
+
+  output.innerHTML=html;
 }
-];
-
-renderResearch(question);
-
-saveResearch();
-
-}
-
-
-function renderResearch(question){
-
-let html=`
-
-<div class="hero">
-
-<span class="badge">ACTIVE RESEARCH</span>
-
-<h2>Main Question</h2>
-
-<p><strong>${escapeHTML(question)}</strong></p>
-
-<p>
-Nova Cloud has created an initial investigation structure.
-The findings can be confirmed, corrected, expanded and connected.
-</p>
-
-</div>
-`;
-
-researchAreas.forEach((area,i)=>{
-
-html+=`
-
-<div class="research-area" id="area-${i}">
-
-<span class="badge">
-RESEARCH AREA ${i+1}
-</span>
-
-<h3>${escapeHTML(area.title)}</h3>
-
-<div class="question">
-${escapeHTML(area.question)}
-</div>
-
-<div class="finding">
-
-<strong>Nova Cloud Finding</strong>
-
-<span id="finding-${i}">
-${escapeHTML(area.finding)}
-</span>
-
-</div>
-
-<div class="finding">
-
-<strong>Evidence / Confidence Note</strong>
-
-This is an initial finding.
-It should be strengthened with user information,
-research and evidence.
-
-</div>
-
-<div class="actions">
-
-<button class="green"
-onclick="confirmFinding(${i})">
-✓ Confirm Finding
-</button>
-
-<button class="secondary"
-onclick="editFinding(${i})">
-Edit + Add Information
-</button>
-
-<button class="red"
-onclick="removeFinding(${i})">
-Remove
-</button>
-
-</div>
-
-</div>
-`;
-
-});
-
-html+=`
-
-<div class="tool">
-
-<button onclick="addResearchArea()">
-+ Add Research Area
-</button>
-
-<button class="secondary"
-onclick="connectFindings()">
-Connect Findings
-</button>
-
-<div id="connectionResult"></div>
-
-</div>
-`;
-
-document.getElementById("researchOutput").innerHTML=html;
-
-}
-
 
 function confirmFinding(i){
-
-researchAreas[i].confirmed=true;
-
-document
-.getElementById("area-"+i)
-.classList.add("confirmed");
-
-saveResearch();
-
+  researchAreas[i].confirmed=true;
+  saveResearch();
+  renderResearch();
 }
-
 
 function editFinding(i){
-
-const updated=
-prompt(
-"Edit or add information:",
-researchAreas[i].finding
-);
-
-if(updated===null)return;
-
-researchAreas[i].finding=updated;
-
-document.getElementById("finding-"+i)
-.textContent=updated;
-
-saveResearch();
-
+  const value=prompt("Edit or add information to this finding:",researchAreas[i].finding);
+  if(value===null)return;
+  researchAreas[i].finding=value;
+  saveResearch();
+  renderResearch();
 }
 
+function editEvidence(i){
+  const value=prompt("Add evidence, examples, sources or notes:",researchAreas[i].evidence||"");
+  if(value===null)return;
+  researchAreas[i].evidence=value;
+  saveResearch();
+  renderResearch();
+}
 
 function removeFinding(i){
-
-if(!confirm("Remove this research area?"))return;
-
-researchAreas[i].removed=true;
-
-document
-.getElementById("area-"+i)
-.style.display="none";
-
-saveResearch();
-
+  if(!confirm("Remove this research area?"))return;
+  researchAreas[i].removed=true;
+  saveResearch();
+  renderResearch();
 }
-
 
 function addResearchArea(){
-
-const title=
-prompt("Research area name:");
-
-if(!title)return;
-
-const question=
-prompt("What should this area investigate?");
-
-if(!question)return;
-
-researchAreas.push({
-title:title,
-question:question,
-finding:"Initial finding has not yet been developed.",
-confirmed:false
-});
-
-renderResearch(
-document.getElementById("mainQuestion").value
-);
-
-saveResearch();
-
+  const title=prompt("Research area name:");
+  if(!title||!title.trim())return;
+  const question=prompt("What should this area investigate?");
+  if(!question||!question.trim())return;
+  researchAreas.push({
+    title:title.trim(),
+    question:question.trim(),
+    finding:"Investigate this question and add supported findings.",
+    evidence:"",
+    confirmed:false
+  });
+  saveResearch();
+  renderResearch();
 }
-
 
 function connectFindings(){
-
-const active=
-researchAreas.filter(a=>!a.removed);
-
-let text=
-"Nova Cloud has connected the active research areas:\n\n";
-
-active.forEach((area,i)=>{
-
-text+=
-(i+1)+". "+
-area.title+
-(i<active.length-1?" → ":"");
-
-});
-
-text+=
-"\n\nThe next step is to investigate how these findings "+
-"support, contradict or influence one another.";
-
-document.getElementById("connectionResult")
-.innerHTML=
-`<div class="result">${escapeHTML(text)}</div>`;
-
-saveResearch();
-
+  const active=researchAreas.filter(a=>!a.removed);
+  let text="RESEARCH CONNECTIONS\n\n";
+  active.forEach((area,i)=>{
+    text+=(i+1)+". "+area.title+"\nQuestion: "+area.question+
+      "\nFinding: "+area.finding+
+      "\nEvidence: "+(area.evidence||"Not added")+"\n\n";
+  });
+  text+="Review the findings to identify relationships, contradictions, gaps and possible next steps. This summary does not independently verify the claims.";
+  const result=document.getElementById("connectionResult");
+  if(result)result.innerHTML=`<diclass="result">${escapeHTML(text)}</div>`;
 }
-
 
 function saveResearch(){
-
-localStorage.setItem(
-"novaResearch",
-JSON.stringify({
-question:
-document.getElementById("mainQuestion")?.value||"",
-areas:researchAreas,
-savedAt:new Date().toISOString()
-})
-);
-
+  writeStore("novaResearch",{
+    question:researchQuestion,
+    areas:researchAreas,
+    savedAt:new Date().toISOString()
+  });
 }
-
 
 function loadResearch(){
-
-const saved=
-localStorage.getItem("novaResearch");
-
-if(!saved)return;
-
-try{
-
-const data=JSON.parse(saved);
-
-researchAreas=data.areas||[];
-
-if(data.question){
-
-document.getElementById("mainQuestion").value=
-data.question;
-
-renderResearch(data.question);
-
+  const data=readStore("novaResearch",null);
+  if(!data){alert("No saved research was found in this browser.");return;}
+  researchQuestion=data.question||"";
+  researchAreas=Array.isArray(data.areas)?data.areas:[];
+  document.getElementById("mainQuestion").value=researchQuestion;
+  renderResearch();
 }
 
-}catch(e){}
-
-}
-
-
-/* =========================================================
-   DATA ANALYSIS
-========================================================= */
+/* DATA ANALYSIS */
 
 function analyzeDataInput(){
+  const input=document.getElementById("dataInput").value.trim();
+  const output=document.getElementById("dataOutput");
+  if(!input){alert("Enter information first.");return;}
 
-const input=
-document.getElementById("dataInput")
-.value.trim();
+  const parts=input.split(/[\s,;]+/).filter(Boolean);
+  const numeric=parts.length>0&&parts.every(x=>x!==""&&Number.isFinite(Number(x)));
 
-if(!input){
-alert("Enter information first.");
-return;
+  let result;
+  if(numeric){
+    const numbers=parts.map(Number);
+    const total=numbers.reduce((a,b)=>a+b,0);
+    const average=total/numbers.length;
+    result="Numerical Summary\n\nCount: "+numbers.length+
+      "\nTotal: "+total+
+      "\nAverage: "+average.toFixed(2)+
+      "\nMinimum: "+Math.min(...numbers)+
+      "\nMaximum: "+Math.max(...numbers)+
+      "\n\nThese calculations summarize the numbers but do not explain their real-world meaning without context.";
+  }else{
+    result="Information for Investigation\n\n"+input+
+      "\n\nSuggested analysis:\n• Identify the main subject and goal.\n• Separate facts from assumptions.\n• Identify important problems or claims.\n• Determine what evidence is available.\n• Explore possible causes and alternatives.\n• Identify opportunities and unanswered questions.\n\nThis is a preliminary analysis framework, not external fact-checking.";
+  }
+
+  output.innerHTML=`<div class="tool"><div class="result">${escapeHTML(result)}</div>
+    <div class="actions">
+      <button class="secondary" onclick="dataFollow('Go deeper')">Go deeper</button>
+      <button class="secondary" onclick="dataFollow('Find evidence')">Find evidence</button>
+      <button class="secondary" onclick="dataFollow('Find opportunities')">Find opportunities</button>
+    </div></div>`;
 }
-
-let result="";
-
-const numbers=
-input
-.split(",")
-.map(x=>Number(x.trim()))
-.filter(x=>!isNaN(x));
-
-if(numbers.length>=2){
-
-const total=
-numbers.reduce((a,b)=>a+b,0);
-
-const average=
-total/numbers.length;
-
-result=
-"Nova Cloud detected numerical data.\n\n"+
-"Total: "+total+
-"\nAverage: "+average.toFixed(2)+
-"\n\nWould you like to investigate what these numbers mean?";
-
-}else{
-
-result=
-"Nova Cloud detected information rather than a simple numerical dataset.\n\n"+
-"The next analysis should identify:\n"+
-"• Main subject\n"+
-"• Important claims\n"+
-"• Problems\n"+
-"• Causes\n"+
-"• Evidence\n"+
-"• Possible opportunities\n"+
-"• Questions requiring further investigation";
-
-}
-
-document.getElementById("dataConversation")
-.innerHTML=
-`
-<div class="tool">
-<div class="result">${escapeHTML(result)}</div>
-
-<div class="followups">
-
-<button class="secondary"
-onclick="dataFollow('Go deeper')">
-Go deeper
-</button>
-
-<button class="secondary"
-onclick="dataFollow('Find evidence')">
-Find evidence
-</button>
-
-<button class="secondary"
-onclick="dataFollow('Find opportunities')">
-Find opportunities
-</button>
-
-<button class="secondary"
-onclick="dataFollow('Ask another question')">
-Ask another question
-</button>
-
-</div>
-</div>
-`;
-
-}
-
 
 function dataFollow(text){
-
-document.getElementById("dataInput").value=text;
-
+  const input=document.getElementById("dataInput");
+  input.value+="\n\nNext investigation: "+text;
+  input.focus();
 }
 
-
-/* =========================================================
-   PROJECT WORKSPACE
-========================================================= */
+/* PROJECT WORKSPACE */
 
 function createProject(){
+  const name=document.getElementById("projectName").value.trim();
+  const description=document.getElementById("projectDescription").value.trim();
+  if(!name){alert("Enter a project name.");return;}
 
-const name=
-document.getElementById("projectName")
-.value.trim();
+  const projects=readStore("novaProjects",[]);
+  projects.push({
+    id:Date.now(),
+    name,
+    description,
+    createdAt:new Date().toISOString()
+  });
+  writeStore("novaProjects",projects);
 
-const description=
-document.getElementById("projectDescription")
-.value.trim();
-
-if(!name){
-alert("Enter a project name.");
-return;
+  document.getElementById("projectName").value="";
+  document.getElementById("projectDescription").value="";
+  renderProjects();
 }
-
-const projects=
-JSON.parse(
-localStorage.getItem("novaProjects")||"[]"
-);
-
-projects.push({
-id:Date.now(),
-name:name,
-description:description,
-createdAt:new Date().toISOString()
-});
-
-localStorage.setItem(
-"novaProjects",
-JSON.stringify(projects)
-);
-
-document.getElementById("projectName").value="";
-document.getElementById("projectDescription").value="";
-
-renderProjects();
-
-}
-
 
 function renderProjects(){
+  const container=document.getElementById("projects");
+  if(!container)return;
+  const projects=readStore("novaProjects",[]);
 
-const projects=
-JSON.parse(
-localStorage.getItem("novaProjects")||"[]"
-);
+  if(!projects.length){
+    container.innerHTML='<div class="tool">No projects yet. Create a project to begin.</div>';
+    return;
+  }
 
-const container=
-document.getElementById("projects");
-
-if(!container)return;
-
-if(!projects.length){
-
-container.innerHTML=
-`<div class="tool">
-No projects yet.
-</div>`;
-
-return;
-
+  container.innerHTML=projects.map(project=>`
+    <div class="research-area">
+      <span class="badge">PROJECT</span>
+      <h3>${escapeHTML(project.name)}</h3>
+      <p>${escapeHTML(project.description||"No description provided.")}</p>
+      <div class="actions">
+        <button onclick="openProject(${Number(project.id)})">Open Research</button>
+        <button class="red" onclick="deleteProject(${Number(project.id)})">Delete</button>
+      </div>
+    </div>`).join("");
 }
 
-container.innerHTML=
-projects.map(project=>`
-
-<div class="research-area">
-
-<span class="badge">PROJECT</span>
-
-<h3>${escapeHTML(project.name)}</h3>
-
-<p>${escapeHTML(
-project.description||"No description."
-)}</p>
-
-<div class="actions">
-
-<button onclick="openProject('${encodeURIComponent(project.name)}')">
-Open Research
-</button>
-
-<button class="red"
-onclick="deleteProject(${project.id})">
-Delete
-</button>
-
-</div>
-
-</div>
-
-`).join("");
-
+function openProject(id){
+  const project=readStore("novaProjects",[]).find(p=>p.id===id);
+  if(!project)return;
+  showScreen("research");
+  document.getElementById("mainQuestion").value="What should we understand about "+project.name+"?";
+  buildResearchMap();
 }
-
-
-function openProject(encoded){
-
-const name=
-decodeURIComponent(encoded);
-
-showScreen("research");
-
-document.getElementById("mainQuestion").value=
-"What should we understand about "+name+"?";
-
-buildResearchMap();
-
-}
-
 
 function deleteProject(id){
-
-let projects=
-JSON.parse(
-localStorage.getItem("novaProjects")||"[]"
-);
-
-projects=
-projects.filter(p=>p.id!==id);
-
-localStorage.setItem(
-"novaProjects",
-JSON.stringify(projects)
-);
-
-renderProjects();
-
+  if(!confirm("Delete this project?"))return;
+  const projects=readStore("novaProjects",[]).filter(p=>p.id!==id);
+  writeStore("novaProjects",projects);
+  renderProjects();
 }
 
-
-/* =========================================================
-   HELPER
-========================================================= */
+/* HELPER */
 
 function escapeHTML(value){
-
-return String(value)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
-
-/* =========================================================
-   START
-========================================================= */
+/* START */
 
 document.addEventListener("DOMContentLoaded",()=>{
-
-loadResearch();
-renderProjects();
-
+  renderProjects();
+  const saved=readStore("novaResearch",null);
+  if(saved){
+    researchQuestion=saved.question||"";
+    researchAreas=Array.isArray(saved.areas)?saved.areas:[];
+    document.getElementById("mainQuestion").value=researchQuestion;
+    if(researchQuestion)renderResearch();
+  }
 });
 
 </script>
-
 </body>
-</htm>
+</html>
