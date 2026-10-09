@@ -397,145 +397,623 @@ function clearConversation(type){
   }
 }
 
-/* RESEARCH WORKSPACE */
+/* RESEARCH WORKSPACE — IMPROVED INTELLIGENCE ENGINE */
 
-let researchQuestion="";
-let researchAreas=[];
+let researchQuestion = "";
+let researchAreas = [];
 
-function buildResearchMap(){
-  const input=document.getElementById("mainQuestion");
-  const question=input.value.trim();
-  if(!question){alert("Enter a main research question first.");return;}
+/* Understand the kind of question being asked */
 
-  researchQuestion=question;
-  researchAreas=[
-    {title:"What It Is",question:"What is this subject and what is it designed to do?",finding:"Establish what the subject is, what it does and its purpose."},
-    {title:"Services / Products",question:"What products, services or capabilities are involved?",finding:"Identify the products, services or capabilities connected to the subject."},
-    {title:"Problems and Needs",question:"What problems or needs are involved?",finding:"Identify the needs, problems or gaps that require investigation."},
-    {title:"Customers / Users",question:"Who is affected, served or involved?",finding:"Identify the relevant people, businesses or organizations."},
-    {title:"Solutions",question:"How are the problems addressed?",finding:"Investigate existing solutions and possible alternatives."},
-    {title:"Results",question:"What results or changes can be demonstrated?",finding:"Identify outcomes and what evidence would demonstrate them."},
-    {title:"Market / Environment",question:"What external conditions affect the subject?",finding:"Investigate customers, competitors, trends and external conditions."},
-    {title:"Technology",question:"Where can technology improve the situation?",finding:"Identify relevant technologies and their potential uses."},
-    {title:"Opportunities",question:"What opportunities emerge from the investigation?",finding:"Identify opportunities supported by the findings."},
-    {title:"Action",question:"What should happen next?",finding:"Choose practical next steps based on the strongest findings."}
-  ];
+function understandResearchQuestion(question) {
+  const q = question.toLowerCase();
+
+  const has = (...words) => words.some(word => q.includes(word));
+
+  if (has("customer", "customers", "consumer", "consumers",
+          "client", "clients", "buyer", "buyers", "people need",
+          "people want", "users need", "user needs")) {
+    return "customers";
+  }
+
+  if (has("market gap", "market gaps", "missing in the market",
+          "cannot find", "can't find", "cannot get", "underserved",
+          "unmet need", "unmet needs", "lacking", "lack of",
+          "market opportunity", "market opportunities")) {
+    return "marketGaps";
+  }
+
+  if (has("competitor", "competitors", "competition",
+          "alternative", "alternatives", "compare", "comparison")) {
+    return "competition";
+  }
+
+  if (has("technology", "technologies", "computer", "computers",
+          "software", "hardware", "engine", "engines", "ecu",
+          "sensor", "sensors", "artificial intelligence",
+          "how does", "how do", "how it works", "how they operate")) {
+    return "technology";
+  }
+
+  if (has("business idea", "business ideas", "startup",
+          "start-up", "start a business", "new business",
+          "business opportunity", "business opportunities")) {
+    return "businessIdea";
+  }
+
+  if (has("business", "company", "companies", "enterprise",
+          "organization", "organisation", "agency", "agencies")) {
+    return "business";
+  }
+
+  if (has("product", "products", "service", "services",
+          "solution", "solutions", "what does it offer")) {
+    return "services";
+  }
+
+  if (has("result", "results", "impact", "effectiveness",
+          "improve", "improvement", "performance", "success",
+          "outcome", "outcomes")) {
+    return "results";
+  }
+
+  if (has("problem", "problems", "challenge", "challenges",
+          "difficulties", "cause", "causes", "why does",
+          "why do", "why is", "why are")) {
+    return "problems";
+  }
+
+  if (has("innovation", "innovate", "invent", "invention",
+          "new approach", "new solution", "develop a new")) {
+    return "innovation";
+  }
+
+  return "general";
+}
+
+/* Build a relevant investigation plan */
+
+function getResearchPlan(question) {
+  const type = understandResearchQuestion(question);
+
+  const plans = {
+    customers: [
+      ["Customer Needs",
+       "What are the customers trying to achieve, obtain or improve?",
+       "Identify customer goals and needs. Use customer statements or research to support conclusions."],
+      ["Customer Difficulties",
+       "What difficulties, frustrations or unmet needs do customers experience?",
+       "Investigate reported difficulties. Do not assume that every customer has the same problem."],
+      ["Current Solutions",
+       "How do customers currently meet these needs?",
+       "Examine existing products, services, personal methods and alternatives."],
+      ["Unmet Needs",
+       "Which needs may remain poorly served by existing solutions?",
+       "Compare customer needs with existing solutions. Record evidence for each suspected gap."],
+      ["Buying Decisions",
+       "What influences customers to choose, trust and pay for a solution?",
+       "Investigate price, trust, convenience, quality, access and other relevant buying factors."],
+      ["Customer Evidence",
+       "How can these needs and difficulties be verified?",
+       "Identify interviews, surveys, reviews, customer records and other appropriate evidence."],
+      ["Opportunities",
+       "What improvements could better serve these customers?",
+       "Develop possible opportunities from verified needs, then test demand and feasibility."]
+    ],
+
+    marketGaps: [
+      ["Target Customers",
+       "Which people or businesses might need the products or services being investigated?",
+       "Define the relevant customer groups and investigate their needs."],
+      ["Unmet Needs",
+       "What are customers trying to obtain that existing solutions may not provide adequately?",
+       "Identify suspected gaps using customer feedback and documented examples."],
+      ["Existing Market Offerings",
+       "What products, services and alternatives are already available?",
+       "Examine existing providers and what they actually offer."],
+      ["Limitations and Gaps",
+       "Where might current offerings fall short of customer expectations?",
+       "Compare customer needs, prices, accessibility, quality and service limitations using evidence."],
+      ["Evidence of Demand",
+       "What evidence shows that customers experience this gap and want a better solution?",
+       "Look for customer statements, purchasing behaviour, reviews and credible market data."],
+      ["Existing Competition",
+       "Who already addresses these needs, directly or indirectly?",
+       "Identify direct competitors and alternative ways customers solve the problem."],
+      ["Potential Opportunities",
+       "Which unmet needs could support a useful and viable new offering?",
+       "Assess the strength of evidence, willingness to pay, feasibility and competing alternatives."],
+      ["Validation",
+       "How can the strongest opportunity be tested before investing heavily?",
+       "Design a small customer interview, service trial or other appropriate test."]
+    ],
+
+    competition: [
+      ["Customer Choice",
+       "What are customers trying to accomplish when choosing among alternatives?",
+       "Identify the purchasing needs and criteria relevant to this market."],
+      ["Existing Alternatives",
+       "Which providers, products or methods compete to meet those needs?",
+       "Identify direct competitors and substitute solutions."],
+      ["Offer Comparison",
+       "How do the alternatives compare in features, quality, price and convenience?",
+       "Compare documented information using consistent criteria."],
+      ["Customer Experience",
+       "What do customers report about the available alternatives?",
+       "Examine reviews and other customer feedback, noting possible bias and evidence limitations."],
+      ["Market Gaps",
+       "What customer needs might remain poorly served?",
+       "Investigate gaps supported by multiple reliable sources where possible."],
+      ["Differentiation",
+       "How could an offering provide meaningful additional value?",
+       "Develop possible differences that matter to customers and can be delivered."],
+      ["Validation",
+       "How can customers' preferences and willingness to pay be tested?",
+       "Design a practical test before treating a proposed advantage as proven."]
+    ],
+
+    technology: [
+      ["Definition and Purpose",
+       "What is this technology and what is it designed to do?",
+       "Establish its definition, purpose and intended applications."],
+      ["How It Works",
+       "What processes and principles explain how the technology operates?",
+       "Trace its operation step by step using reliable technical explanations."],
+      ["Components",
+       "What main components, inputs and outputs are involved?",
+       "Identify the important parts and explain how they interact."],
+      ["Problems Addressed",
+       "What problems does the technology solve, and for whom?",
+       "Connect its capabilities to specific applications and user needs."],
+      ["Real-World Applications",
+       "Where is the technology used in practice?",
+       "Investigate documented applications and practical examples."],
+      ["Limitations and Risks",
+       "What constraints, failures, costs or risks should be understood?",
+       "Examine technical limitations, maintenance, reliability, safety and cost where relevant."],
+      ["Evidence and Development",
+       "What evidence demonstrates its capabilities, and what improvements are possible?",
+       "Consult credible technical documentation, testing and research before drawing conclusions."]
+    ],
+
+    businessIdea: [
+      ["Target Customers",
+       "Who might need this proposed product or service?",
+       "Define possible customer groups and the situations in which they need help."],
+      ["Customer Problem",
+       "What important need or difficulty would the idea address?",
+       "Investigate whether the problem actually occurs and matters to customers."],
+      ["Existing Solutions",
+       "How do customers solve the problem today?",
+       "Investigate competitors, substitutes and customers' current workarounds."],
+      ["Proposed Value",
+       "How might this idea improve the customer's situation?",
+       "Describe the expected benefit and distinguish it from untested assumptions."],
+      ["Market Demand",
+       "What evidence suggests that customers would use or pay for the offering?",
+       "Investigate customer behaviour, demand signals and willingness to pay."],
+      ["Delivery and Costs",
+       "What resources, capabilities and costs would be needed?",
+       "Estimate delivery requirements and identify major operational uncertainties."],
+      ["Feasibility",
+       "What are the major risks and constraints?",
+       "Assess competition, skills, regulations where relevant, costs and practical limitations."],
+      ["Small Test",
+       "What is the simplest useful way to test the idea?",
+       "Design a small, measurable experiment with potential customers."]
+    ],
+
+    business: [
+      ["Business Purpose",
+       "What does this business do, whom does it serve and what value does it offer?",
+       "Establish its activities, target customers and intended value proposition."],
+      ["Products and Services",
+       "What does the business actually provide?",
+       "Investigate its offerings, pricing, delivery and customer benefits."],
+      ["Customers and Needs",
+       "Who does it serve, and what needs bring customers to it?",
+       "Investigate its customer groups and reasons for choosing its offerings."],
+      ["Business Model",
+       "How does the business create, deliver and capture value?",
+       "Examine revenue sources, costs, channels and key resources."],
+      ["Market and Competition",
+       "What market conditions and alternatives affect the business?",
+       "Investigate competitors, customer expectations and market changes."],
+      ["Evidence of Results",
+       "What evidence demonstrates the business's performance or impact?",
+       "Identify verifiable results, customer feedback and performance measures."],
+      ["Challenges and Opportunities",
+       "What could the business improve, adapt or develop?",
+       "Connect identified challenges and market changes to possible improvements."],
+      ["Next Actions",
+       "What should be investigated or tested next?",
+       "Prioritize actions based on potential value, available evidence and feasibility."]
+    ],
+
+    services: [
+      ["Customer Need",
+       "What need is this product or service intended to address?",
+       "Identify the intended customer and the situation that creates the need."],
+      ["Offer and Delivery",
+       "What is provided, and how does the customer receive it?",
+       "Describe the actual service or product, its features and delivery process."],
+      ["Customer Value",
+       "What practical benefit should customers receive?",
+       "Identify expected benefits and how they could be measured."],
+      ["Alternatives",
+       "What other options can customers choose?",
+       "Investigate competing services, substitutes and doing nothing."],
+      ["Customer Feedback",
+       "What do customers report about the offering?",
+       "Find documented reviews, feedback or customer research."],
+      ["Improvements",
+       "What changes could make the offering more useful?",
+       "Connect possible improvements to demonstrated customer needs."]
+    ],
+
+    results: [
+      ["Intended Outcome",
+       "What result or change is expected?",
+       "Define the outcome clearly and identify who should benefit."],
+      ["Starting Point",
+       "What was the situation before the intervention or change?",
+       "Establish baseline information wherever available."],
+      ["Evidence of Change",
+       "What evidence demonstrates the result?",
+       "Identify measurable outcomes, records and credible supporting sources."],
+      ["Other Explanations",
+       "What other factors might explain the observed change?",
+       "Consider alternative explanations before attributing results to one cause."],
+      ["Limitations",
+       "What information is missing or uncertain?",
+       "Identify gaps in the data and limits on the conclusions."],
+      ["Lessons and Next Steps",
+       "What can be learned, improved or tested next?",
+       "Translate supported findings into practical next steps."]
+    ],
+
+    problems: [
+      ["Problem Definition",
+       "What exactly is happening, and what should happen instead?",
+       "Define the issue and distinguish symptoms from the underlying problem."],
+      ["Who Is Affected",
+       "Who experiences the problem, and in what circumstances?",
+       "Identify affected people, businesses and relevant situations."],
+      ["Possible Causes",
+       "What factors could be contributing to the problem?",
+       "Develop possible explanations and distinguish them from established causes."],
+      ["Available Evidence",
+       "What observations or data support each explanation?",
+       "Gather relevant records, examples and reliable sources."],
+      ["Existing Responses",
+       "What has already been tried, and with what results?",
+       "Investigate current approaches and their documented strengths and weaknesses."],
+      ["Potential Solutions",
+       "Which approaches could address the underlying causes?",
+       "Compare possible solutions, costs, risks and feasibility."],
+      ["Testing and Measurement",
+       "How could a solution be tested and its success measured?",
+       "Define a manageable test and measurable success criteria."]
+    ],
+
+    innovation: [
+      ["Need or Opportunity",
+       "What need, problem or opportunity motivates this innovation?",
+       "Define the situation and investigate who would benefit."],
+      ["Existing Approaches",
+       "How is the need currently addressed?",
+       "Investigate existing products, systems, methods and alternatives."],
+      ["New Approach",
+       "What would be different about the proposed idea?",
+       "Explain the proposed change and the value it could create."],
+      ["Technical Feasibility",
+       "What knowledge, components and resources would be required?",
+       "Investigate technical requirements, costs and constraints."],
+      ["User and Market Value",
+       "Would intended users find the innovation useful?",
+       "Test user needs and possible demand instead of assuming acceptance."],
+      ["Risks and Limitations",
+       "What could prevent the idea from working?",
+       "Identify practical, technical, financial and safety concerns where relevant."],
+      ["Prototype and Testing",
+       "What small experiment could test the core idea?",
+       "Define a prototype or experiment and what evidence would count as success."]
+    ],
+
+    general: [
+      ["Meaning and Context",
+       "What does the subject mean, and what context is needed to understand it?",
+       "Establish definitions, background and the boundaries of the question."],
+      ["Main Question",
+       "What specifically needs to be understood or explained?",
+       "Break the main question into smaller questions that can be investigated."],
+      ["Relevant Factors",
+       "Which people, processes, conditions or ideas influence the subject?",
+       "Identify the factors relevant to this particular question."],
+      ["Evidence",
+       "What information supports the available explanations?",
+       "Identify credible sources, observations and evidence gaps."],
+      ["Different Perspectives",
+       "What alternative explanations or viewpoints should be considered?",
+       "Compare plausible interpretations and examine disagreements."],
+      ["Implications",
+       "What do the findings mean, and who might be affected?",
+       "Connect supported findings to their practical implications."],
+      ["Next Investigation",
+       "What important uncertainty should be investigated next?",
+       "Prioritize the next question based on importance and evidence gaps."]
+    ]
+  };
+
+  const selected = plans[type] || plans.general;
+
+  return selected.map(item => ({
+    title: item[0],
+    question: item[1],
+    finding: item[2],
+    evidence: "",
+    confirmed: false,
+    removed: false
+  }));
+}
+
+/* BUILD RESEARCH MAP */
+
+function buildResearchMap() {
+  const input = document.getElementById("mainQuestion");
+  const question = input.value.trim();
+
+  if (!question) {
+    alert("Enter a main research question first.");
+    return;
+  }
+
+  researchQuestion = question;
+  researchAreas = getResearchPlan(question);
+
   renderResearch();
   saveResearch();
 }
 
-function renderResearch(){
-  const output=document.getElementById("researchOutput");
-  if(!output)return;
+/* RENDER WORKSPACE */
 
-  let html=`<div class="hero">
-    <span class="badge">ACTIVE RESEARCH</span>
-    <h2>Main Question</h2>
-    <p><strong>${escapeHTML(researchQuestion)}</strong></p>
-    <p>Investigate each area, add evidence and connect findings. These initial suggestions are not verified facts.</p>
-  </div>`;
+function renderResearch() {
+  const output = document.getElementById("researchOutput");
+  if (!output) return;
 
-  researchAreas.forEach((area,i)=>{
-    if(area.removed)return;
-    html+=`<div class="research-area ${area.confirmed?"confirmed":""}" id="area-${i}">
-      <span class="badge">RESEARCH AREA ${i+1}</span>
-      <h3>${escapeHTML(area.title)}</h3>
-      <div class="question">${escapeHTML(area.question)}</div>
-      <div class="finding"><strong>Working Finding</strong><br><span id="finding-${i}">${escapeHTML(area.finding)}</span></div>
-      <div class="finding"><strong>Evidence / Notes</strong><br><span>${escapeHTML(area.evidence||"No supporting evidence added yet.")}</span></div>
-      <div class="actions">
-        <button class="green" onclick="confirmFinding(${i})">${area.confirmed?"✓ Confirmed":"✓ Confirm Finding"}</button>
-        <button class="secondary" onclick="editFinding(${i})">Edit Finding</button>
-        <button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button>
-        <button class="red" onclick="removeFinding(${i})">Remove</button>
-      </div>
+  const active = researchAreas.filter(area => !area.removed);
+  const confirmed = active.filter(area => area.confirmed).length;
+
+  let html = `
+    <div class="hero">
+      <span class="badge">ACTIVE RESEARCH</span>
+      <h2>Main Question</h2>
+      <p><strong>${escapeHTML(researchQuestion)}</strong></p>
+      <p>${active.length} research areas · ${confirmed} confirmed</p>
+      <p>Investigate each question, record supporting evidence and revise findings as you learn. Suggested findings are research directions, not verified facts.</p>
     </div>`;
+
+  researchAreas.forEach((area, i) => {
+    if (area.removed) return;
+
+    html += `
+      <div class="research-area ${area.confirmed ? "confirmed" : ""}" id="area-${i}">
+        <span class="badge">RESEARCH AREA ${i + 1}</span>
+        <h3>${escapeHTML(area.title)}</h3>
+        <div class="question">${escapeHTML(area.question)}</div>
+
+        <div class="finding">
+          <strong>Investigation Guidance</strong>
+          <p id="finding-${i}">${escapeHTML(area.finding || "")}</p>
+        </div>
+
+        <div class="finding">
+          <strong>Evidence / Notes</strong>
+          <p>${escapeHTML(area.evidence || "No supporting evidence added yet.")}</p>
+        </div>
+
+        ${area.confirmed ? '<p><strong>Finding marked as reviewed.</strong></p>' : ""}
+
+        <div class="actions">
+          <button class="green" onclick="confirmFinding(${i})">
+            ${area.confirmed ? "✓ Reviewed" : "✓ Mark Reviewed"}
+          </button>
+          <button class="secondary" onclick="editFinding(${i})">Edit Finding</button>
+          <button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button>
+          <button class="red" onclick="removeFinding(${i})">Remove</button>
+        </div>
+      </div>`;
   });
 
-  html+=`<div class="tool">
-    <button onclick="addResearchArea()">+ Add Research Area</button>
-    <button class="secondary" onclick="connectFindings()">Connect Findings</button>
-    <button class="secondary" onclick="saveResearch()">Save Research</button>
-    <div id="connectionResult"></div>
-  </div>`;
+  html += `
+    <div class="tool">
+      <h3>Continue the Investigation</h3>
+      <p>Add a question that is important to your research, or connect your current findings to identify gaps.</p>
+      <div class="actions">
+        <button onclick="addResearchArea()">+ Add Research Area</button>
+        <button class="secondary" onclick="connectFindings()">Connect Findings</button>
+        <button class="secondary" onclick="saveResearch()">Save Research</button>
+      </div>
+      <div id="connectionResult"></div>
+    </div>`;
 
-  output.innerHTML=html;
+  output.innerHTML = html;
 }
 
-function confirmFinding(i){
-  researchAreas[i].confirmed=true;
+/* REVIEW FINDINGS */
+
+function confirmFinding(i) {
+  if (!researchAreas[i] || researchAreas[i].removed) return;
+
+  researchAreas[i].confirmed = !researchAreas[i].confirmed;
   saveResearch();
   renderResearch();
 }
 
-function editFinding(i){
-  const value=prompt("Edit or add information to this finding:",researchAreas[i].finding);
-  if(value===null)return;
-  researchAreas[i].finding=value;
+function editFinding(i) {
+  const area = researchAreas[i];
+  if (!area || area.removed) return;
+
+  const value = prompt(
+    "Edit the investigation guidance or finding:",
+    area.finding || ""
+  );
+
+  if (value === null) return;
+
+  area.finding = value.trim();
+  area.confirmed = false;
+
   saveResearch();
   renderResearch();
 }
 
-function editEvidence(i){
-  const value=prompt("Add evidence, examples, sources or notes:",researchAreas[i].evidence||"");
-  if(value===null)return;
-  researchAreas[i].evidence=value;
+function editEvidence(i) {
+  const area = researchAreas[i];
+  if (!area || area.removed) return;
+
+  const value = prompt(
+    "Add evidence, examples, source details or notes:",
+    area.evidence || ""
+  );
+
+  if (value === null) return;
+
+  area.evidence = value.trim();
+  area.confirmed = false;
+
   saveResearch();
   renderResearch();
 }
 
-function removeFinding(i){
-  if(!confirm("Remove this research area?"))return;
-  researchAreas[i].removed=true;
+function removeFinding(i) {
+  const area = researchAreas[i];
+  if (!area || area.removed) return;
+
+  if (!confirm("Remove this research area?")) return;
+
+  area.removed = true;
+
   saveResearch();
   renderResearch();
 }
 
-function addResearchArea(){
-  const title=prompt("Research area name:");
-  if(!title||!title.trim())return;
-  const question=prompt("What should this area investigate?");
-  if(!question||!question.trim())return;
+/* ADD A CUSTOM RESEARCH AREA */
+
+function addResearchArea() {
+  const title = prompt("What additional area do you want to investigate?");
+  if (!title || !title.trim()) return;
+
+  const question = prompt("What specific question should this area answer?");
+  if (!question || !question.trim()) return;
+
   researchAreas.push({
-    title:title.trim(),
-    question:question.trim(),
-    finding:"Investigate this question and add supported findings.",
-    evidence:"",
-    confirmed:false
+    title: title.trim(),
+    question: question.trim(),
+    finding: "Investigate the question, gather relevant evidence and record what the evidence supports.",
+    evidence: "",
+    confirmed: false,
+    removed: false
   });
+
   saveResearch();
   renderResearch();
 }
 
-function connectFindings(){
-  const active=researchAreas.filter(a=>!a.removed);
-  let text="RESEARCH CONNECTIONS\n\n";
-  active.forEach((area,i)=>{
-    text+=(i+1)+". "+area.title+"\nQuestion: "+area.question+
-      "\nFinding: "+area.finding+
-      "\nEvidence: "+(area.evidence||"Not added")+"\n\n";
+/* CONNECT FINDINGS AND IDENTIFY GAPS */
+
+function connectFindings() {
+  const active = researchAreas.filter(area => !area.removed);
+  const result = document.getElementById("connectionResult");
+
+  if (!result) return;
+
+  if (!active.length) {
+    result.innerHTML = '<div class="result">Add a research area before connecting findings.</div>';
+    return;
+  }
+
+  const withEvidence = active.filter(area => area.evidence.trim());
+  const withoutEvidence = active.filter(area => !area.evidence.trim());
+  const reviewed = active.filter(area => area.confirmed);
+
+  let text = "RESEARCH CONNECTION REVIEW\n\n";
+  text += "Main question: " + researchQuestion + "\n\n";
+
+  text += "1. AREAS INVESTIGATED\n";
+  active.forEach((area, i) => {
+    text += (i + 1) + ". " + area.title + "\n";
+    text += "Question: " + area.question + "\n";
+    text += "Current finding: " + (area.finding || "Not recorded") + "\n";
+    text += "Evidence: " + (area.evidence || "Not provided") + "\n";
+    text += "Review status: " + (area.confirmed ? "Reviewed" : "Not reviewed") + "\n\n";
   });
-  text+="Review the findings to identify relationships, contradictions, gaps and possible next steps. This summary does not independently verify the claims.";
-  const result=document.getElementById("connectionResult");
-  if(result)result.innerHTML=`<diclass="result">${escapeHTML(text)}</div>`;
+
+  text += "2. EVIDENCE COVERAGE\n";
+  text += "Areas with evidence or notes: " + withEvidence.length + " of " + active.length + ".\n";
+  text += "Areas still needing evidence: " + withoutEvidence.length + ".\n";
+  text += "Areas marked reviewed: " + reviewed.length + ".\n\n";
+
+  if (withoutEvidence.length) {
+    text += "Priority evidence gaps:\n";
+    withoutEvidence.forEach(area => {
+      text += "• " + area.title + ": " + area.question + "\n";
+    });
+    text += "\n";
+  }
+
+  text += "3. CONNECTIONS TO INVESTIGATE\n";
+  text += "• Do findings in different areas support the same explanation?\n";
+  text += "• Do any findings contradict one another?\n";
+  text += "• Which customer needs connect to existing solutions or missing services?\n";
+  text += "• Which conclusions are supported by evidence, and which remain assumptions?\n\n";
+
+  text += "4. NEXT STEP\n";
+  if (withoutEvidence.length) {
+    text += "Prioritize gathering evidence for the areas that have no supporting notes.";
+  } else {
+    text += "Compare the recorded evidence, check for contradictions and identify the most important unanswered question.";
+  }
+
+  text += "\n\nThis review organizes your recorded information. It does not independently verify claims or prove relationships between findings.";
+
+  result.innerHTML = `<div class="result">${escapeHTML(text)}</div>`;
 }
 
-function saveResearch(){
-  writeStore("novaResearch",{
-    question:researchQuestion,
-    areas:researchAreas,
-    savedAt:new Date().toISOString()
+/* SAVE AND LOAD */
+
+function saveResearch() {
+  writeStore("novaResearch", {
+    question: researchQuestion,
+    areas: researchAreas,
+    savedAt: new Date().toISOString()
   });
 }
 
-function loadResearch(){
-  const data=readStore("novaResearch",null);
-  if(!data){alert("No saved research was found in this browser.");return;}
-  researchQuestion=data.question||"";
-  researchAreas=Array.isArray(data.areas)?data.areas:[];
-  document.getElementById("mainQuestion").value=researchQuestion;
+function loadResearch() {
+  const data = readStore("novaResearch", null);
+
+  if (!data) {
+    alert("No saved research was found in this browser.");
+    return;
+  }
+
+  researchQuestion = data.question || "";
+
+  researchAreas = Array.isArray(data.areas)
+    ? data.areas.map(area => ({
+        title: area.title || "Untitled Research Area",
+        question: area.question || "",
+        finding: area.finding || "",
+        evidence: area.evidence || "",
+        confirmed: Boolean(area.confirmed),
+        removed: Boolean(area.removed)
+      }))
+    : [];
+
+  document.getElementById("mainQuestion").value = researchQuestion;
+
   renderResearch();
-}
+  }
 
 /* DATA ANALYSIS */
 
