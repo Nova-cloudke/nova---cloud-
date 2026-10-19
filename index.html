@@ -307,21 +307,66 @@ function addMessage(type,role,text){
   }
 }
 
-function startConversation(type){
+
+async function startConversation(type){
   if(!engineRules[type]) return;
+
   const input=document.getElementById(type+"Input");
   if(!input) return;
+
   const text=input.value.trim();
-  if(!text){alert("Enter something for Nova Cloud to investigate.");return;}
+  if(!text){
+    alert("Enter something for Nova Cloud to investigate.");
+    return;
+  }
+
   ensureConversation(type);
   addMessage(type,"user",text);
   input.value="";
-  if(conversations[type].messages.filter(m=>m.role==="user").length===1){
-    generateFirstResponse(type,text);
-  }else{
-    continueInvestigation(type,text);
+
+  const chat=document.getElementById(type+"Chat");
+
+  try{
+    if(chat){
+      appendMessageElement(chat,"nova","Nova AI is investigating...");
+    }
+
+    const response=await fetch(
+      "https://nova-ai-backend-5wmk.onrender.com/api/core",
+      {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          question:text,
+          project:type,
+          mode:"all"
+        })
+      }
+    );
+
+    const data=await response.json();
+
+    if(!response.ok || !data.success){
+      throw new Error(data.error || "Nova AI request failed.");
+    }
+
+    const answer=typeof data.result==="string"
+      ? data.result
+      : JSON.stringify(data.result,null,2);
+
+    addMessage(type,"nova",answer || "Nova AI returned no result.");
+
+  }catch(error){
+    addMessage(
+      type,
+      "nova",
+      "Nova AI connection failed: "+error.message
+    );
   }
+
+  renderConversation(type); 
 }
+    
 
 function sendMessage(type){
   if(!engineRules[type]) return;
