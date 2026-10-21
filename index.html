@@ -1181,7 +1181,33 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(researchQuestion)renderResearch();
   }
 });
+const NOVA_AI_URL = "https://nova-ai-backend-5wmk.onrender.com";
 
+async function connectNovaAI(question) {
+  try {
+    const response = await fetch(`${NOVA_AI_URL}/api/core`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        question: question,
+        mode: "all"
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error(data.error || "Nova AI request failed");
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Nova AI connection error:", error);
+    throw error;
+  }
+  }
 </script>
 </body>
 </html>
