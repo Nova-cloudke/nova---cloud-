@@ -584,6 +584,152 @@ async function sendMessage(type) {
   const chat = document.getElementById(type + "Chat");
   let status = null;
 
+/* CONVERSATION ENGINE — NOVA AI */
+
+let conversations = readStore("novaConversations", {});
+
+const engineRules = {
+  business: {
+    title: "Business Intelligence",
+    opening: "What are you trying to understand about this business?",
+    areas: ["Business model", "Customers", "Customer problems", "Products and services", "Competition", "Market", "Marketing", "Operations", "Technology", "Growth opportunities"]
+  },
+  system: {
+    title: "System Builder",
+    opening: "What problem, workflow or idea are you trying to turn into a system?",
+    areas: ["Problem", "Users", "Inputs", "Workflow", "Technology", "Data", "Automation", "Outputs", "Risks", "Success criteria"]
+  },
+  ai: {
+    title: "AI Projects",
+    opening: "What are you trying to accomplish, and where might AI help?",
+    areas: ["Problem", "Users", "Current process", "Data", "AI opportunity", "Automation", "Limitations", "Risks", "Testing", "Expected result"]
+  },
+  technology: {
+    title: "Technology Investigation",
+    opening: "What technology do you want to understand and how does it operate?",
+    areas: ["What it is", "How it works", "Components", "Processes", "Inputs and outputs", "Applications", "Limitations", "Costs", "Risks", "Future opportunities"]
+  },
+  innovation: {
+    title: "Innovation Investigation",
+    opening: "What idea, problem, technology or opportunity are you exploring?",
+    areas: ["Problem", "Users", "Existing alternatives", "New approach", "Technology", "Market", "Feasibility", "Opportunity", "Risks", "First experiment"]
+  }
+};
+
+function ensureConversation(type) {
+  if (!conversations[type] ||
+      !Array.isArray(conversations[type].messages)) {
+    conversations[type] = { messages: [] };
+  }
+}
+
+function saveConversations() {
+  writeStore("novaConversations", conversations);
+}
+
+function openConversation(type) {
+  if (!engineRules[type]) return;
+
+  showScreen("systems");
+
+  const container = document.getElementById("systemConversation");
+  if (!container) return;
+
+  container.innerHTML = conversationInterface(type);
+  renderConversation(type);
+}
+
+function conversationInterface(type) {
+  const rule = engineRules[type];
+
+  return `
+    <div class="tool">
+      <span class="badge">${escapeHTML(rule.title)}</span>
+      <p>${escapeHTML(rule.opening)}</p>
+      <div id="${type}Chat" class="chat"></div>
+      <input
+        id="${type}Input"
+        placeholder="Describe what you want to understand or build"
+        onkeydown="if(event.key==='Enter')sendMessage('${type}')"
+      >
+      <button onclick="sendMessage('${type}')">
+        Investigate with Nova AI
+      </button>
+      <button class="secondary" onclick="clearConversation('${type}')">
+        New Investigation
+      </button>
+    </div>
+  `;
+}
+
+function renderConversation(type) {
+  const chat = document.getElementById(type + "Chat");
+  if (!chat) return;
+
+  chat.innerHTML = "";
+  ensureConversation(type);
+
+  conversations[type].messages.forEach(message => {
+    appendMessageElement(chat, message.role, message.text);
+  });
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function appendMessageElement(chat, role, text) {
+  const div = document.createElement("div");
+
+  div.className = "message " +
+    (role === "user" ? "user" : "nova");
+
+  div.textContent = String(text);
+  chat.appendChild(div);
+}
+
+function addMessage(type, role, text) {
+  ensureConversation(type);
+
+  conversations[type].messages.push({
+    role,
+    text: String(text)
+  });
+
+  saveConversations();
+
+  const chat = document.getElementById(type + "Chat");
+
+  if (chat) {
+    appendMessageElement(chat, role, text);
+    chat.scrollTop = chat.scrollHeight;
+  }
+}
+
+async function sendMessage(type) {
+  if (!engineRules[type]) return;
+
+  const input = document.getElementById(type + "Input");
+  if (!input || input.disabled) return;
+
+  const question = input.value.trim();
+  if (!question) {
+    alert("Enter a question or idea first.");
+    return;
+  }
+
+  input.value = "";
+  input.disabled = true;
+
+  const container = input.parentElement;
+  const buttons = container.querySelectorAll("button");
+
+  buttons.forEach(button => button.disabled = true);
+
+  ensureConversation(type);
+  addMessage(type, "user", question);
+
+  const chat = document.getElementById(type + "Chat");
+  let status = null;
+
   if (chat) {
     status = document.createElement("div");
     status.className = "message nova";
@@ -593,6 +739,10 @@ async function sendMessage(type) {
 
   try {
     const data = await connectNovaAI(question, type);
+
+    if (!data || !data.success) {
+      throw new Error("Nova AI returned an unsuccessful response.");
+    }
 
     if (status) status.remove();
 
@@ -614,6 +764,7 @@ async function sendMessage(type) {
       "nova",
       "Nova AI connection failed: " + error.message
     );
+
   } finally {
     input.disabled = false;
     buttons.forEach(button => button.disabled = false);
@@ -628,16 +779,19 @@ function clearConversation(type) {
   conversations[type] = { messages: [] };
   saveConversations();
 
-  const container = document.getElementById("systemConversation");
+  if (["system", "ai", "technology"].includes(type)) {
+    const container = document.getElementById("systemConversation");
 
-  if (["system", "ai", "technology"].includes(type) && container) {
-    container.innerHTML = conversationInterface(type);
-    renderConversation(type);
+    if (container) {
+      container.innerHTML = conversationInterface(type);
+      renderConversation(type);
+    }
   } else {
     const chat = document.getElementById(type + "Chat");
     if (chat) chat.innerHTML = "";
   }
   }
+  
 /* RESEARCH WORKSPACE — IMPROVED INTELLIGENCE ENGINE */
 
 let researchQuestion = "";
