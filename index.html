@@ -803,7 +803,8 @@ function getResearchPlan(question) {
 
 /* BUILD RESEARCH MAP */
 
-function buildResearchMap() {
+
+async function buildResearchMap() {
   const input = document.getElementById("mainQuestion");
   const question = input.value.trim();
 
@@ -817,7 +818,25 @@ function buildResearchMap() {
 
   renderResearch();
   saveResearch();
-}
+
+  const output = document.getElementById("researchOutput");
+  const status = document.createElement("div");
+  status.className = "result";
+  status.textContent = "Nova AI is investigating your research question...";
+  output.prepend(status);
+
+  try {
+    const data = await connectNovaAI(question);
+
+    status.textContent = typeof data.result === "string"
+      ? data.result
+      : JSON.stringify(data.result, null, 2);
+
+  } catch (error) {
+    status.textContent = "Nova AI connection failed: " + error.message;
+  }
+  }
+  
 
 /* RENDER WORKSPACE */
 
