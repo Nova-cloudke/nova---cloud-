@@ -455,12 +455,7 @@ function understandResearchQuestion(question) {
 
   const has = (...words) => words.some(word => q.includes(word));
 
-/* Understand the kind of question being asked */
 
-function understandResearchQuestion(question) {
-  const q = String(question || "").toLowerCase();
-
-  const has = (...words) => words.some(word => q.includes(word));
 
   if (has("digital marketing", "online marketing", "social media marketing",
       "marketing strategy", "marketing campaign", "lead generation",
