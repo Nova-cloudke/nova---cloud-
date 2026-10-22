@@ -449,10 +449,22 @@ let researchAreas = [];
 
 /* Understand the kind of question being asked */
 
+ understandResearchQuestion(question) {
+  const q = question.toLowerCase();
+
 function understandResearchQuestion(question) {
   const q = question.toLowerCase();
 
   const has = (...words) => words.some(word => q.includes(word));
+
+  // Digital marketing
+  if (has("digital marketing", "online marketing",
+          "social media marketing", "marketing strategy",
+          "marketing performance", "marketing campaign",
+          "lead generation", "conversion rate", "advertising",
+          "seo", "content marketing", "marketing skills")) {
+    return "digitalMarketing";
+  }
 
   if (has("customer", "customers", "consumer", "consumers",
           "client", "clients", "buyer", "buyers", "people need",
@@ -513,7 +525,8 @@ function understandResearchQuestion(question) {
   }
 
   return "general";
-}
+  }
+  
 
 /* Build a relevant investigation plan */
 
