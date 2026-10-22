@@ -428,20 +428,53 @@ function showFollowups(type,items){
 }
 
 function clearConversation(type){
-  delete conversations[type];
-  saveConversations();
-  const chat=document.getElementById(type+"Chat");
-  if(chat) chat.innerHTML="";
-  if(type==="business"){
-    const el=document.getElementById("businessChat");
-    if(el)el.innerHTML="";
-  }
-  if(type==="innovation"){
-    const el=document.getElementById("innovationChat");
-    if(el)el.innerHTML="";
-  }
+async function sendMessage(type) {
+  if (!engineRules[type]) return;
+
+  const input = document.getElementById(type + "Input");
+  if (!input) return;
+
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = "";
+  await startEngineMessage(type, text);
 }
 
+async function startEngineMessage(type, text) {
+  ensureConversation(type);
+  addMessage(type, "user", text);
+
+  const chat = document.getElementById(type + "Chat");
+  let status;
+
+  if (chat) {
+    status = document.createElement("div");
+    status.className = "message nova";
+    status.textContent = "Nova AI is investigating...";
+    chat.appendChild(status);
+  }
+
+  try {
+    const data = await connectNovaAI(text);
+
+    if (status) status.remove();
+
+    const answer = typeof data.result === "string"
+      ? data.result
+      : JSON.stringify(data.result, null, 2);
+
+    addMessage(type, "nova", answer || "Nova AI returned no result.");
+  } catch (error) {
+    if (status) status.remove();
+
+    addMessage(
+      type,
+      "nova",
+      "Nova AI connection failed: " + error.message
+    );
+  }
+  }
 /* RESEARCH WORKSPACE — IMPROVED INTELLIGENCE ENGINE */
 
 let researchQuestion = "";
