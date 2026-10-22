@@ -894,6 +894,7 @@ function confirmFinding(i) {
   renderResearch();
 }
 
+
 function editFinding(i) {
   const area = researchAreas[i];
   if (!area || area.removed) return;
@@ -910,9 +911,11 @@ function editFinding(i) {
 
   saveResearch();
   renderResearch();
-  window.editFinding = editFinding;
-window.editEvidence = editEvidence;
 }
+
+window.editFinding = editFinding;
+window.editEvidence = editEvidence;
+  
 
 function editEvidence(i) {
   const area = researchAreas[i];
