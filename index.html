@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nova Cloud</title>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.5}
@@ -12,1569 +11,368 @@ header{background:#111827;color:white;padding:22px 18px}
 header h1{font-size:27px}
 header p{color:#cbd5e1;font-size:14px}
 .container{max-width:1100px;margin:auto;padding:20px}
-.screen{display:none}
-.screen.active{display:block}
+.screen{display:none}.screen.active{display:block}
 .back{display:inline-block;margin-bottom:18px;color:#2563eb;font-weight:bold;cursor:pointer}
 .hero,.tool,.card,.research-area{background:white;border-radius:16px;border:1px solid #e2e8f0}
-.hero{padding:24px;margin-bottom:20px}
-.hero p{color:#64748b}
+.hero{padding:24px;margin-bottom:20px}.hero p{color:#64748b;margin-top:5px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{padding:20px;cursor:pointer;transition:.2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 5px 18px #0001}
-.card h3{margin-bottom:7px}
-.card p{color:#64748b;font-size:14px}
+.card{padding:20px;cursor:pointer;transition:.2s}.card:hover{transform:translateY(-2px);box-shadow:0 5px 18px #0001}
+.card h3{margin-bottom:7px}.card p{color:#64748b;font-size:14px}
 .tool{padding:20px;margin-bottom:18px}
 input,textarea{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;margin:8px 0 14px;font:inherit}
 textarea{min-height:120px;resize:vertical}
-button{border:0;border-radius:10px;padding:11px 16px;cursor:pointer;font-weight:bold;background:#2563eb;color:white}
-button.secondary{background:#e2e8f0;color:#172033}
-button.green{background:#16a34a}
-button.red{background:#dc2626}
+button{border:0;border-radius:10px;padding:11px 16px;cursor:pointer;font-weight:bold;background:#2563eb;color:white;margin:3px 2px}
+button:disabled{opacity:.6;cursor:wait}
+button.secondary{background:#e2e8f0;color:#172033}button.green{background:#16a34a}button.red{background:#dc2626}
 .actions,.followups{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .badge{display:inline-block;padding:4px 9px;border-radius:20px;background:#e0e7ff;color:#3730a3;font-size:12px;margin-bottom:9px}
-.result{background:#f8fafc;border-left:4px solid #2563eb;padding:16px;border-radius:9px;margin-top:15px;white-space:pre-line}
+.result{background:#f8fafc;border-left:4px solid #2563eb;padding:16px;border-radius:9px;margin-top:15px;white-space:pre-line;overflow-wrap:anywhere}
 .chat{max-height:480px;overflow-y:auto;margin:15px 0}
 .message{padding:14px;border-radius:12px;margin:10px 0;white-space:pre-line;overflow-wrap:anywhere}
-.user{background:#dbeafe;margin-left:12%}
-.nova{background:#f1f5f9;margin-right:12%}
-.question{color:#475569;font-style:italic;margin-bottom:14px}
+.user{background:#dbeafe;margin-left:12%}.nova{background:#f1f5f9;margin-right:12%}
+.question{color:#475569;font-style:italic;margin:8px 0 14px}
 .finding{background:#f8fafc;padding:15px;border-radius:10px;margin:10px 0;white-space:pre-line}
-.confirmed{border-left:4px solid #16a34a}
+.research-area{padding:18px;margin:14px 0}.confirmed{border-left:4px solid #16a34a}
 footer{text-align:center;padding:30px;color:#64748b;font-size:13px}
 </style>
 </head>
-
 <body>
-
-<header>
-<h1>Nova Cloud</h1>
-<p>Research • Innovation • Technology • Business Intelligence</p>
-</header>
-
+<header><h1>Nova Cloud</h1><p>Research • Innovation • Technology • Business Intelligence</p></header>
 <div class="container">
-
 <section id="home" class="screen active">
-<div class="hero">
-<h2>Nova Cloud</h2>
-<p>A neutral intelligence workspace for questions, ideas, businesses, research, technology and decisions.</p>
-</div>
-
-<div class="grid">
-<div class="card" onclick="showScreen('research')">
-<span class="badge">Research</span>
-<h3>Research Workspace</h3>
-<p>Break one important question into connected research areas.</p>
-</div>
-<div class="card" onclick="showScreen('business')">
-<span class="badge">Business Intelligence</span>
-<h3>Business Intelligence</h3>
-<p>Understand businesses, customers, markets and opportunities.</p>
-</div>
-<div class="card" onclick="showScreen('systems')">
-<span class="badge">Systems</span>
-<h3>Systems</h3>
-<p>Turn problems and ideas into useful systems.</p>
-</div>
-<div class="card" onclick="showScreen('data')">
-<span class="badge">Data & Analysis</span>
-<h3>Data & Analysis</h3>
-<p>Analyze information, text, numbers and decisions.</p>
-</div>
-<div class="card" onclick="showScreen('workspace')">
-<span class="badge">Cloud Workspace</span>
-<h3>Cloud Workspace</h3>
-<p>Organize projects, ideas and tasks.</p>
-</div>
-<div class="card" onclick="showScreen('innovation')">
-<span class="badge">Innovation</span>
-<h3>Innovation & Technology</h3>
-<p>Explore unfamiliar ideas and technologies.</p>
-</div>
-</div>
+ <div class="hero"><h2>Nova Cloud</h2><p>A neutral intelligence workspace for questions, ideas, businesses, research, technology and decisions.</p></div>
+ <div class="grid">
+  <div class="card" onclick="showScreen('research')"><span class="badge">Research</span><h3>Research Workspace</h3><p>Break a question into connected research areas.</p></div>
+  <div class="card" onclick="showScreen('business')"><span class="badge">Business Intelligence</span><h3>Business Intelligence</h3><p>Understand businesses, customers, markets and opportunities.</p></div>
+  <div class="card" onclick="showScreen('systems')"><span class="badge">Systems</span><h3>Systems</h3><p>Turn problems and ideas into useful systems.</p></div>
+  <div class="card" onclick="showScreen('data')"><span class="badge">Data & Analysis</span><h3>Data & Analysis</h3><p>Analyze information, text and numbers.</p></div>
+  <div class="card" onclick="showScreen('workspace')"><span class="badge">Cloud Workspace</span><h3>Cloud Workspace</h3><p>Organize projects, ideas and tasks.</p></div>
+  <div class="card" onclick="showScreen('innovation')"><span class="badge">Innovation</span><h3>Innovation & Technology</h3><p>Explore unfamiliar ideas and technologies.</p></div>
+ </div>
 </section>
 
 <section id="research" class="screen">
-<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
-<div class="hero">
-<h2>Research Workspace</h2>
-<p>Ask one main question. Investigate several connected areas, add findings and connect what you discover.</p>
-</div>
-<div class="tool">
-<label for="mainQuestion"><strong>Main Question</strong></label>
-<input id="mainQuestion" placeholder="What do you want to understand?">
-<button onclick="buildResearchMap()">Build Research Map</button>
-<button class="secondary" onclick="loadResearch()">Load Saved Research</button>
-</div>
-<div id="researchOutput"></div>
+ <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
+ <div class="hero"><h2>Research Workspace</h2><p>Ask one main question. Investigate connected areas, add evidence and connect findings.</p></div>
+ <div class="tool"><label for="mainQuestion"><strong>Main Question</strong></label><input id="mainQuestion" placeholder="What do you want to understand?"><button onclick="buildResearchMap()">Build Research Map</button><button class="secondary" onclick="loadResearch()">Load Saved Research</button></div>
+ <div id="researchOutput"></div>
 </section>
 
 <section id="business" class="screen">
-<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
-<div class="hero">
-<h2>Business Intelligence</h2>
-<p>Investigate business models, customers, services, markets and opportunities.</p>
-</div>
-<div id="businessChat" class="chat"></div>
-<div class="tool">
-<input id="businessInput" placeholder="What do you want to understand about a business?">
-<button onclick="startConversation('business')">Start / Continue Investigation</button>
-<button class="secondary" onclick="clearConversation('business')">New Investigation</button>
-</div>
+ <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
+ <div class="hero"><h2>Business Intelligence</h2><p>Investigate business models, customers, services, markets and opportunities.</p></div>
+ <div id="businessChat" class="chat"></div>
+ <div class="tool"><input id="businessInput" placeholder="What do you want to understand about a business?" onkeydown="if(event.key==='Enter')sendMessage('business')"><button onclick="sendMessage('business')">Investigate with Nova AI</button><button class="secondary" onclick="clearConversation('business')">New Investigation</button></div>
 </section>
 
 <section id="systems" class="screen">
-<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
-<div class="hero">
-<h2>Systems</h2>
-<p>Describe what you want to build, understand or improve.</p>
-</div>
-<div class="grid">
-<div class="card" onclick="openConversation('system')">
-<h3>System Builder</h3><p>Investigate a problem and the system needed to address it.</p>
-</div>
-<div class="card" onclick="openConversation('ai')">
-<h3>AI Projects</h3><p>Explore whether and how AI could help.</p>
-</div>
-<div class="card" onclick="openConversation('technology')">
-<h3>Technology</h3><p>Understand technologies and how they operate.</p>
-</div>
-</div>
-<div id="systemConversation"></div>
+ <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
+ <div class="hero"><h2>Systems</h2><p>Describe what you want to build, understand or improve.</p></div>
+ <div class="grid">
+  <div class="card" onclick="openConversation('system')"><h3>System Builder</h3><p>Investigate a problem and the system needed to address it.</p></div>
+  <div class="card" onclick="openConversation('ai')"><h3>AI Projects</h3><p>Explore whether and how AI could help.</p></div>
+  <div class="card" onclick="openConversation('technology')"><h3>Technology</h3><p>Understand technologies and how they operate.</p></div>
+ </div>
+ <div id="systemConversation"></div>
 </section>
 
 <section id="data" class="screen">
-<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
-<div class="hero">
-<h2>Data & Analysis</h2>
-<p>Enter text, numbers, a decision or information to examine.</p>
-</div>
-<div class="tool">
-<textarea id="dataInput" placeholder="Enter the information you want to analyze"></textarea>
-<button onclick="analyzeDataInput()">Analyze</button>
-<button class="secondary" onclick="document.getElementById('dataInput').value='';document.getElementById('dataOutput').innerHTML=''">Clear</button>
-</div>
-<div id="dataOutput"></div>
+ <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span><div class="hero"><h2>Data & Analysis</h2><p>Enter text, numbers, a decision or information to examine.</p></div>
+ <div class="tool"><textarea id="dataInput" placeholder="Enter information to analyze"></textarea><button onclick="analyzeDataInput()">Analyze</button><button class="secondary" onclick="clearData()">Clear</button></div><div id="dataOutput"></div>
 </section>
 
 <section id="workspace" class="screen">
-<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
-<div class="hero">
-<h2>Cloud Workspace</h2>
-<p>Create projects and open their research workspace.</p>
-</div>
-<div class="tool">
-<h3>Create Project</h3>
-<input id="projectName" placeholder="Project name">
-<textarea id="projectDescription" placeholder="What is this project about?"></textarea>
-<button onclick="createProject()">Create Project</button>
-</div>
-<div id="projects"></div>
+ <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span><div class="hero"><h2>Cloud Workspace</h2><p>Create projects and open their research workspace.</p></div>
+ <div class="tool"><h3>Create Project</h3><input id="projectName" placeholder="Project name"><textarea id="projectDescription" placeholder="What is this project about?"></textarea><button onclick="createProject()">Create Project</button></div><div id="projects"></div>
 </section>
 
 <section id="innovation" class="screen">
-<span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
-<div class="hero">
-<h2>Innovation & Technology</h2>
-<p>Investigate an idea, technology, problem or opportunity.</p>
-</div>
-<div id="innovationChat" class="chat"></div>
-<div class="tool">
-<input id="innovationInput" placeholder="Enter an idea, technology or problem">
-<button onclick="startConversation('innovation')">Explore / Continue</button>
-<button class="secondary" onclick="clearConversation('innovation')">New Investigation</button>
-</div>
+ <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span><div class="hero"><h2>Innovation & Technology</h2><p>Investigate an idea, technology, problem or opportunity with Nova AI.</p></div>
+ <div id="innovationChat" class="chat"></div><div class="tool"><input id="innovationInput" placeholder="Enter an idea, technology or problem" onkeydown="if(event.key==='Enter')sendMessage('innovation')"><button onclick="sendMessage('innovation')">Explore with Nova AI</button><button class="secondary" onclick="clearConversation('innovation')">New Investigation</button></div>
 </section>
-
 </div>
-
 <footer>Nova Cloud — Research • Innovation • Technology • Business Intelligence</footer>
 
 <script>
 "use strict";
-
-/* NAVIGATION */
+const NOVA_AI_URL="https://nova-ai-backend-5wmk.onrender.com";
 
 function showScreen(id){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  const target=document.getElementById(id);
-  if(target) target.classList.add("active");
-  window.scrollTo(0,0);
-  if(id==="workspace") renderProjects();
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ const target=document.getElementById(id);if(target)target.classList.add("active");
+ window.scrollTo(0,0);if(id==="workspace")renderProjects();
 }
-
-/* SAFE LOCAL STORAGE */
-
-function readStore(key,fallback){
-  try{
-    const value=localStorage.getItem(key);
-    return value===null?fallback:JSON.parse(value);
-  }catch(e){return fallback;}
-}
-
-function writeStore(key,value){
-  try{localStorage.setItem(key,JSON.stringify(value));}
-  catch(e){console.error("Could not save:",key,e);}
-}
-
-/* CONVERSATION ENGINE */
-
-let conversations=readStore("novaConversations",{});
+function readStore(key,fallback){try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}catch(e){return fallback}}
+function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){console.error("Could not save",key,e)}}
+function escapeHTML(value){return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
 
 const engineRules={
-  business:{
-    title:"Business Intelligence",
-    opening:"What are you trying to understand about this business?",
-    areas:["business model","customers","customer problems","products or services","competition","market","marketing","operations","technology","growth opportunities"]
-  },
-  system:{
-    title:"System Builder",
-    opening:"What problem, workflow or idea are you trying to turn into a system?",
-    areas:["problem","users","inputs","workflow","technology","data","automation","outputs","risks","success criteria"]
-  },
-  ai:{
-    title:"AI Projects",
-    opening:"What are you trying to accomplish, and where might AI help?",
-    areas:["problem","users","current process","data","AI opportunity","automation","limitations","risks","testing","expected result"]
-  },
-  technology:{
-    title:"Technology Investigation",
-    opening:"What technology or technology-related question do you want to understand?",
-    areas:["what it is","how it works","why it exists","problem it solves","users","components","data","applications","limitations","future opportunities"]
-  },
-  innovation:{
-    title:"Innovation Investigation",
-    opening:"What idea, problem, technology or opportunity are you exploring?",
-    areas:["problem","users","existing alternatives","new approach","technology","market","feasibility","opportunity","risks","first experiment"]
-  }
+ business:{title:"Business Intelligence",opening:"What are you trying to understand about this business?",areas:["business model","customers","customer problems","products and services","competition","market","marketing","operations","technology","growth opportunities"]},
+ system:{title:"System Builder",opening:"What problem, workflow or idea are you trying to turn into a system?",areas:["problem","users","inputs","workflow","technology","data","automation","outputs","risks","success criteria"]},
+ ai:{title:"AI Projects",opening:"What are you trying to accomplish, and where might AI help?",areas:["problem","users","current process","data","AI opportunity","automation","limitations","risks","testing","expected result"]},
+ technology:{title:"Technology Investigation",opening:"What technology do you want to understand and how does it operate?",areas:["what it is","how it works","components","processes","inputs and outputs","applications","limitations","costs","risks","future opportunities"]},
+ innovation:{title:"Innovation Investigation",opening:"What idea, problem, technology or opportunity are you exploring?",areas:["problem","users","existing alternatives","new approach","technology","market","feasibility","opportunity","risks","first experiment"]}
 };
-
-function ensureConversation(type){
-  if(!conversations[type] || !Array.isArray(conversations[type].messages)){
-    conversations[type]={messages:[]};
-  }
-}
-
-function saveConversations(){
-  writeStore("novaConversations",conversations);
-}
-
-function openConversation(type){
-  if(!engineRules[type]) return;
-  showScreen("systems");
-  const container=document.getElementById("systemConversation");
-  container.innerHTML=conversationInterface(type);
-  renderConversation(type);
-}
-
+let conversations=readStore("novaConversations",{});
+function ensureConversation(type){if(!conversations[type]||!Array.isArray(conversations[type].messages))conversations[type]={messages:[]}}
+function saveConversations(){writeStore("novaConversations",conversations)}
 function conversationInterface(type){
-  const rule=engineRules[type];
-  return `
-    <div class="tool">
-      <span class="badge">${escapeHTML(rule.title)}</span>
-      <p>${escapeHTML(rule.opening)}</p>
-      <div id="${type}Chat" class="chat"></div>
-      <input id="${type}Input" placeholder="Type your question or reply"
-        onkeydown="if(event.key==='Enter')sendMessage('${type}')">
-      <button onclick="sendMessage('${type}')">Continue Investigation</button>
-      <button class="secondary" onclick="clearConversation('${type}')">New Investigation</button>
-    </div>`;
+ const rule=engineRules[type];
+ return `<div class="tool"><span class="badge">${escapeHTML(rule.title)}</span><p>${escapeHTML(rule.opening)}</p><div id="${type}Chat" class="chat"></div><input id="${type}Input" placeholder="Type your question or reply" onkeydown="if(event.key==='Enter')sendMessage('${type}')"><button onclick="sendMessage('${type}')">Investigate with Nova AI</button><button class="secondary" onclick="clearConversation('${type}')">New Investigation</button></div>`;
 }
-
+function openConversation(type){
+ if(!engineRules[type])return;
+ showScreen("systems");
+ const container=document.getElementById("systemConversation");
+ container.innerHTML=conversationInterface(type);
+ renderConversation(type);
+}
 function renderConversation(type){
-  const chat=document.getElementById(type+"Chat");
-  if(!chat) return;
-  chat.innerHTML="";
-  ensureConversation(type);
-  conversations[type].messages.forEach(m=>appendMessageElement(chat,m.role,m.text));
-  chat.scrollTop=chat.scrollHeight;
+ const chat=document.getElementById(type+"Chat");if(!chat)return;
+ chat.innerHTML="";ensureConversation(type);
+ conversations[type].messages.forEach(m=>appendMessageElement(chat,m.role,m.text));
+ chat.scrollTop=chat.scrollHeight;
 }
-
 function appendMessageElement(chat,role,text){
-  const div=document.createElement("div");
-  div.className="message "+(role==="user"?"user":"nova");
-  div.textContent=text;
-  chat.appendChild(div);
+ const div=document.createElement("div");div.className="message "+(role==="user"?"user":"nova");div.textContent=String(text);chat.appendChild(div);
 }
-
 function addMessage(type,role,text){
-  ensureConversation(type);
-  conversations[type].messages.push({role,text});
-  saveConversations();
-  const chat=document.getElementById(type+"Chat");
-  if(chat){
-    appendMessageElement(chat,role,text);
-    chat.scrollTop=chat.scrollHeight;
-  }
+ ensureConversation(type);conversations[type].messages.push({role,text:String(text)});saveConversations();
+ const chat=document.getElementById(type+"Chat");if(chat){appendMessageElement(chat,role,text);chat.scrollTop=chat.scrollHeight}
 }
-
-
-async function startConversation(type){
-  if(!engineRules[type]) return;
-
-  const input=document.getElementById(type+"Input");
-  if(!input) return;
-
-  const text=input.value.trim();
-  if(!text){
-    alert("Enter something for Nova Cloud to investigate.");
-    return;
-  }
-
-  ensureConversation(type);
-  addMessage(type,"user",text);
-  input.value="";
-
-  const chat=document.getElementById(type+"Chat");
-
-  try{
-    if(chat){
-      appendMessageElement(chat,"nova","Nova AI is investigating...");
-    }
-
-    const response=await fetch(
-      "https://nova-ai-backend-5wmk.onrender.com/api/core",
-      {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({
-          question:text,
-          project:type,
-          mode:"all"
-        })
-      }
-    );
-
-    const data=await response.json();
-
-    if(!response.ok || !data.success){
-      throw new Error(data.error || "Nova AI request failed.");
-    }
-
-    const answer=typeof data.result==="string"
-      ? data.result
-      : JSON.stringify(data.result,null,2);
-
-    addMessage(type,"nova",answer || "Nova AI returned no result.");
-
-  }catch(error){
-    addMessage(
-      type,
-      "nova",
-      "Nova AI connection failed: "+error.message
-    );
-  }
-
-  renderConversation(type); 
+async function connectNovaAI(question,type="research"){
+ const response=await fetch(`${NOVA_AI_URL}/api/core`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question,project:type,mode:"all"})});
+ let data;try{data=await response.json()}catch(e){throw new Error("The backend returned an unreadable response.")}
+ if(!response.ok||!data||!data.success)throw new Error(data?.error||`Request failed (HTTP ${response.status}).`);
+ return data;
 }
-    
-
-function sendMessage(type){
-  if(!engineRules[type]) return;
-  const input=document.getElementById(type+"Input");
-  if(!input) return;
-  const text=input.value.trim();
-  if(!text) return;
-  ensureConversation(type);
-  addMessage(type,"user",text);
-  input.value="";
-  continueInvestigation(type,text);
+function formatAIResult(data){return typeof data.result==="string"?data.result:JSON.stringify(data.result??data,null,2)}
+async function sendMessage(type){
+ if(!engineRules[type])return;
+ const input=document.getElementById(type+"Input");if(!input||input.disabled)return;
+ const question=input.value.trim();if(!question){alert("Enter a question or idea first.");return}
+ input.value="";input.disabled=true;
+ const tool=input.closest(".tool");const buttons=tool?tool.querySelectorAll("button"):[];
+ buttons.forEach(b=>b.disabled=true);
+ ensureConversation(type);addMessage(type,"user",question);
+ const chat=document.getElementById(type+"Chat");let status=null;
+ if(chat){status=document.createElement("div");status.className="message nova";status.textContent="Nova AI is investigating...";chat.appendChild(status)}
+ try{
+  const data=await connectNovaAI(question,type);
+  if(status)status.remove();
+  addMessage(type,"nova",formatAIResult(data)||"Nova AI returned no result.");
+ }catch(error){
+  if(status)status.remove();
+  addMessage(type,"nova","Nova AI connection failed: "+error.message+"\n\nCheck that the Nova AI backend is running and its URL is correct.");
+ }finally{
+  input.disabled=false;buttons.forEach(b=>b.disabled=false);renderConversation(type);input.focus();
+ }
 }
-
-function generateFirstResponse(type,text){
-  const rule=engineRules[type];
-  addMessage(type,"nova",
-    "Let's investigate:\n\n"+text+
-    "\n\nWe should establish what is known, what needs evidence, and which options are available.\n\nUseful areas to investigate:\n• "+
-    rule.areas.slice(0,5).join("\n• ")+
-    "\n\nWhich area would you like to examine first?");
-  showFollowups(type,rule.areas.slice(0,5));
-}
-
-function continueInvestigation(type,text){
-  const count=conversations[type].messages.filter(m=>m.role==="user").length;
-  let response;
-  if(count===2){
-    response="Let's examine that more closely.\n\nWhat evidence, real example or information do you already have about \""+text+"\"?";
-  }else if(count===3){
-    response="Now let's separate facts from assumptions.\n\nWhat do you know for certain, and what still needs verification?";
-  }else if(count===4){
-    response="We can now compare explanations or possible approaches.\n\nWhat alternatives have you considered, if any?";
-  }else{
-    response="We can continue investigating, look for evidence, compare alternatives, identify opportunities or decide on a next step.\n\nWhich direction would be most useful now?";
-  }
-  addMessage(type,"nova",response);
-  showFollowups(type,["Go deeper","Look for evidence","Compare alternatives","Find opportunities","Next action"]);
-}
-
-function showFollowups(type,items){
-  const chat=document.getElementById(type+"Chat");
-  if(!chat) return;
-  const old=document.getElementById(type+"Followups");
-  if(old) old.remove();
-  const wrap=document.createElement("div");
-  wrap.id=type+"Followups";
-  wrap.className="followups";
-  items.forEach(item=>{
-    const button=document.createElement("button");
-    button.className="secondary";
-    button.textContent=item;
-    button.onclick=()=>{
-      const input=document.getElementById(type+"Input");
-      if(input){input.value=item;sendMessage(type);}
-    };
-    wrap.appendChild(button);
-  });
-  chat.appendChild(wrap);
-}
-
 function clearConversation(type){
-async function sendMessage(type) {
-  if (!engineRules[type]) return;
-
-  const input = document.getElementById(type + "Input");
-  if (!input) return;
-
-  const text = input.value.trim();
-  if (!text) return;
-
-  input.value = "";
-  await startEngineMessage(type, text);
+ if(!engineRules[type])return;
+ conversations[type]={messages:[]};saveConversations();
+ if(["system","ai","technology"].includes(type)){
+  const container=document.getElementById("systemConversation");
+  if(container){container.innerHTML=conversationInterface(type);renderConversation(type)}
+ }else renderConversation(type);
 }
 
-async function startEngineMessage(type, text) {
-  ensureConversation(type);
-  addMessage(type, "user", text);
-
-  const chat = document.getElementById(type + "Chat");
-  let status;
-
-  if (chat) {
-    status = document.createElement("div");
-    status.className = "message nova";
-    status.textContent = "Nova AI is investigating...";
-/* CONVERSATION ENGINE */
-
-let conversations = readStore("novaConversations", {});
-
-const engineRules = {
-  business: {
-    title: "Business Intelligence",
-    opening: "What are you trying to understand about this business?",
-    areas: ["business model", "customers", "customer problems", "services", "competition", "market", "marketing", "operations", "technology", "growth opportunities"]
-  },
-  system: {
-    title: "System Builder",
-    opening: "What problem, workflow or idea are you trying to turn into a system?",
-    areas: ["problem", "users", "inputs", "workflow", "technology", "data", "automation", "outputs", "risks", "success criteria"]
-  },
-  ai: {
-    title: "AI Projects",
-    opening: "What are you trying to accomplish, and where might AI help?",
-    areas: ["problem", "users", "current process", "data", "AI opportunity", "automation", "limitations", "risks", "testing", "expected result"]
-  },
-  technology: {
-    title: "Technology Investigation",
-    opening: "What technology do you want to understand and how it operates?",
-    areas: ["what it is", "how it works", "components", "processes", "inputs and outputs", "applications", "limitations", "costs", "risks", "future opportunities"]
-  },
-  innovation: {
-    title: "Innovation Investigation",
-    opening: "What idea, problem, technology or opportunity are you exploring?",
-    areas: ["problem", "users", "existing alternatives", "new approach", "technology", "market", "feasibility", "opportunity", "risks", "first experiment"]
-  }
+/* RESEARCH WORKSPACE */
+let researchQuestion="",researchAreas=[];
+function understandResearchQuestion(question){
+ const q=String(question||"").toLowerCase(),has=(...words)=>words.some(w=>q.includes(w));
+ if(has("digital marketing","online marketing","social media marketing","marketing strategy","marketing campaign","lead generation","advertising","seo","content marketing","marketing skills"))return "digitalMarketing";
+ if(has("customer","customers","consumer","consumers","client","clients","buyer","buyers","people need","people want","users need","user needs"))return "customers";
+ if(has("market gap","market gaps","missing in the market","cannot find","can't find","underserved","unmet need","unmet needs","lacking","lack of","market opportunity","market opportunities"))return "marketGaps";
+ if(has("competitor","competitors","competition","alternative","alternatives","compare","comparison"))return "competition";
+ if(has("technology","technologies","computer","computers","software","hardware","engine","engines","ecu","sensor","sensors","artificial intelligence","how does","how do","how it works","how they operate"))return "technology";
+ if(has("business idea","business ideas","startup","start-up","start a business","new business","business opportunity","business opportunities"))return "businessIdea";
+ if(has("business","company","companies","enterprise","organization","organisation","agency","agencies"))return "business";
+ if(has("product","products","service","services","solution","solutions","what does it offer"))return "services";
+ if(has("result","results","impact","effectiveness","improve","improvement","performance","success","outcome","outcomes"))return "results";
+ if(has("problem","problems","challenge","challenges","difficulties","cause","causes","why does","why do","why is","why are"))return "problems";
+ if(has("innovation","innovate","invent","invention","new approach","new solution","develop a new"))return "innovation";
+ return "general";
+}
+const researchPlans={
+ customers:[
+ ["Customer Needs","What are customers trying to achieve, obtain or improve?","Identify customer goals and needs using customer statements or research."],
+ ["Customer Difficulties","What difficulties or unmet needs do customers experience?","Investigate reported difficulties; do not assume all customers share the same problem."],
+ ["Current Solutions","How do customers currently meet these needs?","Examine existing products, services and alternatives."],
+ ["Unmet Needs","Which needs may remain poorly served?","Compare customer needs with existing solutions and record evidence."],
+ ["Buying Decisions","What influences customers to choose and pay for a solution?","Investigate price, trust, convenience, quality and access."],
+ ["Customer Evidence","How can these needs be verified?","Identify interviews, surveys, reviews and credible market data."],
+ ["Opportunities","What improvements could better serve customers?","Develop opportunities from verified needs and test demand."]
+ ],
+ marketGaps:[
+ ["Target Customers","Who might need the products or services being investigated?","Define relevant customer groups and investigate their needs."],
+ ["Unmet Needs","What are customers trying to obtain that existing solutions do not provide adequately?","Identify suspected gaps from customer feedback and examples."],
+ ["Existing Offerings","What products, services and alternatives are available?","Examine providers and what they actually offer."],
+ ["Limitations and Gaps","Where might current offerings fall short?","Compare needs, prices, accessibility, quality and service."],
+ ["Evidence of Demand","What shows customers want a better solution?","Look for customer statements, purchasing behaviour, reviews and credible data."],
+ ["Competition","Who already addresses these needs?","Identify direct competitors and alternative solutions."],
+ ["Potential Opportunities","Which unmet needs could support a viable offering?","Assess evidence, willingness to pay, feasibility and competition."],
+ ["Validation","How can the opportunity be tested before investing heavily?","Design a small interview, service trial or other practical test."]
+ ],
+ technology:[
+ ["Definition and Purpose","What is this technology and what is it designed to do?","Establish its definition, purpose and intended applications."],
+ ["How It Works","What processes explain how it operates?","Trace operation step by step using reliable technical explanations."],
+ ["Components","What components, inputs and outputs are involved?","Identify the main parts and explain how they interact."],
+ ["Problems Addressed","What problems does it solve and for whom?","Connect capabilities to applications and user needs."],
+ ["Real-World Applications","Where is the technology used?","Investigate documented applications and practical examples."],
+ ["Limitations and Risks","What constraints, costs or risks matter?","Examine reliability, maintenance, safety and cost."],
+ ["Evidence and Development","What evidence demonstrates its capabilities?","Consult technical documentation, testing and research."]
+ ],
+ business:[
+ ["Business Purpose","What does the business do, whom does it serve and what value does it offer?","Establish activities, target customers and value proposition."],
+ ["Products and Services","What does the business provide?","Investigate offerings, pricing, delivery and customer benefits."],
+ ["Customers and Needs","Who does it serve and why do they buy?","Investigate customer groups and reasons for choosing the business."],
+ ["Business Model","How does it create, deliver and capture value?","Examine revenue, costs, channels and key resources."],
+ ["Market and Competition","What market conditions and alternatives affect it?","Investigate competitors, customer expectations and market changes."],
+ ["Evidence of Results","What evidence demonstrates performance?","Identify verifiable results, customer feedback and measures."],
+ ["Challenges and Opportunities","What could the business improve or develop?","Connect challenges and market changes to possible improvements."],
+ ["Next Actions","What should be investigated or tested next?","Prioritize actions by value, evidence and feasibility."]
+ ],
+ businessIdea:[
+ ["Target Customers","Who might need this product or service?","Define potential customer groups and when they need help."],
+ ["Customer Problem","What important need would the idea address?","Investigate whether the problem occurs and matters."],
+ ["Existing Solutions","How do customers solve this today?","Investigate competitors, substitutes and workarounds."],
+ ["Proposed Value","How might the idea improve the customer's situation?","Describe benefits and distinguish assumptions from evidence."],
+ ["Market Demand","Would customers use or pay for it?","Investigate demand signals and willingness to pay."],
+ ["Delivery and Costs","What resources and costs are needed?","Estimate delivery requirements and key uncertainties."],
+ ["Feasibility","What are the major risks and constraints?","Assess skills, costs, competition and practical limitations."],
+ ["Small Test","What is the simplest way to test the idea?","Design a small, measurable experiment."]
+ ],
+ competition:[
+ ["Customer Choice","What are customers trying to achieve?","Identify needs and purchasing criteria."],
+ ["Existing Alternatives","Which providers or methods compete?","Identify direct competitors and substitute solutions."],
+ ["Offer Comparison","How do alternatives compare?","Compare documented features, quality, price and convenience."],
+ ["Customer Experience","What do customers report?","Examine feedback and reviews, noting possible bias."],
+ ["Market Gaps","What needs remain poorly served?","Investigate gaps using reliable sources."],
+ ["Differentiation","How could an offering provide additional value?","Develop differences that matter to customers and can be delivered."],
+ ["Validation","How can customer preferences be tested?","Test preferences and willingness to pay."]
+ ],
+ services:[
+ ["Customer Need","What need is the offering intended to address?","Identify the intended customer and situation."],
+ ["Offer and Delivery","What is provided and how is it delivered?","Describe the offering and delivery process."],
+ ["Customer Value","What practical benefit should customers receive?","Identify benefits and how they could be measured."],
+ ["Alternatives","What other options can customers choose?","Investigate competitors, substitutes and doing nothing."],
+ ["Customer Feedback","What do customers report?","Find documented reviews or customer research."],
+ ["Improvements","What changes could make the offering more useful?","Connect improvements to demonstrated needs."]
+ ],
+ problems:[
+ ["Problem Definition","What is happening, and what should happen instead?","Define the issue and distinguish symptoms from causes."],
+ ["Who Is Affected","Who experiences the problem and when?","Identify affected people and situations."],
+ ["Possible Causes","What factors could contribute?","Develop possible explanations, not unverified conclusions."],
+ ["Available Evidence","What observations support each explanation?","Gather records, examples and reliable sources."],
+ ["Existing Responses","What has already been tried?","Investigate current approaches and their strengths and weaknesses."],
+ ["Potential Solutions","Which approaches could address the causes?","Compare solutions, costs, risks and feasibility."],
+ ["Testing and Measurement","How could a solution be tested?","Define a manageable test and success criteria."]
+ ],
+ innovation:[
+ ["Need or Opportunity","What need or problem motivates this innovation?","Define the situation and investigate who would benefit."],
+ ["Existing Approaches","How is the need currently addressed?","Investigate products, systems and methods."],
+ ["New Approach","What would be different?","Explain the proposed change and value."],
+ ["Technical Feasibility","What knowledge, components and resources are needed?","Investigate requirements, costs and constraints."],
+ ["User and Market Value","Would intended users find it useful?","Test user needs and demand."],
+ ["Risks and Limitations","What could prevent it from working?","Identify technical, practical, financial and safety concerns."],
+ ["Prototype and Testing","What small experiment could test the idea?","Define a prototype and evidence of success."]
+ ],
+ results:[
+ ["Intended Outcome","What result or change is expected?","Define the outcome and intended beneficiaries."],
+ ["Starting Point","What was the situation before the change?","Establish baseline information where available."],
+ ["Evidence of Change","What demonstrates the result?","Identify measurable outcomes and supporting sources."],
+ ["Other Explanations","What else might explain the change?","Consider alternatives before attributing cause."],
+ ["Limitations","What information is missing?","Identify data gaps and limits on conclusions."],
+ ["Lessons and Next Steps","What should be improved or tested next?","Translate supported findings into practical steps."]
+ ],
+ general:[
+ ["Meaning and Context","What does the subject mean and what context matters?","Establish definitions and background."],
+ ["Main Question","What specifically needs to be understood?","Break the question into smaller questions."],
+ ["Relevant Factors","Which people, processes or conditions influence it?","Identify factors relevant to the question."],
+ ["Evidence","What information supports available explanations?","Identify credible sources and evidence gaps."],
+ ["Different Perspectives","What alternative explanations should be considered?","Compare plausible interpretations."],
+ ["Implications","What do findings mean in practice?","Connect supported findings to practical implications."],
+ ["Next Investigation","What uncertainty should be investigated next?","Prioritize the next question."]
+ ]
 };
-
-function ensureConversation(type) {
-  if (!conversations[type] ||
-      !Array.isArray(conversations[type].messages)) {
-    conversations[type] = { messages: [] };
-  }
+researchPlans.digitalMarketing=researchPlans.businessIdea;
+function getResearchPlan(question){
+ const type=understandResearchQuestion(question),plan=researchPlans[type]||researchPlans.general;
+ return plan.map(a=>({title:a[0],question:a[1],finding:a[2],evidence:"",confirmed:false,removed:false}));
 }
-
-function saveConversations() {
-  writeStore("novaConversations", conversations);
+async function buildResearchMap(){
+ const input=document.getElementById("mainQuestion"),question=input.value.trim();
+ if(!question){alert("Enter a main research question first.");return}
+ researchQuestion=question;researchAreas=getResearchPlan(question);renderResearch();saveResearch();
+ const output=document.getElementById("researchOutput"),status=document.createElement("div");
+ status.className="result";status.textContent="Nova AI is investigating your research question...";output.prepend(status);
+ try{const data=await connectNovaAI(question,"research");status.textContent="Nova AI Investigation\n\n"+formatAIResult(data)}
+ catch(error){status.textContent="Nova AI connection failed: "+error.message+"\n\nYour research map is still available. You can add evidence and notes below."}
 }
-
-function openConversation(type) {
-  if (!engineRules[type]) return;
-
-  showScreen("systems");
-
-  const container = document.getElementById("systemConversation");
-  container.innerHTML = conversationInterface(type);
-
-  renderConversation(type);
+function renderResearch(){
+ const output=document.getElementById("researchOutput");if(!output)return;
+ const active=researchAreas.filter(a=>!a.removed),confirmed=active.filter(a=>a.confirmed).length;
+ let html=`<div class="hero"><span class="badge">ACTIVE RESEARCH</span><h2>Main Question</h2><p><strong>${escapeHTML(researchQuestion)}</strong></p><p>${active.length} research areas · ${confirmed} reviewed</p><p>Guidance is not verified evidence. Record sources and observations before treating a conclusion as confirmed.</p></div>`;
+ researchAreas.forEach((a,i)=>{if(a.removed)return;html+=`<div class="research-area ${a.confirmed?"confirmed":""}"><span class="badge">RESEARCH AREA ${i+1}</span><h3>${escapeHTML(a.title)}</h3><div class="question">${escapeHTML(a.question)}</div><div class="finding"><strong>Investigation Guidance</strong><p>${escapeHTML(a.finding)}</p></div><div class="finding"><strong>Evidence / Notes</strong><p>${escapeHTML(a.evidence||"No supporting evidence added yet.")}</p></div>${a.confirmed?"<p><strong>Marked reviewed.</strong></p>":""}<div class="actions"><button class="green" onclick="confirmFinding(${i})">${a.confirmed?"✓ Reviewed":"✓ Mark Reviewed"}</button><button class="secondary" onclick="editFinding(${i})">Edit Finding</button><button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button><button class="red" onclick="removeFinding(${i})">Remove</button></div></div>`});
+ html+=`<div class="tool"><h3>Continue the Investigation</h3><p>Add a question or connect your recorded findings.</p><div class="actions"><button onclick="addResearchArea()">+ Add Research Area</button><button class="secondary" onclick="connectFindings()">Connect Findings</button><button class="secondary" onclick="saveResearch()">Save Research</button></div><div id="connectionResult"></div></div>`;
+ output.innerHTML=html;
 }
-
-function conversationInterface(type) {
-  const rule = engineRules[type];
-
-  return `
-    <div class="tool">
-      <span class="badge">${escapeHTML(rule.title)}</span>
-      <p>${escapeHTML(rule.opening)}</p>
-      <div id="${type}Chat" class="chat"></div>
-      <input id="${type}Input"
-        placeholder="Describe what you want to understand or build"
-        onkeydown="if(event.key==='Enter')sendMessage('${type}')">
-      <button onclick="sendMessage('${type}')">
-        Investigate with Nova AI
-      </button>
-      <button class="secondary"
-        onclick="clearConversation('${type}')">
-        New Investigation
-      </button>
-    </div>`;
+function confirmFinding(i){if(!researchAreas[i])return;researchAreas[i].confirmed=!researchAreas[i].confirmed;saveResearch();renderResearch()}
+function editFinding(i){const a=researchAreas[i];if(!a)return;const v=prompt("Edit the investigation guidance or finding:",a.finding||"");if(v===null)return;a.finding=v.trim();a.confirmed=false;saveResearch();renderResearch()}
+function editEvidence(i){const a=researchAreas[i];if(!a)return;const v=prompt("Add evidence, source details or notes:",a.evidence||"");if(v===null)return;a.evidence=v.trim();a.confirmed=false;saveResearch();renderResearch()}
+function removeFinding(i){if(!researchAreas[i]||!confirm("Remove this research area?"))return;researchAreas[i].removed=true;saveResearch();renderResearch()}
+function addResearchArea(){const title=prompt("What additional area do you want to investigate?");if(!title||!title.trim())return;const question=prompt("What specific question should this area answer?");if(!question||!question.trim())return;researchAreas.push({title:title.trim(),question:question.trim(),finding:"Investigate the question, gather relevant evidence and record what the evidence supports.",evidence:"",confirmed:false,removed:false});saveResearch();renderResearch()}
+function connectFindings(){
+ const active=researchAreas.filter(a=>!a.removed),result=document.getElementById("connectionResult");if(!result)return;
+ if(!active.length){result.innerHTML='<div class="result">Add a research area first.</div>';return}
+ const withEvidence=active.filter(a=>a.evidence.trim()),without=active.filter(a=>!a.evidence.trim()),reviewed=active.filter(a=>a.confirmed);
+ let text="RESEARCH CONNECTION REVIEW\n\nMain question: "+researchQuestion+"\n\n";
+ active.forEach((a,i)=>{text+=(i+1)+". "+a.title+"\nQuestion: "+a.question+"\nFinding: "+(a.finding||"Not recorded")+"\nEvidence: "+(a.evidence||"Not provided")+"\nReview status: "+(a.confirmed?"Reviewed":"Not reviewed")+"\n\n"});
+ text+="EVIDENCE COVERAGE\nAreas with evidence/notes: "+withEvidence.length+" of "+active.length+"\nAreas needing evidence: "+without.length+"\nAreas marked reviewed: "+reviewed.length+"\n\n";
+ if(without.length){text+="Priority evidence gaps:\n";without.forEach(a=>text+="• "+a.title+": "+a.question+"\n");text+="\n"}
+ text+="CONNECTIONS TO INVESTIGATE\n• Do findings support the same explanation?\n• Do any findings contradict one another?\n• Which conclusions are supported and which remain assumptions?\n\nNEXT STEP\n"+(without.length?"Gather evidence for areas with no supporting notes.":"Compare evidence, check contradictions and identify the most important unanswered question.")+"\n\nThis organizes your notes; it does not independently verify claims.";
+ result.innerHTML=`<div class="result">${escapeHTML(text)}</div>`;
 }
-
-function renderConversation(type) {
-  const chat = document.getElementById(type + "Chat");
-  if (!chat) return;
-
-  chat.innerHTML = "";
-  ensureConversation(type);
-
-  conversations[type].messages.forEach(message => {
-    appendMessageElement(chat, message.role, message.text);
-  });
-
-  chat.scrollTop = chat.scrollHeight;
+function saveResearch(){writeStore("novaResearch",{question:researchQuestion,areas:researchAreas,savedAt:new Date().toISOString()})}
+function loadResearch(){
+ const d=readStore("novaResearch",null);if(!d){alert("No saved research was found in this browser.");return}
+ researchQuestion=d.question||"";researchAreas=Array.isArray(d.areas)?d.areas.map(a=>({title:a.title||"Untitled Research Area",question:a.question||"",finding:a.finding||"",evidence:a.evidence||"",confirmed:Boolean(a.confirmed),removed:Boolean(a.removed)})):[];
+ document.getElementById("mainQuestion").value=researchQuestion;renderResearch();
 }
-
-function appendMessageElement(chat, role, text) {
-  const div = document.createElement("div");
-  div.className = "message " +
-    (role === "user" ? "user" : "nova");
-  div.textContent = text;
-  chat.appendChild(div);
-}
-
-function addMessage(type, role, text) {
-  ensureConversation(type);
-
-  conversations[type].messages.push({ role, text });
-  saveConversations();
-
-  const chat = document.getElementById(type + "Chat");
-
-  if (chat) {
-    appendMessageElement(chat, role, text);
-    chat.scrollTop = chat.scrollHeight;
-  }
-}
-
-async function sendMessage(type) {
-  if (!engineRules[type]) return;
-
-  const input = document.getElementById(type + "Input");
-  if (!input) return;
-
-  const question = input.value.trim();
-  if (!question) return;
-
-  input.value = "";
-  input.disabled = true;
-
-  const buttons = input.parentElement.querySelectorAll("button");
-  buttons.forEach(button => button.disabled = true);
-
-  ensureConversation(type);
-  addMessage(type, "user", question);
-
-  const chat = document.getElementById(type + "Chat");
-  let status = null;
-
-/* CONVERSATION ENGINE — NOVA AI */
-
-let conversations = readStore("novaConversations", {});
-
-const engineRules = {
-  business: {
-    title: "Business Intelligence",
-    opening: "What are you trying to understand about this business?",
-    areas: ["Business model", "Customers", "Customer problems", "Products and services", "Competition", "Market", "Marketing", "Operations", "Technology", "Growth opportunities"]
-  },
-  system: {
-    title: "System Builder",
-    opening: "What problem, workflow or idea are you trying to turn into a system?",
-    areas: ["Problem", "Users", "Inputs", "Workflow", "Technology", "Data", "Automation", "Outputs", "Risks", "Success criteria"]
-  },
-  ai: {
-    title: "AI Projects",
-    opening: "What are you trying to accomplish, and where might AI help?",
-    areas: ["Problem", "Users", "Current process", "Data", "AI opportunity", "Automation", "Limitations", "Risks", "Testing", "Expected result"]
-  },
-  technology: {
-    title: "Technology Investigation",
-    opening: "What technology do you want to understand and how does it operate?",
-    areas: ["What it is", "How it works", "Components", "Processes", "Inputs and outputs", "Applications", "Limitations", "Costs", "Risks", "Future opportunities"]
-  },
-  innovation: {
-    title: "Innovation Investigation",
-    opening: "What idea, problem, technology or opportunity are you exploring?",
-    areas: ["Problem", "Users", "Existing alternatives", "New approach", "Technology", "Market", "Feasibility", "Opportunity", "Risks", "First experiment"]
-  }
-};
-
-function ensureConversation(type) {
-  if (!conversations[type] ||
-      !Array.isArray(conversations[type].messages)) {
-    conversations[type] = { messages: [] };
-  }
-}
-
-function saveConversations() {
-  writeStore("novaConversations", conversations);
-}
-
-function openConversation(type) {
-  if (!engineRules[type]) return;
-
-  showScreen("systems");
-
-  const container = document.getElementById("systemConversation");
-  if (!container) return;
-
-  container.innerHTML = conversationInterface(type);
-  renderConversation(type);
-}
-
-function conversationInterface(type) {
-  const rule = engineRules[type];
-
-  return `
-    <div class="tool">
-      <span class="badge">${escapeHTML(rule.title)}</span>
-      <p>${escapeHTML(rule.opening)}</p>
-      <div id="${type}Chat" class="chat"></div>
-      <input
-        id="${type}Input"
-        placeholder="Describe what you want to understand or build"
-        onkeydown="if(event.key==='Enter')sendMessage('${type}')"
-      >
-      <button onclick="sendMessage('${type}')">
-        Investigate with Nova AI
-      </button>
-      <button class="secondary" onclick="clearConversation('${type}')">
-        New Investigation
-      </button>
-    </div>
-  `;
-}
-
-function renderConversation(type) {
-  const chat = document.getElementById(type + "Chat");
-  if (!chat) return;
-
-  chat.innerHTML = "";
-  ensureConversation(type);
-
-  conversations[type].messages.forEach(message => {
-    appendMessageElement(chat, message.role, message.text);
-  });
-
-  chat.scrollTop = chat.scrollHeight;
-}
-
-function appendMessageElement(chat, role, text) {
-  const div = document.createElement("div");
-
-  div.className = "message " +
-    (role === "user" ? "user" : "nova");
-
-  div.textContent = String(text);
-  chat.appendChild(div);
-}
-
-function addMessage(type, role, text) {
-  ensureConversation(type);
-
-  conversations[type].messages.push({
-    role,
-    text: String(text)
-  });
-
-  saveConversations();
-
-  const chat = document.getElementById(type + "Chat");
-
-  if (chat) {
-    appendMessageElement(chat, role, text);
-    chat.scrollTop = chat.scrollHeight;
-  }
-}
-
-async function sendMessage(type) {
-  if (!engineRules[type]) return;
-
-  const input = document.getElementById(type + "Input");
-  if (!input || input.disabled) return;
-
-  const question = input.value.trim();
-  if (!question) {
-    alert("Enter a question or idea first.");
-    return;
-  }
-
-  input.value = "";
-  input.disabled = true;
-
-  const container = input.parentElement;
-  const buttons = container.querySelectorAll("button");
-
-  buttons.forEach(button => button.disabled = true);
-
-  ensureConversation(type);
-  addMessage(type, "user", question);
-
-  const chat = document.getElementById(type + "Chat");
-  let status = null;
-
-  if (chat) {
-    status = document.createElement("div");
-    status.className = "message nova";
-    status.textContent = "Nova AI is investigating...";
-    chat.appendChild(status);
-  }
-
-  try {
-    const data = await connectNovaAI(question, type);
-
-    if (!data || !data.success) {
-      throw new Error("Nova AI returned an unsuccessful response.");
-    }
-
-    if (status) status.remove();
-
-    const answer = typeof data.result === "string"
-      ? data.result
-      : JSON.stringify(data.result, null, 2);
-
-    addMessage(
-      type,
-      "nova",
-      answer || "Nova AI returned no result."
-    );
-
-  } catch (error) {
-    if (status) status.remove();
-
-    addMessage(
-      type,
-      "nova",
-      "Nova AI connection failed: " + error.message
-    );
-
-  } finally {
-    input.disabled = false;
-    buttons.forEach(button => button.disabled = false);
-    renderConversation(type);
-    input.focus();
-  }
-}
-
-function clearConversation(type) {
-  if (!engineRules[type]) return;
-
-  conversations[type] = { messages: [] };
-  saveConversations();
-
-  if (["system", "ai", "technology"].includes(type)) {
-    const container = document.getElementById("systemConversation");
-
-    if (container) {
-      container.innerHTML = conversationInterface(type);
-      renderConversation(type);
-    }
-  } else {
-    const chat = document.getElementById(type + "Chat");
-    if (chat) chat.innerHTML = "";
-  }
-  }
-  
-/* RESEARCH WORKSPACE — IMPROVED INTELLIGENCE ENGINE */
-
-let researchQuestion = "";
-let researchAreas = [];
-
-
-/* Understand the kind of question being asked */
-
-function understandResearchQuestion(question) {
-  const q = String(question || "").toLowerCase();
-
-  const has = (...words) => words.some(word => q.includes(word));
-
-
-
-  if (has("digital marketing", "online marketing", "social media marketing",
-      "marketing strategy", "marketing campaign", "lead generation",
-      "advertising", "seo", "content marketing", "marketing skills")) {
-    return "digitalMarketing";
-  }
-
-  if (has("customer", "customers", "consumer", "consumers", "client",
-      "clients", "buyer", "buyers", "people need", "people want",
-      "users need", "user needs")) return "customers";
-
-  if (has("market gap", "market gaps", "missing in the market",
-      "cannot find", "can't find", "underserved", "unmet need",
-      "unmet needs", "lacking", "lack of", "market opportunity",
-      "market opportunities")) return "marketGaps";
-
-  if (has("competitor", "competitors", "competition",
-      "alternative", "alternatives", "compare", "comparison"))
-    return "competition";
-
-  if (has("technology", "technologies", "computer", "computers",
-      "software", "hardware", "engine", "engines", "ecu", "sensor",
-      "sensors", "artificial intelligence", "how does", "how do",
-      "how it works", "how they operate")) return "technology";
-
-  if (has("business idea", "business ideas", "startup", "start-up",
-      "start a business", "new business", "business opportunity",
-      "business opportunities")) return "businessIdea";
-
-  if (has("business", "company", "companies", "enterprise",
-      "organization", "organisation", "agency", "agencies"))
-    return "business";
-
-  if (has("product", "products", "service", "services",
-      "solution", "solutions", "what does it offer")) return "services";
-
-  if (has("result", "results", "impact", "effectiveness", "improve",
-      "improvement", "performance", "success", "outcome", "outcomes"))
-    return "results";
-
-  if (has("problem", "problems", "challenge", "challenges",
-      "difficulties", "cause", "causes", "why does", "why do",
-      "why is", "why are")) return "problems";
-
-  if (has("innovation", "innovate", "invent", "invention",
-      "new approach", "new solution", "develop a new"))
-    return "innovation";
-
-  return "general";
-  }
-  
-  
-/* Build a relevant investigation plan */
-
-function getResearchPlan(question) {
-  const type = understandResearchQuestion(question);
-
-  const plans = {
-    customers: [
-      ["Customer Needs",
-       "What are the customers trying to achieve, obtain or improve?",
-       "Identify customer goals and needs. Use customer statements or research to support conclusions."],
-      ["Customer Difficulties",
-       "What difficulties, frustrations or unmet needs do customers experience?",
-       "Investigate reported difficulties. Do not assume that every customer has the same problem."],
-      ["Current Solutions",
-       "How do customers currently meet these needs?",
-       "Examine existing products, services, personal methods and alternatives."],
-      ["Unmet Needs",
-       "Which needs may remain poorly served by existing solutions?",
-       "Compare customer needs with existing solutions. Record evidence for each suspected gap."],
-      ["Buying Decisions",
-       "What influences customers to choose, trust and pay for a solution?",
-       "Investigate price, trust, convenience, quality, access and other relevant buying factors."],
-      ["Customer Evidence",
-       "How can these needs and difficulties be verified?",
-       "Identify interviews, surveys, reviews, customer records and other appropriate evidence."],
-      ["Opportunities",
-       "What improvements could better serve these customers?",
-       "Develop possible opportunities from verified needs, then test demand and feasibility."]
-    ],
-
-    marketGaps: [
-      ["Target Customers",
-       "Which people or businesses might need the products or services being investigated?",
-       "Define the relevant customer groups and investigate their needs."],
-      ["Unmet Needs",
-       "What are customers trying to obtain that existing solutions may not provide adequately?",
-       "Identify suspected gaps using customer feedback and documented examples."],
-      ["Existing Market Offerings",
-       "What products, services and alternatives are already available?",
-       "Examine existing providers and what they actually offer."],
-      ["Limitations and Gaps",
-       "Where might current offerings fall short of customer expectations?",
-       "Compare customer needs, prices, accessibility, quality and service limitations using evidence."],
-      ["Evidence of Demand",
-       "What evidence shows that customers experience this gap and want a better solution?",
-       "Look for customer statements, purchasing behaviour, reviews and credible market data."],
-      ["Existing Competition",
-       "Who already addresses these needs, directly or indirectly?",
-       "Identify direct competitors and alternative ways customers solve the problem."],
-      ["Potential Opportunities",
-       "Which unmet needs could support a useful and viable new offering?",
-       "Assess the strength of evidence, willingness to pay, feasibility and competing alternatives."],
-      ["Validation",
-       "How can the strongest opportunity be tested before investing heavily?",
-       "Design a small customer interview, service trial or other appropriate test."]
-    ],
-
-    competition: [
-      ["Customer Choice",
-       "What are customers trying to accomplish when choosing among alternatives?",
-       "Identify the purchasing needs and criteria relevant to this market."],
-      ["Existing Alternatives",
-       "Which providers, products or methods compete to meet those needs?",
-       "Identify direct competitors and substitute solutions."],
-      ["Offer Comparison",
-       "How do the alternatives compare in features, quality, price and convenience?",
-       "Compare documented information using consistent criteria."],
-      ["Customer Experience",
-       "What do customers report about the available alternatives?",
-       "Examine reviews and other customer feedback, noting possible bias and evidence limitations."],
-      ["Market Gaps",
-       "What customer needs might remain poorly served?",
-       "Investigate gaps supported by multiple reliable sources where possible."],
-      ["Differentiation",
-       "How could an offering provide meaningful additional value?",
-       "Develop possible differences that matter to customers and can be delivered."],
-      ["Validation",
-       "How can customers' preferences and willingness to pay be tested?",
-       "Design a practical test before treating a proposed advantage as proven."]
-    ],
-
-    technology: [
-      ["Definition and Purpose",
-       "What is this technology and what is it designed to do?",
-       "Establish its definition, purpose and intended applications."],
-      ["How It Works",
-       "What processes and principles explain how the technology operates?",
-       "Trace its operation step by step using reliable technical explanations."],
-      ["Components",
-       "What main components, inputs and outputs are involved?",
-       "Identify the important parts and explain how they interact."],
-      ["Problems Addressed",
-       "What problems does the technology solve, and for whom?",
-       "Connect its capabilities to specific applications and user needs."],
-      ["Real-World Applications",
-       "Where is the technology used in practice?",
-       "Investigate documented applications and practical examples."],
-      ["Limitations and Risks",
-       "What constraints, failures, costs or risks should be understood?",
-       "Examine technical limitations, maintenance, reliability, safety and cost where relevant."],
-      ["Evidence and Development",
-       "What evidence demonstrates its capabilities, and what improvements are possible?",
-       "Consult credible technical documentation, testing and research before drawing conclusions."]
-    ],
-
-    businessIdea: [
-      ["Target Customers",
-       "Who might need this proposed product or service?",
-       "Define possible customer groups and the situations in which they need help."],
-      ["Customer Problem",
-       "What important need or difficulty would the idea address?",
-       "Investigate whether the problem actually occurs and matters to customers."],
-      ["Existing Solutions",
-       "How do customers solve the problem today?",
-       "Investigate competitors, substitutes and customers' current workarounds."],
-      ["Proposed Value",
-       "How might this idea improve the customer's situation?",
-       "Describe the expected benefit and distinguish it from untested assumptions."],
-      ["Market Demand",
-       "What evidence suggests that customers would use or pay for the offering?",
-       "Investigate customer behaviour, demand signals and willingness to pay."],
-      ["Delivery and Costs",
-       "What resources, capabilities and costs would be needed?",
-       "Estimate delivery requirements and identify major operational uncertainties."],
-      ["Feasibility",
-       "What are the major risks and constraints?",
-       "Assess competition, skills, regulations where relevant, costs and practical limitations."],
-      ["Small Test",
-       "What is the simplest useful way to test the idea?",
-       "Design a small, measurable experiment with potential customers."]
-    ],
-
-    business: [
-      ["Business Purpose",
-       "What does this business do, whom does it serve and what value does it offer?",
-       "Establish its activities, target customers and intended value proposition."],
-      ["Products and Services",
-       "What does the business actually provide?",
-       "Investigate its offerings, pricing, delivery and customer benefits."],
-      ["Customers and Needs",
-       "Who does it serve, and what needs bring customers to it?",
-       "Investigate its customer groups and reasons for choosing its offerings."],
-      ["Business Model",
-       "How does the business create, deliver and capture value?",
-       "Examine revenue sources, costs, channels and key resources."],
-      ["Market and Competition",
-       "What market conditions and alternatives affect the business?",
-       "Investigate competitors, customer expectations and market changes."],
-      ["Evidence of Results",
-       "What evidence demonstrates the business's performance or impact?",
-       "Identify verifiable results, customer feedback and performance measures."],
-      ["Challenges and Opportunities",
-       "What could the business improve, adapt or develop?",
-       "Connect identified challenges and market changes to possible improvements."],
-      ["Next Actions",
-       "What should be investigated or tested next?",
-       "Prioritize actions based on potential value, available evidence and feasibility."]
-    ],
-
-    services: [
-      ["Customer Need",
-       "What need is this product or service intended to address?",
-       "Identify the intended customer and the situation that creates the need."],
-      ["Offer and Delivery",
-       "What is provided, and how does the customer receive it?",
-       "Describe the actual service or product, its features and delivery process."],
-      ["Customer Value",
-       "What practical benefit should customers receive?",
-       "Identify expected benefits and how they could be measured."],
-      ["Alternatives",
-       "What other options can customers choose?",
-       "Investigate competing services, substitutes and doing nothing."],
-      ["Customer Feedback",
-       "What do customers report about the offering?",
-       "Find documented reviews, feedback or customer research."],
-      ["Improvements",
-       "What changes could make the offering more useful?",
-       "Connect possible improvements to demonstrated customer needs."]
-    ],
-
-    results: [
-      ["Intended Outcome",
-       "What result or change is expected?",
-       "Define the outcome clearly and identify who should benefit."],
-      ["Starting Point",
-       "What was the situation before the intervention or change?",
-       "Establish baseline information wherever available."],
-      ["Evidence of Change",
-       "What evidence demonstrates the result?",
-       "Identify measurable outcomes, records and credible supporting sources."],
-      ["Other Explanations",
-       "What other factors might explain the observed change?",
-       "Consider alternative explanations before attributing results to one cause."],
-      ["Limitations",
-       "What information is missing or uncertain?",
-       "Identify gaps in the data and limits on the conclusions."],
-      ["Lessons and Next Steps",
-       "What can be learned, improved or tested next?",
-       "Translate supported findings into practical next steps."]
-    ],
-
-    problems: [
-      ["Problem Definition",
-       "What exactly is happening, and what should happen instead?",
-       "Define the issue and distinguish symptoms from the underlying problem."],
-      ["Who Is Affected",
-       "Who experiences the problem, and in what circumstances?",
-       "Identify affected people, businesses and relevant situations."],
-      ["Possible Causes",
-       "What factors could be contributing to the problem?",
-       "Develop possible explanations and distinguish them from established causes."],
-      ["Available Evidence",
-       "What observations or data support each explanation?",
-       "Gather relevant records, examples and reliable sources."],
-      ["Existing Responses",
-       "What has already been tried, and with what results?",
-       "Investigate current approaches and their documented strengths and weaknesses."],
-      ["Potential Solutions",
-       "Which approaches could address the underlying causes?",
-       "Compare possible solutions, costs, risks and feasibility."],
-      ["Testing and Measurement",
-       "How could a solution be tested and its success measured?",
-       "Define a manageable test and measurable success criteria."]
-    ],
-
-    innovation: [
-      ["Need or Opportunity",
-       "What need, problem or opportunity motivates this innovation?",
-       "Define the situation and investigate who would benefit."],
-      ["Existing Approaches",
-       "How is the need currently addressed?",
-       "Investigate existing products, systems, methods and alternatives."],
-      ["New Approach",
-       "What would be different about the proposed idea?",
-       "Explain the proposed change and the value it could create."],
-      ["Technical Feasibility",
-       "What knowledge, components and resources would be required?",
-       "Investigate technical requirements, costs and constraints."],
-      ["User and Market Value",
-       "Would intended users find the innovation useful?",
-       "Test user needs and possible demand instead of assuming acceptance."],
-      ["Risks and Limitations",
-       "What could prevent the idea from working?",
-       "Identify practical, technical, financial and safety concerns where relevant."],
-      ["Prototype and Testing",
-       "What small experiment could test the core idea?",
-       "Define a prototype or experiment and what evidence would count as success."]
-    ],
-
-    general: [
-      ["Meaning and Context",
-       "What does the subject mean, and what context is needed to understand it?",
-       "Establish definitions, background and the boundaries of the question."],
-      ["Main Question",
-       "What specifically needs to be understood or explained?",
-       "Break the main question into smaller questions that can be investigated."],
-      ["Relevant Factors",
-       "Which people, processes, conditions or ideas influence the subject?",
-       "Identify the factors relevant to this particular question."],
-      ["Evidence",
-       "What information supports the available explanations?",
-       "Identify credible sources, observations and evidence gaps."],
-      ["Different Perspectives",
-       "What alternative explanations or viewpoints should be considered?",
-       "Compare plausible interpretations and examine disagreements."],
-      ["Implications",
-       "What do the findings mean, and who might be affected?",
-       "Connect supported findings to their practical implications."],
-      ["Next Investigation",
-       "What important uncertainty should be investigated next?",
-       "Prioritize the next question based on importance and evidence gaps."]
-    ]
-  };
-
-  const selected = plans[type] || plans.general;
-
-  return selected.map(item => ({
-    title: item[0],
-    question: item[1],
-    finding: item[2],
-    evidence: "",
-    confirmed: false,
-    removed: false
-  }));
-}
-
-/* BUILD RESEARCH MAP */
-
-
-async function buildResearchMap() {
-  const input = document.getElementById("mainQuestion");
-  const question = input.value.trim();
-
-  if (!question) {
-    alert("Enter a main research question first.");
-    return;
-  }
-
-  researchQuestion = question;
-  researchAreas = getResearchPlan(question);
-
-  renderResearch();
-  saveResearch();
-
-  const output = document.getElementById("researchOutput");
-  const status = document.createElement("div");
-  status.className = "result";
-  status.textContent = "Nova AI is investigating your research question...";
-  output.prepend(status);
-
-  try {
-    const data = await connectNovaAI(question);
-
-    status.textContent = typeof data.result === "string"
-      ? data.result
-      : JSON.stringify(data.result, null, 2);
-
-  } catch (error) {
-    status.textContent = "Nova AI connection failed: " + error.message;
-  }
-  }
-  
-
-/* RENDER WORKSPACE */
-
-function renderResearch() {
-  const output = document.getElementById("researchOutput");
-  if (!output) return;
-
-  const active = researchAreas.filter(area => !area.removed);
-  const confirmed = active.filter(area => area.confirmed).length;
-
-  let html = `
-    <div class="hero">
-      <span class="badge">ACTIVE RESEARCH</span>
-      <h2>Main Question</h2>
-      <p><strong>${escapeHTML(researchQuestion)}</strong></p>
-      <p>${active.length} research areas · ${confirmed} confirmed</p>
-      <p>Investigate each question, record supporting evidence and revise findings as you learn. Suggested findings are research directions, not verified facts.</p>
-    </div>`;
-
-  researchAreas.forEach((area, i) => {
-    if (area.removed) return;
-
-    html += `
-      <div class="research-area ${area.confirmed ? "confirmed" : ""}" id="area-${i}">
-        <span class="badge">RESEARCH AREA ${i + 1}</span>
-        <h3>${escapeHTML(area.title)}</h3>
-        <div class="question">${escapeHTML(area.question)}</div>
-
-        <div class="finding">
-          <strong>Investigation Guidance</strong>
-          <p id="finding-${i}">${escapeHTML(area.finding || "")}</p>
-        </div>
-
-        <div class="finding">
-          <strong>Evidence / Notes</strong>
-          <p>${escapeHTML(area.evidence || "No supporting evidence added yet.")}</p>
-        </div>
-
-        ${area.confirmed ? '<p><strong>Finding marked as reviewed.</strong></p>' : ""}
-
-        <div class="actions">
-          <button class="green" onclick="confirmFinding(${i})">
-            ${area.confirmed ? "✓ Reviewed" : "✓ Mark Reviewed"}
-          </button>
-          <button class="secondary" onclick="editFinding(${i})">Edit Finding</button>
-          <button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button>
-          <button class="red" onclick="removeFinding(${i})">Remove</button>
-        </div>
-      </div>`;
-  });
-
-  html += `
-    <div class="tool">
-      <h3>Continue the Investigation</h3>
-      <p>Add a question that is important to your research, or connect your current findings to identify gaps.</p>
-      <div class="actions">
-        <button onclick="addResearchArea()">+ Add Research Area</button>
-        <button class="secondary" onclick="connectFindings()">Connect Findings</button>
-        <button class="secondary" onclick="saveResearch()">Save Research</button>
-      </div>
-      <div id="connectionResult"></div>
-    </div>`;
-
-  output.innerHTML = html;
-}
-
-/* REVIEW FINDINGS */
-
-function confirmFinding(i) {
-  if (!researchAreas[i] || researchAreas[i].removed) return;
-
-  researchAreas[i].confirmed = !researchAreas[i].confirmed;
-  saveResearch();
-  renderResearch();
-}
-
-
-
-function editFinding(i) {
-  const area = researchAreas[i];
-  if (!area || area.removed) return;
-
-  const value = prompt(
-    "Edit the investigation guidance or finding:",
-    area.finding || ""
-  );
-
-  if (value === null) return;
-
-  area.finding = value.trim();
-  area.confirmed = false;
-
-  saveResearch();
-  renderResearch();
-}
-
-window.editFinding = editFinding;
-  
-
-function editEvidence(i) {
-  const area = researchAreas[i];
-  if (!area || area.removed) return;
-
-  const value = prompt(
-    "Add evidence, examples, source details or notes:",
-    area.evidence || ""
-  );
-
-  if (value === null) return;
-
-  area.evidence = value.trim();
-  area.confirmed = false;
-
-  saveResearch();
-  renderResearch();
-}
-
-function removeFinding(i) {
-  const area = researchAreas[i];
-  if (!area || area.removed) return;
-
-  if (!confirm("Remove this research area?")) return;
-
-  area.removed = true;
-
-  saveResearch();
-  renderResearch();
-}
-
-/* ADD A CUSTOM RESEARCH AREA */
-
-function addResearchArea() {
-  const title = prompt("What additional area do you want to investigate?");
-  if (!title || !title.trim()) return;
-
-  const question = prompt("What specific question should this area answer?");
-  if (!question || !question.trim()) return;
-
-  researchAreas.push({
-    title: title.trim(),
-    question: question.trim(),
-    finding: "Investigate the question, gather relevant evidence and record what the evidence supports.",
-    evidence: "",
-    confirmed: false,
-    removed: false
-  });
-
-  saveResearch();
-  renderResearch();
-}
-
-/* CONNECT FINDINGS AND IDENTIFY GAPS */
-
-function connectFindings() {
-  const active = researchAreas.filter(area => !area.removed);
-  const result = document.getElementById("connectionResult");
-
-  if (!result) return;
-
-  if (!active.length) {
-    result.innerHTML = '<div class="result">Add a research area before connecting findings.</div>';
-    return;
-  }
-
-  const withEvidence = active.filter(area => area.evidence.trim());
-  const withoutEvidence = active.filter(area => !area.evidence.trim());
-  const reviewed = active.filter(area => area.confirmed);
-
-  let text = "RESEARCH CONNECTION REVIEW\n\n";
-  text += "Main question: " + researchQuestion + "\n\n";
-
-  text += "1. AREAS INVESTIGATED\n";
-  active.forEach((area, i) => {
-    text += (i + 1) + ". " + area.title + "\n";
-    text += "Question: " + area.question + "\n";
-    text += "Current finding: " + (area.finding || "Not recorded") + "\n";
-    text += "Evidence: " + (area.evidence || "Not provided") + "\n";
-    text += "Review status: " + (area.confirmed ? "Reviewed" : "Not reviewed") + "\n\n";
-  });
-
-  text += "2. EVIDENCE COVERAGE\n";
-  text += "Areas with evidence or notes: " + withEvidence.length + " of " + active.length + ".\n";
-  text += "Areas still needing evidence: " + withoutEvidence.length + ".\n";
-  text += "Areas marked reviewed: " + reviewed.length + ".\n\n";
-
-  if (withoutEvidence.length) {
-    text += "Priority evidence gaps:\n";
-    withoutEvidence.forEach(area => {
-      text += "• " + area.title + ": " + area.question + "\n";
-    });
-    text += "\n";
-  }
-
-  text += "3. CONNECTIONS TO INVESTIGATE\n";
-  text += "• Do findings in different areas support the same explanation?\n";
-  text += "• Do any findings contradict one another?\n";
-  text += "• Which customer needs connect to existing solutions or missing services?\n";
-  text += "• Which conclusions are supported by evidence, and which remain assumptions?\n\n";
-
-  text += "4. NEXT STEP\n";
-  if (withoutEvidence.length) {
-    text += "Prioritize gathering evidence for the areas that have no supporting notes.";
-  } else {
-    text += "Compare the recorded evidence, check for contradictions and identify the most important unanswered question.";
-  }
-
-  text += "\n\nThis review organizes your recorded information. It does not independently verify claims or prove relationships between findings.";
-
-  result.innerHTML = `<div class="result">${escapeHTML(text)}</div>`;
-}
-
-/* SAVE AND LOAD */
-
-function saveResearch() {
-  writeStore("novaResearch", {
-    question: researchQuestion,
-    areas: researchAreas,
-    savedAt: new Date().toISOString()
-  });
-}
-
-function loadResearch() {
-  const data = readStore("novaResearch", null);
-
-  if (!data) {
-    alert("No saved research was found in this browser.");
-    return;
-  }
-
-  researchQuestion = data.question || "";
-
-  researchAreas = Array.isArray(data.areas)
-    ? data.areas.map(area => ({
-        title: area.title || "Untitled Research Area",
-        question: area.question || "",
-        finding: area.finding || "",
-        evidence: area.evidence || "",
-        confirmed: Boolean(area.confirmed),
-        removed: Boolean(area.removed)
-      }))
-    : [];
-
-  document.getElementById("mainQuestion").value = researchQuestion;
-
-  renderResearch();
-  }
 
 /* DATA ANALYSIS */
-
 function analyzeDataInput(){
-  const input=document.getElementById("dataInput").value.trim();
-  const output=document.getElementById("dataOutput");
-  if(!input){alert("Enter information first.");return;}
-
-  const parts=input.split(/[\s,;]+/).filter(Boolean);
-  const numeric=parts.length>0&&parts.every(x=>x!==""&&Number.isFinite(Number(x)));
-
-  let result;
-  if(numeric){
-    const numbers=parts.map(Number);
-    const total=numbers.reduce((a,b)=>a+b,0);
-    const average=total/numbers.length;
-    result="Numerical Summary\n\nCount: "+numbers.length+
-      "\nTotal: "+total+
-      "\nAverage: "+average.toFixed(2)+
-      "\nMinimum: "+Math.min(...numbers)+
-      "\nMaximum: "+Math.max(...numbers)+
-      "\n\nThese calculations summarize the numbers but do not explain their real-world meaning without context.";
-  }else{
-    result="Information for Investigation\n\n"+input+
-      "\n\nSuggested analysis:\n• Identify the main subject and goal.\n• Separate facts from assumptions.\n• Identify important problems or claims.\n• Determine what evidence is available.\n• Explore possible causes and alternatives.\n• Identify opportunities and unanswered questions.\n\nThis is a preliminary analysis framework, not external fact-checking.";
-  }
-
-  output.innerHTML=`<div class="tool"><div class="result">${escapeHTML(result)}</div>
-    <div class="actions">
-      <button class="secondary" onclick="dataFollow('Go deeper')">Go deeper</button>
-      <button class="secondary" onclick="dataFollow('Find evidence')">Find evidence</button>
-      <button class="secondary" onclick="dataFollow('Find opportunities')">Find opportunities</button>
-    </div></div>`;
+ const input=document.getElementById("dataInput").value.trim(),output=document.getElementById("dataOutput");if(!input){alert("Enter information first.");return}
+ const parts=input.split(/[\s,;]+/).filter(Boolean),numeric=parts.length>0&&parts.every(x=>Number.isFinite(Number(x)));
+ let result;
+ if(numeric){const n=parts.map(Number),total=n.reduce((a,b)=>a+b,0);result="NUMERICAL SUMMARY\n\nCount: "+n.length+"\nTotal: "+total+"\nAverage: "+(total/n.length).toFixed(2)+"\nMinimum: "+Math.min(...n)+"\nMaximum: "+Math.max(...n)+"\n\nThese calculations do not explain real-world meaning without context."}
+ else result="INFORMATION FOR INVESTIGATION\n\n"+input+"\n\nSuggested analysis:\n• Identify the main subject and goal.\n• Separate facts from assumptions.\n• Identify important claims and available evidence.\n• Explore possible causes and alternatives.\n• Identify opportunities and unanswered questions.\n\nThis is a preliminary framework, not external fact-checking.";
+ output.innerHTML=`<div class="tool"><div class="result">${escapeHTML(result)}</div><div class="actions"><button class="secondary" onclick="dataFollow('Go deeper')">Go deeper</button><button class="secondary" onclick="dataFollow('Find evidence')">Find evidence</button><button class="secondary" onclick="dataFollow('Find opportunities')">Find opportunities</button></div></div>`;
 }
-
-function dataFollow(text){
-  const input=document.getElementById("dataInput");
-  input.value+="\n\nNext investigation: "+text;
-  input.focus();
-}
+function dataFollow(t){const i=document.getElementById("dataInput");i.value+="\n\nNext investigation: "+t;i.focus()}
+function clearData(){document.getElementById("dataInput").value="";document.getElementById("dataOutput").innerHTML=""}
 
 /* PROJECT WORKSPACE */
-
 function createProject(){
-  const name=document.getElementById("projectName").value.trim();
-  const description=document.getElementById("projectDescription").value.trim();
-  if(!name){alert("Enter a project name.");return;}
-
-  const projects=readStore("novaProjects",[]);
-  projects.push({
-    id:Date.now(),
-    name,
-    description,
-    createdAt:new Date().toISOString()
-  });
-  writeStore("novaProjects",projects);
-
-  document.getElementById("projectName").value="";
-  document.getElementById("projectDescription").value="";
-  renderProjects();
+ const name=document.getElementById("projectName").value.trim(),description=document.getElementById("projectDescription").value.trim();if(!name){alert("Enter a project name.");return}
+ const projects=readStore("novaProjects",[]);projects.push({id:Date.now(),name,description,createdAt:new Date().toISOString()});writeStore("novaProjects",projects);
+ document.getElementById("projectName").value="";document.getElementById("projectDescription").value="";renderProjects();
 }
-
 function renderProjects(){
-  const container=document.getElementById("projects");
-  if(!container)return;
-  const projects=readStore("novaProjects",[]);
-
-  if(!projects.length){
-    container.innerHTML='<div class="tool">No projects yet. Create a project to begin.</div>';
-    return;
-  }
-
-  container.innerHTML=projects.map(project=>`
-    <div class="research-area">
-      <span class="badge">PROJECT</span>
-      <h3>${escapeHTML(project.name)}</h3>
-      <p>${escapeHTML(project.description||"No description provided.")}</p>
-      <div class="actions">
-        <button onclick="openProject(${Number(project.id)})">Open Research</button>
-        <button class="red" onclick="deleteProject(${Number(project.id)})">Delete</button>
-      </div>
-    </div>`).join("");
+ const c=document.getElementById("projects");if(!c)return;const projects=readStore("novaProjects",[]);
+ if(!projects.length){c.innerHTML='<div class="tool">No projects yet. Create a project to begin.</div>';return}
+ c.innerHTML=projects.map(p=>`<div class="research-area"><span class="badge">PROJECT</span><h3>${escapeHTML(p.name)}</h3><p>${escapeHTML(p.description||"No description provided.")}</p><div class="actions"><button onclick="openProject(${Number(p.id)})">Open Research</button><button class="red" onclick="deleteProject(${Number(p.id)})">Delete</button></div></div>`).join("");
 }
-
-function openProject(id){
-  const project=readStore("novaProjects",[]).find(p=>p.id===id);
-  if(!project)return;
-  showScreen("research");
-  document.getElementById("mainQuestion").value="What should we understand about "+project.name+"?";
-  buildResearchMap();
-}
-
-function deleteProject(id){
-  if(!confirm("Delete this project?"))return;
-  const projects=readStore("novaProjects",[]).filter(p=>p.id!==id);
-  writeStore("novaProjects",projects);
-  renderProjects();
-}
-
-/* HELPER */
-
-function escapeHTML(value){
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-/* START */
+function openProject(id){const p=readStore("novaProjects",[]).find(x=>x.id===id);if(!p)return;showScreen("research");document.getElementById("mainQuestion").value="What should we understand about "+p.name+"?";buildResearchMap()}
+function deleteProject(id){if(!confirm("Delete this project?"))return;writeStore("novaProjects",readStore("novaProjects",[]).filter(p=>p.id!==id));renderProjects()}
 
 document.addEventListener("DOMContentLoaded",()=>{
-  renderProjects();
-  const saved=readStore("novaResearch",null);
-  if(saved){
-    researchQuestion=saved.question||"";
-    researchAreas=Array.isArray(saved.areas)?saved.areas:[];
-    document.getElementById("mainQuestion").value=researchQuestion;
-    if(researchQuestion)renderResearch();
-  }
+ renderProjects();
+ const saved=readStore("novaResearch",null);
+ if(saved){researchQuestion=saved.question||"";researchAreas=Array.isArray(saved.areas)?saved.areas:[];document.getElementById("mainQuestion").value=researchQuestion;if(researchQuestion)renderResearch()}
+ ["business","innovation"].forEach(type=>renderConversation(type));
 });
-const NOVA_AI_URL = "https://nova-ai-backend-5wmk.onrender.com";
-
-async function connectNovaAI(question) {
-  try {
-    const response = await fetch(`${NOVA_AI_URL}/api/core`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        question: question,
-        mode: "all"
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok || !data.success) {
-      throw new Error(data.error || "Nova AI request failed");
-    }
-
-    return data;
-  } catch (error) {
-    console.error("Nova AI connection error:", error);
-    throw error;
-  }
-  }
 </script>
 </body>
 </html>
