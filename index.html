@@ -447,87 +447,83 @@ function clearConversation(type){
 let researchQuestion = "";
 let researchAreas = [];
 
-/* Understand the kind of question being asked */
 
- understandResearchQuestion(question) {
-  const q = question.toLowerCase();
+/* Understand the kind of question being asked */
 
 function understandResearchQuestion(question) {
   const q = question.toLowerCase();
 
   const has = (...words) => words.some(word => q.includes(word));
 
-  // Digital marketing
   if (has("digital marketing", "online marketing",
-          "social media marketing", "marketing strategy",
-          "marketing performance", "marketing campaign",
-          "lead generation", "conversion rate", "advertising",
-          "seo", "content marketing", "marketing skills")) {
+      "social media marketing", "marketing strategy",
+      "marketing performance", "marketing campaign",
+      "lead generation", "conversion rate", "advertising",
+      "seo", "content marketing", "marketing skills")) {
     return "digitalMarketing";
   }
 
   if (has("customer", "customers", "consumer", "consumers",
-          "client", "clients", "buyer", "buyers", "people need",
-          "people want", "users need", "user needs")) {
+      "client", "clients", "buyer", "buyers", "people need",
+      "people want", "users need", "user needs")) {
     return "customers";
   }
 
   if (has("market gap", "market gaps", "missing in the market",
-          "cannot find", "can't find", "cannot get", "underserved",
-          "unmet need", "unmet needs", "lacking", "lack of",
-          "market opportunity", "market opportunities")) {
+      "cannot find", "can't find", "cannot get", "underserved",
+      "unmet need", "unmet needs", "lacking", "lack of",
+      "market opportunity", "market opportunities")) {
     return "marketGaps";
   }
 
   if (has("competitor", "competitors", "competition",
-          "alternative", "alternatives", "compare", "comparison")) {
+      "alternative", "alternatives", "compare", "comparison")) {
     return "competition";
   }
 
   if (has("technology", "technologies", "computer", "computers",
-          "software", "hardware", "engine", "engines", "ecu",
-          "sensor", "sensors", "artificial intelligence",
-          "how does", "how do", "how it works", "how they operate")) {
+      "software", "hardware", "engine", "engines", "ecu",
+      "sensor", "sensors", "artificial intelligence",
+      "how does", "how do", "how it works", "how they operate")) {
     return "technology";
   }
 
   if (has("business idea", "business ideas", "startup",
-          "start-up", "start a business", "new business",
-          "business opportunity", "business opportunities")) {
+      "start-up", "start a business", "new business",
+      "business opportunity", "business opportunities")) {
     return "businessIdea";
   }
 
   if (has("business", "company", "companies", "enterprise",
-          "organization", "organisation", "agency", "agencies")) {
+      "organization", "organisation", "agency", "agencies")) {
     return "business";
   }
 
   if (has("product", "products", "service", "services",
-          "solution", "solutions", "what does it offer")) {
+      "solution", "solutions", "what does it offer")) {
     return "services";
   }
 
   if (has("result", "results", "impact", "effectiveness",
-          "improve", "improvement", "performance", "success",
-          "outcome", "outcomes")) {
+      "improve", "improvement", "performance", "success",
+      "outcome", "outcomes")) {
     return "results";
   }
 
   if (has("problem", "problems", "challenge", "challenges",
-          "difficulties", "cause", "causes", "why does",
-          "why do", "why is", "why are")) {
+      "difficulties", "cause", "causes", "why does",
+      "why do", "why is", "why are")) {
     return "problems";
   }
 
   if (has("innovation", "innovate", "invent", "invention",
-          "new approach", "new solution", "develop a new")) {
+      "new approach", "new solution", "develop a new")) {
     return "innovation";
   }
 
   return "general";
   }
   
-
 /* Build a relevant investigation plan */
 
 function getResearchPlan(question) {
