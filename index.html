@@ -341,18 +341,161 @@ function loadResearch(){
  document.getElementById("mainQuestion").value=researchQuestion;renderResearch();
 }
 
-/* DATA ANALYSIS */
-function analyzeDataInput(){
- const input=document.getElementById("dataInput").value.trim(),output=document.getElementById("dataOutput");if(!input){alert("Enter information first.");return}
- const parts=input.split(/[\s,;]+/).filter(Boolean),numeric=parts.length>0&&parts.every(x=>Number.isFinite(Number(x)));
- let result;
- if(numeric){const n=parts.map(Number),total=n.reduce((a,b)=>a+b,0);result="NUMERICAL SUMMARY\n\nCount: "+n.length+"\nTotal: "+total+"\nAverage: "+(total/n.length).toFixed(2)+"\nMinimum: "+Math.min(...n)+"\nMaximum: "+Math.max(...n)+"\n\nThese calculations do not explain real-world meaning without context."}
- else result="INFORMATION FOR INVESTIGATION\n\n"+input+"\n\nSuggested analysis:\n• Identify the main subject and goal.\n• Separate facts from assumptions.\n• Identify important claims and available evidence.\n• Explore possible causes and alternatives.\n• Identify opportunities and unanswered questions.\n\nThis is a preliminary framework, not external fact-checking.";
- output.innerHTML=`<div class="tool"><div class="result">${escapeHTML(result)}</div><div class="actions"><button class="secondary" onclick="dataFollow('Go deeper')">Go deeper</button><button class="secondary" onclick="dataFollow('Find evidence')">Find evidence</button><button class="secondary" onclick="dataFollow('Find opportunities')">Find opportunities</button></div></div>`;
-}
-function dataFollow(t){const i=document.getElementById("dataInput");i.value+="\n\nNext investigation: "+t;i.focus()}
-function clearData(){document.getElementById("dataInput").value="";document.getElementById("dataOutput").innerHTML=""}
 
+/* DATA ANALYSIS — NOVA INTELLIGENCE */
+
+function analyzeDataInput() {
+  const input = document.getElementById("dataInput").value.trim();
+  const output = document.getElementById("dataOutput");
+
+  if (!input) {
+    alert("Enter information, data, or a problem to analyze.");
+    return;
+  }
+
+  const lines = input
+    .split(/\n+/)
+    .map(s => s.trim())
+    .filter(Boolean);
+
+  const tokens = input.split(/[\s,;]+/).filter(Boolean);
+  const numeric = tokens.length > 0 &&
+    tokens.every(x => /^[-+]?(?:\d+\.?\d*|\.\d+)$/.test(x));
+
+  let result = "";
+
+  if (numeric) {
+    const numbers = tokens.map(Number);
+    const sorted = [...numbers].sort((a, b) => a - b);
+    const total = numbers.reduce((a, b) => a + b, 0);
+    const mean = total / numbers.length;
+    const median = numbers.length % 2
+      ? sorted[Math.floor(numbers.length / 2)]
+      : (sorted[numbers.length / 2 - 1] +
+         sorted[numbers.length / 2]) / 2;
+
+    const counts = {};
+    numbers.forEach(n => counts[n] = (counts[n] || 0) + 1);
+
+    const repeated = Object.entries(counts)
+      .filter(([, count]) => count > 1)
+      .map(([value, count]) => `${value} (${count} times)`);
+
+    result = [
+      "NUMERICAL ANALYSIS",
+      "",
+      `Number of observations: ${numbers.length}`,
+      `Total: ${total}`,
+      `Mean: ${mean.toFixed(2)}`,
+      `Median: ${median}`,
+      `Minimum: ${sorted[0]}`,
+      `Maximum: ${sorted[sorted.length - 1]}`,
+      `Range: ${sorted[sorted.length - 1] - sorted[0]}`,
+      "",
+      "OBSERVATIONS",
+      `The values range from ${sorted[0]} to ${sorted[sorted.length - 1]}.`,
+      `The mean is ${mean.toFixed(2)} and the median is ${median}.`,
+      repeated.length
+        ? `Repeated values: ${repeated.join(", ")}.`
+        : "No values are repeated.",
+      "",
+      "INTERPRETATION LIMIT",
+      "These statistics describe the supplied numbers. Their real-world meaning depends on what was measured, the units, and how the data was collected."
+    ].join("\n");
+  } else {
+    const q = input.toLowerCase();
+
+    const has = (...words) =>
+      words.some(word => q.includes(word));
+
+    const sections = [];
+    const add = (title, body) =>
+      sections.push(`${title}\n${body}`);
+
+    add("SUBJECT OF ANALYSIS", input);
+
+    const questionLike = /^(what|why|how|which|who|where|when|does|do|is|are|can|should)\b/i
+      .test(input);
+
+    if (has("sales", "revenue", "profit", "income", "cost", "expense")) {
+      add("FINANCIAL ANALYSIS",
+        "Determine the period covered, revenue, costs, profit, and changes over time. Compare actual figures with targets or previous periods. Do not infer profitability without the relevant figures.");
+    }
+
+    if (has("customer", "customers", "buyer", "buyers", "demand", "market")) {
+      add("CUSTOMER AND MARKET ANALYSIS",
+        "Identify the customer group, what they are trying to achieve, their current alternatives, barriers to buying, and evidence of unmet needs. Distinguish actual customer feedback and purchase behaviour from assumptions.");
+    }
+
+    if (has("website", "traffic", "visitors", "clicks", "conversion", "social media", "advertising", "marketing", "leads")) {
+      add("DIGITAL PERFORMANCE ANALYSIS",
+        "Trace the customer journey from reach to engagement, enquiries, conversions, and repeat business. Identify where measurable losses occur. Request actual analytics and campaign results before concluding what is working.");
+    }
+
+    if (has("increase", "decrease", "growth", "decline", "change", "trend", "compared")) {
+      add("CHANGE AND PATTERNS",
+        "Compare the starting and ending values, the size and direction of change, the period involved, and any unusual observations. A trend needs dated observations; a single observation cannot establish one.");
+    }
+
+    if (has("problem", "failure", "failing", "issue", "cause", "causes", "difficult", "challenge", "error")) {
+      add("CAUSE ANALYSIS",
+        "Separate the observed problem from its possible causes. For each possible cause, identify supporting evidence, conflicting evidence, other explanations, and a practical test that could distinguish between them.");
+    }
+
+    if (has("technology", "system", "software", "computer", "ai", "automation")) {
+      add("SYSTEM AND TECHNOLOGY ANALYSIS",
+        "Define the intended outcome, current process, inputs, outputs, constraints, and failure points. Compare possible approaches using cost, reliability, complexity, security, and measurable benefit.");
+    }
+
+    if (has("compare", "versus", " vs ", "alternative", "options")) {
+      add("COMPARISON",
+        "Define the options and the criteria that matter. Compare them against the same criteria, using supplied evidence. Identify missing information instead of declaring a winner without sufficient support.");
+    }
+
+    if (has("opportunity", "opportunities", "improve", "improvement", "solution", "solve")) {
+      add("OPPORTUNITY ANALYSIS",
+        "Look for a demonstrated unmet need, an avoidable cost, a recurring bottleneck, or an outcome that could be improved. Estimate potential value, implementation effort, risks, and how success could be measured.");
+    }
+
+    if (sections.length === 1) {
+      add("ANALYSIS APPROACH",
+        questionLike
+          ? "Identify the exact question, the facts already available, what evidence would answer it, and which competing explanations need testing."
+          : "Identify the main claims, extract verifiable facts, group related observations, look for patterns and contradictions, and list what additional information is needed.");
+    }
+
+    add("EVIDENCE CHECK",
+      "Information provided: the text above. Independently verified facts: none in this analysis. Conclusions must be supported by relevant data or reliable sources. Missing evidence should remain explicitly uncertain.");
+
+    add("NEXT STEP",
+      "Specify the decision you need to make and provide the relevant figures, observations, dates, or source material. The analysis can then focus on your actual situation rather than assumptions.");
+
+    result = sections.join("\n\n");
+  }
+
+  output.innerHTML = `
+    <div class="tool">
+      <div class="result" style="white-space:pre-wrap">${escapeHTML(result)}</div>
+      <div class="actions">
+        <button class="secondary" onclick="dataFollow('Investigate the strongest explanation using the available evidence')">Investigate causes</button>
+        <button class="secondary" onclick="dataFollow('Identify the missing data and evidence needed to reach a reliable conclusion')">Identify missing evidence</button>
+        <button class="secondary" onclick="dataFollow('Compare practical options and define how to measure their results')">Compare solutions</button>
+      </div>
+    </div>`;
+}
+
+function dataFollow(task) {
+  const input = document.getElementById("dataInput");
+  input.value = input.value.trim() +
+    "\n\nAnalysis follow-up: " + task;
+  input.focus();
+}
+
+function clearData() {
+  document.getElementById("dataInput").value = "";
+  document.getElementById("dataOutput").innerHTML = "";
+                                                                                       }
+ 
 /* PROJECT WORKSPACE */
 function createProject(){
  const name=document.getElementById("projectName").value.trim(),description=document.getElementById("projectDescription").value.trim();if(!name){alert("Enter a project name.");return}
