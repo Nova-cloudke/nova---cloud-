@@ -8,8 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.5}
 header{background:#111827;color:white;padding:22px 18px}
-header h1{font-size:27px}
-header p{color:#cbd5e1;font-size:14px}
+header h1{font-size:27px}header p{color:#cbd5e1;font-size:14px}
 .container{max-width:1100px;margin:auto;padding:20px}
 .screen{display:none}.screen.active{display:block}
 .back{display:inline-block;margin-bottom:18px;color:#2563eb;font-weight:bold;cursor:pointer}
@@ -34,6 +33,7 @@ button.secondary{background:#e2e8f0;color:#172033}button.green{background:#16a34
 .finding{background:#f8fafc;padding:15px;border-radius:10px;margin:10px 0;white-space:pre-line}
 .research-area{padding:18px;margin:14px 0}.confirmed{border-left:4px solid #16a34a}
 footer{text-align:center;padding:30px;color:#64748b;font-size:13px}
+.small{font-size:13px;color:#64748b}
 </style>
 </head>
 <body>
@@ -50,21 +50,18 @@ footer{text-align:center;padding:30px;color:#64748b;font-size:13px}
   <div class="card" onclick="showScreen('innovation')"><span class="badge">Innovation</span><h3>Innovation & Technology</h3><p>Explore unfamiliar ideas and technologies.</p></div>
  </div>
 </section>
-
 <section id="research" class="screen">
  <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
  <div class="hero"><h2>Research Workspace</h2><p>Ask one main question. Investigate connected areas, add evidence and connect findings.</p></div>
  <div class="tool"><label for="mainQuestion"><strong>Main Question</strong></label><input id="mainQuestion" placeholder="What do you want to understand?"><button onclick="buildResearchMap()">Build Research Map</button><button class="secondary" onclick="loadResearch()">Load Saved Research</button></div>
  <div id="researchOutput"></div>
 </section>
-
 <section id="business" class="screen">
  <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
  <div class="hero"><h2>Business Intelligence</h2><p>Investigate business models, customers, services, markets and opportunities.</p></div>
  <div id="businessChat" class="chat"></div>
  <div class="tool"><input id="businessInput" placeholder="What do you want to understand about a business?" onkeydown="if(event.key==='Enter')sendMessage('business')"><button onclick="sendMessage('business')">Investigate with Nova AI</button><button class="secondary" onclick="clearConversation('business')">New Investigation</button></div>
 </section>
-
 <section id="systems" class="screen">
  <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span>
  <div class="hero"><h2>Systems</h2><p>Describe what you want to build, understand or improve.</p></div>
@@ -75,24 +72,20 @@ footer{text-align:center;padding:30px;color:#64748b;font-size:13px}
  </div>
  <div id="systemConversation"></div>
 </section>
-
 <section id="data" class="screen">
  <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span><div class="hero"><h2>Data & Analysis</h2><p>Enter text, numbers, a decision or information to examine.</p></div>
- <div class="tool"><textarea id="dataInput" placeholder="Enter information to analyze"></textarea><button onclick="analyzeDataInput()">Analyze</button><button class="secondary" onclick="clearData()">Clear</button></div><div id="dataOutput"></div>
+ <div class="tool"><textarea id="dataInput" placeholder="Enter information to analyze"></textarea><button onclick="analyzeDataInput()">Analyze with Nova AI</button><button class="secondary" onclick="clearData()">Clear</button></div><div id="dataOutput"></div>
 </section>
-
 <section id="workspace" class="screen">
  <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span><div class="hero"><h2>Cloud Workspace</h2><p>Create projects and open their research workspace.</p></div>
  <div class="tool"><h3>Create Project</h3><input id="projectName" placeholder="Project name"><textarea id="projectDescription" placeholder="What is this project about?"></textarea><button onclick="createProject()">Create Project</button></div><div id="projects"></div>
 </section>
-
 <section id="innovation" class="screen">
  <span class="back" onclick="showScreen('home')">← Back to Nova Cloud</span><div class="hero"><h2>Innovation & Technology</h2><p>Investigate an idea, technology, problem or opportunity with Nova AI.</p></div>
  <div id="innovationChat" class="chat"></div><div class="tool"><input id="innovationInput" placeholder="Enter an idea, technology or problem" onkeydown="if(event.key==='Enter')sendMessage('innovation')"><button onclick="sendMessage('innovation')">Explore with Nova AI</button><button class="secondary" onclick="clearConversation('innovation')">New Investigation</button></div>
 </section>
 </div>
 <footer>Nova Cloud — Research • Innovation • Technology • Business Intelligence</footer>
-
 <script>
 "use strict";
 const NOVA_AI_URL="https://nova-ai-backend-5wmk.onrender.com";
@@ -102,10 +95,16 @@ function showScreen(id){
  const target=document.getElementById(id);if(target)target.classList.add("active");
  window.scrollTo(0,0);if(id==="workspace")renderProjects();
 }
-function readStore(key,fallback){try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}catch(e){return fallback}}
-function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){console.error("Could not save",key,e)}}
-function escapeHTML(value){return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
-
+function readStore(key,fallback){
+ try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}catch(e){return fallback}
+}
+function writeStore(key,value){
+ try{localStorage.setItem(key,JSON.stringify(value));return true}
+ catch(e){console.error("Could not save",key,e);return false}
+}
+function escapeHTML(value){
+ return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
 const engineRules={
  business:{title:"Business Intelligence",opening:"What are you trying to understand about this business?",areas:["business model","customers","customer problems","products and services","competition","market","marketing","operations","technology","growth opportunities"]},
  system:{title:"System Builder",opening:"What problem, workflow or idea are you trying to turn into a system?",areas:["problem","users","inputs","workflow","technology","data","automation","outputs","risks","success criteria"]},
@@ -114,7 +113,9 @@ const engineRules={
  innovation:{title:"Innovation Investigation",opening:"What idea, problem, technology or opportunity are you exploring?",areas:["problem","users","existing alternatives","new approach","technology","market","feasibility","opportunity","risks","first experiment"]}
 };
 let conversations=readStore("novaConversations",{});
-function ensureConversation(type){if(!conversations[type]||!Array.isArray(conversations[type].messages))conversations[type]={messages:[]}}
+function ensureConversation(type){
+ if(!conversations[type]||!Array.isArray(conversations[type].messages))conversations[type]={messages:[]};
+}
 function saveConversations(){writeStore("novaConversations",conversations)}
 function conversationInterface(type){
  const rule=engineRules[type];
@@ -138,32 +139,40 @@ function appendMessageElement(chat,role,text){
 }
 function addMessage(type,role,text){
  ensureConversation(type);conversations[type].messages.push({role,text:String(text)});saveConversations();
- const chat=document.getElementById(type+"Chat");if(chat){appendMessageElement(chat,role,text);chat.scrollTop=chat.scrollHeight}
+ const chat=document.getElementById(type+"Chat");if(chat){appendMessageElement(chat,role,text);chat.scrollTop=chat.scrollHeight;}
 }
 async function connectNovaAI(question,type="research"){
- const response=await fetch(`${NOVA_AI_URL}/api/core`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question,project:type,mode:"all"})});
- let data;try{data=await response.json()}catch(e){throw new Error("The backend returned an unreadable response.")}
- if(!response.ok||!data||!data.success)throw new Error(data?.error||`Request failed (HTTP ${response.status}).`);
+ let response;
+ try{
+  response=await fetch(`${NOVA_AI_URL}/api/core`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question,project:type,mode:"all"})});
+ }catch(e){throw new Error("Could not reach the backend. Check the Render service and internet connection.");}
+ let data;
+ try{data=await response.json()}catch(e){throw new Error("The backend returned an unreadable response.");}
+ if(!response.ok||!data||data.success===false)throw new Error(data?.error||`Request failed (HTTP ${response.status}).`);
  return data;
 }
-function formatAIResult(data){return typeof data.result==="string"?data.result:JSON.stringify(data.result??data,null,2)}
+function formatAIResult(data){
+ if(typeof data?.result==="string")return data.result;
+ if(data?.result!==undefined)return JSON.stringify(data.result,null,2);
+ return JSON.stringify(data,null,2);
+}
 async function sendMessage(type){
  if(!engineRules[type])return;
  const input=document.getElementById(type+"Input");if(!input||input.disabled)return;
- const question=input.value.trim();if(!question){alert("Enter a question or idea first.");return}
+ const question=input.value.trim();if(!question){alert("Enter a question or idea first.");return;}
  input.value="";input.disabled=true;
  const tool=input.closest(".tool");const buttons=tool?tool.querySelectorAll("button"):[];
  buttons.forEach(b=>b.disabled=true);
- ensureConversation(type);addMessage(type,"user",question);
+ addMessage(type,"user",question);
  const chat=document.getElementById(type+"Chat");let status=null;
- if(chat){status=document.createElement("div");status.className="message nova";status.textContent="Nova AI is investigating...";chat.appendChild(status)}
+ if(chat){status=document.createElement("div");status.className="message nova";status.textContent="Nova AI is investigating...";chat.appendChild(status);}
  try{
   const data=await connectNovaAI(question,type);
   if(status)status.remove();
   addMessage(type,"nova",formatAIResult(data)||"Nova AI returned no result.");
  }catch(error){
   if(status)status.remove();
-  addMessage(type,"nova","Nova AI connection failed: "+error.message+"\n\nCheck that the Nova AI backend is running and its URL is correct.");
+  addMessage(type,"nova","Nova AI connection failed: "+error.message+"\n\nYour conversation remains saved in this browser.");
  }finally{
   input.disabled=false;buttons.forEach(b=>b.disabled=false);renderConversation(type);input.focus();
  }
@@ -173,7 +182,7 @@ function clearConversation(type){
  conversations[type]={messages:[]};saveConversations();
  if(["system","ai","technology"].includes(type)){
   const container=document.getElementById("systemConversation");
-  if(container){container.innerHTML=conversationInterface(type);renderConversation(type)}
+  if(container){container.innerHTML=conversationInterface(type);renderConversation(type);}
  }else renderConversation(type);
 }
 
@@ -303,315 +312,99 @@ function getResearchPlan(question){
 }
 async function buildResearchMap(){
  const input=document.getElementById("mainQuestion"),question=input.value.trim();
- if(!question){alert("Enter a main research question first.");return}
+ if(!question){alert("Enter a main research question first.");return;}
  researchQuestion=question;researchAreas=getResearchPlan(question);renderResearch();saveResearch();
  const output=document.getElementById("researchOutput"),status=document.createElement("div");
  status.className="result";status.textContent="Nova AI is investigating your research question...";output.prepend(status);
- try{const data=await connectNovaAI(question,"research");status.textContent="Nova AI Investigation\n\n"+formatAIResult(data)}
- catch(error){status.textContent="Nova AI connection failed: "+error.message+"\n\nYour research map is still available. You can add evidence and notes below."}
+ try{const data=await connectNovaAI(question,"research");status.textContent="NOVA AI INVESTIGATION\n\n"+formatAIResult(data);}
+ catch(error){status.textContent="Nova AI connection failed: "+error.message+"\n\nYour research map remains available. Add evidence and notes below.";}
 }
 function renderResearch(){
  const output=document.getElementById("researchOutput");if(!output)return;
  const active=researchAreas.filter(a=>!a.removed),confirmed=active.filter(a=>a.confirmed).length;
  let html=`<div class="hero"><span class="badge">ACTIVE RESEARCH</span><h2>Main Question</h2><p><strong>${escapeHTML(researchQuestion)}</strong></p><p>${active.length} research areas · ${confirmed} reviewed</p><p>Guidance is not verified evidence. Record sources and observations before treating a conclusion as confirmed.</p></div>`;
- researchAreas.forEach((a,i)=>{if(a.removed)return;html+=`<div class="research-area ${a.confirmed?"confirmed":""}"><span class="badge">RESEARCH AREA ${i+1}</span><h3>${escapeHTML(a.title)}</h3><div class="question">${escapeHTML(a.question)}</div><div class="finding"><strong>Investigation Guidance</strong><p>${escapeHTML(a.finding)}</p></div><div class="finding"><strong>Evidence / Notes</strong><p>${escapeHTML(a.evidence||"No supporting evidence added yet.")}</p></div>${a.confirmed?"<p><strong>Marked reviewed.</strong></p>":""}<div class="actions"><button class="green" onclick="confirmFinding(${i})">${a.confirmed?"✓ Reviewed":"✓ Mark Reviewed"}</button><button class="secondary" onclick="editFinding(${i})">Edit Finding</button><button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button><button class="red" onclick="removeFinding(${i})">Remove</button></div></div>`});
+ researchAreas.forEach((a,i)=>{if(a.removed)return;html+=`<div class="research-area ${a.confirmed?"confirmed":""}"><span class="badge">RESEARCH AREA ${i+1}</span><h3>${escapeHTML(a.title)}</h3><div class="question">${escapeHTML(a.question)}</div><div class="finding"><strong>Investigation Guidance</strong><p>${escapeHTML(a.finding)}</p></div><div class="finding"><strong>Evidence / Notes</strong><p>${escapeHTML(a.evidence||"No supporting evidence added yet.")}</p></div>${a.confirmed?"<p><strong>Marked reviewed.</strong></p>":""}<div class="actions"><button class="green" onclick="confirmFinding(${i})">${a.confirmed?"✓ Reviewed":"✓ Mark Reviewed"}</button><button class="secondary" onclick="editFinding(${i})">Edit Finding</button><button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button><button class="red" onclick="removeFinding(${i})">Remove</button></div></div>`;});
  html+=`<div class="tool"><h3>Continue the Investigation</h3><p>Add a question or connect your recorded findings.</p><div class="actions"><button onclick="addResearchArea()">+ Add Research Area</button><button class="secondary" onclick="connectFindings()">Connect Findings</button><button class="secondary" onclick="saveResearch()">Save Research</button></div><div id="connectionResult"></div></div>`;
  output.innerHTML=html;
 }
-function confirmFinding(i){if(!researchAreas[i])return;researchAreas[i].confirmed=!researchAreas[i].confirmed;saveResearch();renderResearch()}
-function editFinding(i){const a=researchAreas[i];if(!a)return;const v=prompt("Edit the investigation guidance or finding:",a.finding||"");if(v===null)return;a.finding=v.trim();a.confirmed=false;saveResearch();renderResearch()}
-function editEvidence(i){const a=researchAreas[i];if(!a)return;const v=prompt("Add evidence, source details or notes:",a.evidence||"");if(v===null)return;a.evidence=v.trim();a.confirmed=false;saveResearch();renderResearch()}
-function removeFinding(i){if(!researchAreas[i]||!confirm("Remove this research area?"))return;researchAreas[i].removed=true;saveResearch();renderResearch()}
-function addResearchArea(){const title=prompt("What additional area do you want to investigate?");if(!title||!title.trim())return;const question=prompt("What specific question should this area answer?");if(!question||!question.trim())return;researchAreas.push({title:title.trim(),question:question.trim(),finding:"Investigate the question, gather relevant evidence and record what the evidence supports.",evidence:"",confirmed:false,removed:false});saveResearch();renderResearch()}
+function confirmFinding(i){if(!researchAreas[i])return;researchAreas[i].confirmed=!researchAreas[i].confirmed;saveResearch();renderResearch();}
+function editFinding(i){const a=researchAreas[i];if(!a)return;const v=prompt("Edit the investigation guidance or finding:",a.finding||"");if(v===null)return;a.finding=v.trim();a.confirmed=false;saveResearch();renderResearch();}
+function editEvidence(i){const a=researchAreas[i];if(!a)return;const v=prompt("Add evidence, source details or notes:",a.evidence||"");if(v===null)return;a.evidence=v.trim();a.confirmed=false;saveResearch();renderResearch();}
+function removeFinding(i){if(!researchAreas[i]||!confirm("Remove this research area?"))return;researchAreas[i].removed=true;saveResearch();renderResearch();}
+function addResearchArea(){const title=prompt("What additional area do you want to investigate?");if(!title||!title.trim())return;const question=prompt("What specific question should this area answer?");if(!question||!question.trim())return;researchAreas.push({title:title.trim(),question:question.trim(),finding:"Investigate the question, gather relevant evidence and record what the evidence supports.",evidence:"",confirmed:false,removed:false});saveResearch();renderResearch();}
 function connectFindings(){
  const active=researchAreas.filter(a=>!a.removed),result=document.getElementById("connectionResult");if(!result)return;
- if(!active.length){result.innerHTML='<div class="result">Add a research area first.</div>';return}
- const withEvidence=active.filter(a=>a.evidence.trim()),without=active.filter(a=>!a.evidence.trim()),reviewed=active.filter(a=>a.confirmed);
+ if(!active.length){result.innerHTML='<div class="result">Add a research area first.</div>';return;}
  let text="RESEARCH CONNECTION REVIEW\n\nMain question: "+researchQuestion+"\n\n";
- active.forEach((a,i)=>{text+=(i+1)+". "+a.title+"\nQuestion: "+a.question+"\nFinding: "+(a.finding||"Not recorded")+"\nEvidence: "+(a.evidence||"Not provided")+"\nReview status: "+(a.confirmed?"Reviewed":"Not reviewed")+"\n\n"});
- text+="EVIDENCE COVERAGE\nAreas with evidence/notes: "+withEvidence.length+" of "+active.length+"\nAreas needing evidence: "+without.length+"\nAreas marked reviewed: "+reviewed.length+"\n\n";
- if(without.length){text+="Priority evidence gaps:\n";without.forEach(a=>text+="• "+a.title+": "+a.question+"\n");text+="\n"}
+ active.forEach((a,i)=>{text+=(i+1)+". "+a.title+"\nQuestion: "+a.question+"\nFinding: "+(a.finding||"Not recorded")+"\nEvidence: "+(a.evidence||"Not provided")+"\nReview status: "+(a.confirmed?"Reviewed":"Not reviewed")+"\n\n";});
+ const withEvidence=active.filter(a=>(a.evidence||"").trim()),without=active.filter(a=>!(a.evidence||"").trim());
+ text+="EVIDENCE COVERAGE\nAreas with evidence/notes: "+withEvidence.length+" of "+active.length+"\nAreas needing evidence: "+without.length+"\n\n";
+ if(without.length){text+="PRIORITY EVIDENCE GAPS\n";without.forEach(a=>text+="• "+a.title+": "+a.question+"\n");text+="\n";}
  text+="CONNECTIONS TO INVESTIGATE\n• Do findings support the same explanation?\n• Do any findings contradict one another?\n• Which conclusions are supported and which remain assumptions?\n\nNEXT STEP\n"+(without.length?"Gather evidence for areas with no supporting notes.":"Compare evidence, check contradictions and identify the most important unanswered question.")+"\n\nThis organizes your notes; it does not independently verify claims.";
  result.innerHTML=`<div class="result">${escapeHTML(text)}</div>`;
 }
-function saveResearch(){writeStore("novaResearch",{question:researchQuestion,areas:researchAreas,savedAt:new Date().toISOString()})}
+function saveResearch(){writeStore("novaResearch",{question:researchQuestion,areas:researchAreas,savedAt:new Date().toISOString()});}
 function loadResearch(){
- const d=readStore("novaResearch",null);if(!d){alert("No saved research was found in this browser.");return}
+ const d=readStore("novaResearch",null);if(!d){alert("No saved research was found in this browser.");return;}
  researchQuestion=d.question||"";researchAreas=Array.isArray(d.areas)?d.areas.map(a=>({title:a.title||"Untitled Research Area",question:a.question||"",finding:a.finding||"",evidence:a.evidence||"",confirmed:Boolean(a.confirmed),removed:Boolean(a.removed)})):[];
  document.getElementById("mainQuestion").value=researchQuestion;renderResearch();
 }
 
-
-/* DATA ANALYSIS — NOVA INTELLIGENCE */
-
-function analyzeDataInput() {
-  const input = document.getElementById("dataInput").value.trim();
-  const output = document.getElementById("dataOutput");
-
-  if (!input) {
-    alert("Enter information, data, or a problem to analyze.");
-    return;
-  }
-
-  const lines = input
-    .split(/\n+/)
-    .map(s => s.trim())
-    .filter(Boolean);
-
-  const tokens = input.split(/[\s,;]+/).filter(Boolean);
-  const numeric = tokens.length > 0 &&
-    tokens.every(x => /^[-+]?(?:\d+\.?\d*|\.\d+)$/.test(x));
-
-  let result = "";
-
-  if (numeric) {
-    const numbers = tokens.map(Number);
-    const sorted = [...numbers].sort((a, b) => a - b);
-    const total = numbers.reduce((a, b) => a + b, 0);
-    const mean = total / numbers.length;
-    const median = numbers.length % 2
-      ? sorted[Math.floor(numbers.length / 2)]
-      : (sorted[numbers.length / 2 - 1] +
-         sorted[numbers.length / 2]) / 2;
-
-    const counts = {};
-    numbers.forEach(n => counts[n] = (counts[n] || 0) + 1);
-
-    const repeated = Object.entries(counts)
-      .filter(([, count]) => count > 1)
-      .map(([value, count]) => `${value} (${count} times)`);
-
-    result = [
-      "NUMERICAL ANALYSIS",
-      "",
-      `Number of observations: ${numbers.length}`,
-      `Total: ${total}`,
-      `Mean: ${mean.toFixed(2)}`,
-      `Median: ${median}`,
-      `Minimum: ${sorted[0]}`,
-      `Maximum: ${sorted[sorted.length - 1]}`,
-      `Range: ${sorted[sorted.length - 1] - sorted[0]}`,
-      "",
-      "OBSERVATIONS",
-      `The values range from ${sorted[0]} to ${sorted[sorted.length - 1]}.`,
-      `The mean is ${mean.toFixed(2)} and the median is ${median}.`,
-      repeated.length
-        ? `Repeated values: ${repeated.join(", ")}.`
-        : "No values are repeated.",
-      "",
-      "INTERPRETATION LIMIT",
-      "These statistics describe the supplied numbers. Their real-world meaning depends on what was measured, the units, and how the data was collected."
-    ].join("\n");
-  } else {
-    const q = input.toLowerCase();
-
-    const has = (...words) =>
-      words.some(word => q.includes(word));
-
-    const sections = [];
-    const add = (title, body) =>
-      sections.push(`${title}\n${body}`);
-
-    add("SUBJECT OF ANALYSIS", input);
-
-    const questionLike = /^(what|why|how|which|who|where|when|does|do|is|are|can|should)\b/i
-      .test(input);
-
-    if (has("sales", "revenue", "profit", "income", "cost", "expense")) {
-      add("FINANCIAL ANALYSIS",
-        "Determine the period covered, revenue, costs, profit, and changes over time. Compare actual figures with targets or previous periods. Do not infer profitability without the relevant figures.");
-    }
-
-    if (has("customer", "customers", "buyer", "buyers", "demand", "market")) {
-      add("CUSTOMER AND MARKET ANALYSIS",
-        "Identify the customer group, what they are trying to achieve, their current alternatives, barriers to buying, and evidence of unmet needs. Distinguish actual customer feedback and purchase behaviour from assumptions.");
-    }
-
-    if (has("website", "traffic", "visitors", "clicks", "conversion", "social media", "advertising", "marketing", "leads")) {
-      add("DIGITAL PERFORMANCE ANALYSIS",
-        "Trace the customer journey from reach to engagement, enquiries, conversions, and repeat business. Identify where measurable losses occur. Request actual analytics and campaign results before concluding what is working.");
-    }
-
-    if (has("increase", "decrease", "growth", "decline", "change", "trend", "compared")) {
-      add("CHANGE AND PATTERNS",
-        "Compare the starting and ending values, the size and direction of change, the period involved, and any unusual observations. A trend needs dated observations; a single observation cannot establish one.");
-    }
-
-    if (has("problem", "failure", "failing", "issue", "cause", "causes", "difficult", "challenge", "error")) {
-      add("CAUSE ANALYSIS",
-        "Separate the observed problem from its possible causes. For each possible cause, identify supporting evidence, conflicting evidence, other explanations, and a practical test that could distinguish between them.");
-    }
-
-    if (has("technology", "system", "software", "computer", "ai", "automation")) {
-      add("SYSTEM AND TECHNOLOGY ANALYSIS",
-        "Define the intended outcome, current process, inputs, outputs, constraints, and failure points. Compare possible approaches using cost, reliability, complexity, security, and measurable benefit.");
-    }
-
-    if (has("compare", "versus", " vs ", "alternative", "options")) {
-      add("COMPARISON",
-        "Define the options and the criteria that matter. Compare them against the same criteria, using supplied evidence. Identify missing information instead of declaring a winner without sufficient support.");
-    }
-
-    if (has("opportunity", "opportunities", "improve", "improvement", "solution", "solve")) {
-      add("OPPORTUNITY ANALYSIS",
-        "Look for a demonstrated unmet need, an avoidable cost, a recurring bottleneck, or an outcome that could be improved. Estimate potential value, implementation effort, risks, and how success could be measured.");
-    }
-
-    if (sections.length === 1) {
-      add("ANALYSIS APPROACH",
-        questionLike
- 
-/* DATA ANALYSIS — NOVA AI CONNECTION */
-
-const NOVA_AI_API = "https://nova-ai-backend-5wmk.onrender.com/api/core";
-
-async function analyzeDataInput() {
-  const input = document.getElementById("dataInput").value.trim();
-  const output = document.getElementById("dataOutput");
-
-  if (!input) {
-    alert("Enter information, data, or a problem to analyze.");
-    return;
-  }
-
-  output.innerHTML = `
-    <div class="tool">
-      <h3>Nova AI Analysis</h3>
-      <p>Investigating your information...</p>
-    </div>
-  `;
-
-  // Calculate statistics when the input contains only numbers.
-  const tokens = input.split(/[\s,;]+/).filter(Boolean);
-  const numeric = tokens.length > 0 &&
-    tokens.every(x => /^[-+]?(?:\d+\.?\d*|\.\d+)$/.test(x));
-
-  let numericalReport = "";
-
-  if (numeric) {
-    const numbers = tokens.map(Number);
-    const sorted = [...numbers].sort((a, b) => a - b);
-    const total = numbers.reduce((a, b) => a + b, 0);
-    const mean = total / numbers.length;
-    const middle = Math.floor(numbers.length / 2);
-    const median = numbers.length % 2
-      ? sorted[middle]
-      : (sorted[middle - 1] + sorted[middle]) / 2;
-
-    numericalReport = [
-      "NUMERICAL ANALYSIS",
-      `Count: ${numbers.length}`,
-      `Total: ${total}`,
-      `Mean: ${mean.toFixed(2)}`,
-      `Median: ${median}`,
-      `Minimum: ${sorted[0]}`,
-      `Maximum: ${sorted[sorted.length - 1]}`,
-      `Range: ${sorted[sorted.length - 1] - sorted[0]}`
-    ].join("\n");
-  }
-
-  try {
-    const response = await fetch(NOVA_AI_API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        question: input,
-        project: "data-analysis",
-        mode: "all"
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok || !data.success) {
-      throw new Error(data.error || `Request failed: ${response.status}`);
-    }
-
-    const result = data.result || {};
-    const ai = result.ai || {};
-
-    let answer = ai.answer || "";
-
-    if (!answer && result.answer) {
-      answer = typeof result.answer === "string"
-        ? result.answer
-        : JSON.stringify(result.answer, null, 2);
-    }
-
-    if (!answer) {
-      answer = JSON.stringify(result, null, 2);
-    }
-
-    const combined = numericalReport
-      ? numericalReport + "\n\nNOVA AI INVESTIGATION\n" + answer
-      : answer;
-
-    output.innerHTML = `
-      <div class="tool">
-        <h3>Nova AI Analysis</h3>
-        <div class="result" style="white-space:pre-wrap;line-height:1.7">${escapeHTML(combined)}</div>
-        <div class="actions">
-          <button class="secondary"
-            onclick="dataFollow('Investigate the evidence for this specific analysis')">
-            Investigate Evidence
-          </button>
-          <button class="secondary"
-            onclick="dataFollow('Compare alternative explanations and solutions for this specific situation')">
-            Compare Solutions
-          </button>
-          <button class="secondary"
-            onclick="dataFollow('Identify the best next action based on this analysis')">
-            Next Action
-          </button>
-        </div>
-      </div>
-    `;
-  } catch (error) {
-    const message = numericalReport
-      ? numericalReport + "\n\nNova AI connection failed: " + error.message
-      : "Nova AI connection failed: " + error.message;
-
-    output.innerHTML = `
-      <div class="tool">
-        <h3>Analysis Results</h3>
-        <div class="result" style="white-space:pre-wrap">${escapeHTML(message)}</div>
-        <p>Check that your Nova AI Render service is running.</p>
-        <button onclick="analyzeDataInput()">Try Again</button>
-      </div>
-    `;
-  }
-}
-
-function dataFollow(task) {
-  const input = document.getElementById("dataInput");
-  input.value = input.value.trim() + "\n\nFollow-up: " + task;
-  input.focus();
-}
-
-function clearData() {
-  document.getElementById("dataInput").value = "";
-  document.getElementById("dataOutput").innerHTML = "";
+/* DATA ANALYSIS */
+async function analyzeDataInput(){
+ const input=document.getElementById("dataInput").value.trim(),output=document.getElementById("dataOutput");
+ if(!input){alert("Enter information, data, or a problem to analyze.");return;}
+ output.innerHTML='<div class="tool"><h3>Nova AI Analysis</h3><p>Investigating your information...</p></div>';
+ const tokens=input.split(/[\s,;]+/).filter(Boolean);
+ const numeric=tokens.length>0&&tokens.every(x=>/^[-+]?(?:\d+\.?\d*|\.\d+)$/.test(x));
+ let numericalReport="";
+ if(numeric){
+  const numbers=tokens.map(Number),sorted=[...numbers].sort((a,b)=>a-b),total=numbers.reduce((a,b)=>a+b,0),middle=Math.floor(numbers.length/2);
+  const median=numbers.length%2?sorted[middle]:(sorted[middle-1]+sorted[middle])/2;
+  numericalReport=["NUMERICAL ANALYSIS","Count: "+numbers.length,"Total: "+total,"Mean: "+(total/numbers.length).toFixed(2),"Median: "+median,"Minimum: "+sorted[0],"Maximum: "+sorted[sorted.length-1],"Range: "+(sorted[sorted.length-1]-sorted[0])].join("\n");
  }
+ try{
+  const data=await connectNovaAI(input,"data-analysis"),answer=formatAIResult(data);
+  const combined=numericalReport?numericalReport+"\n\nNOVA AI INVESTIGATION\n"+answer:answer;
+  output.innerHTML=`<div class="tool"><h3>Nova AI Analysis</h3><div class="result">${escapeHTML(combined)}</div><div class="actions"><button class="secondary" onclick="dataFollow('Investigate the evidence supporting this analysis')">Investigate Evidence</button><button class="secondary" onclick="dataFollow('Compare alternative explanations and solutions')">Compare Solutions</button><button class="secondary" onclick="dataFollow('Identify the next practical action')">Next Action</button></div></div>`;
+ }catch(error){
+  const message=numericalReport?numericalReport+"\n\nNova AI connection failed: "+error.message:"Nova AI connection failed: "+error.message;
+  output.innerHTML=`<div class="tool"><h3>Analysis Results</h3><div class="result">${escapeHTML(message)}</div><p>Check that your Nova AI backend is running and accessible.</p><button onclick="analyzeDataInput()">Try Again</button></div>`;
+ }
+}
+function dataFollow(task){const input=document.getElementById("dataInput");input.value=input.value.trim()+"\n\nFollow-up: "+task;input.focus();}
+function clearData(){document.getElementById("dataInput").value="";document.getElementById("dataOutput").innerHTML="";}
+
 /* PROJECT WORKSPACE */
 function createProject(){
- const name=document.getElementById("projectName").value.trim(),description=document.getElementById("projectDescription").value.trim();if(!name){alert("Enter a project name.");return}
+ const name=document.getElementById("projectName").value.trim(),description=document.getElementById("projectDescription").value.trim();
+ if(!name){alert("Enter a project name.");return;}
  const projects=readStore("novaProjects",[]);projects.push({id:Date.now(),name,description,createdAt:new Date().toISOString()});writeStore("novaProjects",projects);
  document.getElementById("projectName").value="";document.getElementById("projectDescription").value="";renderProjects();
 }
 function renderProjects(){
  const c=document.getElementById("projects");if(!c)return;const projects=readStore("novaProjects",[]);
- if(!projects.length){c.innerHTML='<div class="tool">No projects yet. Create a project to begin.</div>';return}
+ if(!projects.length){c.innerHTML='<div class="tool">No projects yet. Create a project to begin.</div>';return;}
  c.innerHTML=projects.map(p=>`<div class="research-area"><span class="badge">PROJECT</span><h3>${escapeHTML(p.name)}</h3><p>${escapeHTML(p.description||"No description provided.")}</p><div class="actions"><button onclick="openProject(${Number(p.id)})">Open Research</button><button class="red" onclick="deleteProject(${Number(p.id)})">Delete</button></div></div>`).join("");
 }
-function openProject(id){const p=readStore("novaProjects",[]).find(x=>x.id===id);if(!p)return;showScreen("research");document.getElementById("mainQuestion").value="What should we understand about "+p.name+"?";buildResearchMap()}
-function deleteProject(id){if(!confirm("Delete this project?"))return;writeStore("novaProjects",readStore("novaProjects",[]).filter(p=>p.id!==id));renderProjects()}
+function openProject(id){
+ const p=readStore("novaProjects",[]).find(x=>Number(x.id)===Number(id));if(!p)return;
+ showScreen("research");document.getElementById("mainQuestion").value="What should we understand about "+p.name+"?";buildResearchMap();
+}
+function deleteProject(id){if(!confirm("Delete this project?"))return;writeStore("novaProjects",readStore("novaProjects",[]).filter(p=>Number(p.id)!==Number(id)));renderProjects();}
 
 document.addEventListener("DOMContentLoaded",()=>{
  renderProjects();
  const saved=readStore("novaResearch",null);
- if(saved){researchQuestion=saved.question||"";researchAreas=Array.isArray(saved.areas)?saved.areas:[];document.getElementById("mainQuestion").value=researchQuestion;if(researchQuestion)renderResearch()}
- ["business","innovation"].forEach(type=>renderConversation(type));
+ if(saved){
+  researchQuestion=saved.question||"";
+  researchAreas=Array.isArray(saved.areas)?saved.areas.map(a=>({title:a.title||"Untitled Research Area",question:a.question||"",finding:a.finding||"",evidence:a.evidence||"",confirmed:Boolean(a.confirmed),removed:Boolean(a.removed)})):[];
+  document.getElementById("mainQuestion").value=researchQuestion;
+  if(researchQuestion)renderResearch();
+ }
+ ["business","innovation"].forEach(renderConversation);
 });
 </script>
 </body>
 </html>
+ 
