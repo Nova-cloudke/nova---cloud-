@@ -460,7 +460,8 @@ function analyzeDataInput() {
     if (sections.length === 1) {
       add("ANALYSIS APPROACH",
         questionLike
- /* DATA ANALYSIS — CONNECTED TO NOVA AI */
+ 
+/* DATA ANALYSIS — NOVA AI CONNECTION */
 
 const NOVA_AI_API = "https://nova-ai-backend-5wmk.onrender.com/api/core";
 
@@ -469,24 +470,53 @@ async function analyzeDataInput() {
   const output = document.getElementById("dataOutput");
 
   if (!input) {
-    alert("Enter information or data to analyze.");
+    alert("Enter information, data, or a problem to analyze.");
     return;
   }
 
   output.innerHTML = `
     <div class="tool">
-      <p>Connecting to Nova AI and analyzing your information...</p>
+      <h3>Nova AI Analysis</h3>
+      <p>Investigating your information...</p>
     </div>
   `;
+
+  // Calculate statistics when the input contains only numbers.
+  const tokens = input.split(/[\s,;]+/).filter(Boolean);
+  const numeric = tokens.length > 0 &&
+    tokens.every(x => /^[-+]?(?:\d+\.?\d*|\.\d+)$/.test(x));
+
+  let numericalReport = "";
+
+  if (numeric) {
+    const numbers = tokens.map(Number);
+    const sorted = [...numbers].sort((a, b) => a - b);
+    const total = numbers.reduce((a, b) => a + b, 0);
+    const mean = total / numbers.length;
+    const middle = Math.floor(numbers.length / 2);
+    const median = numbers.length % 2
+      ? sorted[middle]
+      : (sorted[middle - 1] + sorted[middle]) / 2;
+
+    numericalReport = [
+      "NUMERICAL ANALYSIS",
+      `Count: ${numbers.length}`,
+      `Total: ${total}`,
+      `Mean: ${mean.toFixed(2)}`,
+      `Median: ${median}`,
+      `Minimum: ${sorted[0]}`,
+      `Maximum: ${sorted[sorted.length - 1]}`,
+      `Range: ${sorted[sorted.length - 1] - sorted[0]}`
+    ].join("\n");
+  }
 
   try {
     const response = await fetch(NOVA_AI_API, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         question: input,
+        project: "data-analysis",
         mode: "all"
       })
     });
@@ -494,38 +524,35 @@ async function analyzeDataInput() {
     const data = await response.json();
 
     if (!response.ok || !data.success) {
-      throw new Error(data.error || "Nova AI request failed.");
+      throw new Error(data.error || `Request failed: ${response.status}`);
     }
 
     const result = data.result || {};
     const ai = result.ai || {};
 
-    let answer = "";
+    let answer = ai.answer || "";
 
-    if (ai.answer && ai.answer.trim()) {
-      answer = ai.answer;
-    } else if (result.answer) {
+    if (!answer && result.answer) {
       answer = typeof result.answer === "string"
         ? result.answer
         : JSON.stringify(result.answer, null, 2);
-    } else {
-      answer =
-        "Nova AI's backend responded, but no AI-generated answer was returned.\n\n" +
-        (ai.notice || "Check the GROQ_API_KEY setting in Render.");
     }
+
+    if (!answer) {
+      answer = JSON.stringify(result, null, 2);
+    }
+
+    const combined = numericalReport
+      ? numericalReport + "\n\nNOVA AI INVESTIGATION\n" + answer
+      : answer;
 
     output.innerHTML = `
       <div class="tool">
         <h3>Nova AI Analysis</h3>
-        <div class="result" style="white-space:pre-wrap;line-height:1.7">${escapeHTML(answer)}</div>
-        <p style="margin-top:12px;font-size:13px;color:#64748b">
-          ${ai.answer
-            ? "AI-generated analysis"
-            : "Independent analysis — AI response unavailable"}
-        </p>
+        <div class="result" style="white-space:pre-wrap;line-height:1.7">${escapeHTML(combined)}</div>
         <div class="actions">
           <button class="secondary"
-            onclick="dataFollow('Investigate the evidence supporting this analysis')">
+            onclick="dataFollow('Investigate the evidence for this specific analysis')">
             Investigate Evidence
           </button>
           <button class="secondary"
@@ -533,21 +560,22 @@ async function analyzeDataInput() {
             Compare Solutions
           </button>
           <button class="secondary"
-            onclick="dataFollow('Identify the most important next action based on this analysis')">
+            onclick="dataFollow('Identify the best next action based on this analysis')">
             Next Action
           </button>
         </div>
       </div>
     `;
   } catch (error) {
-    console.error("Nova AI Data Analysis:", error);
+    const message = numericalReport
+      ? numericalReport + "\n\nNova AI connection failed: " + error.message
+      : "Nova AI connection failed: " + error.message;
 
     output.innerHTML = `
       <div class="tool">
-        <h3>Nova AI Connection Problem</h3>
-        <p>${escapeHTML(error.message)}</p>
-        <p>Check that the Render service is live and try again.
-        Its free instance may need time to start.</p>
+        <h3>Analysis Results</h3>
+        <div class="result" style="white-space:pre-wrap">${escapeHTML(message)}</div>
+        <p>Check that your Nova AI Render service is running.</p>
         <button onclick="analyzeDataInput()">Try Again</button>
       </div>
     `;
