@@ -460,41 +460,110 @@ function analyzeDataInput() {
     if (sections.length === 1) {
       add("ANALYSIS APPROACH",
         questionLike
-          ? "Identify the exact question, the facts already available, what evidence would answer it, and which competing explanations need testing."
-          : "Identify the main claims, extract verifiable facts, group related observations, look for patterns and contradictions, and list what additional information is needed.");
-    }
+ /* DATA ANALYSIS — CONNECTED TO NOVA AI */
 
-    add("EVIDENCE CHECK",
-      "Information provided: the text above. Independently verified facts: none in this analysis. Conclusions must be supported by relevant data or reliable sources. Missing evidence should remain explicitly uncertain.");
+const NOVA_AI_API = "https://nova-ai-backend-5wmk.onrender.com/api/core";
 
-    add("NEXT STEP",
-      "Specify the decision you need to make and provide the relevant figures, observations, dates, or source material. The analysis can then focus on your actual situation rather than assumptions.");
+async function analyzeDataInput() {
+  const input = document.getElementById("dataInput").value.trim();
+  const output = document.getElementById("dataOutput");
 
-    result = sections.join("\n\n");
+  if (!input) {
+    alert("Enter information or data to analyze.");
+    return;
   }
 
   output.innerHTML = `
     <div class="tool">
-      <div class="result" style="white-space:pre-wrap">${escapeHTML(result)}</div>
-      <div class="actions">
-        <button class="secondary" onclick="dataFollow('Investigate the strongest explanation using the available evidence')">Investigate causes</button>
-        <button class="secondary" onclick="dataFollow('Identify the missing data and evidence needed to reach a reliable conclusion')">Identify missing evidence</button>
-        <button class="secondary" onclick="dataFollow('Compare practical options and define how to measure their results')">Compare solutions</button>
+      <p>Connecting to Nova AI and analyzing your information...</p>
+    </div>
+  `;
+
+  try {
+    const response = await fetch(NOVA_AI_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        question: input,
+        mode: "all"
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error(data.error || "Nova AI request failed.");
+    }
+
+    const result = data.result || {};
+    const ai = result.ai || {};
+
+    let answer = "";
+
+    if (ai.answer && ai.answer.trim()) {
+      answer = ai.answer;
+    } else if (result.answer) {
+      answer = typeof result.answer === "string"
+        ? result.answer
+        : JSON.stringify(result.answer, null, 2);
+    } else {
+      answer =
+        "Nova AI's backend responded, but no AI-generated answer was returned.\n\n" +
+        (ai.notice || "Check the GROQ_API_KEY setting in Render.");
+    }
+
+    output.innerHTML = `
+      <div class="tool">
+        <h3>Nova AI Analysis</h3>
+        <div class="result" style="white-space:pre-wrap;line-height:1.7">${escapeHTML(answer)}</div>
+        <p style="margin-top:12px;font-size:13px;color:#64748b">
+          ${ai.answer
+            ? "AI-generated analysis"
+            : "Independent analysis — AI response unavailable"}
+        </p>
+        <div class="actions">
+          <button class="secondary"
+            onclick="dataFollow('Investigate the evidence supporting this analysis')">
+            Investigate Evidence
+          </button>
+          <button class="secondary"
+            onclick="dataFollow('Compare alternative explanations and solutions for this specific situation')">
+            Compare Solutions
+          </button>
+          <button class="secondary"
+            onclick="dataFollow('Identify the most important next action based on this analysis')">
+            Next Action
+          </button>
+        </div>
       </div>
-    </div>`;
+    `;
+  } catch (error) {
+    console.error("Nova AI Data Analysis:", error);
+
+    output.innerHTML = `
+      <div class="tool">
+        <h3>Nova AI Connection Problem</h3>
+        <p>${escapeHTML(error.message)}</p>
+        <p>Check that the Render service is live and try again.
+        Its free instance may need time to start.</p>
+        <button onclick="analyzeDataInput()">Try Again</button>
+      </div>
+    `;
+  }
 }
 
 function dataFollow(task) {
   const input = document.getElementById("dataInput");
-  input.value = input.value.trim() +
-    "\n\nAnalysis follow-up: " + task;
+  input.value = input.value.trim() + "\n\nFollow-up: " + task;
   input.focus();
 }
 
 function clearData() {
   document.getElementById("dataInput").value = "";
   document.getElementById("dataOutput").innerHTML = "";
-                                                                                       }
+ }                                                                                      }
  
 /* PROJECT WORKSPACE */
 function createProject(){
