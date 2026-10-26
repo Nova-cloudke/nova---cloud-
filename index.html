@@ -152,10 +152,61 @@ async function connectNovaAI(question,type="research"){
  return data;
 }
 function formatAIResult(data){
- if(typeof data?.result==="string")return data.result;
- if(data?.result!==undefined)return JSON.stringify(data.result,null,2);
- return JSON.stringify(data,null,2);
-}
+ let answer =
+  data?.answer ??
+  data?.result?.answer ??
+  data?.result?.ai?.answer ??
+  data?.ai?.answer ??
+  data?.result?.result ??
+  data?.result;
+
+ if(typeof answer !== "string"){
+  if(answer && typeof answer === "object"){
+   answer = answer.answer ?? answer.text ?? answer.content;
+  }
+ }
+
+ if(typeof answer !== "string"){
+  return "Nova AI returned no readable answer.";
+ }
+
+ answer = answer.trim();
+
+ // Remove a JSON wrapper if the answer itself contains one.
+ try{
+  const parsed = JSON.parse(answer);
+
+  if(parsed && typeof parsed === "object"){
+   answer =
+    parsed.answer ??
+    parsed.result?.answer ??
+    parsed.result ??
+    parsed.ai?.answer ??
+    answer;
+
+   if(typeof answer !== "string"){
+    answer = JSON.stringify(answer, null, 2);
+   }
+  }
+ }catch(e){}
+
+ // Remove Markdown code fences.
+ answer = answer
+  .replace(/^```(?:json|text)?\s*/i, "")
+  .replace(/\s*```$/i, "")
+  .trim();
+
+ // Remove a leading JSON success wrapper if one remains.
+ answer = answer.replace(
+  /^\{\s*"success"\s*:\s*true\s*,\s*"answer"\s*:\s*"/i,
+  ""
+ );
+
+ // Remove an accidental closing JSON wrapper.
+ answer = answer.replace(/"\s*\}\s*$/, "").trim();
+
+ return answer || "Nova AI returned no readable answer.";
+ }
 async function sendMessage(type){
  if(!engineRules[type])return;
  const input=document.getElementById(type+"Input");if(!input||input.disabled)return;
