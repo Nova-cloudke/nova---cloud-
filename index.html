@@ -151,62 +151,121 @@ async function connectNovaAI(question,type="research"){
  if(!response.ok||!data||data.success===false)throw new Error(data?.error||`Request failed (HTTP ${response.status}).`);
  return data;
 }
-function formatAIResult(data){
- let answer =
-  data?.answer ??
-  data?.result?.answer ??
-  data?.result?.ai?.answer ??
-  data?.ai?.answer ??
-  data?.result?.result ??
-  data?.result;
+function formatAIResult(data) {
+  let answer =
+    data?.answer ??
+    data?.result?.answer ??
+    data?.result?.ai?.answer ??
+    data?.ai?.answer ??
+    data?.result;
 
- if(typeof answer !== "string"){
-  if(answer && typeof answer === "object"){
-   answer = answer.answer ?? answer.text ?? answer.content;
+  if (typeof answer !== "string") {
+    if (answer && typeof answer === "object") {
+      answer = answer.answer ?? answer.text ?? answer.content;
+    }
   }
- }
 
- if(typeof answer !== "string"){
-  return "Nova AI returned no readable answer.";
- }
-
- answer = answer.trim();
-
- // Remove a JSON wrapper if the answer itself contains one.
- try{
-  const parsed = JSON.parse(answer);
-
-  if(parsed && typeof parsed === "object"){
-   answer =
-    parsed.answer ??
-    parsed.result?.answer ??
-    parsed.result ??
-    parsed.ai?.answer ??
-    answer;
-
-   if(typeof answer !== "string"){
-    answer = JSON.stringify(answer, null, 2);
-   }
+  if (typeof answer !== "string") {
+    return "Nova AI returned no readable answer.";
   }
- }catch(e){}
 
- // Remove Markdown code fences.
- answer = answer
-  .replace(/^```(?:json|text)?\s*/i, "")
-  .replace(/\s*```$/i, "")
-  .trim();
+  answer = answer.trim();
 
- // Remove a leading JSON success wrapper if one remains.
- answer = answer.replace(
-  /^\{\s*"success"\s*:\s*true\s*,\s*"answer"\s*:\s*"/i,
-  ""
- );
+  // Extract the answer if the response contains JSON.
+  try {
+    const parsed = JSON.parse(answer);
 
- // Remove an accidental closing JSON wrapper.
- answer = answer.replace(/"\s*\}\s*$/, "").trim();
+    if (parsed && typeof parsed === "object") {
+      answer =
+        parsed.answer ??
+        parsed.result?.answer ??
+        parsed.result?.ai?.answer ??
+        parsed.result ??
+        parsed.ai?.answer ??
+        answer;
+    }
+  } catch (e) {}
 
- return answer || "Nova AI returned no readable answer.";
- }
+  if (typeof answer !== "string") {
+    return "Nova AI returned no readable answer.";
+  }
+
+  // Remove code fences and JSON wrappers.
+  answer = answer
+    .replace(/```(?:json|text)?/gi, "")
+    .replace(/^\s*\{\s*"success"\s*:\s*true\s*,?\s*/i, "")
+    .replace(/^\s*"answer"\s*:\s*"/i, "")
+    .replace(/"\s*\}\s*$/, "")
+    .replace(/\\n/g, "\n")
+    .replace(/\r/g, "")
+    .trim();
+
+  // Remove Markdown headings and introductory filler.
+  answer = answer
+    .replace(/^#{1,6}\s*/gm, "")
+    .replace(/^(Here is|Here's|Certainly[,!]?)\s*/i, "");
+
+  // Separate existing numbered points.
+  let points = answer
+    .split(/\n+/)
+    .flatMap(line => {
+      line = line.trim();
+      if (!line) return [];
+
+      const parts = line.split(
+        /(?<!^)(?=\s+\d{1,2}[.)]\s+)/
+      );
+
+      return parts.map(part =>
+        part.replace(/^\s*(?:\d+[.)]|[-*•])\s*/, "").trim()
+      ).filter(Boolean);
+    });
+
+  // If the answer is still in paragraphs, split it into sentences.
+  if (points.length <= 2) {
+    points = answer
+      .replace(/^\s*\d+[.)]\s*/gm, "")
+      .split(/(?<=[.!?])\s+(?=[A-Z0-9])/)
+      .map(point => point.trim())
+      .filter(Boolean);
+  }
+
+  // Remove empty points and limit the response.
+  points = points
+    .map(point => point.replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .slice(0, 5);
+
+  if (!points.length) {
+    return "Nova AI returned no readable answer.";
+  }
+
+  // Keep the displayed answer concise.
+  let wordCount = 0;
+
+  points = points.map(point => {
+    const words = point.split(/\s+/);
+
+    if (wordCount >= 100) return null;
+
+    const remaining = 100 - wordCount;
+    const shortened = words.slice(0, remaining);
+
+    wordCount += shortened.length;
+
+    let result = shortened.join(" ");
+
+    if (shortened.length < words.length) {
+      result = result.replace(/[.,;:]?$/, "") + "...";
+    }
+
+    return result;
+  }).filter(Boolean);
+
+  return points
+    .map((point, index) => `${index + 1}) ${point}`)
+    .join("\n\n");
+  }
 async function sendMessage(type){
  if(!engineRules[type])return;
  const input=document.getElementById(type+"Input");if(!input||input.disabled)return;
