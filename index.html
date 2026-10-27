@@ -416,10 +416,63 @@ const researchPlans={
  ]
 };
 researchPlans.digitalMarketing=researchPlans.businessIdea;
+
 function getResearchPlan(question){
- const type=understandResearchQuestion(question),plan=researchPlans[type]||researchPlans.general;
- return plan.map(a=>({title:a[0],question:a[1],finding:a[2],evidence:"",confirmed:false,removed:false}));
-}
+ const q=question.trim();
+ const lower=q.toLowerCase();
+
+ const plans=[
+  {
+   match:/autopilot|autonomous vehicle|self.driving|driverless|automatic driving/,
+   areas:[
+    ["Meaning and Technology","What is an autopilot vehicle, and how does it work?","Explain vehicle automation and distinguish driver assistance from autonomous driving."],
+    ["Sensors and Computing","Which sensors and computer systems help the vehicle understand its surroundings?","Investigate cameras, radar, lidar, GPS and onboard computing."],
+    ["Automation Levels","What are the different levels of vehicle automation?","Compare driver assistance with conditional and higher automation."],
+    ["Real-World Examples","Which vehicles and companies use these technologies?","Identify specific systems and verify their actual capabilities."],
+    ["Safety and Limitations","What can these vehicles do, and what are their limitations?","Investigate road conditions, human supervision and safety concerns."],
+    ["Benefits and Challenges","What are the potential benefits and challenges of autonomous vehicles?","Examine accessibility, convenience, costs and technical challenges."],
+    ["Future Developments","What improvements are needed for more capable autonomous vehicles?","Investigate unresolved technical, legal and infrastructure questions."]
+   ]
+  },
+  {
+   match:/digital marketing|social media marketing|online marketing|advertising online|marketing online/,
+   areas:[
+    ["Business and Marketing Goal","What business result should digital marketing achieve?","Define the target customers and desired outcomes."],
+    ["Target Customers","Who are the potential customers, and what do they need?","Investigate customer needs, behaviours and buying decisions."],
+    ["Digital Channels","Which digital channels can reach these customers?","Compare social media, search, websites and messaging."],
+    ["Content and Messaging","What content would attract and help potential customers?","Investigate useful content, offers and customer questions."],
+    ["Customer Conversion","How can interest become enquiries and sales?","Examine calls to action, trust, follow-up and the buying process."],
+    ["Performance and Costs","How can marketing results and costs be evaluated?","Identify measurable indicators and available evidence."],
+    ["Testing and Improvement","Which marketing approach should be tested next?","Design a small test and determine how results will be evaluated."]
+   ]
+  }
+ ];
+
+ const selected=plans.find(p=>p.match.test(lower));
+
+ if(selected){
+  return selected.areas.map(a=>({
+   title:a[0],
+   question:a[1],
+   finding:a[2],
+   evidence:"",
+   confirmed:false,
+   removed:false
+  }));
+ }
+
+ const type=understandResearchQuestion(q);
+ const plan=researchPlans[type]||researchPlans.general;
+
+ return plan.map(a=>({
+  title:a[0],
+  question:a[1],
+  finding:a[2],
+  evidence:"",
+  confirmed:false,
+  removed:false
+ }));
+ }
 async function buildResearchMap(){
  const input=document.getElementById("mainQuestion"),question=input.value.trim();
  if(!question){alert("Enter a main research question first.");return;}
