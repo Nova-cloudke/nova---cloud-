@@ -433,7 +433,41 @@ function renderResearch(){
  const output=document.getElementById("researchOutput");if(!output)return;
  const active=researchAreas.filter(a=>!a.removed),confirmed=active.filter(a=>a.confirmed).length;
  let html=`<div class="hero"><span class="badge">ACTIVE RESEARCH</span><h2>Main Question</h2><p><strong>${escapeHTML(researchQuestion)}</strong></p><p>${active.length} research areas · ${confirmed} reviewed</p><p>Guidance is not verified evidence. Record sources and observations before treating a conclusion as confirmed.</p></div>`;
- researchAreas.forEach((a,i)=>{if(a.removed)return;html+=`<div class="research-area ${a.confirmed?"confirmed":""}"><span class="badge">RESEARCH AREA ${i+1}</span><h3>${escapeHTML(a.title)}</h3><div class="question">${escapeHTML(a.question)}</div><div class="finding"><strong>Investigation Guidance</strong><p>${escapeHTML(a.finding)}</p></div><div class="finding"><strong>Evidence / Notes</strong><p>${escapeHTML(a.evidence||"No supporting evidence added yet.")}</p></div>${a.confirmed?"<p><strong>Marked reviewed.</strong></p>":""}<div class="actions"><button class="green" onclick="confirmFinding(${i})">${a.confirmed?"✓ Reviewed":"✓ Mark Reviewed"}</button><button class="secondary" onclick="editFinding(${i})">Edit Finding</button><button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button><button class="red" onclick="removeFinding(${i})">Remove</button></div></div>`;});
+ researchAreas.forEach((a,i)=>{if(a.removed)return;html+=`<div class="research-area ${a.confirmed?"confirmed":""}"><span class="badge">RESEARCH AREA ${i+1}</span><h3>${escapeHTML(a.title)}</h3><div class="question">${escapeHTML(a.question)}</div><div class="finding"><strong>Investigation Guidance</strong><p>${escapeHTML(a.finding)}</p></div><div class="finding">
+  <strong>Evidence / Notes</strong>
+  ${
+    (() => {
+      if (!a.evidence) {
+        return "<p>No supporting evidence added yet.</p>";
+      }  let evidence;
+
+  try {
+    evidence = JSON.parse(a.evidence);
+  } catch {
+    return `<p>${escapeHTML(a.evidence)}</p>`;
+  }
+
+  if (!evidence || typeof evidence !== "object" || !("notes" in evidence)) {
+    return `<p>${escapeHTML(a.evidence)}</p>`;
+  }
+
+  const labels = {
+    verified: "Verified",
+    partially_verified: "Partially verified",
+    unverified: "Unverified",
+    contradicted: "Contradicted"
+  };
+
+  return `
+    <p><strong>Notes:</strong> ${escapeHTML(evidence.notes || "No notes entered.")}</p>
+    <p><strong>Source:</strong> ${escapeHTML(evidence.source || "Not provided")}</p>
+    <p><strong>Status:</strong> ${escapeHTML(labels[evidence.status] || "Unverified")}</p>
+  `;
+})()
+
+}
+
+</div>${a.confirmed?"<p><strong>Marked reviewed.</strong></p>":""}<div class="actions"><button class="green" onclick="confirmFinding(${i})">${a.confirmed?"✓ Reviewed":"✓ Mark Reviewed"}</button><button class="secondary" onclick="editFinding(${i})">Edit Finding</button><button class="secondary" onclick="editEvidence(${i})">Add Evidence / Notes</button><button class="red" onclick="removeFinding(${i})">Remove</button></div></div>`;});
  html+=`<div class="tool"><h3>Continue the Investigation</h3><p>Add a question or connect your recorded findings.</p><div class="actions"><button onclick="addResearchArea()">+ Add Research Area</button><button class="secondary" onclick="connectFindings()">Connect Findings</button><button class="secondary" onclick="saveResearch()">Save Research</button></div><div id="connectionResult"></div></div>`;
  output.innerHTML=html;
 }
