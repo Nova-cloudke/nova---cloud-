@@ -540,7 +540,17 @@ function connectFindings(){
  text+="CONNECTIONS TO INVESTIGATE\n• Do findings support the same explanation?\n• Do any findings contradict one another?\n• Which conclusions are supported and which remain assumptions?\n\nNEXT STEP\n"+(without.length?"Gather evidence for areas with no supporting notes.":"Compare evidence, check contradictions and identify the most important unanswered question.")+"\n\nThis organizes your notes; it does not independently verify claims.";
  result.innerHTML=`<div class="result">${escapeHTML(text)}</div>`;
 }
-function saveResearch(){writeStore("novaResearch",{question:researchQuestion,areas:researchAreas,savedAt:new Date().toISOString()});}
+function saveResearch(){
+  const saved = writeStore("novaResearch", {
+    question: researchQuestion,
+    areas: researchAreas,
+    savedAt: new Date().toISOString()
+  });
+
+  if (!saved) {
+    alert("Research could not be saved in this browser.");
+  }
+  }
 function loadResearch(){
  const d=readStore("novaResearch",null);if(!d){alert("No saved research was found in this browser.");return;}
  researchQuestion=d.question||"";researchAreas=Array.isArray(d.areas)?d.areas.map(a=>({title:a.title||"Untitled Research Area",question:a.question||"",finding:a.finding||"",evidence:a.evidence||"",confirmed:Boolean(a.confirmed),removed:Boolean(a.removed)})):[];
