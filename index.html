@@ -530,25 +530,20 @@ function editEvidence(i){const a=researchAreas[i];if(!a)return;const v=prompt("A
 function removeFinding(i){if(!researchAreas[i]||!confirm("Remove this research area?"))return;researchAreas[i].removed=true;saveResearch();renderResearch();}
 
 function addResearchArea(){
-  const title = prompt("What additional area do you want to investigate?");
-  if (!title || !title.trim()) return;
-
-  const question = prompt("What specific question should this area answer?");
-  if (!question || !question.trim()) return;
-
+  const title=prompt("What additional area do you want to investigate?");
+  if(!title||!title.trim())return;
+  const question=prompt("What specific question should this area answer?");
+  if(!question||!question.trim())return;
   researchAreas.push({
-    title: title.trim(),
-    question: question.trim(),
-    finding: "Investigate the question, gather relevant evidence and record what the evidence supports.",
-    evidence: "",
-    confirmed: false,
-    removed: false
+    title:title.trim(),
+    question:question.trim(),
+    finding:"Investigate the question, gather relevant evidence and record what the evidence supports.",
+    evidence:"",
+    confirmed:false,
+    removed:false
   });
-
-  renderResearch();
   saveResearch();
-
-  alert("Research area added. Total areas: " + researchAreas.filter(a => !a.removed).length);
+  renderResearch();
  }
  
  const active=researchAreas.filter(a=>!a.removed),result=document.getElementById("connectionResult");if(!result)return;
