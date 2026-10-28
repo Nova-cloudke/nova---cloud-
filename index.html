@@ -528,8 +528,29 @@ function confirmFinding(i){if(!researchAreas[i])return;researchAreas[i].confirme
 function editFinding(i){const a=researchAreas[i];if(!a)return;const v=prompt("Edit the investigation guidance or finding:",a.finding||"");if(v===null)return;a.finding=v.trim();a.confirmed=false;saveResearch();renderResearch();}
 function editEvidence(i){const a=researchAreas[i];if(!a)return;const v=prompt("Add evidence, source details or notes:",a.evidence||"");if(v===null)return;a.evidence=v.trim();a.confirmed=false;saveResearch();renderResearch();}
 function removeFinding(i){if(!researchAreas[i]||!confirm("Remove this research area?"))return;researchAreas[i].removed=true;saveResearch();renderResearch();}
-function addResearchArea(){const title=prompt("What additional area do you want to investigate?");if(!title||!title.trim())return;const question=prompt("What specific question should this area answer?");if(!question||!question.trim())return;researchAreas.push({title:title.trim(),question:question.trim(),finding:"Investigate the question, gather relevant evidence and record what the evidence supports.",evidence:"",confirmed:false,removed:false});saveResearch();renderResearch();}
-function connectFindings(){
+
+function addResearchArea(){
+  const title = prompt("What additional area do you want to investigate?");
+  if (!title || !title.trim()) return;
+
+  const question = prompt("What specific question should this area answer?");
+  if (!question || !question.trim()) return;
+
+  researchAreas.push({
+    title: title.trim(),
+    question: question.trim(),
+    finding: "Investigate the question, gather relevant evidence and record what the evidence supports.",
+    evidence: "",
+    confirmed: false,
+    removed: false
+  });
+
+  renderResearch();
+  saveResearch();
+
+  alert("Research area added. Total areas: " + researchAreas.filter(a => !a.removed).length);
+ }
+ 
  const active=researchAreas.filter(a=>!a.removed),result=document.getElementById("connectionResult");if(!result)return;
  if(!active.length){result.innerHTML='<div class="result">Add a research area first.</div>';return;}
  let text="RESEARCH CONNECTION REVIEW\n\nMain question: "+researchQuestion+"\n\n";
