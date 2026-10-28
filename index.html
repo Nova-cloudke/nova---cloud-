@@ -532,8 +532,10 @@ function removeFinding(i){if(!researchAreas[i]||!confirm("Remove this research a
 function addResearchArea(){
   const title=prompt("What additional area do you want to investigate?");
   if(!title||!title.trim())return;
+
   const question=prompt("What specific question should this area answer?");
   if(!question||!question.trim())return;
+
   researchAreas.push({
     title:title.trim(),
     question:question.trim(),
@@ -542,9 +544,10 @@ function addResearchArea(){
     confirmed:false,
     removed:false
   });
+
   saveResearch();
   renderResearch();
- }
+}
  
  const active=researchAreas.filter(a=>!a.removed),result=document.getElementById("connectionResult");if(!result)return;
  if(!active.length){result.innerHTML='<div class="result">Add a research area first.</div>';return;}
